@@ -6,6 +6,19 @@ export interface CustomButtonProps {
   handleClick?: MouseEventHandler<HTMLButtonElement>;
   btnType?: "button" | "submit";
   textStyles?: string;
-  rightIcon?: string;
+  leftIcon?: false | boolean;
+  rightIcon?: false | boolean;
   isDisable?: boolean;
+  indicatorCount?: false | boolean;
+}
+
+export interface CardTypeProps {
+  imageUrl: string;
+  title: string;
+  subtitle: string;
+  price: number;
+  rating: number;
+}
+export interface RatingProps {
+  rating: number;
 }

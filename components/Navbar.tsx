@@ -1,7 +1,11 @@
+"use client";
 import Link from "next/link";
 import Image from "next/image";
+import CustomButton from "./CustomButton";
+import Account from "./Account";
 
 const Navbar = () => {
+  const handleOpenCart = () => {};
   return (
     <header className="w-full absolute z-10">
       <nav className="max-w-[1440px] mx-auto flex justify-between items-center sm:px-16 px-6 py-4">
@@ -27,9 +31,17 @@ const Navbar = () => {
         <Link href="/" className="flex justify-center items-center">
           Contact
         </Link>
-
+        <Link href="/login" className="flex justify-center items-center">
+          Login
+        </Link>
         <Link href="/" className="flex justify-center items-center">
-          CTA
+          <CustomButton
+            handleClick={handleOpenCart}
+            containerStyles="btn-add-to-cart"
+            title="Cart"
+            leftIcon={true}
+            indicatorCount={true}
+          />
         </Link>
       </nav>
     </header>
