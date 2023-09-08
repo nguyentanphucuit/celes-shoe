@@ -28,7 +28,7 @@ const Navbar = () => {
         <Link href="/" className="flex justify-center items-center">
           About
         </Link>
-        <Link href="/" className="flex justify-center items-center">
+        <Link href="/contact" className="flex justify-center items-center">
           Contact
         </Link>
         <Link href="/login" className="flex justify-center items-center">
