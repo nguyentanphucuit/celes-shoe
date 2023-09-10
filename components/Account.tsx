@@ -6,6 +6,7 @@ const Account = () => {
   const handleDropdownAccount = () => {
     setDropdown(!dropdown);
   };
+
   return (
     <div>
       <button

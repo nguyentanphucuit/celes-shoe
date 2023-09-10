@@ -5,6 +5,8 @@ import Image from "next/image";
 import React from "react";
 import CustomButton from "../CustomButton";
 import Rating from "../Rating";
+import { useAppDispatch } from "@/redux/hooks";
+import { increment } from "@/redux/features/counterSlice";
 
 const ShoeCard = ({
   imageUrl,
@@ -13,7 +15,10 @@ const ShoeCard = ({
   price,
   rating,
 }: CardTypeProps) => {
-  const handleAddToCart = () => {};
+  const dispatch = useAppDispatch();
+  const handleAddToCart = () => {
+    dispatch(increment());
+  };
   return (
     <div className="w-full max-w-sm bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
       <a href="#">

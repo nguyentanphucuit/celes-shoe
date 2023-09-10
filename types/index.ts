@@ -9,7 +9,7 @@ export interface CustomButtonProps {
   leftIcon?: false | boolean;
   rightIcon?: false | boolean;
   isDisable?: boolean;
-  indicatorCount?: false | boolean;
+  indicatorCount?: number;
 }
 
 export interface CardTypeProps {
