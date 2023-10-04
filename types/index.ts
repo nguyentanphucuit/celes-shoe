@@ -22,3 +22,16 @@ export interface CardTypeProps {
 export interface RatingProps {
   rating: number;
 }
+
+export interface ProductProps {
+  id: string;
+  title: string;
+  subtitle: string;
+  type: string;
+  price: number;
+  quantity: number;
+  description?: string;
+  category?: string;
+  imageUrl: string;
+  rating: number;
+}
