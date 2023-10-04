@@ -5,48 +5,13 @@ import CartCard from "./CartCard";
 
 const Cart = () => {
   const [showCartModal, setShowCartModal] = useState(false);
-  const counterCart = useAppSelector((state) => state.counterReducer.value);
+  const cartItem = useAppSelector((state) => state.cartReducer.cart);
 
-  const listProducts = [
-    {
-      id: "0",
-      title: "Boots",
-      subtitle: "Subtitle",
-      price: 10.99,
-      quantity: 1,
-      rating: 4.1,
-      type: "saleBoots",
-      imageUrl:
-        "https://www.famousfootwear.com.au/cdn/shop/files/1_548b9483-f658-4e94-b3e3-a36b61d0ede6.jpg?v=1689230938",
-    },
-    {
-      id: "1",
-      title: "Heels",
-      subtitle: "Subtitle",
-      price: 12.99,
-      quantity: 2,
-      rating: 4.6,
-      type: "saleHeels",
-      imageUrl:
-        "https://www.famousfootwear.com.au/cdn/shop/files/2_66570120-3637-44a6-802d-1f619132023a.jpg?v=1689230938",
-    },
-    {
-      id: "2",
-      title: "Flats",
-      subtitle: "Subtitle",
-      price: 14.99,
-      quantity: 3,
-      rating: 3.3,
-      type: "saleFlats",
-      imageUrl:
-        "https://www.famousfootwear.com.au/cdn/shop/files/3_06f9f9be-f7d2-4672-b2ec-9aedf0700ecc.jpg?v=1689230938",
-    },
-  ];
-  const total = listProducts.reduce(
-    (acc, item) => acc + item.price * item.quantity,
-    0
-  );
+  const total = +cartItem
+    .reduce((acc, item) => acc + item.price * item.quantity, 0)
+    .toFixed(2);
 
+  const totalQuantity = cartItem.reduce((acc, item) => acc + item.quantity, 0);
   const handleShowCartModal = () => {
     setShowCartModal(!showCartModal);
   };
@@ -61,7 +26,7 @@ const Cart = () => {
         containerStyles="btn-add-to-cart"
         title="Cart"
         leftIcon={true}
-        indicatorCount={counterCart}
+        indicatorCount={totalQuantity}
       />
       {showCartModal && (
         <>
@@ -101,8 +66,8 @@ const Cart = () => {
                 <div className="p-6 space-y-6">
                   <div className="-my-6">
                     <ul className="divide-y divide-gray-200">
-                      {...listProducts.map((product) => (
-                        <CartCard {...product} key={product.id} />
+                      {...cartItem.map((item) => (
+                        <CartCard {...item} key={item.id} />
                       ))}
                     </ul>
                   </div>

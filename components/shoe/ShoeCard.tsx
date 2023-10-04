@@ -1,23 +1,32 @@
 "use client";
 
-import { CardTypeProps } from "@/types";
+import { ProductProps } from "@/types";
 import Image from "next/image";
 import React from "react";
 import CustomButton from "../CustomButton";
 import Rating from "../Rating";
 import { useAppDispatch } from "@/redux/hooks";
-import { increment } from "@/redux/features/counterSlice";
+import { addToCart } from "@/redux/features/cartSlice";
 
 const ShoeCard = ({
+  id,
   imageUrl,
   title,
   subtitle,
   price,
   rating,
-}: CardTypeProps) => {
+}: ProductProps) => {
+  const itemCard = {
+    id,
+    imageUrl,
+    title,
+    subtitle,
+    price,
+    rating,
+  };
   const dispatch = useAppDispatch();
   const handleAddToCart = () => {
-    dispatch(increment());
+    dispatch(addToCart({ ...itemCard }));
   };
   return (
     <div className="w-full max-w-sm bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">

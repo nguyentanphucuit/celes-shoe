@@ -11,14 +11,6 @@ export interface CustomButtonProps {
   isDisable?: boolean;
   indicatorCount?: number;
 }
-
-export interface CardTypeProps {
-  imageUrl: string;
-  title: string;
-  subtitle: string;
-  price: number;
-  rating: number;
-}
 export interface RatingProps {
   rating: number;
 }
@@ -27,7 +19,6 @@ export interface ProductProps {
   id: string;
   title: string;
   subtitle: string;
-  type: string;
   price: number;
   quantity: number;
   description?: string;
