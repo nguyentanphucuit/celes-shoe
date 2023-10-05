@@ -6,7 +6,7 @@ import Account from "./Account";
 import { useAppSelector } from "@/redux/hooks";
 import { useState } from "react";
 import { createPortal } from "react-dom";
-import Cart from "./Cart";
+import Cart from "./CartModal";
 
 const Navbar = () => {
   return (

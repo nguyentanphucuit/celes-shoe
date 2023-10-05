@@ -1,4 +1,4 @@
-import Cart from "@/components/Cart";
+import Cart from "@/components/CartModal";
 import Collections from "@/components/Collections";
 import Hero from "@/components/Hero";
 import Image from "next/image";
