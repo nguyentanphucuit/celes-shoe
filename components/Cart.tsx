@@ -23,7 +23,7 @@ const Cart = () => {
   const handleCheckout = async () => {
     setShowCartModal(!showCartModal);
 
-    const res = await fetch("http://localhost:3000/api/sendgrid", {
+    const res = await fetch("https://celes-shoe.vercel.app/api/sendgrid", {
       body: JSON.stringify({
         email: "nguyentanphucuit1@gmail.com",
         fullname: "Nguyen Tan Phuc",
