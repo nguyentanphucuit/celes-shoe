@@ -28,7 +28,7 @@
     "**/*.ts",
     "**/*.tsx",
     ".next/types/**/*.ts",
-    "pages/api/sendgrid.js"
+    "pages/api/sendgrid.ts"
   ],
   "exclude": ["node_modules"]
 }

@@ -49,7 +49,7 @@ const CartCard = ({ ...product }: ProductProps) => {
               ))}
             </select>
             <p className="ml-4">${product.price}</p>
-            <p className="ml-4">${product.price * quantity}</p>
+            <p className="ml-4">${+(product.price * quantity).toFixed(2)}</p>
           </div>
           <p className="mt-1 text-sm text-gray-500">{product.subtitle}</p>
         </div>

@@ -1,6 +1,7 @@
+import { ProductProps } from "@/types";
 import sendgrid from "@sendgrid/mail";
 
-sendgrid.setApiKey(process.env.SENDGRID_API_KEY);
+sendgrid.setApiKey(process.env.SENDGRID_API_KEY as string);
 
 const formattedDate = () => {
   const date = new Date();
@@ -18,7 +19,7 @@ const formattedDate = () => {
   return formattedDate;
 };
 
-async function sendEmail(req, res) {
+async function sendEmail(req: any, res: any) {
   const items = req.body.items;
   const totalPrice = req.body.totalPrice;
   const totalQuantity = req.body.totalQuantity;
@@ -69,7 +70,7 @@ async function sendEmail(req, res) {
                     <table width="560" cellpadding="0" cellspacing="0" class="esdev-mso-table">
                         <tbody>
                             ${items
-                              .map((item) => {
+                              .map((item: ProductProps) => {
                                 return `<tr>
                               <td class="esdev-mso-td" valign="top">
                                   <table cellpadding="0" cellspacing="0" class="es-left" align="left">
@@ -205,7 +206,7 @@ async function sendEmail(req, res) {
                                                         <tbody>
                                                             <tr>
                                                                 <td align="right" class="esd-block-text">
-                                                                    <p>Subtotal<br>Sales tax<br>Shipping<br><b>Total (${totalQuantity}&nbsp;item)</b></p>
+                                                                    <p>Subtotal<br>Sales tax<br><b>Total (${totalQuantity}&nbsp;item)</b></p>
                                                                 </td>
                                                             </tr>
                                                         </tbody>
@@ -225,9 +226,7 @@ async function sendEmail(req, res) {
                                                         <tbody>
                                                             <tr>
                                                                 <td align="right" class="esd-block-text">
-                                                                    <p>$${totalPrice}<br>$00.00<br>$10.00<br><strong>$${
-    totalPrice + 10
-  }</strong></p>
+                                                                    <p>$${totalPrice}<br>$00.00<br><strong>$${totalPrice}</strong></p>
                                                                 </td>
                                                             </tr>
                                                         </tbody>
@@ -269,9 +268,13 @@ async function sendEmail(req, res) {
                                             <tr>
                                                 <td align="left" class="esd-block-text">
                                                     ${items
-                                                      .map((item) => {
-                                                        return `<p><span>${item.title}</span></p>`;
-                                                      })
+                                                      .map(
+                                                        (
+                                                          item: ProductProps
+                                                        ) => {
+                                                          return `<p><span>${item.title}</span></p>`;
+                                                        }
+                                                      )
                                                       .join("")}
                                                 </td>
                                             </tr>
@@ -308,12 +311,12 @@ async function sendEmail(req, res) {
   try {
     // console.log("REQ.BODY", req.body);
     await sendgrid.send({
-      to: "near.huscarl@gmail.com", // Your email where you'll receive emails
+      to: req.body.email, // Your email where you'll receive emails
       from: "nguyentanphucuit@gmail.com", // your website email address here
       subject: `${req.body.subject}`,
       html: emailTemplate,
     });
-  } catch (error) {
+  } catch (error: any) {
     // console.log(error);
     return res.status(error.statusCode || 500).json({ error: error.message });
   }
