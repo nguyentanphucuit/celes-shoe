@@ -12,12 +12,13 @@ const CustomButton = ({
   leftIcon,
   rightIcon,
   indicatorCount,
+  isDisabled,
 }: CustomButtonProps) => {
   return (
     <button
-      disabled={false}
+      disabled={isDisabled}
       type={btnType || "button"}
-      className={`custom-btn ${containerStyles}`}
+      className={`custom-btn ${containerStyles} disabled:opacity-75`}
       onClick={handleClick}>
       {leftIcon && (
         <svg

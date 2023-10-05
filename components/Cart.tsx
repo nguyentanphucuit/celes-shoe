@@ -10,8 +10,9 @@ const Cart = () => {
   const totalPrice = +cartItem
     .reduce((acc, item) => acc + item.price * item.quantity, 0)
     .toFixed(2);
-
   const totalQuantity = cartItem.reduce((acc, item) => acc + item.quantity, 0);
+  const isEmpty = cartItem.length === 0;
+
   const handleShowCartModal = () => {
     setShowCartModal(!showCartModal);
   };
@@ -23,7 +24,7 @@ const Cart = () => {
   const handleCheckout = async () => {
     setShowCartModal(!showCartModal);
 
-    const res = await fetch("https://celes-shoe.vercel.app/api/sendgrid", {
+    const res = await fetch("http://localhost:3000/api/sendgrid", {
       body: JSON.stringify({
         email: "nguyentanphucuit1@gmail.com",
         fullname: "Nguyen Tan Phuc",
@@ -91,13 +92,21 @@ const Cart = () => {
                   </button>
                 </div>
                 <div className="p-6 space-y-6">
-                  <div className="-my-6">
-                    <ul className="divide-y divide-gray-200">
-                      {...cartItem.map((item) => (
-                        <CartCard {...item} key={item.id} />
-                      ))}
-                    </ul>
-                  </div>
+                  {isEmpty ? (
+                    <p>
+                      <b>Oops...</b>
+                      <br />
+                      Your cart is empty !
+                    </p>
+                  ) : (
+                    <div className="-my-6">
+                      <ul className="divide-y divide-gray-200">
+                        {...cartItem.map((item) => (
+                          <CartCard {...item} key={item.id} />
+                        ))}
+                      </ul>
+                    </div>
+                  )}
                 </div>
                 <div className="p-6 border-t border-gray-200 rounded-b dark:border-gray-600">
                   <div className="mb-6">
@@ -109,13 +118,12 @@ const Cart = () => {
                       Shipping and taxes will be calculated at checkout.
                     </p>
                   </div>
-                  <button
-                    data-modal-hide="defaultModal"
-                    type="button"
-                    onClick={handleCheckout}
-                    className="w-full flex items-center justify-center rounded-md border border-transparent bg-indigo-600 px-6 py-3 text-base font-medium text-white shadow-sm hover:bg-indigo-700">
-                    Checkout
-                  </button>
+                  <CustomButton
+                    handleClick={handleCheckout}
+                    containerStyles="btn-checkout"
+                    title="Checkout"
+                    isDisabled={isEmpty}
+                  />
                 </div>
               </div>
             </div>

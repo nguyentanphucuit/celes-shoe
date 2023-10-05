@@ -8,7 +8,7 @@ export interface CustomButtonProps {
   textStyles?: string;
   leftIcon?: false | boolean;
   rightIcon?: false | boolean;
-  isDisable?: boolean;
+  isDisabled?: boolean;
   indicatorCount?: number;
 }
 export interface RatingProps {
