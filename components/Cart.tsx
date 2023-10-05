@@ -7,7 +7,7 @@ const Cart = () => {
   const [showCartModal, setShowCartModal] = useState(false);
   const cartItem = useAppSelector((state) => state.cartReducer.cart);
 
-  const total = +cartItem
+  const totalPrice = +cartItem
     .reduce((acc, item) => acc + item.price * item.quantity, 0)
     .toFixed(2);
 
@@ -19,6 +19,33 @@ const Cart = () => {
   const handleHideModal = () => {
     setShowCartModal(!showCartModal);
   };
+
+  const handleCheckout = async () => {
+    setShowCartModal(!showCartModal);
+
+    const res = await fetch("http://localhost:3000/api/sendgrid", {
+      body: JSON.stringify({
+        email: "nguyentanphucuit1@gmail.com",
+        fullname: "Nguyen Tan Phuc",
+        subject: "Thank you for your order",
+        message: "Check out",
+        items: cartItem,
+        totalPrice: totalPrice,
+        totalQuantity: totalQuantity,
+      }),
+      headers: {
+        "Content-Type": "application/json",
+      },
+      method: "POST",
+    });
+
+    const { error } = await res.json();
+    if (error) {
+      console.log(error);
+      return;
+    }
+  };
+
   return (
     <>
       <CustomButton
@@ -76,7 +103,7 @@ const Cart = () => {
                   <div className="mb-6">
                     <div className="flex justify-between font-bold">
                       <h3>Subtotal</h3>
-                      <p>${total}</p>
+                      <p>${totalPrice}</p>
                     </div>
                     <p className="text-slate-500 text-xs">
                       Shipping and taxes will be calculated at checkout.
@@ -85,7 +112,7 @@ const Cart = () => {
                   <button
                     data-modal-hide="defaultModal"
                     type="button"
-                    onClick={handleHideModal}
+                    onClick={handleCheckout}
                     className="w-full flex items-center justify-center rounded-md border border-transparent bg-indigo-600 px-6 py-3 text-base font-medium text-white shadow-sm hover:bg-indigo-700">
                     Checkout
                   </button>
