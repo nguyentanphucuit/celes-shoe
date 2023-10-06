@@ -1,6 +1,7 @@
 import Cart from "@/components/CartModal";
 import Collections from "@/components/Collections";
 import Hero from "@/components/Hero";
+import ShoeDetailModal from "@/components/shoe/ShoeDetailModal";
 import Image from "next/image";
 
 export default function Home() {
@@ -12,6 +13,7 @@ export default function Home() {
           <h1 className="text-4xl font-extrabold">Car Catalogue</h1>
           <p>Explore the cars you might like</p>
         </div>
+        <ShoeDetailModal />
         <Collections />
       </div>
     </main>

@@ -25,4 +25,6 @@ export interface ProductProps {
   category?: string;
   imageUrl: string;
   rating: number;
+  colors?: any;
+  sizes?: any;
 }
