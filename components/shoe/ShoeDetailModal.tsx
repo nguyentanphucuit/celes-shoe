@@ -9,32 +9,8 @@ import Image from "next/image";
 import { useSelector } from "react-redux";
 import { useAppDispatch } from "@/redux/hooks";
 import { isOpenModal } from "@/redux/features/productDetailSlice";
-
-const product = {
-  name: "Basic Tee 6-Pack ",
-  price: "$192",
-  rating: 3.9,
-  reviewCount: 117,
-  href: "#",
-  imageSrc:
-    "https://www.famousfootwear.com.au/cdn/shop/files/1_548b9483-f658-4e94-b3e3-a36b61d0ede6.jpg?v=1689230938",
-  imageAlt: "Two each of gray, white, and black shirts arranged on table.",
-  colors: [
-    { name: "White", class: "bg-white", selectedClass: "ring-gray-400" },
-    { name: "Gray", class: "bg-gray-200", selectedClass: "ring-gray-400" },
-    { name: "Black", class: "bg-gray-900", selectedClass: "ring-gray-900" },
-  ],
-  sizes: [
-    { name: "XXS", inStock: true },
-    { name: "XS", inStock: true },
-    { name: "S", inStock: true },
-    { name: "M", inStock: true },
-    { name: "L", inStock: true },
-    { name: "XL", inStock: true },
-    { name: "XXL", inStock: true },
-    { name: "XXXL", inStock: false },
-  ],
-};
+import CustomButton from "../CustomButton";
+import { addToCart } from "@/redux/features/cartSlice";
 
 function classNames(...classes: any[]) {
   return classes.filter(Boolean).join(" ");
@@ -43,11 +19,15 @@ function classNames(...classes: any[]) {
 export function ShoeDetailModal() {
   const isOpen = useSelector((state: any) => state.productDetailReducer.isOpen);
   const item = useSelector((state: any) => state.productDetailReducer.item);
-  const [selectedSize, setSelectedSize] = useState(product.sizes[0]);
-  const [selectedColor, setSelectedColor] = useState(product.colors[0]);
+  const [selectedSize, setSelectedSize] = useState(item?.sizes[0]);
+  const [selectedColor, setSelectedColor] = useState(item?.colors[0]);
   const dispatch = useAppDispatch();
   const handleClosedModal = () => {
     dispatch(isOpenModal({ isOpen: false }));
+  };
+
+  const handleAddToCart = () => {
+    dispatch(addToCart({ ...item }));
   };
 
   return (
@@ -58,7 +38,7 @@ export function ShoeDetailModal() {
           enter="ease-out duration-300"
           enterFrom="opacity-0"
           enterTo="opacity-100"
-          leave="ease-in duration-200"
+          leave="ease-in duration-100"
           leaveFrom="opacity-100"
           leaveTo="opacity-0">
           <div className="fixed inset-0 hidden bg-gray-500 bg-opacity-75 transition-opacity md:block" />
@@ -71,7 +51,7 @@ export function ShoeDetailModal() {
               enter="ease-out duration-300"
               enterFrom="opacity-0 translate-y-4 md:translate-y-0 md:scale-95"
               enterTo="opacity-100 translate-y-0 md:scale-100"
-              leave="ease-in duration-200"
+              leave="ease-in duration-0"
               leaveFrom="opacity-100 translate-y-0 md:scale-100"
               leaveTo="opacity-0 translate-y-4 md:translate-y-0 md:scale-95">
               <Dialog.Panel className="flex w-full transform text-left text-base transition md:my-8 md:max-w-2xl md:px-4 lg:max-w-4xl">
@@ -247,11 +227,11 @@ export function ShoeDetailModal() {
                             </RadioGroup>
                           </div>
 
-                          <button
-                            type="submit"
-                            className="mt-6 flex w-full items-center justify-center rounded-md border border-transparent bg-indigo-600 px-8 py-3 text-base font-medium text-white hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2">
-                            Add to bag
-                          </button>
+                          <CustomButton
+                            handleClick={handleAddToCart}
+                            containerStyles="btn-add-to-cart-full"
+                            title="Add to Cart"
+                          />
                         </form>
                       </section>
                     </div>

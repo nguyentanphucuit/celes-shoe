@@ -150,7 +150,7 @@ const listCollections = [
 
 const Collections = () => {
   return (
-    <div className="grid grid-flow-row md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4  gap-4">
+    <div className="grid grid-flow-row justify-center md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4">
       {listCollections.map((shoe) => (
         <ShoeCard
           id={shoe.id}

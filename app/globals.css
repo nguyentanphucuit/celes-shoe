@@ -37,7 +37,11 @@
 }
 
 .btn-add-to-cart {
-  @apply text-white bg-blue-700 enabled:hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800;
+  @apply px-5 py-2.5 items-center justify-center rounded-md border border-transparent bg-indigo-600  text-base font-medium text-white hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2;
+}
+
+.btn-add-to-cart-full {
+  @apply mt-6 flex w-full px-8 py-3 items-center justify-center rounded-md border border-transparent bg-indigo-600  text-base font-medium text-white hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2;
 }
 
 .btn-dropdown-account {
