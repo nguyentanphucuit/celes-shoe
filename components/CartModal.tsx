@@ -2,8 +2,9 @@ import React, { useState } from "react";
 import CustomButton from "./CustomButton";
 import { useAppSelector } from "@/redux/hooks";
 import CartCard from "./CartCard";
+import Link from "next/link";
 
-const Cart = () => {
+const CartModal = () => {
   const [showCartModal, setShowCartModal] = useState(false);
   const [email, setEmail] = useState("");
   const cartItem = useAppSelector((state) => state.cartReducer.cart);
@@ -54,12 +55,9 @@ const Cart = () => {
 
   return (
     <>
-      <CustomButton
-        handleClick={handleShowCartModal}
-        containerStyles="btn-add-to-cart"
-        title="Cart"
-        leftIcon={true}
-        indicatorCount={totalQuantity}
+      <CartIcon
+        handleShowCartModal={handleShowCartModal}
+        totalQuantity={totalQuantity}
       />
       {showCartModal && (
         <>
@@ -172,4 +170,33 @@ const Cart = () => {
   );
 };
 
-export default Cart;
+export const CartIcon = ({
+  handleShowCartModal,
+  totalQuantity,
+}: {
+  handleShowCartModal: any;
+  totalQuantity: number;
+}) => {
+  return (
+    <button className="relative text-white " onClick={handleShowCartModal}>
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        fill="none"
+        viewBox="0 0 24 24"
+        stroke-width="1.5"
+        stroke="currentColor"
+        className="h-6 w-6 mx-2">
+        <path
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          d="M2.25 3h1.386c.51 0 .955.343 1.087.835l.383 1.437M7.5 14.25a3 3 0 00-3 3h15.75m-12.75-3h11.218c1.121-2.3 2.1-4.684 2.924-7.138a60.114 60.114 0 00-16.536-1.84M7.5 14.25L5.106 5.272M6 20.25a.75.75 0 11-1.5 0 .75.75 0 011.5 0zm12.75 0a.75.75 0 11-1.5 0 .75.75 0 011.5 0z"
+        />
+      </svg>
+      <div className="absolute inline-flex items-center justify-center w-6 h-6 text-xs font-bold text-white bg-gray-800 border-2 border-white rounded-full -top-2 -right-2 dark:border-gray-900">
+        {totalQuantity}
+      </div>
+    </button>
+  );
+};
+
+export default CartModal;

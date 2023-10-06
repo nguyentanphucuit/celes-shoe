@@ -14,8 +14,8 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en">
-      <body className="relative">
+    <html lang="en" className="h-full bg-gray-100">
+      <body className="h-full relative">
         <Providers>
           <Navbar />
           {children}
