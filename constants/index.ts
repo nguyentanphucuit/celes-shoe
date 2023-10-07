@@ -55,3 +55,102 @@ export const footerLinks = [
     ],
   },
 ];
+
+export const listCategories = [
+  {
+    name: "Totes",
+    value: "totes",
+  },
+  {
+    name: "Backpacks",
+    value: "backpacks",
+  },
+  {
+    name: "Travel Bags",
+    value: "travel-bags",
+  },
+  {
+    name: "Hip Bags",
+    value: "hip-bags",
+  },
+  {
+    name: "Laptop Sleeves",
+    value: "laptop-sleeves",
+  },
+];
+export const listColors = [
+  {
+    name: "White",
+    value: "white",
+  },
+  {
+    name: "Beige",
+    value: "beige",
+  },
+  {
+    name: "Blue",
+    value: "blue",
+  },
+  {
+    name: "Brown",
+    value: "brown",
+  },
+  {
+    name: "Green",
+    value: "green",
+  },
+  {
+    name: "Purple",
+    value: "purple",
+  },
+];
+
+export const listSizes = [
+  {
+    name: "2L",
+    value: "2l",
+  },
+  {
+    name: "6L",
+    value: "6l",
+  },
+  {
+    name: "12L",
+    value: "12l",
+  },
+  {
+    name: "18L",
+    value: "18l",
+  },
+  {
+    name: "20L",
+    value: "20l",
+  },
+  {
+    name: "40L",
+    value: "40l",
+  },
+];
+
+export const listSorts = [
+  {
+    name: "Most Popular",
+    value: "most-popular",
+  },
+  {
+    name: "Best Rating",
+    value: "best-rating",
+  },
+  {
+    name: "Newest",
+    value: "newest",
+  },
+  {
+    name: "Price: Low to High",
+    value: "price-low-to-high",
+  },
+  {
+    name: "Price: High to Low",
+    value: "price-high-to-low",
+  },
+];
