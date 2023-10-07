@@ -2,10 +2,27 @@ import React, { Fragment, useState } from "react";
 import { FilterSection, FilterSectionRange } from "./FilterSection";
 import { listCategories, listColors, listSizes, listSorts } from "@/constants";
 import { Dialog, Transition } from "@headlessui/react";
+import { useAppSelector } from "@/redux/hooks";
+import ProductCard from "./product/ProductCard";
+import { ProductProps } from "@/types";
 
 const CategoryFilters = () => {
   const [isExpandSort, setIsExpandSort] = useState(false);
   const [isShowFilters, setIsShowFilters] = useState(true);
+  const [filters, setFilters] = useState({
+    color: "",
+    size: "",
+    minPrice: 0,
+    category: "",
+  });
+
+  const listCollections = useAppSelector(
+    (state) => state.productsReducer.items
+  );
+
+  const filterItems = [
+    ...listCollections.filter((item) => item.price >= filters.minPrice),
+  ];
 
   return (
     <div>
@@ -75,7 +92,10 @@ const CategoryFilters = () => {
                                     ))}
                                   </ul>
                                 </div>
-                                <FilterSectionRange title="Price" />
+                                <FilterSectionRange
+                                  title="Price"
+                                  handleChangeRange={setFilters}
+                                />
                                 <FilterSection
                                   title="Color"
                                   listFilters={listColors}
@@ -215,7 +235,10 @@ const CategoryFilters = () => {
                     ))}
                   </ul>
 
-                  <FilterSectionRange title="Price" />
+                  <FilterSectionRange
+                    title="Price"
+                    handleChangeRange={setFilters}
+                  />
                   <FilterSection title="Color" listFilters={listColors} />
                   <FilterSection
                     title="Category"
@@ -224,7 +247,21 @@ const CategoryFilters = () => {
                   <FilterSection title="Size" listFilters={listSizes} />
                 </div>
                 {/* Product grid */}
-                <div className="lg:col-span-3">{/* Your content */}</div>
+                <div className="lg:col-span-3">
+                  {filterItems.length === 0 ? (
+                    <p className="flex justify-center items-center text-center">
+                      Oops...
+                      <br />
+                      Items not found
+                    </p>
+                  ) : (
+                    <div className="grid grid-flow-row justify-center md:grid-cols-2 lg:grid-cols-2 xl:grid-cols-3 gap-4">
+                      {filterItems.map((shoe: ProductProps) => (
+                        <ProductCard {...shoe} key={shoe.id} />
+                      ))}
+                    </div>
+                  )}
+                </div>
               </div>
             </section>
           </div>

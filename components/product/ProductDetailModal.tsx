@@ -3,7 +3,6 @@
 import { Fragment, useState } from "react";
 import { Dialog, RadioGroup, Transition } from "@headlessui/react";
 import { XMarkIcon } from "@heroicons/react/24/outline";
-import { StarIcon } from "@heroicons/react/20/solid";
 import Rating from "../Rating";
 import Image from "next/image";
 import { useSelector } from "react-redux";
@@ -16,7 +15,7 @@ function classNames(...classes: any[]) {
   return classes.filter(Boolean).join(" ");
 }
 
-export function ShoeDetailModal() {
+export function ProductDetailModal() {
   const isOpen = useSelector((state: any) => state.productDetailReducer.isOpen);
   const item = useSelector((state: any) => state.productDetailReducer.item);
   const [selectedSize, setSelectedSize] = useState(item?.sizes[0]);
@@ -246,4 +245,4 @@ export function ShoeDetailModal() {
   );
 }
 
-export default ShoeDetailModal;
+export default ProductDetailModal;

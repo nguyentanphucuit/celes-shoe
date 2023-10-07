@@ -7,44 +7,23 @@ import CustomButton from "../CustomButton";
 import Rating from "../Rating";
 import { useAppDispatch } from "@/redux/hooks";
 import { addToCart } from "@/redux/features/cartSlice";
-import { useSelector } from "react-redux";
 import { isOpenModal } from "@/redux/features/productDetailSlice";
 
-const ShoeCard = ({
-  id,
-  imageUrl,
-  title,
-  subtitle,
-  price,
-  rating,
-  colors,
-  sizes,
-}: ProductProps) => {
-  const itemCard = {
-    id,
-    imageUrl,
-    title,
-    subtitle,
-    price,
-    rating,
-    colors,
-    sizes,
-  };
-
+const ProductCard = (props: any) => {
   const dispatch = useAppDispatch();
   const handleAddToCart = () => {
-    dispatch(addToCart({ ...itemCard }));
+    dispatch(addToCart({ ...props }));
   };
 
   const handleOpenDetail = () => {
-    dispatch(isOpenModal({ isOpen: true, item: { ...itemCard } }));
+    dispatch(isOpenModal({ isOpen: true, item: { ...props } }));
   };
   return (
     <>
       <div className="w-full max-w-sm bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
         <a href="#">
           <Image
-            src={imageUrl}
+            src={props.imageUrl}
             alt="shoe card"
             onClick={handleOpenDetail}
             width={400}
@@ -55,13 +34,13 @@ const ShoeCard = ({
         <div className="px-5 pb-5">
           <a>
             <h5 className="text-xl font-semibold tracking-tight text-gray-900 dark:text-white">
-              Apple Watch Series 7 GPS, Aluminium Case, Starlight Sport
+              {props.title}
             </h5>
           </a>
-          <Rating rating={rating} />
+          <Rating rating={props.rating} />
           <div className="flex items-center justify-between">
             <span className="text-3xl font-bold text-gray-900 dark:text-white">
-              ${price}
+              ${props.price}
             </span>
             <CustomButton
               handleClick={handleAddToCart}
@@ -75,4 +54,4 @@ const ShoeCard = ({
   );
 };
 
-export default ShoeCard;
+export default ProductCard;

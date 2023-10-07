@@ -1,13 +1,7 @@
 import { Transition } from "@headlessui/react";
 import React, { useState } from "react";
 
-const FilterSection = ({
-  title,
-  listFilters,
-}: {
-  title: string;
-  listFilters: any;
-}) => {
+const FilterSection = (props: any) => {
   const [isExpand, setIsExpand] = useState(false);
 
   return (
@@ -19,7 +13,7 @@ const FilterSection = ({
           onClick={() => setIsExpand(!isExpand)}
           aria-controls="filter-section-0"
           aria-expanded="false">
-          <span className="font-medium text-gray-900">{title}</span>
+          <span className="font-medium text-gray-900">{props.title}</span>
           <span className="ml-6 flex items-center">
             {isExpand ? (
               <svg
@@ -55,7 +49,7 @@ const FilterSection = ({
         leaveTo="opacity-0">
         <div className="pt-6" id="filter-section-0">
           <div className="space-y-4">
-            {listFilters.map((item: any, index: number) => (
+            {props.listFilters.map((item: any, index: number) => (
               <div className="flex items-center" key={index}>
                 <input
                   id="filter-color-0"
@@ -78,12 +72,17 @@ const FilterSection = ({
   );
 };
 
-const FilterSectionRange = ({ title }: { title: string }) => {
+const FilterSectionRange = (props: any) => {
   const [value, setValue] = useState(0);
+  const handleChangeRange = (e: any) => {
+    setValue(parseInt(e.target.value));
+    props.handleChangeRange({ minPrice: parseInt(e.target.value) });
+  };
+
   return (
     <div className="lg:mx-0 mx-4 border-b border-gray-200 py-6">
       <h3 className="-mt-3 mb-3 flow-root">
-        <span className="font-medium text-gray-900">{title}</span>
+        <span className="font-medium text-gray-900">{props.title}</span>
       </h3>
       <input
         id="minmax-range"
@@ -92,7 +91,7 @@ const FilterSectionRange = ({ title }: { title: string }) => {
         max="999"
         value={value}
         className="w-full h-2 bg-gray-200 rounded-lg appearance-none cursor-pointer dark:bg-gray-700"
-        onChange={(e) => setValue(parseInt(e.target.value))}
+        onChange={handleChangeRange}
       />
       <h3 className="my-3 flow-root">
         <span className="font-medium text-gray-900">${value}</span>
