@@ -54,7 +54,7 @@ const PaginationControls = ({
           <p className="text-sm text-gray-700">
             Showing <span className="font-medium">{startIndex + 1}</span> to{" "}
             <span className="font-medium">
-              {Math.min(current_page * per_page + 1, totalResults)}
+              {Math.min(current_page * per_page, totalResults)}
             </span>{" "}
             of <span className="font-medium">{totalResults}</span> results
           </p>
