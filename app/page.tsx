@@ -4,7 +4,11 @@ import Hero from "@/components/Hero";
 import ProductDetailModal from "@/components/product/ProductDetailModal";
 import Image from "next/image";
 
-export default function Home() {
+export default function Home({
+  searchParams,
+}: {
+  searchParams: { [key: string]: string | string[] | undefined };
+}) {
   return (
     <>
       <header></header>
@@ -12,7 +16,7 @@ export default function Home() {
         <Hero />
         <div className="mt-12 padding-x padding-y max-width" id="discover">
           <ProductDetailModal />
-          <Collections />
+          <Collections searchParams={searchParams} />
         </div>
       </main>
     </>

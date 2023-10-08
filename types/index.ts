@@ -28,3 +28,11 @@ export interface ProductProps {
   colors?: any;
   sizes?: any;
 }
+
+export interface PaginationControlsProps {
+  hasNextPage: boolean;
+  hasPreviousPage: boolean;
+  totalPages: number;
+  totalResults: number;
+  startIndex: number;
+}

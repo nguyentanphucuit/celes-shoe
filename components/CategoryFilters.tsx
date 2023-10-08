@@ -1,10 +1,19 @@
+"use client";
 import React, { Fragment, useState } from "react";
 import { FilterSection, FilterSectionRange } from "./FilterSection";
-import { listCategories, listColors, listSizes, listSorts } from "@/constants";
+import {
+  ITEMS_PER_PAGE,
+  listCategories,
+  listColors,
+  listSizes,
+  listSorts,
+} from "@/constants";
 import { Dialog, Transition } from "@headlessui/react";
 import { useAppSelector } from "@/redux/hooks";
 import ProductCard from "./product/ProductCard";
 import { ProductProps } from "@/types";
+import PaginationControls from "./pagination/PaginationControls";
+import { useSearchParams } from "next/navigation";
 
 const CategoryFilters = () => {
   const [isExpandSort, setIsExpandSort] = useState(false);
@@ -15,14 +24,21 @@ const CategoryFilters = () => {
     minPrice: 0,
     category: "",
   });
+  const searchParams = useSearchParams();
 
-  const listCollections = useAppSelector(
-    (state) => state.productsReducer.items
-  );
+  const data = useAppSelector((state) => state.productsReducer.items);
 
   const filterItems = [
-    ...listCollections.filter((item) => item.price >= filters.minPrice),
+    ...data.filter((item) => item.price >= filters.minPrice),
   ];
+
+  const current_page = +(searchParams?.get("page") ?? 1);
+  const per_page = +(searchParams?.get("per_page") ?? ITEMS_PER_PAGE);
+
+  const startIndex = (current_page - 1) * per_page;
+  const endIndex = current_page * per_page;
+
+  const listCollections = filterItems.slice(startIndex, endIndex);
 
   return (
     <div>
@@ -256,7 +272,7 @@ const CategoryFilters = () => {
                     </p>
                   ) : (
                     <div className="grid grid-flow-row justify-center md:grid-cols-2 lg:grid-cols-2 xl:grid-cols-3 gap-4">
-                      {filterItems.map((shoe: ProductProps) => (
+                      {listCollections.map((shoe: ProductProps) => (
                         <ProductCard {...shoe} key={shoe.id} />
                       ))}
                     </div>
@@ -264,6 +280,13 @@ const CategoryFilters = () => {
                 </div>
               </div>
             </section>
+            <PaginationControls
+              hasNextPage={endIndex < filterItems.length}
+              hasPreviousPage={startIndex > 0}
+              totalPages={Math.ceil(filterItems.length / per_page)}
+              totalResults={filterItems.length}
+              startIndex={startIndex}
+            />
           </div>
         </div>
       </div>
