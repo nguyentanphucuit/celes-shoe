@@ -1,31 +1,3 @@
-export const yearsOfProduction = [
-  { title: "Year", value: "" },
-  { title: "2015", value: "2015" },
-  { title: "2016", value: "2016" },
-  { title: "2017", value: "2017" },
-  { title: "2018", value: "2018" },
-  { title: "2019", value: "2019" },
-  { title: "2020", value: "2020" },
-  { title: "2021", value: "2021" },
-  { title: "2022", value: "2022" },
-  { title: "2023", value: "2023" },
-];
-
-export const fuels = [
-  {
-    title: "Fuel",
-    value: "",
-  },
-  {
-    title: "Gas",
-    value: "Gas",
-  },
-  {
-    title: "Electricity",
-    value: "Electricity",
-  },
-];
-
 export const footerLinks = [
   {
     title: "About",
@@ -58,24 +30,16 @@ export const footerLinks = [
 
 export const listCategories = [
   {
-    name: "Totes",
-    value: "totes",
+    name: "Heels",
+    value: "heels",
   },
   {
-    name: "Backpacks",
-    value: "backpacks",
+    name: "Boots",
+    value: "boots",
   },
   {
-    name: "Travel Bags",
-    value: "travel-bags",
-  },
-  {
-    name: "Hip Bags",
-    value: "hip-bags",
-  },
-  {
-    name: "Laptop Sleeves",
-    value: "laptop-sleeves",
+    name: "Flats",
+    value: "flats",
   },
 ];
 export const listColors = [
@@ -159,11 +123,12 @@ export const listProducts = [
   {
     id: "0",
     title: "Boots",
+    category: "Boots",
     subtitle: "Subtitle",
     price: 10.99,
     rating: 4.1,
     quantity: 1,
-    type: "saleBoots",
+    type: "Boots",
     imageUrl:
       "https://www.famousfootwear.com.au/cdn/shop/files/1_548b9483-f658-4e94-b3e3-a36b61d0ede6.jpg?v=1689230938",
     colors: [
@@ -185,11 +150,12 @@ export const listProducts = [
   {
     id: "1",
     title: "Heels",
+    category: "Heels",
     subtitle: "Subtitle",
     price: 12.99,
     rating: 4.6,
     quantity: 1,
-    type: "saleHeels",
+    type: "Heels",
     imageUrl:
       "https://www.famousfootwear.com.au/cdn/shop/files/2_66570120-3637-44a6-802d-1f619132023a.jpg?v=1689230938",
     colors: [
@@ -211,11 +177,12 @@ export const listProducts = [
   {
     id: "2",
     title: "Flats",
+    category: "Flats",
     subtitle: "Subtitle",
     price: 789.99,
     rating: 3.3,
     quantity: 1,
-    type: "saleFlats",
+    type: "Flats",
     imageUrl:
       "https://www.famousfootwear.com.au/cdn/shop/files/3_06f9f9be-f7d2-4672-b2ec-9aedf0700ecc.jpg?v=1689230938",
     colors: [
@@ -237,11 +204,12 @@ export const listProducts = [
   {
     id: "3",
     title: "Boots",
+    category: "Boots",
     subtitle: "Subtitle",
     price: 10.99,
     rating: 3.7,
     quantity: 1,
-    type: "saleBoots",
+    type: "Boots",
     imageUrl:
       "https://www.famousfootwear.com.au/cdn/shop/files/1_548b9483-f658-4e94-b3e3-a36b61d0ede6.jpg?v=1689230938",
     colors: [
@@ -263,11 +231,12 @@ export const listProducts = [
   {
     id: "4",
     title: "Heels",
+    category: "Heels",
     subtitle: "Subtitle",
     price: 123.99,
     rating: 4.1,
     quantity: 1,
-    type: "saleHeels",
+    type: "Heels",
     imageUrl:
       "https://www.famousfootwear.com.au/cdn/shop/files/2_66570120-3637-44a6-802d-1f619132023a.jpg?v=1689230938",
     colors: [
@@ -289,11 +258,12 @@ export const listProducts = [
   {
     id: "5",
     title: "Flats",
+    category: "Flats",
     subtitle: "Subtitle",
     price: 456.99,
     rating: 2.8,
     quantity: 1,
-    type: "saleFlats",
+    type: "Flats",
     imageUrl:
       "https://www.famousfootwear.com.au/cdn/shop/files/3_06f9f9be-f7d2-4672-b2ec-9aedf0700ecc.jpg?v=1689230938",
     colors: [
@@ -315,11 +285,12 @@ export const listProducts = [
   {
     id: "6",
     title: "Flats",
+    category: "Flats",
     subtitle: "Subtitle",
     price: 456.99,
     rating: 2.8,
     quantity: 1,
-    type: "saleFlats",
+    type: "Flats",
     imageUrl:
       "https://www.famousfootwear.com.au/cdn/shop/files/3_06f9f9be-f7d2-4672-b2ec-9aedf0700ecc.jpg?v=1689230938",
     colors: [
@@ -341,11 +312,12 @@ export const listProducts = [
   {
     id: "7",
     title: "Flats",
+    category: "Flats",
     subtitle: "Subtitle",
     price: 456.99,
     rating: 2.8,
     quantity: 1,
-    type: "saleFlats",
+    type: "Flats",
     imageUrl:
       "https://www.famousfootwear.com.au/cdn/shop/files/3_06f9f9be-f7d2-4672-b2ec-9aedf0700ecc.jpg?v=1689230938",
     colors: [
@@ -367,11 +339,12 @@ export const listProducts = [
   {
     id: "8",
     title: "Flats",
+    category: "Flats",
     subtitle: "Subtitle",
     price: 456.99,
     rating: 2.8,
     quantity: 1,
-    type: "saleFlats",
+    type: "Flats",
     imageUrl:
       "https://www.famousfootwear.com.au/cdn/shop/files/3_06f9f9be-f7d2-4672-b2ec-9aedf0700ecc.jpg?v=1689230938",
     colors: [
@@ -393,11 +366,12 @@ export const listProducts = [
   {
     id: "9",
     title: "Flats",
+    category: "Flats",
     subtitle: "Subtitle",
     price: 456.99,
     rating: 2.8,
     quantity: 1,
-    type: "saleFlats",
+    type: "Flats",
     imageUrl:
       "https://www.famousfootwear.com.au/cdn/shop/files/3_06f9f9be-f7d2-4672-b2ec-9aedf0700ecc.jpg?v=1689230938",
     colors: [
@@ -419,11 +393,12 @@ export const listProducts = [
   {
     id: "10",
     title: "Flats",
+    category: "Flats",
     subtitle: "Subtitle",
     price: 456.99,
     rating: 2.8,
     quantity: 1,
-    type: "saleFlats",
+    type: "Flats",
     imageUrl:
       "https://www.famousfootwear.com.au/cdn/shop/files/3_06f9f9be-f7d2-4672-b2ec-9aedf0700ecc.jpg?v=1689230938",
     colors: [
@@ -445,11 +420,12 @@ export const listProducts = [
   {
     id: "11",
     title: "Flats",
+    category: "Flats",
     subtitle: "Subtitle",
     price: 456.99,
     rating: 2.8,
     quantity: 1,
-    type: "saleFlats",
+    type: "Flats",
     imageUrl:
       "https://www.famousfootwear.com.au/cdn/shop/files/3_06f9f9be-f7d2-4672-b2ec-9aedf0700ecc.jpg?v=1689230938",
     colors: [
@@ -471,11 +447,12 @@ export const listProducts = [
   {
     id: "12",
     title: "Flats",
+    category: "Flats",
     subtitle: "Subtitle",
     price: 444.99,
     rating: 3.8,
     quantity: 1,
-    type: "saleFlats",
+    type: "Flats",
     imageUrl:
       "https://www.famousfootwear.com.au/cdn/shop/files/3_06f9f9be-f7d2-4672-b2ec-9aedf0700ecc.jpg?v=1689230938",
     colors: [

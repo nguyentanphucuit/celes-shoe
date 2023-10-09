@@ -1,11 +1,8 @@
 "use client";
-import Link from "next/link";
 import Image from "next/legacy/image";
-import CustomButton from "./CustomButton";
-import Account from "./Account";
-import { useAppSelector } from "@/redux/hooks";
+import Link from "next/link";
 import { useState } from "react";
-import { createPortal } from "react-dom";
+import Banner from "./Banner";
 import CartModal from "./CartModal";
 
 const Navbar = () => {
@@ -59,6 +56,7 @@ const Navbar = () => {
 
   return (
     <nav className="w-full fixed z-10 bg-gray-800">
+      <Banner />
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div className="flex h-16 items-center justify-between">
           <div className="flex items-center">

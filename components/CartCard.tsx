@@ -3,8 +3,7 @@ import { changeQuantity, removeCart } from "@/redux/features/cartSlice";
 import { useAppDispatch } from "@/redux/hooks";
 import { ProductProps } from "@/types";
 import Image from "next/image";
-import React, { useState } from "react";
-import { useToast } from "./toast/toastService";
+import { useState } from "react";
 
 const CartCard = ({ ...product }: ProductProps) => {
   const [quantity, setQuantity] = useState(product.quantity);

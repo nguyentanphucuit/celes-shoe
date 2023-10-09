@@ -9,21 +9,23 @@ import {
   listSorts,
 } from "@/constants";
 import { Dialog, Transition } from "@headlessui/react";
-import { useAppSelector } from "@/redux/hooks";
+import { useAppDispatch, useAppSelector } from "@/redux/hooks";
 import ProductCard from "./product/ProductCard";
-import { ProductProps } from "@/types";
+import { FiltersProps, ProductProps } from "@/types";
 import PaginationControls from "./pagination/PaginationControls";
 import { useSearchParams } from "next/navigation";
+import { updateFilter } from "@/redux/features/filterSlice";
 
 const CategoryFilters = () => {
   const [isExpandSort, setIsExpandSort] = useState(false);
   const [isShowFilters, setIsShowFilters] = useState(true);
-  const [filters, setFilters] = useState({
-    color: "",
-    size: "",
-    minPrice: 0,
-    category: "",
-  });
+  const filters = useAppSelector((state) => state.filterReducer);
+  const dispatch = useAppDispatch();
+
+  const setFilters = (filters: FiltersProps) => {
+    dispatch(updateFilter(filters));
+  };
+
   const searchParams = useSearchParams();
 
   const data = useAppSelector((state) => state.productsReducer.items);
@@ -109,19 +111,22 @@ const CategoryFilters = () => {
                                   </ul>
                                 </div>
                                 <FilterSectionRange
-                                  title="Price"
-                                  handleChangeRange={setFilters}
+                                  name="minPrice"
+                                  handleFilters={setFilters}
                                 />
                                 <FilterSection
-                                  title="Color"
+                                  name="color"
+                                  handleFilters={setFilters}
                                   listFilters={listColors}
                                 />
                                 <FilterSection
-                                  title="Category"
+                                  name="category"
+                                  handleFilters={setFilters}
                                   listFilters={listCategories}
                                 />
                                 <FilterSection
-                                  title="Size"
+                                  name="size"
+                                  handleFilters={setFilters}
                                   listFilters={listSizes}
                                 />
                               </div>
@@ -137,7 +142,7 @@ const CategoryFilters = () => {
           </Transition.Root>
           <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
             <div className="flex items-baseline justify-between border-b border-gray-200 pb-6 pt-24">
-              <h1 className="text-4xl font-bold tracking-tight text-gray-900">
+              <h1 className="mt-10 text-4xl font-bold tracking-tight text-gray-900">
                 New Collections
               </h1>
 
@@ -252,15 +257,24 @@ const CategoryFilters = () => {
                   </ul>
 
                   <FilterSectionRange
-                    title="Price"
-                    handleChangeRange={setFilters}
+                    name="minPrice"
+                    handleFilters={setFilters}
                   />
-                  <FilterSection title="Color" listFilters={listColors} />
                   <FilterSection
-                    title="Category"
-                    listFilters={listCategories}
+                    name="color"
+                    listFilters={listColors}
+                    handleFilters={setFilters}
                   />
-                  <FilterSection title="Size" listFilters={listSizes} />
+                  <FilterSection
+                    name="category"
+                    listFilters={listCategories}
+                    handleFilters={setFilters}
+                  />
+                  <FilterSection
+                    name="size"
+                    listFilters={listSizes}
+                    handleFilters={setFilters}
+                  />
                 </div>
                 {/* Product grid */}
                 <div className="lg:col-span-3">

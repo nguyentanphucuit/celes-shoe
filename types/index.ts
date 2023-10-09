@@ -36,3 +36,12 @@ export interface PaginationControlsProps {
   totalResults: number;
   startIndex: number;
 }
+
+export interface FiltersProps {
+  category: string[];
+  color: string[];
+  minPrice: number;
+  maxPrice: number;
+  size: string[];
+  text: string;
+}

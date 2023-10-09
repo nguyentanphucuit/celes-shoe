@@ -3,6 +3,18 @@ import React, { useState } from "react";
 
 const FilterSection = (props: any) => {
   const [isExpand, setIsExpand] = useState(false);
+  const [checked, setChecked] = useState<any[]>([]);
+  const handleFilters = (e: any) => {
+    var updatedList = [...checked];
+    if (e.target.checked) {
+      updatedList = [...checked, e.target.value];
+    } else {
+      updatedList.splice(checked.indexOf(e.target.value), 1);
+    }
+
+    setChecked(updatedList);
+    props.handleFilters({ [e.target.name]: [...updatedList] });
+  };
 
   return (
     <div className="border-b border-gray-200 py-6">
@@ -13,7 +25,9 @@ const FilterSection = (props: any) => {
           onClick={() => setIsExpand(!isExpand)}
           aria-controls="filter-section-0"
           aria-expanded="false">
-          <span className="font-medium text-gray-900">{props.title}</span>
+          <span className="font-medium text-gray-900">
+            {props.name.toUpperCase()}
+          </span>
           <span className="ml-6 flex items-center">
             {isExpand ? (
               <svg
@@ -53,10 +67,11 @@ const FilterSection = (props: any) => {
               <div className="flex items-center" key={index}>
                 <input
                   id="filter-color-0"
-                  name="color[]"
-                  value="white"
+                  name={props.name}
+                  value={item.name}
                   type="checkbox"
                   className="h-4 w-4 rounded border-gray-300 text-indigo-600 focus:ring-indigo-500"
+                  onChange={handleFilters}
                 />
                 <label
                   htmlFor="filter-color-0"
@@ -74,24 +89,27 @@ const FilterSection = (props: any) => {
 
 const FilterSectionRange = (props: any) => {
   const [value, setValue] = useState(0);
-  const handleChangeRange = (e: any) => {
-    setValue(parseInt(e.target.value));
-    props.handleChangeRange({ minPrice: parseInt(e.target.value) });
+  const handleFilters = (e: any) => {
+    setValue(Number(e.target.value));
+    props.handleFilters({ [e.target.name]: Number(e.target.value) });
   };
 
   return (
     <div className="lg:mx-0 mx-4 border-b border-gray-200 py-6">
       <h3 className="-mt-3 mb-3 flow-root">
-        <span className="font-medium text-gray-900">{props.title}</span>
+        <span className="font-medium text-gray-900">
+          {props.name.toUpperCase()}
+        </span>
       </h3>
       <input
         id="minmax-range"
         type="range"
+        name={props.name}
         min="0"
         max="999"
         value={value}
         className="w-full h-2 bg-gray-200 rounded-lg appearance-none cursor-pointer dark:bg-gray-700"
-        onChange={handleChangeRange}
+        onChange={handleFilters}
       />
       <h3 className="my-3 flow-root">
         <span className="font-medium text-gray-900">${value}</span>
