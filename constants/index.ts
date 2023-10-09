@@ -132,9 +132,24 @@ export const listProducts = [
     imageUrl:
       "https://www.famousfootwear.com.au/cdn/shop/files/1_548b9483-f658-4e94-b3e3-a36b61d0ede6.jpg?v=1689230938",
     colors: [
-      { name: "White", class: "bg-white", selectedClass: "ring-gray-400" },
-      { name: "Gray", class: "bg-gray-200", selectedClass: "ring-gray-400" },
-      { name: "Black", class: "bg-gray-900", selectedClass: "ring-gray-900" },
+      {
+        name: "White",
+        class: "bg-white",
+        selectedClass: "ring-gray-400",
+        inStock: true,
+      },
+      {
+        name: "Gray",
+        class: "bg-gray-200",
+        selectedClass: "ring-gray-400",
+        inStock: true,
+      },
+      {
+        name: "Black",
+        class: "bg-gray-900",
+        selectedClass: "ring-gray-900",
+        inStock: true,
+      },
     ],
     sizes: [
       { name: "XXS", inStock: true },
@@ -159,9 +174,24 @@ export const listProducts = [
     imageUrl:
       "https://www.famousfootwear.com.au/cdn/shop/files/2_66570120-3637-44a6-802d-1f619132023a.jpg?v=1689230938",
     colors: [
-      { name: "White", class: "bg-white", selectedClass: "ring-gray-400" },
-      { name: "Gray", class: "bg-gray-200", selectedClass: "ring-gray-400" },
-      { name: "Black", class: "bg-gray-900", selectedClass: "ring-gray-900" },
+      {
+        name: "White",
+        class: "bg-white",
+        selectedClass: "ring-gray-400",
+        inStock: true,
+      },
+      {
+        name: "Gray",
+        class: "bg-gray-200",
+        selectedClass: "ring-gray-400",
+        inStock: true,
+      },
+      {
+        name: "Black",
+        class: "bg-gray-900",
+        selectedClass: "ring-gray-900",
+        inStock: true,
+      },
     ],
     sizes: [
       { name: "XXS", inStock: true },
@@ -186,9 +216,24 @@ export const listProducts = [
     imageUrl:
       "https://www.famousfootwear.com.au/cdn/shop/files/3_06f9f9be-f7d2-4672-b2ec-9aedf0700ecc.jpg?v=1689230938",
     colors: [
-      { name: "White", class: "bg-white", selectedClass: "ring-gray-400" },
-      { name: "Gray", class: "bg-gray-200", selectedClass: "ring-gray-400" },
-      { name: "Black", class: "bg-gray-900", selectedClass: "ring-gray-900" },
+      {
+        name: "White",
+        class: "bg-white",
+        selectedClass: "ring-gray-400",
+        inStock: true,
+      },
+      {
+        name: "Gray",
+        class: "bg-gray-200",
+        selectedClass: "ring-gray-400",
+        inStock: true,
+      },
+      {
+        name: "Black",
+        class: "bg-gray-900",
+        selectedClass: "ring-gray-900",
+        inStock: true,
+      },
     ],
     sizes: [
       { name: "XXS", inStock: true },
@@ -213,9 +258,24 @@ export const listProducts = [
     imageUrl:
       "https://www.famousfootwear.com.au/cdn/shop/files/1_548b9483-f658-4e94-b3e3-a36b61d0ede6.jpg?v=1689230938",
     colors: [
-      { name: "White", class: "bg-white", selectedClass: "ring-gray-400" },
-      { name: "Gray", class: "bg-gray-200", selectedClass: "ring-gray-400" },
-      { name: "Black", class: "bg-gray-900", selectedClass: "ring-gray-900" },
+      {
+        name: "White",
+        class: "bg-white",
+        selectedClass: "ring-gray-400",
+        inStock: true,
+      },
+      {
+        name: "Gray",
+        class: "bg-gray-200",
+        selectedClass: "ring-gray-400",
+        inStock: true,
+      },
+      {
+        name: "Black",
+        class: "bg-gray-900",
+        selectedClass: "ring-gray-900",
+        inStock: true,
+      },
     ],
     sizes: [
       { name: "XXS", inStock: false },
@@ -240,9 +300,24 @@ export const listProducts = [
     imageUrl:
       "https://www.famousfootwear.com.au/cdn/shop/files/2_66570120-3637-44a6-802d-1f619132023a.jpg?v=1689230938",
     colors: [
-      { name: "White", class: "bg-white", selectedClass: "ring-gray-400" },
-      { name: "Gray", class: "bg-gray-200", selectedClass: "ring-gray-400" },
-      { name: "Black", class: "bg-gray-900", selectedClass: "ring-gray-900" },
+      {
+        name: "White",
+        class: "bg-white",
+        selectedClass: "ring-gray-400",
+        inStock: true,
+      },
+      {
+        name: "Gray",
+        class: "bg-gray-200",
+        selectedClass: "ring-gray-400",
+        inStock: true,
+      },
+      {
+        name: "Black",
+        class: "bg-gray-900",
+        selectedClass: "ring-gray-900",
+        inStock: true,
+      },
     ],
     sizes: [
       { name: "XXS", inStock: true },
@@ -267,9 +342,24 @@ export const listProducts = [
     imageUrl:
       "https://www.famousfootwear.com.au/cdn/shop/files/3_06f9f9be-f7d2-4672-b2ec-9aedf0700ecc.jpg?v=1689230938",
     colors: [
-      { name: "White", class: "bg-white", selectedClass: "ring-gray-400" },
-      { name: "Gray", class: "bg-gray-200", selectedClass: "ring-gray-400" },
-      { name: "Black", class: "bg-gray-900", selectedClass: "ring-gray-900" },
+      {
+        name: "White",
+        class: "bg-white",
+        selectedClass: "ring-gray-400",
+        inStock: true,
+      },
+      {
+        name: "Gray",
+        class: "bg-gray-200",
+        selectedClass: "ring-gray-400",
+        inStock: true,
+      },
+      {
+        name: "Black",
+        class: "bg-gray-900",
+        selectedClass: "ring-gray-900",
+        inStock: true,
+      },
     ],
     sizes: [
       { name: "XXS", inStock: true },
@@ -294,9 +384,24 @@ export const listProducts = [
     imageUrl:
       "https://www.famousfootwear.com.au/cdn/shop/files/3_06f9f9be-f7d2-4672-b2ec-9aedf0700ecc.jpg?v=1689230938",
     colors: [
-      { name: "White", class: "bg-white", selectedClass: "ring-gray-400" },
-      { name: "Gray", class: "bg-gray-200", selectedClass: "ring-gray-400" },
-      { name: "Black", class: "bg-gray-900", selectedClass: "ring-gray-900" },
+      {
+        name: "White",
+        class: "bg-white",
+        selectedClass: "ring-gray-400",
+        inStock: true,
+      },
+      {
+        name: "Gray",
+        class: "bg-gray-200",
+        selectedClass: "ring-gray-400",
+        inStock: true,
+      },
+      {
+        name: "Black",
+        class: "bg-gray-900",
+        selectedClass: "ring-gray-900",
+        inStock: true,
+      },
     ],
     sizes: [
       { name: "XXS", inStock: true },
@@ -321,9 +426,24 @@ export const listProducts = [
     imageUrl:
       "https://www.famousfootwear.com.au/cdn/shop/files/3_06f9f9be-f7d2-4672-b2ec-9aedf0700ecc.jpg?v=1689230938",
     colors: [
-      { name: "White", class: "bg-white", selectedClass: "ring-gray-400" },
-      { name: "Gray", class: "bg-gray-200", selectedClass: "ring-gray-400" },
-      { name: "Black", class: "bg-gray-900", selectedClass: "ring-gray-900" },
+      {
+        name: "White",
+        class: "bg-white",
+        selectedClass: "ring-gray-400",
+        inStock: true,
+      },
+      {
+        name: "Gray",
+        class: "bg-gray-200",
+        selectedClass: "ring-gray-400",
+        inStock: true,
+      },
+      {
+        name: "Black",
+        class: "bg-gray-900",
+        selectedClass: "ring-gray-900",
+        inStock: true,
+      },
     ],
     sizes: [
       { name: "XXS", inStock: true },
@@ -348,9 +468,24 @@ export const listProducts = [
     imageUrl:
       "https://www.famousfootwear.com.au/cdn/shop/files/3_06f9f9be-f7d2-4672-b2ec-9aedf0700ecc.jpg?v=1689230938",
     colors: [
-      { name: "White", class: "bg-white", selectedClass: "ring-gray-400" },
-      { name: "Gray", class: "bg-gray-200", selectedClass: "ring-gray-400" },
-      { name: "Black", class: "bg-gray-900", selectedClass: "ring-gray-900" },
+      {
+        name: "White",
+        class: "bg-white",
+        selectedClass: "ring-gray-400",
+        inStock: true,
+      },
+      {
+        name: "Gray",
+        class: "bg-gray-200",
+        selectedClass: "ring-gray-400",
+        inStock: true,
+      },
+      {
+        name: "Black",
+        class: "bg-gray-900",
+        selectedClass: "ring-gray-900",
+        inStock: true,
+      },
     ],
     sizes: [
       { name: "XXS", inStock: true },
@@ -375,9 +510,24 @@ export const listProducts = [
     imageUrl:
       "https://www.famousfootwear.com.au/cdn/shop/files/3_06f9f9be-f7d2-4672-b2ec-9aedf0700ecc.jpg?v=1689230938",
     colors: [
-      { name: "White", class: "bg-white", selectedClass: "ring-gray-400" },
-      { name: "Gray", class: "bg-gray-200", selectedClass: "ring-gray-400" },
-      { name: "Black", class: "bg-gray-900", selectedClass: "ring-gray-900" },
+      {
+        name: "White",
+        class: "bg-white",
+        selectedClass: "ring-gray-400",
+        inStock: true,
+      },
+      {
+        name: "Gray",
+        class: "bg-gray-200",
+        selectedClass: "ring-gray-400",
+        inStock: true,
+      },
+      {
+        name: "Black",
+        class: "bg-gray-900",
+        selectedClass: "ring-gray-900",
+        inStock: true,
+      },
     ],
     sizes: [
       { name: "XXS", inStock: true },
@@ -402,9 +552,24 @@ export const listProducts = [
     imageUrl:
       "https://www.famousfootwear.com.au/cdn/shop/files/3_06f9f9be-f7d2-4672-b2ec-9aedf0700ecc.jpg?v=1689230938",
     colors: [
-      { name: "White", class: "bg-white", selectedClass: "ring-gray-400" },
-      { name: "Gray", class: "bg-gray-200", selectedClass: "ring-gray-400" },
-      { name: "Black", class: "bg-gray-900", selectedClass: "ring-gray-900" },
+      {
+        name: "White",
+        class: "bg-white",
+        selectedClass: "ring-gray-400",
+        inStock: true,
+      },
+      {
+        name: "Gray",
+        class: "bg-gray-200",
+        selectedClass: "ring-gray-400",
+        inStock: true,
+      },
+      {
+        name: "Black",
+        class: "bg-gray-900",
+        selectedClass: "ring-gray-900",
+        inStock: true,
+      },
     ],
     sizes: [
       { name: "XXS", inStock: true },
@@ -429,9 +594,24 @@ export const listProducts = [
     imageUrl:
       "https://www.famousfootwear.com.au/cdn/shop/files/3_06f9f9be-f7d2-4672-b2ec-9aedf0700ecc.jpg?v=1689230938",
     colors: [
-      { name: "White", class: "bg-white", selectedClass: "ring-gray-400" },
-      { name: "Gray", class: "bg-gray-200", selectedClass: "ring-gray-400" },
-      { name: "Black", class: "bg-gray-900", selectedClass: "ring-gray-900" },
+      {
+        name: "White",
+        class: "bg-white",
+        selectedClass: "ring-gray-400",
+        inStock: true,
+      },
+      {
+        name: "Gray",
+        class: "bg-gray-200",
+        selectedClass: "ring-gray-400",
+        inStock: true,
+      },
+      {
+        name: "Black",
+        class: "bg-gray-900",
+        selectedClass: "ring-gray-900",
+        inStock: true,
+      },
     ],
     sizes: [
       { name: "XXS", inStock: true },
@@ -456,9 +636,24 @@ export const listProducts = [
     imageUrl:
       "https://www.famousfootwear.com.au/cdn/shop/files/3_06f9f9be-f7d2-4672-b2ec-9aedf0700ecc.jpg?v=1689230938",
     colors: [
-      { name: "White", class: "bg-white", selectedClass: "ring-gray-400" },
-      { name: "Gray", class: "bg-gray-200", selectedClass: "ring-gray-400" },
-      { name: "Black", class: "bg-gray-900", selectedClass: "ring-gray-900" },
+      {
+        name: "White",
+        class: "bg-white",
+        selectedClass: "ring-gray-400",
+        inStock: true,
+      },
+      {
+        name: "Gray",
+        class: "bg-gray-200",
+        selectedClass: "ring-gray-400",
+        inStock: true,
+      },
+      {
+        name: "Black",
+        class: "bg-gray-900",
+        selectedClass: "ring-gray-900",
+        inStock: true,
+      },
     ],
     sizes: [
       { name: "XXS", inStock: true },
