@@ -2,11 +2,11 @@ import { FiltersProps } from "@/types";
 import { createSlice } from "@reduxjs/toolkit";
 
 const initialFilters = {
-  category: [],
-  color: [],
+  categories: [],
+  colors: [],
   minPrice: 0,
   maxPrice: 0,
-  size: [],
+  sizes: [],
   text: "",
 };
 

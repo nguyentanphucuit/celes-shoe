@@ -52,16 +52,16 @@ export const listColors = [
     value: "beige",
   },
   {
+    name: "Gray",
+    value: "gray",
+  },
+  {
     name: "Blue",
     value: "blue",
   },
   {
-    name: "Brown",
-    value: "brown",
-  },
-  {
-    name: "Green",
-    value: "green",
+    name: "Black",
+    value: "black",
   },
   {
     name: "Purple",
@@ -71,28 +71,24 @@ export const listColors = [
 
 export const listSizes = [
   {
-    name: "2L",
-    value: "2l",
+    name: "S",
+    value: "S",
   },
   {
-    name: "6L",
-    value: "6l",
+    name: "M",
+    value: "M",
   },
   {
-    name: "12L",
-    value: "12l",
+    name: "L",
+    value: "L",
   },
   {
-    name: "18L",
-    value: "18l",
+    name: "XL",
+    value: "XL",
   },
   {
-    name: "20L",
-    value: "20l",
-  },
-  {
-    name: "40L",
-    value: "40l",
+    name: "XXL",
+    value: "XXL",
   },
 ];
 
@@ -159,7 +155,6 @@ export const listProducts = [
       { name: "L", inStock: false },
       { name: "XL", inStock: true },
       { name: "XXL", inStock: true },
-      { name: "XXXL", inStock: false },
     ],
   },
   {
@@ -194,14 +189,11 @@ export const listProducts = [
       },
     ],
     sizes: [
-      { name: "XXS", inStock: true },
-      { name: "XS", inStock: true },
       { name: "S", inStock: true },
       { name: "M", inStock: true },
       { name: "L", inStock: false },
       { name: "XL", inStock: true },
       { name: "XXL", inStock: true },
-      { name: "XXXL", inStock: false },
     ],
   },
   {
@@ -236,14 +228,11 @@ export const listProducts = [
       },
     ],
     sizes: [
-      { name: "XXS", inStock: true },
-      { name: "XS", inStock: true },
       { name: "S", inStock: true },
       { name: "M", inStock: true },
       { name: "L", inStock: true },
       { name: "XL", inStock: true },
       { name: "XXL", inStock: true },
-      { name: "XXXL", inStock: false },
     ],
   },
   {
@@ -262,7 +251,7 @@ export const listProducts = [
         name: "White",
         class: "bg-white",
         selectedClass: "ring-gray-400",
-        inStock: true,
+        inStock: false,
       },
       {
         name: "Gray",
@@ -272,6 +261,12 @@ export const listProducts = [
       },
       {
         name: "Black",
+        class: "bg-gray-900",
+        selectedClass: "ring-gray-900",
+        inStock: true,
+      },
+      {
+        name: "Beige",
         class: "bg-gray-900",
         selectedClass: "ring-gray-900",
         inStock: true,
@@ -320,8 +315,6 @@ export const listProducts = [
       },
     ],
     sizes: [
-      { name: "XXS", inStock: true },
-      { name: "XS", inStock: true },
       { name: "S", inStock: true },
       { name: "M", inStock: false },
       { name: "L", inStock: true },
@@ -362,14 +355,11 @@ export const listProducts = [
       },
     ],
     sizes: [
-      { name: "XXS", inStock: true },
-      { name: "XS", inStock: true },
       { name: "S", inStock: false },
       { name: "M", inStock: true },
       { name: "L", inStock: false },
       { name: "XL", inStock: true },
       { name: "XXL", inStock: true },
-      { name: "XXXL", inStock: false },
     ],
   },
   {
@@ -404,14 +394,11 @@ export const listProducts = [
       },
     ],
     sizes: [
-      { name: "XXS", inStock: true },
-      { name: "XS", inStock: true },
       { name: "S", inStock: false },
       { name: "M", inStock: true },
       { name: "L", inStock: false },
       { name: "XL", inStock: true },
       { name: "XXL", inStock: true },
-      { name: "XXXL", inStock: false },
     ],
   },
   {
@@ -446,14 +433,11 @@ export const listProducts = [
       },
     ],
     sizes: [
-      { name: "XXS", inStock: true },
-      { name: "XS", inStock: true },
       { name: "S", inStock: false },
       { name: "M", inStock: true },
       { name: "L", inStock: false },
       { name: "XL", inStock: true },
       { name: "XXL", inStock: true },
-      { name: "XXXL", inStock: false },
     ],
   },
   {
@@ -488,14 +472,11 @@ export const listProducts = [
       },
     ],
     sizes: [
-      { name: "XXS", inStock: true },
-      { name: "XS", inStock: true },
       { name: "S", inStock: false },
       { name: "M", inStock: true },
       { name: "L", inStock: false },
       { name: "XL", inStock: true },
       { name: "XXL", inStock: true },
-      { name: "XXXL", inStock: false },
     ],
   },
   {
@@ -530,14 +511,11 @@ export const listProducts = [
       },
     ],
     sizes: [
-      { name: "XXS", inStock: true },
-      { name: "XS", inStock: true },
       { name: "S", inStock: false },
       { name: "M", inStock: true },
       { name: "L", inStock: false },
       { name: "XL", inStock: true },
       { name: "XXL", inStock: true },
-      { name: "XXXL", inStock: false },
     ],
   },
   {
@@ -572,14 +550,11 @@ export const listProducts = [
       },
     ],
     sizes: [
-      { name: "XXS", inStock: true },
-      { name: "XS", inStock: true },
       { name: "S", inStock: false },
       { name: "M", inStock: true },
       { name: "L", inStock: false },
       { name: "XL", inStock: true },
       { name: "XXL", inStock: true },
-      { name: "XXXL", inStock: false },
     ],
   },
   {
@@ -614,14 +589,11 @@ export const listProducts = [
       },
     ],
     sizes: [
-      { name: "XXS", inStock: true },
-      { name: "XS", inStock: true },
       { name: "S", inStock: false },
       { name: "M", inStock: true },
       { name: "L", inStock: false },
       { name: "XL", inStock: true },
       { name: "XXL", inStock: true },
-      { name: "XXXL", inStock: false },
     ],
   },
   {
@@ -656,14 +628,11 @@ export const listProducts = [
       },
     ],
     sizes: [
-      { name: "XXS", inStock: true },
-      { name: "XS", inStock: true },
       { name: "S", inStock: false },
       { name: "M", inStock: true },
       { name: "L", inStock: false },
       { name: "XL", inStock: true },
       { name: "XXL", inStock: true },
-      { name: "XXXL", inStock: false },
     ],
   },
 ];

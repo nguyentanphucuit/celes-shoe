@@ -22,7 +22,7 @@ export interface ProductProps {
   price: number;
   quantity: number;
   description?: string;
-  category?: string;
+  category: string;
   imageUrl: string;
   rating: number;
   colors?: any;
@@ -38,10 +38,10 @@ export interface PaginationControlsProps {
 }
 
 export interface FiltersProps {
-  category: string[];
-  color: string[];
+  categories: string[];
+  colors: string[];
   minPrice: number;
   maxPrice: number;
-  size: string[];
+  sizes: string[];
   text: string;
 }

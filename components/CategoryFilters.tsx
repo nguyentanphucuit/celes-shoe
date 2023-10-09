@@ -31,7 +31,28 @@ const CategoryFilters = () => {
   const data = useAppSelector((state) => state.productsReducer.items);
 
   const filterItems = [
-    ...data.filter((item) => item.price >= filters.minPrice),
+    ...data
+      .filter((item) => item.price >= filters.minPrice)
+      .filter((item) => {
+        if (filters.colors.length === 0) return true;
+        const itemColors = item.colors.filter((color: any) => color.inStock);
+        const isMatchColor = itemColors.find((color: any) =>
+          filters.colors.includes(color.name)
+        );
+        return isMatchColor;
+      })
+      .filter((item) => {
+        if (filters.sizes.length === 0) return true;
+        const itemSizes = item.sizes.filter((size: any) => size.inStock);
+        const isMatchSize = itemSizes.find((size: any) =>
+          filters.sizes.includes(size.name)
+        );
+        return isMatchSize;
+      })
+      .filter((item) => {
+        if (filters.categories.length === 0) return true;
+        return filters.categories.includes(item.category);
+      }),
   ];
 
   const current_page = +(searchParams?.get("page") ?? 1);
@@ -115,17 +136,17 @@ const CategoryFilters = () => {
                                   handleFilters={setFilters}
                                 />
                                 <FilterSection
-                                  name="color"
+                                  name="colors"
                                   handleFilters={setFilters}
                                   listFilters={listColors}
                                 />
                                 <FilterSection
-                                  name="category"
+                                  name="categories"
                                   handleFilters={setFilters}
                                   listFilters={listCategories}
                                 />
                                 <FilterSection
-                                  name="size"
+                                  name="sizes"
                                   handleFilters={setFilters}
                                   listFilters={listSizes}
                                 />
@@ -261,17 +282,17 @@ const CategoryFilters = () => {
                     handleFilters={setFilters}
                   />
                   <FilterSection
-                    name="color"
+                    name="colors"
                     listFilters={listColors}
                     handleFilters={setFilters}
                   />
                   <FilterSection
-                    name="category"
+                    name="categories"
                     listFilters={listCategories}
                     handleFilters={setFilters}
                   />
                   <FilterSection
-                    name="size"
+                    name="sizes"
                     listFilters={listSizes}
                     handleFilters={setFilters}
                   />
