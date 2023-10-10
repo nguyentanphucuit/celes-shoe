@@ -2,7 +2,7 @@ import React, { Fragment, useState } from "react";
 import { Dialog, RadioGroup, Transition } from "@headlessui/react";
 import CustomButton from "./CustomButton";
 import { useAppSelector } from "@/redux/hooks";
-import CartCard from "./CartCard";
+import Card from "./Cart";
 import Link from "next/link";
 import { XMarkIcon } from "@heroicons/react/24/outline";
 
@@ -107,7 +107,7 @@ const CartModal = () => {
                             <div className="-my-6">
                               <ul className="divide-y divide-gray-200">
                                 {...cartItem.map((item) => (
-                                  <CartCard {...item} key={item.id} />
+                                  <Card {...item} key={item.id} />
                                 ))}
                               </ul>
                             </div>

@@ -309,7 +309,6 @@ async function sendEmail(req: any, res: any) {
     </table>
 </td>`;
   try {
-    // console.log("REQ.BODY", req.body);
     await sendgrid.send({
       to: req.body.email, // Your email where you'll receive emails
       from: "nguyentanphucuit@gmail.com", // your website email address here
@@ -317,7 +316,6 @@ async function sendEmail(req: any, res: any) {
       html: emailTemplate,
     });
   } catch (error: any) {
-    // console.log(error);
     return res.status(error.statusCode || 500).json({ error: error.message });
   }
 

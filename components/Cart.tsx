@@ -5,7 +5,7 @@ import { ProductProps } from "@/types";
 import Image from "next/image";
 import { useState } from "react";
 
-const CartCard = ({ ...product }: ProductProps) => {
+const Card = ({ ...product }: ProductProps) => {
   const [quantity, setQuantity] = useState(product.quantity);
   const dispatch = useAppDispatch();
 
@@ -70,4 +70,4 @@ const CartCard = ({ ...product }: ProductProps) => {
   );
 };
 
-export default CartCard;
+export default Card;

@@ -137,6 +137,7 @@ const CategoryFilters = () => {
                                 />
                                 <FilterSection
                                   name="colors"
+                                  type="item-circle"
                                   handleFilters={setFilters}
                                   listFilters={listColors}
                                 />
@@ -283,6 +284,7 @@ const CategoryFilters = () => {
                   />
                   <FilterSection
                     name="colors"
+                    type="item-circle"
                     listFilters={listColors}
                     handleFilters={setFilters}
                   />

@@ -14,6 +14,8 @@ import {
   ToastSuccess,
   ToastWarning,
 } from "../toast/ToastComponent";
+import ColorsComponent from "../ColorsComponent";
+import SizesComponent from "../SizesComponent";
 
 const ProductCard = (props: any) => {
   const dispatch = useAppDispatch();
@@ -45,9 +47,11 @@ const ProductCard = (props: any) => {
               {props.title}
             </h5>
           </a>
+          <ColorsComponent colors={props.colors} />
+          {/* <SizesComponent sizes={props.sizes} /> */}
           <Rating rating={props.rating} />
           <div className="flex items-center justify-between">
-            <span className="text-3xl font-bold text-gray-900 dark:text-white">
+            <span className="text-2xl font-bold text-gray-900 dark:text-white">
               ${props.price}
             </span>
             <CustomButton

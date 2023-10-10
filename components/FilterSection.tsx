@@ -1,8 +1,9 @@
+import { classNames } from "@/constants/common";
 import { Transition } from "@headlessui/react";
-import React, { useState } from "react";
+import React, { Fragment, useState } from "react";
 
 const FilterSection = (props: any) => {
-  const [isExpand, setIsExpand] = useState(false);
+  const [isExpand, setIsExpand] = useState(true);
   const [checked, setChecked] = useState<any[]>([]);
   const handleFilters = (e: any) => {
     var updatedList = [...checked];
@@ -13,6 +14,7 @@ const FilterSection = (props: any) => {
     }
 
     setChecked(updatedList);
+    console.log(updatedList);
     props.handleFilters({ [e.target.name]: [...updatedList] });
   };
 
@@ -61,25 +63,59 @@ const FilterSection = (props: any) => {
         leave="transition-opacity duration-150"
         leaveFrom="opacity-100"
         leaveTo="opacity-0">
-        <div className="pt-6" id="filter-section-0">
+        <div className="pt-4" id="filter-section-0">
           <div className="space-y-4">
-            {props.listFilters.map((item: any, index: number) => (
-              <div className="flex items-center" key={index}>
-                <input
-                  id="filter-color-0"
-                  name={props.name}
-                  value={item.name}
-                  type="checkbox"
-                  className="h-4 w-4 rounded border-gray-300 text-indigo-600 focus:ring-indigo-500"
-                  onChange={handleFilters}
-                />
-                <label
-                  htmlFor="filter-color-0"
-                  className="ml-3 text-sm text-gray-600">
-                  {item.name}
-                </label>
-              </div>
-            ))}
+            <div
+              className={classNames(
+                "flex flex-wrap",
+                props.type == "item-circle"
+                  ? "flex-row gap-1"
+                  : "items-start flex-col"
+              )}>
+              {props.listFilters.map((item: any, index: number) => (
+                <ul key={index}>
+                  {props.type == "item-circle" ? (
+                    <li>
+                      <input
+                        type="checkbox"
+                        id={item.name}
+                        name={props.name}
+                        value={item.name}
+                        className="hidden peer"
+                        onChange={handleFilters}
+                      />
+                      <label
+                        htmlFor={item.name}
+                        className="inline-flex items-center justify-between p-0.5 text-gray-500 bg-white border-2 border-gray-200 rounded-full cursor-pointer peer-checked:border-blue-400 hover:text-gray-600  peer-checked:text-gray-600 hover:bg-gray-50">
+                        <span
+                          aria-hidden="true"
+                          className={classNames(
+                            item.class,
+                            "h-8 w-8 rounded-full border border-black border-opacity-10"
+                          )}
+                        />
+                      </label>
+                    </li>
+                  ) : (
+                    <div className="flex items-center py-2">
+                      <input
+                        id="filter-color-0"
+                        name={props.name}
+                        value={item.name}
+                        type="checkbox"
+                        className="h-4 w-4 rounded border-gray-300 text-indigo-600 focus:ring-indigo-500"
+                        onChange={handleFilters}
+                      />
+                      <label
+                        htmlFor="filter-color-0"
+                        className="ml-3 text-sm text-gray-600">
+                        {item.name}
+                      </label>
+                    </div>
+                  )}
+                </ul>
+              ))}
+            </div>
           </div>
         </div>
       </Transition>

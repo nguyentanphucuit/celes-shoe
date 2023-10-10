@@ -45,26 +45,32 @@ export const listCategories = [
 export const listColors = [
   {
     name: "White",
+    class: "bg-white",
     value: "white",
   },
   {
-    name: "Beige",
-    value: "beige",
+    name: "Red",
+    class: "bg-red-300",
+    value: "red",
   },
   {
     name: "Gray",
+    class: "bg-gray-200",
     value: "gray",
   },
   {
     name: "Blue",
+    class: "bg-blue-300",
     value: "blue",
   },
   {
     name: "Black",
+    class: "bg-gray-900",
     value: "black",
   },
   {
     name: "Purple",
+    class: "bg-purple-300",
     value: "purple",
   },
 ];
@@ -135,9 +141,9 @@ export const listProducts = [
         inStock: true,
       },
       {
-        name: "Gray",
-        class: "bg-gray-200",
-        selectedClass: "ring-gray-400",
+        name: "Red",
+        class: "bg-red-300",
+        selectedClass: "ring-red-400",
         inStock: true,
       },
       {
@@ -148,8 +154,6 @@ export const listProducts = [
       },
     ],
     sizes: [
-      { name: "XXS", inStock: true },
-      { name: "XS", inStock: false },
       { name: "S", inStock: true },
       { name: "M", inStock: true },
       { name: "L", inStock: false },
@@ -176,9 +180,9 @@ export const listProducts = [
         inStock: true,
       },
       {
-        name: "Gray",
-        class: "bg-gray-200",
-        selectedClass: "ring-gray-400",
+        name: "Purple",
+        class: "bg-purple-300",
+        selectedClass: "ring-purple-300",
         inStock: true,
       },
       {
@@ -266,21 +270,18 @@ export const listProducts = [
         inStock: true,
       },
       {
-        name: "Beige",
-        class: "bg-gray-900",
-        selectedClass: "ring-gray-900",
+        name: "Red",
+        class: "bg-red-300",
+        selectedClass: "ring-red-300",
         inStock: true,
       },
     ],
     sizes: [
-      { name: "XXS", inStock: false },
-      { name: "XS", inStock: true },
       { name: "S", inStock: true },
       { name: "M", inStock: false },
       { name: "L", inStock: true },
       { name: "XL", inStock: true },
       { name: "XXL", inStock: true },
-      { name: "XXXL", inStock: true },
     ],
   },
   {
@@ -302,15 +303,15 @@ export const listProducts = [
         inStock: true,
       },
       {
-        name: "Gray",
-        class: "bg-gray-200",
-        selectedClass: "ring-gray-400",
+        name: "Blue",
+        class: "bg-blue-300",
+        selectedClass: "ring-blue-300",
         inStock: true,
       },
       {
-        name: "Black",
-        class: "bg-gray-900",
-        selectedClass: "ring-gray-900",
+        name: "Red",
+        class: "bg-red-300",
+        selectedClass: "ring-red-300",
         inStock: true,
       },
     ],
@@ -320,7 +321,6 @@ export const listProducts = [
       { name: "L", inStock: true },
       { name: "XL", inStock: false },
       { name: "XXL", inStock: true },
-      { name: "XXXL", inStock: true },
     ],
   },
   {
@@ -342,9 +342,9 @@ export const listProducts = [
         inStock: true,
       },
       {
-        name: "Gray",
-        class: "bg-gray-200",
-        selectedClass: "ring-gray-400",
+        name: "Purple",
+        class: "bg-purple-300",
+        selectedClass: "ring-purple-300",
         inStock: true,
       },
       {
