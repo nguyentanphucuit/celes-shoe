@@ -27,7 +27,7 @@ const Banner = () => {
           }}
         />
       </div>
-      <div className="flex flex-wrap items-center gap-x-4 gap-y-2">
+      <div className="flex justify-center flex-wrap items-center gap-x-4 gap-y-2">
         <span className="inline-flex items-center rounded-md bg-indigo-50 px-2 py-1 text-xs font-medium text-indigo-700 ring-1 ring-inset ring-indigo-700/10">
           New
         </span>
@@ -43,7 +43,7 @@ const Banner = () => {
         </p>
         <Link
           href="/category"
-          className="flex-none rounded-full bg-gray-900 px-3.5 py-1 text-sm font-semibold text-white shadow-sm hover:bg-gray-700 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-gray-900">
+          className="flex-none hidden md:block rounded-full bg-gray-900 px-3.5 py-1 text-sm font-semibold text-white shadow-sm hover:bg-gray-700 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-gray-900">
           Buy now <span aria-hidden="true">&rarr;</span>
         </Link>
       </div>

@@ -50,17 +50,17 @@ export const listColors = [
   },
   {
     name: "Red",
-    class: "bg-red-300",
+    class: "bg-red",
     value: "red",
   },
   {
     name: "Gray",
-    class: "bg-gray-200",
+    class: "bg-gray",
     value: "gray",
   },
   {
     name: "Blue",
-    class: "bg-blue-300",
+    class: "bg-blue",
     value: "blue",
   },
   {
@@ -70,7 +70,7 @@ export const listColors = [
   },
   {
     name: "Purple",
-    class: "bg-purple-300",
+    class: "bg-purple",
     value: "purple",
   },
 ];
