@@ -1,21 +1,30 @@
+import { listFilters } from "@/constants";
 import { classNames } from "@/constants/common";
 import { Transition } from "@headlessui/react";
+import { constants } from "fs";
+import { usePathname, useSearchParams } from "next/navigation";
+import { useRouter } from "next/navigation";
 import React, { Fragment, useState } from "react";
 
 const FilterSection = (props: any) => {
   const [isExpand, setIsExpand] = useState(true);
-  const [checked, setChecked] = useState<any[]>([]);
-  const handleFilters = (e: any) => {
-    var updatedList = [...checked];
-    if (e.target.checked) {
-      updatedList = [...checked, e.target.value];
-    } else {
-      updatedList.splice(checked.indexOf(e.target.value), 1);
-    }
+  const router = useRouter();
+  const searchParams = useSearchParams()!;
+  const pathname = usePathname();
 
-    setChecked(updatedList);
-    console.log(updatedList);
-    props.handleFilters({ [e.target.name]: [...updatedList] });
+  const handleFilters = (e: any) => {
+    let updatedList = [...props.filters];
+    let newPath = `${pathname}?`;
+    if (e.target.checked) {
+      updatedList = [...props.filters, e.target.value];
+    } else {
+      updatedList.splice(props.filters.indexOf(e.target.value), 1);
+    }
+    const params = new URLSearchParams(searchParams);
+    updatedList.length > 0
+      ? params.set(e.target.name.toLowerCase(), updatedList.join("%"))
+      : params.delete(e.target.name.toLowerCase());
+    router.push(`${newPath}${params.toString()}`, { scroll: false });
   };
 
   return (
@@ -72,7 +81,7 @@ const FilterSection = (props: any) => {
                   ? "flex-row gap-1"
                   : "items-start flex-col"
               )}>
-              {props.listFilters.map((item: any, index: number) => (
+              {props.listOptions.map((item: any, index: number) => (
                 <ul key={index}>
                   {props.type == "item-circle" ? (
                     <li>
@@ -99,15 +108,16 @@ const FilterSection = (props: any) => {
                   ) : (
                     <div className="flex items-center py-2">
                       <input
-                        id="filter-color-0"
+                        id={`filter-${props.name}-${index}`}
                         name={props.name}
                         value={item.name}
+                        checked={props.filters?.includes(item.name)}
                         type="checkbox"
                         className="h-4 w-4 rounded border-gray-300 text-indigo-600 focus:ring-indigo-500"
                         onChange={handleFilters}
                       />
                       <label
-                        htmlFor="filter-color-0"
+                        htmlFor={`filter-${props.name}-${index}`}
                         className="ml-3 text-sm text-gray-600">
                         {item.name}
                       </label>
@@ -124,10 +134,17 @@ const FilterSection = (props: any) => {
 };
 
 const FilterSectionRange = (props: any) => {
-  const [value, setValue] = useState(0);
+  const router = useRouter();
+  const searchParams = useSearchParams()!;
+  const pathname = usePathname();
+
   const handleFilters = (e: any) => {
-    setValue(Number(e.target.value));
-    props.handleFilters({ [e.target.name]: Number(e.target.value) });
+    let newPath = `${pathname}?`;
+    const params = new URLSearchParams(searchParams);
+    e.target.value.length > 0
+      ? params.set(e.target.name, e.target.value)
+      : params.delete(e.target.name);
+    router.push(`${newPath}${params.toString()}`, { scroll: false });
   };
 
   return (
@@ -143,12 +160,12 @@ const FilterSectionRange = (props: any) => {
         name={props.name}
         min="0"
         max="999"
-        value={value}
+        value={props.filters}
         className="w-full h-2 bg-gray-200 rounded-lg appearance-none cursor-pointer dark:bg-gray-700"
         onChange={handleFilters}
       />
       <h3 className="my-3 flow-root">
-        <span className="font-medium text-gray-900">${value}</span>
+        <span className="font-medium text-gray-900">${props.filters}</span>
       </h3>
     </div>
   );

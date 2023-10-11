@@ -637,4 +637,13 @@ export const listProducts = [
   },
 ];
 
+export const listFilters = {
+  categories: [],
+  colors: [],
+  minPrice: 0,
+  maxPrice: 0,
+  sizes: [],
+  text: "",
+};
+
 export const ITEMS_PER_PAGE = 8;

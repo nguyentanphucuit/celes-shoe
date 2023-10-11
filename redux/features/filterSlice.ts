@@ -1,14 +1,8 @@
+import { listFilters } from "@/constants";
 import { FiltersProps } from "@/types";
 import { createSlice } from "@reduxjs/toolkit";
 
-const initialFilters = {
-  categories: [],
-  colors: [],
-  minPrice: 0,
-  maxPrice: 0,
-  sizes: [],
-  text: "",
-};
+const initialFilters = { ...listFilters };
 
 const FilterSlice = createSlice({
   name: "filter",
