@@ -1,4 +1,3 @@
-import "@/app/globals.css";
 import CustomButton from "@/components/CustomButton";
 import React from "react";
 

@@ -9,8 +9,8 @@ import { ITEMS_PER_PAGE } from "@/constants";
 const Collections = ({ searchParams }: { searchParams: any }) => {
   const data = useAppSelector((state) => state.productsReducer.items);
 
-  const current_page = +(searchParams["page"] ?? 1);
-  const per_page = +(searchParams["per_page"] ?? ITEMS_PER_PAGE);
+  const current_page = +(searchParams?.get("page") ?? 1);
+  const per_page = +(searchParams?.get("per_page") ?? ITEMS_PER_PAGE);
 
   const startIndex = (current_page - 1) * per_page;
   const endIndex = current_page * per_page;
