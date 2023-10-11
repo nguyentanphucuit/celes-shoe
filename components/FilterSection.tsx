@@ -87,7 +87,7 @@ const FilterSection = (props: any) => {
                   : "items-start flex-col"
               )}>
               {props.listOptions.map((item: any, index: number) => (
-                <ul key={index}>
+                <ol key={index} className="list-none mx-0">
                   {props.type == "item-circle" ? (
                     <li>
                       <input
@@ -128,7 +128,7 @@ const FilterSection = (props: any) => {
                       </label>
                     </div>
                   )}
-                </ul>
+                </ol>
               ))}
             </div>
           </div>

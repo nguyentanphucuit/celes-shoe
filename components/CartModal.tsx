@@ -105,11 +105,11 @@ const CartModal = () => {
                             </p>
                           ) : (
                             <div className="-my-6">
-                              <ul className="divide-y divide-gray-200">
+                              <ol className="divide-y divide-gray-200 list-none mx-0">
                                 {...cartItem.map((item) => (
                                   <Card {...item} key={item.id} />
                                 ))}
-                              </ul>
+                              </ol>
                             </div>
                           )}
                         </div>
@@ -157,7 +157,7 @@ const CartModal = () => {
                           )}
                           <CustomButton
                             handleClick={handleCheckout}
-                            containerStyles="btn-checkout"
+                            containerStyles="w-full flex items-center justify-center rounded-md border border-transparent bg-indigo-600 py-3 text-base font-medium text-white shadow-sm enabled:hover:bg-indigo-700"
                             title="Checkout"
                             isDisabled={isEmpty || email === ""}
                           />

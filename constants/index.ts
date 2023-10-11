@@ -644,4 +644,10 @@ export const listFilters = {
   text: "",
 };
 
+export const textAlert = {
+  success: "Item added successfully",
+  warning: "Are you sure to remove this item?",
+  error: "Remove item difficulty.",
+};
+
 export const ITEMS_PER_PAGE = 8;

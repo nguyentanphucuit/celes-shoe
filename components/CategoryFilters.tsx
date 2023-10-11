@@ -249,15 +249,15 @@ const ListFiltersSection = (props: any) => {
   return (
     <>
       <h3 className="sr-only">Categories</h3>
-      <ul
+      <ol
         role="list"
-        className="space-y-4 border-b border-gray-200 pb-6 text-sm font-medium text-gray-900">
+        className="list-none mx-0 space-y-4 border-b border-gray-200 pb-6 text-sm font-medium text-gray-900">
         {listCategories.map((category, index) => (
           <li key={index} className="px-4 lg:px-0">
             <a href="#">{category.name}</a>
           </li>
         ))}
-      </ul>
+      </ol>
 
       <FilterSectionRange name="minPrice" filters={props.filters.minPrice} />
       <FilterSection

@@ -1,3 +1,4 @@
+import { CssBaseline, GeistProvider } from "@geist-ui/core";
 import Layout from "../components/layout";
 import "@/app/globals.css";
 
@@ -14,8 +15,11 @@ export default function MyApp({
   pageProps: any;
 }) {
   return (
-    <Layout>
-      <Component {...pageProps} />
-    </Layout>
+    <GeistProvider>
+      <CssBaseline />
+      <Layout>
+        <Component {...pageProps} />
+      </Layout>
+    </GeistProvider>
   );
 }

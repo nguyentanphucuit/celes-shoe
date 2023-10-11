@@ -8,22 +8,22 @@ import Rating from "../Rating";
 import { useAppDispatch } from "@/redux/hooks";
 import { addToCart } from "@/redux/features/cartSlice";
 import { isOpenModal } from "@/redux/features/productDetailSlice";
-import { useToast } from "../toast/toastService";
-import {
-  ToastDanger,
-  ToastSuccess,
-  ToastWarning,
-} from "../toast/ToastComponent";
+
 import ColorsComponent from "../ColorsComponent";
 import SizesComponent from "../SizesComponent";
+import { ToastInput, useToasts } from "@geist-ui/core";
+import { textAlert } from "@/constants";
 
 const ProductCard = (props: any) => {
   const dispatch = useAppDispatch();
 
-  const toast = useToast() as any;
-
+  const { setToast } = useToasts();
   const handleAddToCart = () => {
-    toast.open(<ToastSuccess />);
+    const type = "success" as ToastInput["type"];
+    setToast({
+      text: textAlert.success,
+      type,
+    });
     dispatch(addToCart({ ...props }));
   };
 

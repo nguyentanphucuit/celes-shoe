@@ -38,8 +38,8 @@ const Account = () => {
             ? "z-10 hidden bg-white divide-y divide-gray-100 rounded-lg shadow w-44 dark:bg-gray-700"
             : "z-10 bg-white divide-y divide-gray-100 rounded-lg shadow w-44 dark:bg-gray-700"
         }>
-        <ul
-          className="py-2 text-sm text-gray-700 dark:text-gray-200"
+        <ol
+          className="list-none mx-0 py-2 text-sm text-gray-700 dark:text-gray-200"
           aria-labelledby="dropdownDefaultButton">
           <li>
             <a
@@ -69,7 +69,7 @@ const Account = () => {
               Sign out
             </a>
           </li>
-        </ul>
+        </ol>
       </div>
     </div>
   );

@@ -1,21 +1,33 @@
 "use client";
+import { textAlert } from "@/constants";
 import { changeQuantity, removeCart } from "@/redux/features/cartSlice";
 import { useAppDispatch } from "@/redux/hooks";
 import { ProductProps } from "@/types";
+import { ToastInput, useToasts } from "@geist-ui/core";
 import Image from "next/image";
 import { useState } from "react";
 
 const Card = ({ ...product }: ProductProps) => {
   const [quantity, setQuantity] = useState(product.quantity);
   const dispatch = useAppDispatch();
+  const { setToast } = useToasts();
 
   const handleChangeQuantity = (id: string, e: any) => {
     const newQuantity = Number(e.target.value);
     setQuantity(newQuantity);
     dispatch(changeQuantity({ id, newQuantity }));
   };
+
   const handleRemoveItem = (id: string) => {
-    dispatch(removeCart(id));
+    const action = {
+      name: "Remove",
+      handler: () => dispatch(removeCart(id)),
+    };
+    setToast({
+      text: textAlert.warning,
+      actions: [action],
+      delay: 5000,
+    });
   };
 
   return (

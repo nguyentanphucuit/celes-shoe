@@ -33,7 +33,7 @@
 }
 
 .custom-btn {
-  @apply flex flex-row relative justify-center items-center px-6 outline-none;
+  @apply flex flex-row relative justify-center items-center outline-none;
 }
 
 .btn-add-to-cart {
@@ -41,7 +41,7 @@
 }
 
 .btn-add-to-cart-full {
-  @apply mt-6 flex w-full px-3.5 py-2.5 items-center justify-center rounded-md border border-transparent bg-primary text-sm font-medium text-white hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2;
+  @apply mt-6 flex w-full py-2.5 items-center justify-center rounded-md border border-transparent bg-primary text-sm font-medium text-white hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2;
 }
 
 .btn-dropdown-account {
@@ -49,7 +49,7 @@
 }
 
 .btn-checkout {
-  @apply w-full flex items-center justify-center rounded-md border border-transparent bg-indigo-600 px-6 py-3 text-base font-medium text-white shadow-sm enabled:hover:bg-indigo-700;
+  @apply w-full flex items-center justify-center rounded-md border border-transparent bg-indigo-600 py-3 text-base font-medium text-white shadow-sm enabled:hover:bg-indigo-700;
 }
 /* END: General styles */
 /* START: Hero styles */
