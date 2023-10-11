@@ -1,4 +1,4 @@
-import { listFilters } from "@/constants";
+import { listColors, listFilters } from "@/constants";
 import { classNames } from "@/constants/common";
 import { Transition } from "@headlessui/react";
 import { constants } from "fs";
@@ -15,10 +15,11 @@ const FilterSection = (props: any) => {
   const handleFilters = (e: any) => {
     let updatedList = [...props.filters];
     let newPath = `${pathname}?`;
+    const value = e.target.value;
     if (e.target.checked) {
-      updatedList = [...props.filters, e.target.value];
+      updatedList = [...props.filters, value];
     } else {
-      updatedList.splice(props.filters.indexOf(e.target.value), 1);
+      updatedList.splice(props.filters.indexOf(value), 1);
     }
     const params = new URLSearchParams(searchParams);
     updatedList.length > 0
@@ -26,6 +27,10 @@ const FilterSection = (props: any) => {
       : params.delete(e.target.name.toLowerCase());
     router.push(`${newPath}${params.toString()}`, { scroll: false });
   };
+
+  const bgColorVariants = Object.fromEntries(
+    listColors.map((color) => [color.name, `bg-${color.value}`])
+  );
 
   return (
     <div className="border-b border-gray-200 py-6">
@@ -87,19 +92,19 @@ const FilterSection = (props: any) => {
                     <li>
                       <input
                         type="checkbox"
-                        id={item.name}
+                        id={item.name.toLowerCase()}
                         name={props.name}
-                        value={item.name}
+                        value={item.name.toLowerCase()}
                         className="hidden peer"
                         onChange={handleFilters}
                       />
                       <label
-                        htmlFor={item.name}
+                        htmlFor={item.name.toLowerCase()}
                         className="inline-flex items-center justify-between p-0.5 text-gray-500 bg-white border-2 border-gray-200 rounded-full cursor-pointer peer-checked:border-blue-400 hover:text-gray-600  peer-checked:text-gray-600 hover:bg-gray-50">
                         <span
                           aria-hidden="true"
                           className={classNames(
-                            item.class,
+                            bgColorVariants[item.name],
                             "h-8 w-8 rounded-full border border-black border-opacity-10"
                           )}
                         />
@@ -119,7 +124,7 @@ const FilterSection = (props: any) => {
                       <label
                         htmlFor={`filter-${props.name}-${index}`}
                         className="ml-3 text-sm text-gray-600">
-                        {item.name}
+                        {item.name.charAt(0).toUpperCase() + item.name.slice(1)}
                       </label>
                     </div>
                   )}

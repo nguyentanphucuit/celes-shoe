@@ -36,7 +36,7 @@ const CategoryFilters = () => {
         if (filters.colors.length === 0) return true;
         const itemColors = item.colors.filter((color: any) => color.inStock);
         const isMatchColor = itemColors.find((color: any) =>
-          filters.colors.includes(color.name)
+          filters.colors.includes(color.name.toLowerCase())
         );
         return isMatchColor;
       })
@@ -50,7 +50,7 @@ const CategoryFilters = () => {
       })
       .filter((item) => {
         if (filters.categories.length === 0) return true;
-        return filters.categories.includes(item.category);
+        return filters.categories.includes(item.category.toLowerCase());
       }),
   ];
 
