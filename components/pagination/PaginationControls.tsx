@@ -19,14 +19,20 @@ const PaginationControls = ({
   const current_page = +(searchParams?.get("page") ?? 1);
   const per_page = +(searchParams?.get("per_page") ?? ITEMS_PER_PAGE);
 
-  const handlePaginate = (selected_page: number) => {
-    router.push(`${pathname}?page=${selected_page}&per_page=${per_page}`);
+  const params = new URLSearchParams(searchParams);
+  params.set("per_page", per_page.toString());
+
+  const handleSelectedPage = (selected_page: number) => {
+    params.set("page", selected_page.toString());
+    router.push(`${pathname}?${params.toString()}`);
   };
   const handlePrevPage = () => {
-    router.push(`${pathname}?page=${current_page - 1}&per_page=${per_page}`);
+    params.set("page", (current_page - 1).toString());
+    router.push(`${pathname}?${params.toString()}`);
   };
   const handleNextPage = () => {
-    router.push(`${pathname}?page=${current_page + 1}&per_page=${per_page}`);
+    params.set("page", (current_page + 1).toString());
+    router.push(`${pathname}?${params.toString()}`);
   };
 
   return (
@@ -70,7 +76,7 @@ const PaginationControls = ({
             {[...Array(totalPages)].map((_, i) => (
               <button
                 key={i}
-                onClick={() => handlePaginate(i + 1)}
+                onClick={() => handleSelectedPage(i + 1)}
                 className={classNames(
                   "relative z-10 inline-flex items-center px-4 py-2 text-sm font-semibold",
                   i + 1 === current_page

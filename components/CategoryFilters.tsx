@@ -99,41 +99,9 @@ const CategoryFilters = () => {
                     <XMarkIcon className="h-6 w-6" aria-hidden="true" />
                   </button>
                 </div>
-
                 {/* Filters  */}
                 <form className="mt-4 border-t border-gray-200">
-                  <h3 className="sr-only">Categories</h3>
-                  <ul
-                    role="list"
-                    className="px-2 py-3 font-medium text-gray-900">
-                    {listCategories.map((category, index) => (
-                      <li key={index}>
-                        <a href="#" className="block px-2 py-3">
-                          {category.name}
-                        </a>
-                      </li>
-                    ))}
-                  </ul>
-                  <FilterSectionRange
-                    name="minPrice"
-                    filters={filters.minPrice}
-                  />
-                  <FilterSection
-                    name="colors"
-                    type="item-circle"
-                    filters={filters.colors}
-                    listOptions={listColors}
-                  />
-                  <FilterSection
-                    name="categories"
-                    listOptions={listCategories}
-                    filters={filters.categories}
-                  />
-                  <FilterSection
-                    name="sizes"
-                    filters={filters.sizes}
-                    listOptions={listSizes}
-                  />
+                  <ListFiltersSection filters={filters} />
                 </form>
               </Dialog.Panel>
             </Transition.Child>
@@ -244,36 +212,9 @@ const CategoryFilters = () => {
 
           <div className="grid grid-cols-1 gap-x-8 gap-y-10 lg:grid-cols-4">
             {/* Filters */}
-            <div className="hidden lg:block">
-              <h3 className="sr-only">Categories</h3>
-              <ul
-                role="list"
-                className="space-y-4 border-b border-gray-200 pb-6 text-sm font-medium text-gray-900">
-                {listCategories.map((category, index) => (
-                  <li key={index}>
-                    <a href="#">{category.name}</a>
-                  </li>
-                ))}
-              </ul>
-
-              <FilterSectionRange name="minPrice" filters={filters.minPrice} />
-              <FilterSection
-                name="colors"
-                type="item-circle"
-                listOptions={listColors}
-                filters={filters.colors}
-              />
-              <FilterSection
-                name="categories"
-                listOptions={listCategories}
-                filters={filters.categories}
-              />
-              <FilterSection
-                name="sizes"
-                listOptions={listSizes}
-                filters={filters.sizes}
-              />
-            </div>
+            <form className="hidden lg:block">
+              <ListFiltersSection filters={filters} />
+            </form>
             {/* Product grid */}
             <div className="lg:col-span-3">
               {filterItems.length === 0 ? (
@@ -301,6 +242,41 @@ const CategoryFilters = () => {
         />
       </div>
     </div>
+  );
+};
+
+const ListFiltersSection = (props: any) => {
+  return (
+    <>
+      <h3 className="sr-only">Categories</h3>
+      <ul
+        role="list"
+        className="space-y-4 border-b border-gray-200 pb-6 text-sm font-medium text-gray-900">
+        {listCategories.map((category, index) => (
+          <li key={index} className="px-4 lg:px-0">
+            <a href="#">{category.name}</a>
+          </li>
+        ))}
+      </ul>
+
+      <FilterSectionRange name="minPrice" filters={props.filters.minPrice} />
+      <FilterSection
+        name="colors"
+        type="item-circle"
+        listOptions={listColors}
+        filters={props.filters.colors}
+      />
+      <FilterSection
+        name="categories"
+        listOptions={listCategories}
+        filters={props.filters.categories}
+      />
+      <FilterSection
+        name="sizes"
+        listOptions={listSizes}
+        filters={props.filters.sizes}
+      />
+    </>
   );
 };
 

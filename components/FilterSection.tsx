@@ -76,7 +76,7 @@ const FilterSection = (props: any) => {
           <div className="space-y-4">
             <div
               className={classNames(
-                "flex flex-wrap",
+                "flex flex-wrap px-4 lg:px-0",
                 props.type == "item-circle"
                   ? "flex-row gap-1"
                   : "items-start flex-col"
