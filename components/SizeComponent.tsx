@@ -1,17 +1,26 @@
 import { classNames } from "@/constants/common";
+import { changeSize } from "@/redux/features/productsSlice";
+import { useAppDispatch } from "@/redux/hooks";
 import { RadioGroup } from "@headlessui/react";
 import React, { useState } from "react";
 
-const SizesComponent = (props: any) => {
+const SizeComponent = (props: any) => {
   const [selectedSize, setSelectedSize] = useState(props.sizes?.[0]);
+  const dispatch = useAppDispatch();
+  const handleChangeSize = (size: any) => {
+    const productId = props.productId;
+    const newSize = size.name;
+    setSelectedSize(size);
+    dispatch(changeSize({ productId, newSize }));
+  };
 
   return (
     <RadioGroup
       value={selectedSize}
-      onChange={setSelectedSize}
+      onChange={handleChangeSize}
       className="mt-4">
       <RadioGroup.Label className="sr-only">Choose a size</RadioGroup.Label>
-      <div className="grid grid-cols-4 gap-4">
+      <div className="grid grid-cols-5 gap-3">
         {props.sizes?.map((size: any) => (
           <RadioGroup.Option
             key={size.name}
@@ -22,8 +31,9 @@ const SizesComponent = (props: any) => {
                 size.inStock
                   ? "cursor-pointer bg-white text-gray-900 shadow-sm"
                   : "cursor-not-allowed bg-gray-50 text-gray-200",
+                props.type == "detail" ? "px-3 py-4" : "py-1",
                 active ? "ring-2 ring-indigo-500" : "",
-                "group relative flex items-center justify-center rounded-md border py-3 px-4 text-sm font-medium uppercase hover:bg-gray-50 focus:outline-none sm:flex-1"
+                "group relative flex items-center justify-center rounded-md border text-sm font-medium uppercase hover:bg-gray-50 focus:outline-none sm:flex-1"
               )
             }>
             {({ active, checked }) => (
@@ -66,4 +76,4 @@ const SizesComponent = (props: any) => {
   );
 };
 
-export default SizesComponent;
+export default SizeComponent;

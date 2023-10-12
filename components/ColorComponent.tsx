@@ -1,14 +1,23 @@
 import { classNames } from "@/constants/common";
+import { changeColor } from "@/redux/features/productsSlice";
+import { useAppDispatch } from "@/redux/hooks";
 import { RadioGroup } from "@headlessui/react";
 import React, { useState } from "react";
 
 const ColorsComponent = (props: any) => {
   const [selectedColor, setSelectedColor] = useState(props.colors?.[0]);
+  const dispatch = useAppDispatch();
+  const handleChangeColor = (color: any) => {
+    const productId = props.productId;
+    const newColor = color.name;
+    setSelectedColor(color);
+    dispatch(changeColor({ productId, newColor }));
+  };
 
   return (
     <RadioGroup
       value={selectedColor}
-      onChange={setSelectedColor}
+      onChange={handleChangeColor}
       className="mt-4">
       <RadioGroup.Label className="sr-only">Choose a color</RadioGroup.Label>
       <span className="flex items-center space-x-3">

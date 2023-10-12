@@ -27,6 +27,8 @@ export interface ProductProps {
   rating: number;
   colors?: any;
   sizes?: any;
+  selectedColor?: string;
+  selectedSize?: string;
 }
 
 export interface PaginationControlsProps {

@@ -16,7 +16,6 @@ export default function MyApp({
 }) {
   return (
     <GeistProvider>
-      <CssBaseline />
       <Layout>
         <Component {...pageProps} />
       </Layout>

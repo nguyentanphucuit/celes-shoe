@@ -9,8 +9,8 @@ import { useAppDispatch } from "@/redux/hooks";
 import { addToCart } from "@/redux/features/cartSlice";
 import { isOpenModal } from "@/redux/features/productDetailSlice";
 
-import ColorsComponent from "../ColorsComponent";
-import SizesComponent from "../SizesComponent";
+import ColorsComponent from "../ColorComponent";
+import SizeComponent from "../SizeComponent";
 import { ToastInput, useToasts } from "@geist-ui/core";
 import { textAlert } from "@/constants";
 
@@ -30,6 +30,7 @@ const ProductCard = (props: any) => {
   const handleOpenDetail = () => {
     dispatch(isOpenModal({ isOpen: true, item: { ...props } }));
   };
+
   return (
     <>
       <div className="w-full max-w-sm bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700 hover:shadow-xl transition duration-500 hover:scale-105">
@@ -47,11 +48,11 @@ const ProductCard = (props: any) => {
               {props.title}
             </h5>
           </a>
-          <ColorsComponent colors={props.colors} />
-          {/* <SizesComponent sizes={props.sizes} /> */}
+          <ColorsComponent colors={props.colors} productId={props.id} />
+          <SizeComponent sizes={props.sizes} productId={props.id} />
           <Rating rating={props.rating} />
           <div className="flex items-center justify-between">
-            <span className="text-2xl font-bold text-gray-900 dark:text-white">
+            <span className="text-xl font-bold text-gray-900 dark:text-white">
               ${props.price}
             </span>
             <CustomButton

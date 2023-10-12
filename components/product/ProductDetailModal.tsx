@@ -10,8 +10,8 @@ import { useAppDispatch } from "@/redux/hooks";
 import { isOpenModal } from "@/redux/features/productDetailSlice";
 import CustomButton from "../CustomButton";
 import { addToCart } from "@/redux/features/cartSlice";
-import ColorsComponent from "../ColorsComponent";
-import SizesComponent from "../SizesComponent";
+import ColorsComponent from "../ColorComponent";
+import SizeComponent from "../SizeComponent";
 
 function classNames(...classes: any[]) {
   return classes.filter(Boolean).join(" ");
@@ -109,7 +109,10 @@ export function ProductDetailModal() {
                             <h4 className="text-sm font-medium text-gray-900">
                               Color
                             </h4>
-                            <ColorsComponent colors={item.colors} />
+                            <ColorsComponent
+                              colors={item.colors}
+                              productId={item.id}
+                            />
 
                             {/* Sizes */}
                             <div className="mt-10">
@@ -123,7 +126,11 @@ export function ProductDetailModal() {
                                   Size guide
                                 </a>
                               </div>
-                              <SizesComponent sizes={item.sizes} />
+                              <SizeComponent
+                                sizes={item.sizes}
+                                productId={item.id}
+                                type="detail"
+                              />
                             </div>
 
                             <CustomButton

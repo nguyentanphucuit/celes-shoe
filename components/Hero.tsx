@@ -19,7 +19,7 @@ const Hero = () => {
         <div className="hero__subtitle">UP TO 200 STYLES ON SALE</div>
         <CustomButton
           title="CONTINUE ->"
-          containerStyles="bg-slate-400 text-white border-2 border-white my-20 py-3"
+          containerStyles="px-8 bg-slate-400 text-white border-2 border-white my-20 py-3"
           handleClick={handleScroll}
         />
       </div>

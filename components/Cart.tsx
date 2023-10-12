@@ -7,7 +7,7 @@ import { ToastInput, useToasts } from "@geist-ui/core";
 import Image from "next/image";
 import { useState } from "react";
 
-const Card = ({ ...product }: ProductProps) => {
+const Cart = ({ ...product }: ProductProps) => {
   const [quantity, setQuantity] = useState(product.quantity);
   const dispatch = useAppDispatch();
   const { setToast } = useToasts();
@@ -21,7 +21,10 @@ const Card = ({ ...product }: ProductProps) => {
   const handleRemoveItem = (id: string) => {
     const action = {
       name: "Remove",
-      handler: () => dispatch(removeCart(id)),
+      handler: (event: any, cancel: any) => {
+        cancel();
+        dispatch(removeCart(id));
+      },
     };
     setToast({
       text: textAlert.warning,
@@ -43,31 +46,30 @@ const Card = ({ ...product }: ProductProps) => {
       </div>
 
       <div className="ml-4 flex flex-1 flex-col">
-        <div>
-          <div className="flex justify-between text-base font-medium text-gray-900">
-            <h3>
-              <a href="#">{product.title}</a>
-            </h3>
-            <select
-              id="quantity-0"
-              name="quantity-0"
-              value={quantity}
-              onChange={(e) => handleChangeQuantity(product.id, e)}
-              className="bg-gray-50 border block py-1 border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
-              {[...Array(10)].map((_, i) => (
-                <option value={i + 1} key={i + 1}>
-                  {i + 1}
-                </option>
-              ))}
-            </select>
-            <p className="ml-4">${product.price}</p>
-            <p className="ml-4">${+(product.price * quantity).toFixed(2)}</p>
-          </div>
-          <p className="mt-1 text-sm text-gray-500">{product.subtitle}</p>
+        <div className="flex justify-between text-base font-medium text-gray-900">
+          <h5>
+            <a href="#">{product.title}</a>
+          </h5>
+          <select
+            id="quantity-0"
+            name="quantity-0"
+            value={quantity}
+            onChange={(e) => handleChangeQuantity(product.id, e)}
+            className="bg-gray-50 border block py-1 border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+            {[...Array(10)].map((_, i) => (
+              <option value={i + 1} key={i + 1}>
+                {i + 1}
+              </option>
+            ))}
+          </select>
+          <p className="ml-4">${product.price}</p>
+          <p className="ml-4">${+(product.price * quantity).toFixed(2)}</p>
         </div>
+        <p className="mt-1 text-sm text-gray-500">
+          Color : {product.selectedColor?.toUpperCase()}
+        </p>
         <div className="flex flex-1 items-end justify-between text-sm">
-          <p className="text-gray-500">Size</p>
-
+          <p className="text-gray-500">Size : {product.selectedSize}</p>
           <div className="flex">
             <button
               type="button"
@@ -82,4 +84,4 @@ const Card = ({ ...product }: ProductProps) => {
   );
 };
 
-export default Card;
+export default Cart;
