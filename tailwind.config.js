@@ -34,17 +34,12 @@ module.exports = {
       },
       transparent: "transparent",
       current: "currentColor",
-      black: colors.black,
-      white: colors.white,
-      emerald: colors.emerald,
-      indigo: colors.indigo,
-      yellow: colors.yellow,
-      stone: colors.stone,
-      sky: colors.sky,
-      neutral: colors.neutral,
-      gray: colors.gray,
-      slate: colors.slate,
     },
   },
+  safelist: [
+    {
+      pattern: /bg-(red|green|blue|yellow|indigo|)-(100|200|300|400|500)/,
+    },
+  ],
   plugins: [require("@tailwindcss/forms")],
 };
