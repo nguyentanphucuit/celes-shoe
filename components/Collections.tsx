@@ -7,14 +7,15 @@ import PaginationControls from "./pagination/PaginationControls";
 import { ITEMS_PER_PAGE } from "@/constants";
 import { Loading } from "@geist-ui/core";
 import { getDownloadURL, listAll, ref } from "firebase/storage";
-import { storage } from "@/firebaseConfig";
+import { db, storage } from "@/firebaseConfig";
 import { changeImage } from "@/redux/features/productsSlice";
 import { useSearchParams } from "next/navigation";
+import { addDoc, collection, doc, getDocs } from "firebase/firestore";
 
 const Collections = () => {
-  const data = useAppSelector((state) => state.productsReducer.items);
-  const [imageList, setImageList] = useState([] as any);
-  const [isLoading, setIsLoading] = useState(true);
+  const products = useAppSelector((state) => state.productsReducer.items);
+  // const [products, setProducts] = useState([] as ProductProps[]);
+  const [isLoading, setIsLoading] = useState(false);
   const searchParams = useSearchParams();
 
   // pagination
@@ -23,26 +24,21 @@ const Collections = () => {
 
   const startIndex = (current_page - 1) * per_page;
   const endIndex = current_page * per_page;
-  const collections = data.slice(startIndex, endIndex);
+  const collections = products.slice(startIndex, endIndex);
+  console.log(products);
 
-  const dispatch = useAppDispatch();
-  // get image list
-  const imageListRef = ref(storage, "products/");
-  useEffect(() => {
-    listAll(imageListRef).then((res) => {
-      res.items.forEach((item, index) => {
-        getDownloadURL(item)
-          .then((url) => {
-            setImageList((prev: any) => [...prev, url]);
-            if (data[index])
-              dispatch(
-                changeImage({ productId: data[index].id, newImage: url })
-              );
-          })
-          .finally(() => setIsLoading(false));
-      });
-    });
-  }, []);
+  // get list data
+  // const productsCollectionRef = collection(db, "products");
+
+  // useEffect(() => {
+  //   const getProducts = async () => {
+  //     const data = await getDocs(productsCollectionRef).finally(() =>
+  //       setIsLoading(false)
+  //     );
+  //     setProducts(data.docs.map((doc: any) => ({ ...doc.data(), id: doc.id })));
+  //   };
+  //   getProducts();
+  // }, []);
 
   return (
     <>
@@ -57,10 +53,10 @@ const Collections = () => {
       </div>
 
       <PaginationControls
-        hasNextPage={endIndex < data.length}
+        hasNextPage={endIndex < products.length}
         hasPreviousPage={startIndex > 0}
-        totalPages={Math.ceil(data.length / per_page)}
-        totalResults={data.length}
+        totalPages={Math.ceil(products.length / per_page)}
+        totalResults={products.length}
         startIndex={startIndex}
       />
     </>
@@ -68,3 +64,28 @@ const Collections = () => {
 };
 
 export default Collections;
+
+// const imageListRef = ref(storage, "products/");
+
+// const createProduct = async () => {
+//   for (let i = 0; i < data.length; i++) {
+//     const { id, ...newData } = { ...data[i] };
+//     await addDoc(productsCollectionRef, newData);
+//   }
+// };
+
+// useEffect(() => {
+//   listAll(imageListRef).then((res) => {
+//     res.items.forEach((item, index) => {
+//       getDownloadURL(item)
+//         .then((url) => {
+//           setImageList((prev: any) => [...prev, url]);
+//           if (data[index])
+//             dispatch(
+//               changeImage({ productId: data[index].id, newImage: url })
+//             );
+//         })
+//         .finally(() => setIsLoading(false));
+//     });
+//   });
+// }, []);
