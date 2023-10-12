@@ -9,11 +9,13 @@ import { Loading } from "@geist-ui/core";
 import { getDownloadURL, listAll, ref } from "firebase/storage";
 import { storage } from "@/firebaseConfig";
 import { changeImage } from "@/redux/features/productsSlice";
+import { useSearchParams } from "next/navigation";
 
-const Collections = ({ searchParams }: { searchParams: any }) => {
+const Collections = () => {
   const data = useAppSelector((state) => state.productsReducer.items);
   const [imageList, setImageList] = useState([] as any);
   const [loading, setLoading] = useState(true);
+  const searchParams = useSearchParams();
 
   // pagination
   const current_page = +(searchParams?.get("page") ?? 1);

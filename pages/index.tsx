@@ -20,7 +20,7 @@ export default function Home({
       <Hero />
       <div className="mt-12 padding-x padding-y max-width" id="discover">
         <ProductDetailModal />
-        <Collections searchParams={searchParams} />
+        <Collections />
       </div>
     </div>
   );
