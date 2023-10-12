@@ -1,7 +1,7 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   images: {
-    domains: ["www.famousfootwear.com.au"],
+    domains: ["www.famousfootwear.com.au", "firebasestorage.googleapis.com"],
   },
 };
 

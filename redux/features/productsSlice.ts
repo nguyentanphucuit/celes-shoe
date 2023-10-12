@@ -43,8 +43,22 @@ const ProductsSlice = createSlice({
       }
       return state;
     },
+    changeImage: (state, action) => {
+      const { productId, newImage } = action.payload as {
+        productId: string;
+        newImage: string;
+      };
+      const existingItem = state.items.find(
+        (item: ProductProps) => item.id === productId
+      );
+      if (existingItem) {
+        existingItem.imageUrl = newImage;
+      }
+      return state;
+    },
   },
 });
 
-export const { getProducts, changeColor, changeSize } = ProductsSlice.actions;
+export const { getProducts, changeColor, changeSize, changeImage } =
+  ProductsSlice.actions;
 export default ProductsSlice.reducer;
