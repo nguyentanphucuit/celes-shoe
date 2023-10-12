@@ -2,7 +2,7 @@ import React from "react";
 
 const SkeletonProduct = () => {
   return (
-    <div className="w-full max-w-sm bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700 hover:shadow-xl transition duration-500 hover:scale-105">
+    <div className="w-full animate-pulse max-w-sm bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700 hover:shadow-xl transition duration-500 hover:scale-105">
       <div className="flex items-center justify-center w-full h-48 bg-gray-300 rounded dark:bg-gray-700 ">
         <svg
           className="w-10 h-10 text-gray-200 dark:text-gray-600"
