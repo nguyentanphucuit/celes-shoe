@@ -37,7 +37,7 @@
 }
 
 .btn-add-to-cart {
-  @apply px-3 py-2 items-center justify-center rounded-md border border-transparent bg-primary text-base font-medium text-white hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2;
+  @apply px-3 py-2 items-center justify-center  border border-transparent bg-indigo-200 border-indigo-400 text-indigo-700 text-sm font-medium hover:bg-indigo-100 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2;
 }
 
 .btn-add-to-cart-full {

@@ -14,7 +14,7 @@ import { useSearchParams } from "next/navigation";
 const Collections = () => {
   const data = useAppSelector((state) => state.productsReducer.items);
   const [imageList, setImageList] = useState([] as any);
-  const [loading, setLoading] = useState(true);
+  const [isLoading, setIsLoading] = useState(true);
   const searchParams = useSearchParams();
 
   // pagination
@@ -34,21 +34,17 @@ const Collections = () => {
         getDownloadURL(item)
           .then((url) => {
             setImageList((prev: any) => [...prev, url]);
-            // if (data[index])
-            //   dispatch(
-            //     changeImage({ productId: data[index].id, newImage: url })
-            //   );
+            if (data[index])
+              dispatch(
+                changeImage({ productId: data[index].id, newImage: url })
+              );
           })
-          .finally(() => setLoading(false));
+          .finally(() => setIsLoading(false));
       });
     });
   }, []);
 
-  console.log(data);
-
-  return loading ? (
-    <Loading />
-  ) : (
+  return (
     <>
       <div className="home__text-container my-6">
         <h1 className="text-4xl font-extrabold my-2">Shoe Catalogue</h1>
@@ -56,7 +52,7 @@ const Collections = () => {
       </div>
       <div className="grid grid-flow-row justify-center md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 my-6">
         {collections.map((shoe: ProductProps) => (
-          <ProductCard {...shoe} key={shoe.id} />
+          <ProductCard {...shoe} key={shoe.id} isLoading={isLoading} />
         ))}
       </div>
 
