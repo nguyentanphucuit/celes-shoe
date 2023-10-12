@@ -5,6 +5,7 @@ import { ProductProps } from "@/types";
 import { useAppSelector } from "@/redux/hooks";
 import PaginationControls from "./pagination/PaginationControls";
 import { ITEMS_PER_PAGE } from "@/constants";
+import { Loading } from "@geist-ui/core";
 
 const Collections = ({ searchParams }: { searchParams: any }) => {
   const data = useAppSelector((state) => state.productsReducer.items);
@@ -17,7 +18,9 @@ const Collections = ({ searchParams }: { searchParams: any }) => {
 
   const collections = data.slice(startIndex, endIndex);
 
-  return (
+  return data.length == 0 ? (
+    <Loading />
+  ) : (
     <>
       <div className="home__text-container my-6">
         <h1 className="text-4xl font-extrabold my-2">Shoe Catalogue</h1>

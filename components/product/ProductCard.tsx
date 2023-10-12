@@ -13,6 +13,7 @@ import ColorsComponent from "../ColorComponent";
 import SizeComponent from "../SizeComponent";
 import { ToastInput, useToasts } from "@geist-ui/core";
 import { textAlert } from "@/constants";
+import SkeletonProduct from "../SkeletonProduct";
 
 const ProductCard = (props: any) => {
   const dispatch = useAppDispatch();
@@ -33,14 +34,15 @@ const ProductCard = (props: any) => {
 
   return (
     <>
+      {/* <SkeletonProduct /> */}
       <div className="w-full max-w-sm bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700 hover:shadow-xl transition duration-500 hover:scale-105">
         <Image
           src={props.imageUrl}
           alt="shoe card"
           onClick={handleOpenDetail}
           width={400}
-          height={400}
-          className="object-contain rounded-t-lg cursor-pointer"
+          height={320}
+          className="object-cover w-full h-60 rounded-t-lg cursor-pointer"
         />
         <div className="px-5 pb-5">
           <a>

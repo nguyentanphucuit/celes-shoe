@@ -7,7 +7,7 @@ import CustomButton from "./CustomButton";
 const Hero = () => {
   const handleScroll = () => {};
   return (
-    <div className="hero mt-28">
+    <div className="hero mt-16 lg:mt-28">
       <div className="bg-slate-400 flex flex-col text-center justify-center items-center ">
         <Image
           src="https://www.famousfootwear.com.au/cdn/shop/files/DESKTOP_WEBSITE_BANNERS_67_2880x.jpg?v=1695621004"

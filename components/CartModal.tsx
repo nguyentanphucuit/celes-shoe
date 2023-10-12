@@ -96,7 +96,7 @@ const CartModal = () => {
                     {/* Content modal */}
                     <>
                       <div className="w-full max-h-full">
-                        <div className="p-6 space-y-6">
+                        <div className="p-2 lg:p-6 space-y-6">
                           {isEmpty ? (
                             <p>
                               <b>Oops...</b>
@@ -113,7 +113,7 @@ const CartModal = () => {
                             </div>
                           )}
                         </div>
-                        <div className="p-6 border-t border-gray-200 rounded-b dark:border-gray-600">
+                        <div className="p-2 lg:p-6 border-t border-gray-200 rounded-b dark:border-gray-600">
                           <div className="mb-6">
                             <div className="flex justify-between font-bold">
                               <h3>Subtotal</h3>

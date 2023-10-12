@@ -129,8 +129,7 @@ export const listProducts = [
     rating: 4.1,
     quantity: 1,
     type: "Boots",
-    imageUrl:
-      "https://www.famousfootwear.com.au/cdn/shop/files/1_548b9483-f658-4e94-b3e3-a36b61d0ede6.jpg?v=1689230938",
+    imageUrl: "/images/CS-1.jpg",
     colors: [
       {
         name: "white",
@@ -168,8 +167,7 @@ export const listProducts = [
     rating: 4.6,
     quantity: 1,
     type: "Heels",
-    imageUrl:
-      "https://www.famousfootwear.com.au/cdn/shop/files/2_66570120-3637-44a6-802d-1f619132023a.jpg?v=1689230938",
+    imageUrl: "/images/CS-2.jpg",
     colors: [
       {
         name: "white",
@@ -207,8 +205,7 @@ export const listProducts = [
     rating: 3.3,
     quantity: 1,
     type: "Flats",
-    imageUrl:
-      "https://www.famousfootwear.com.au/cdn/shop/files/3_06f9f9be-f7d2-4672-b2ec-9aedf0700ecc.jpg?v=1689230938",
+    imageUrl: "/images/CS-3.jpg",
     colors: [
       {
         name: "White",
@@ -246,8 +243,7 @@ export const listProducts = [
     rating: 3.7,
     quantity: 1,
     type: "Boots",
-    imageUrl:
-      "https://www.famousfootwear.com.au/cdn/shop/files/1_548b9483-f658-4e94-b3e3-a36b61d0ede6.jpg?v=1689230938",
+    imageUrl: "/images/CS-4.jpg",
     colors: [
       {
         name: "White",
@@ -291,8 +287,7 @@ export const listProducts = [
     rating: 4.1,
     quantity: 1,
     type: "Heels",
-    imageUrl:
-      "https://www.famousfootwear.com.au/cdn/shop/files/2_66570120-3637-44a6-802d-1f619132023a.jpg?v=1689230938",
+    imageUrl: "/images/CS-5.jpg",
     colors: [
       {
         name: "White",
@@ -330,8 +325,7 @@ export const listProducts = [
     rating: 2.8,
     quantity: 1,
     type: "Flats",
-    imageUrl:
-      "https://www.famousfootwear.com.au/cdn/shop/files/3_06f9f9be-f7d2-4672-b2ec-9aedf0700ecc.jpg?v=1689230938",
+    imageUrl: "/images/CS-6.jpg",
     colors: [
       {
         name: "White",
@@ -369,8 +363,7 @@ export const listProducts = [
     rating: 2.8,
     quantity: 1,
     type: "Flats",
-    imageUrl:
-      "https://www.famousfootwear.com.au/cdn/shop/files/3_06f9f9be-f7d2-4672-b2ec-9aedf0700ecc.jpg?v=1689230938",
+    imageUrl: "/images/CS-7.jpg",
     colors: [
       {
         name: "White",
@@ -408,8 +401,7 @@ export const listProducts = [
     rating: 2.8,
     quantity: 1,
     type: "Flats",
-    imageUrl:
-      "https://www.famousfootwear.com.au/cdn/shop/files/3_06f9f9be-f7d2-4672-b2ec-9aedf0700ecc.jpg?v=1689230938",
+    imageUrl: "/images/CS-8.jpg",
     colors: [
       {
         name: "White",
@@ -447,8 +439,7 @@ export const listProducts = [
     rating: 2.8,
     quantity: 1,
     type: "Flats",
-    imageUrl:
-      "https://www.famousfootwear.com.au/cdn/shop/files/3_06f9f9be-f7d2-4672-b2ec-9aedf0700ecc.jpg?v=1689230938",
+    imageUrl: "/images/CS-9.jpg",
     colors: [
       {
         name: "White",
@@ -486,8 +477,7 @@ export const listProducts = [
     rating: 2.8,
     quantity: 1,
     type: "Flats",
-    imageUrl:
-      "https://www.famousfootwear.com.au/cdn/shop/files/3_06f9f9be-f7d2-4672-b2ec-9aedf0700ecc.jpg?v=1689230938",
+    imageUrl: "/images/CS-10.jpg",
     colors: [
       {
         name: "Red",
@@ -525,8 +515,7 @@ export const listProducts = [
     rating: 2.8,
     quantity: 1,
     type: "Flats",
-    imageUrl:
-      "https://www.famousfootwear.com.au/cdn/shop/files/3_06f9f9be-f7d2-4672-b2ec-9aedf0700ecc.jpg?v=1689230938",
+    imageUrl: "/images/CS-11.jpg",
     colors: [
       {
         name: "White",
@@ -564,8 +553,7 @@ export const listProducts = [
     rating: 2.8,
     quantity: 1,
     type: "Flats",
-    imageUrl:
-      "https://www.famousfootwear.com.au/cdn/shop/files/3_06f9f9be-f7d2-4672-b2ec-9aedf0700ecc.jpg?v=1689230938",
+    imageUrl: "/images/CS-12.jpg",
     colors: [
       {
         name: "White",
@@ -603,8 +591,7 @@ export const listProducts = [
     rating: 3.8,
     quantity: 1,
     type: "Flats",
-    imageUrl:
-      "https://www.famousfootwear.com.au/cdn/shop/files/3_06f9f9be-f7d2-4672-b2ec-9aedf0700ecc.jpg?v=1689230938",
+    imageUrl: "/images/CS-13.jpg",
     colors: [
       {
         name: "White",

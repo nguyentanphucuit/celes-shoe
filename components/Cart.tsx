@@ -47,29 +47,57 @@ const Cart = ({ ...product }: ProductProps) => {
 
       <div className="ml-4 flex flex-1 flex-col">
         <div className="flex justify-between text-base font-medium text-gray-900">
-          <h5>
-            <a href="#">{product.title}</a>
-          </h5>
+          <div className="flex flex-row gap-2 text-sm justify-center">
+            <p>
+              <a href="#">{product.title}</a>
+            </p>
+            <p className="block lg:hidden text-gray-500">
+              Color : <b>{product.selectedColor?.toUpperCase()}</b>
+            </p>
+            <p className="block lg:hidden text-gray-500">
+              Size : <b>{product.selectedSize}</b>
+            </p>
+            <p className="hidden lg:block ml-4">${product.price}</p>
+          </div>
+
           <select
             id="quantity-0"
             name="quantity-0"
             value={quantity}
             onChange={(e) => handleChangeQuantity(product.id, e)}
-            className="bg-gray-50 border block py-1 border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+            className="hidden lg:block bg-gray-50 border py-1 border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
             {[...Array(10)].map((_, i) => (
               <option value={i + 1} key={i + 1}>
                 {i + 1}
               </option>
             ))}
           </select>
-          <p className="ml-4">${product.price}</p>
-          <p className="ml-4">${+(product.price * quantity).toFixed(2)}</p>
+          <p className="hidden lg:block ml-4">
+            ${+(product.price * quantity).toFixed(2)}
+          </p>
         </div>
-        <p className="mt-1 text-sm text-gray-500">
+        <p className="hidden lg:block mt-1 text-gray-500">
           Color : {product.selectedColor?.toUpperCase()}
         </p>
+        <p className="block lg:hidden mt-2">
+          ${+(product.price * quantity).toFixed(2)}
+        </p>
         <div className="flex flex-1 items-end justify-between text-sm">
-          <p className="text-gray-500">Size : {product.selectedSize}</p>
+          <p className="hidden lg:block text-gray-500">
+            Size : {product.selectedSize}
+          </p>
+          <select
+            id="quantity-0"
+            name="quantity-0"
+            value={quantity}
+            onChange={(e) => handleChangeQuantity(product.id, e)}
+            className="block lg:hidden w-4/12 bg-gray-50 border py-1 border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+            {[...Array(10)].map((_, i) => (
+              <option value={i + 1} key={i + 1}>
+                {i + 1}
+              </option>
+            ))}
+          </select>
           <div className="flex">
             <button
               type="button"
