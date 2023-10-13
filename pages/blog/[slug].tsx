@@ -121,7 +121,7 @@ export function RelatedArticle(props: any) {
                   {blog.date}
                 </time>
                 <Link
-                  href={`/${blog.category}`}
+                  href={`/category?categories=${blog.category.toLowerCase()}`}
                   className="relative z-9 rounded-full bg-gray-50 px-3 py-1.5 font-medium text-gray-600 hover:bg-gray-100">
                   {blog.category}
                 </Link>
