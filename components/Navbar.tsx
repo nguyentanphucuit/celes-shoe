@@ -15,7 +15,6 @@ const Navbar = () => {
   const router = useRouter();
   const pathname = usePathname();
   const currentNav = pathname?.split("/")[1] || "";
-  console.log(currentNav);
 
   useEffect(() => {
     setShowMenu(false);

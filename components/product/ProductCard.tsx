@@ -2,10 +2,10 @@
 
 import { ProductProps } from "@/types";
 import Image from "next/image";
-import React from "react";
+import React, { use } from "react";
 import CustomButton from "../CustomButton";
 import Rating from "../Rating";
-import { useAppDispatch } from "@/redux/hooks";
+import { useAppDispatch, useAppSelector } from "@/redux/hooks";
 import { addToCart } from "@/redux/features/cartSlice";
 import { isOpenModal } from "@/redux/features/productDetailSlice";
 
@@ -17,7 +17,9 @@ import SkeletonProduct from "../SkeletonProduct";
 
 const ProductCard = (props: any) => {
   const dispatch = useAppDispatch();
-
+  const product = useAppSelector((state) => state.productsReducer.items).find(
+    (item) => item.id === props.id
+  );
   const { setToast } = useToasts();
   const handleAddToCart = () => {
     const type = "success" as ToastInput["type"];
@@ -25,7 +27,7 @@ const ProductCard = (props: any) => {
       text: textAlert.success,
       type,
     });
-    dispatch(addToCart({ ...props }));
+    dispatch(addToCart({ ...product }));
   };
 
   const handleOpenDetail = () => {
