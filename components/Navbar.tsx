@@ -6,11 +6,16 @@ import Banner from "./Banner";
 import CartModal from "./CartModal";
 import { useRouter } from "next/router";
 import { Popover, Transition } from "@headlessui/react";
+import { usePathname } from "next/navigation";
+import { classNames } from "@/constants/common";
 
 const Navbar = () => {
   const [showMenu, setShowMenu] = useState(false);
   const [showProfile, setShowProfile] = useState(false);
   const router = useRouter();
+  const pathname = usePathname();
+  const currentNav = pathname?.split("/")[1] || "";
+  console.log(currentNav);
 
   useEffect(() => {
     setShowMenu(false);
@@ -67,7 +72,7 @@ const Navbar = () => {
   ];
 
   return (
-    <nav className="w-full fixed z-10 bg-gray-800">
+    <nav className="w-full fixed z-10 bg-gray-800 ">
       <Banner />
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div className="flex h-16 items-center justify-between">
@@ -84,14 +89,23 @@ const Navbar = () => {
                 </button>
               </Link>
             </div>
-            <div className="hidden md:block">
-              <div className="ml-10 flex items-baseline space-x-4">
-                {navItem.map((item, index) => (
-                  <Link key={index} href={item.path} className="nav-item">
-                    {item.title}
-                  </Link>
-                ))}
-              </div>
+          </div>
+          <div className="hidden md:block">
+            <div className="ml-10 flex items-baseline space-x-4">
+              {navItem.map((item, index) => (
+                <Link
+                  key={index}
+                  href={item.path}
+                  className={classNames(
+                    `/${currentNav}` === item.path
+                      ? "bg-gray-700 text-white"
+                      : "",
+                    "text-gray-300 hover:bg-gray-700 active:bg-gray-900 hover:text-white rounded-md px-3 py-2 text-sm font-medium"
+                  )}>
+                  {item.title}
+                  {`/${currentNav}` === item.path}
+                </Link>
+              ))}
             </div>
           </div>
           <div className="">
@@ -137,37 +151,6 @@ const Navbar = () => {
                     </>
                   )}
                 </Popover>
-                {/* <button
-                  type="button"
-                  className="relative flex max-w-xs items-center rounded-full bg-gray-800 text-sm focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-800">
-                  <Image
-                    width={32}
-                    height={32}
-                    src="/profile.png"
-                    className="rounded-full"
-                    style={{ height: "32px" }}
-                    alt="avatar"
-                    onClick={handleOpenProfile}
-                  />
-                </button>
-
-                <div className={showProfile ? "" : "hidden"}>
-                  <div
-                    className="absolute right-0 z-10 mt-2 w-48 origin-top-right rounded-md bg-white py-1 shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none"
-                    role="menu"
-                    aria-orientation="vertical"
-                    aria-labelledby="user-menu-button"
-                    tabIndex={-1}>
-                    {profileItem.map((item, index) => (
-                      <Link
-                        key={index}
-                        href={item.path}
-                        className="profile-dropdown">
-                        {item.title}
-                      </Link>
-                    ))}
-                  </div>
-                </div> */}
               </div>
             </div>
           </div>

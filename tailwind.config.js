@@ -38,7 +38,10 @@ module.exports = {
   },
   safelist: [
     {
-      pattern: /bg-(red|green|blue|yellow|indigo|)-(100|200|300|400|500)/,
+      pattern:
+        /bg-(red|green|blue|yellow|indigo|gray)-(100|200|300|400|500|600|700|800|900)/,
+      pattern:
+        /text-(red|green|blue|yellow|indigo|gray)-(100|200|300|400|500|600|700|800|900)/,
     },
   ],
   plugins: [require("@tailwindcss/forms")],
