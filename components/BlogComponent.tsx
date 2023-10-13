@@ -111,7 +111,7 @@ const RelatedArticle = (props: any) => {
               </div>
               <div className="group relative ">
                 <h3 className="mt-3 text-lg line-clamp-1 font-semibold leading-6 text-gray-900 group-hover:text-gray-600">
-                  <Link href={blog.id}>
+                  <Link href={`/blog/${encodeURIComponent(blog.slug)}`}>
                     <span className="absolute inset-0" />
                     {blog.title}
                   </Link>
