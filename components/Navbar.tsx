@@ -247,7 +247,6 @@ const Navbar = () => {
 
 export const BreadCrumb = (props: any) => {
   let listPath = props.listPath;
-  listPath[0] = listPath[0] == "" ? "home" : listPath[0];
   return (
     <nav
       className="flex px-5 py-3 justify-center text-gray-700 border border-gray-200 bg-gray-50 dark:bg-gray-800 dark:border-gray-700"
@@ -283,7 +282,9 @@ export const BreadCrumb = (props: any) => {
                   />
                 </svg>
               )}
-              {path.charAt(0).toUpperCase() + path.slice(1)}
+              {path == ""
+                ? "Home"
+                : path.charAt(0).toUpperCase() + path.slice(1)}
             </Link>
           </li>
         ))}
