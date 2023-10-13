@@ -15,7 +15,7 @@ const Navbar = () => {
   const router = useRouter();
   const pathname = usePathname();
   const listPath = pathname?.split("/").slice(1);
-  const currentNav = listPath?.[0] ?? "";
+  const currentNav = pathname?.split("/")[0] ?? "";
 
   useEffect(() => {
     setShowMenu(false);
