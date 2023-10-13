@@ -122,7 +122,7 @@ export function ProductDetailModal() {
                                 </h4>
                                 <a
                                   href="#"
-                                  className="text-sm font-medium text-indigo-600 hover:text-indigo-500">
+                                  className="text-sm font-medium text-primary hover:text-indigo-500">
                                   Size guide
                                 </a>
                               </div>

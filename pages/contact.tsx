@@ -49,7 +49,7 @@ export function Contact() {
                 name="first-name"
                 id="first-name"
                 autoComplete="given-name"
-                className="block w-full rounded-md border-0 px-3.5 py-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                className="block w-full rounded-md border-0 px-3.5 py-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-primary sm:text-sm sm:leading-6"
               />
             </div>
           </div>
@@ -65,7 +65,7 @@ export function Contact() {
                 name="last-name"
                 id="last-name"
                 autoComplete="family-name"
-                className="block w-full rounded-md border-0 px-3.5 py-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                className="block w-full rounded-md border-0 px-3.5 py-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-primary sm:text-sm sm:leading-6"
               />
             </div>
           </div>
@@ -81,7 +81,7 @@ export function Contact() {
                 name="company"
                 id="company"
                 autoComplete="organization"
-                className="block w-full rounded-md border-0 px-3.5 py-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                className="block w-full rounded-md border-0 px-3.5 py-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-primary sm:text-sm sm:leading-6"
               />
             </div>
           </div>
@@ -97,7 +97,7 @@ export function Contact() {
                 name="email"
                 id="email"
                 autoComplete="email"
-                className="block w-full rounded-md border-0 px-3.5 py-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                className="block w-full rounded-md border-0 px-3.5 py-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-primary sm:text-sm sm:leading-6"
               />
             </div>
           </div>
@@ -115,7 +115,7 @@ export function Contact() {
                 <select
                   id="country"
                   name="country"
-                  className="h-full rounded-md border-0 bg-transparent bg-none py-0 pl-4 pr-9 text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm">
+                  className="h-full rounded-md border-0 bg-transparent bg-none py-0 pl-4 pr-9 text-gray-400 focus:ring-2 focus:ring-inset focus:ring-primary sm:text-sm">
                   <option>VN</option>
                   <option>US</option>
                   <option>EU</option>
@@ -138,7 +138,7 @@ export function Contact() {
                 name="phone-number"
                 id="phone-number"
                 autoComplete="tel"
-                className="block w-full rounded-md border-0 px-3.5 py-2 pl-20 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                className="block w-full rounded-md border-0 px-3.5 py-2 pl-20 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-primary sm:text-sm sm:leading-6"
               />
             </div>
           </div>
@@ -153,7 +153,7 @@ export function Contact() {
                 name="message"
                 id="message"
                 rows={4}
-                className="block w-full rounded-md border-0 px-3.5 py-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                className="block w-full rounded-md border-0 px-3.5 py-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-primary sm:text-sm sm:leading-6"
                 defaultValue={""}
               />
             </div>
@@ -164,8 +164,8 @@ export function Contact() {
                 checked={agreed}
                 onChange={setAgreed}
                 className={classNames(
-                  agreed ? "bg-indigo-600" : "bg-gray-200",
-                  "flex w-8 flex-none cursor-pointer rounded-full p-px ring-1 ring-inset ring-gray-900/5 transition-colors duration-200 ease-in-out focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
+                  agreed ? "bg-primary" : "bg-gray-200",
+                  "flex w-8 flex-none cursor-pointer rounded-full p-px ring-1 ring-inset ring-gray-900/5 transition-colors duration-200 ease-in-out focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary"
                 )}>
                 <span className="sr-only">Agree to policies</span>
                 <span
@@ -179,7 +179,7 @@ export function Contact() {
             </div>
             <Switch.Label className="text-sm leading-6 text-gray-600">
               By selecting this, you agree to our{" "}
-              <a href="#" className="font-semibold text-indigo-600">
+              <a href="#" className="font-semibold text-primary">
                 privacy&nbsp;policy
               </a>
               .

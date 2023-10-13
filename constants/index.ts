@@ -876,7 +876,7 @@ export const listBlogs = [
     id: "0",
     title: `Boost your conversion rate`,
     subtitle: `Boost your conversion rate`,
-    date: "Mar 16, 2020",
+    date: "Mar 16, 2023",
     category: "Boots",
     contents: [
       `Secretary of State Antony Blinken on Thursday described gruesome
@@ -896,7 +896,7 @@ export const listBlogs = [
     id: "1",
     title: `How to use search engine optimization to drive sales`,
     subtitle: `How to use search engine optimization to drive sales`,
-    date: "Mar 10, 2020",
+    date: "Mar 10, 2023",
     category: "Flats",
     contents: [
       `Secretary of State Antony Blinken on Thursday described gruesome
@@ -916,7 +916,7 @@ export const listBlogs = [
     id: "2",
     title: `Improve your customer experience`,
     subtitle: `Improve your customer experience`,
-    date: "Feb 12, 2020",
+    date: "Feb 12, 2023",
     category: "Heels",
     contents: [
       `Secretary of State Antony Blinken on Thursday described gruesome

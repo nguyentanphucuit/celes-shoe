@@ -101,7 +101,7 @@ const Cart = ({ ...product }: ProductProps) => {
           <div className="flex">
             <button
               type="button"
-              className="font-medium text-indigo-600 hover:text-indigo-500"
+              className="font-medium text-primary hover:text-indigo-500"
               onClick={() => handleRemoveItem(product.id)}>
               Remove
             </button>

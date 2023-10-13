@@ -49,7 +49,7 @@
 }
 
 .btn-checkout {
-  @apply w-full flex items-center justify-center rounded-md border border-transparent bg-indigo-600 py-3 text-base font-medium text-white shadow-sm enabled:hover:bg-indigo-700;
+  @apply w-full flex items-center justify-center rounded-md border border-transparent bg-primary py-3 text-base font-medium text-white shadow-sm enabled:hover:bg-indigo-700;
 }
 /* END: General styles */
 /* START: Hero styles */

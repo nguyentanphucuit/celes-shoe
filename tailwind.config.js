@@ -16,7 +16,7 @@ module.exports = {
       colors: {
         "black-100": "#2B2C35",
         primary: {
-          DEFAULT: "rgb(79,70,229)",
+          DEFAULT: "rgb(79,70,229)", // indigo-600
           100: "#F5F8FF",
         },
         "secondary-orange": "#f79761",

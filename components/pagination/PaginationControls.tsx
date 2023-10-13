@@ -71,7 +71,7 @@ const PaginationControls = ({
               disabled={!hasPreviousPage}>
               <ChevronLeftIcon className="h-5 w-5" aria-hidden="true" />
             </button>
-            {/* Current: "z-10 bg-indigo-600 text-white focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600", 
+            {/* Current: "z-10 bg-primary text-white focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary", 
             Default: "text-gray-900 ring-1 ring-inset ring-gray-300 hover:bg-gray-50 focus:outline-offset-0" */}
             {[...Array(totalPages)].map((_, i) => (
               <button
@@ -80,7 +80,7 @@ const PaginationControls = ({
                 className={classNames(
                   "relative z-10 inline-flex items-center px-4 py-2 text-sm font-semibold",
                   i + 1 === current_page
-                    ? "z-10 bg-indigo-600 text-white focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
+                    ? "z-10 bg-primary text-white focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary"
                     : "text-gray-900 ring-1 ring-inset ring-gray-300 hover:bg-gray-50 focus:outline-offset-0"
                 )}>
                 {i + 1}
