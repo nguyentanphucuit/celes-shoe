@@ -47,3 +47,14 @@ export interface FiltersProps {
   sizes: string[];
   text: string;
 }
+
+export interface BlogProps {
+  id: string;
+  title: string;
+  subtitle: string;
+  date: string;
+  category: string;
+  contents: string[];
+  slug: string;
+  featuredImage: string;
+}

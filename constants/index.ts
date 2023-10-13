@@ -871,4 +871,67 @@ export const textAlert = {
   error: "Remove item difficulty.",
 };
 
+export const listBlogs = [
+  {
+    id: "0",
+    title: `Boost your conversion rate`,
+    subtitle: `Boost your conversion rate`,
+    date: "Mar 16, 2020",
+    category: "Boots",
+    contents: [
+      `Secretary of State Antony Blinken on Thursday described gruesome
+  photos and videos he reviewed depicting victims of Hamas'
+  terrorist attack on Israeli civilians.`,
+      `"It's hard to find the right words. It's beyond what anyone
+  would ever want to imagine, much less, God forbid, experience,"
+  he said at a press conference in Israel. "A baby, an infant,
+  riddled with bullets. Soldiers beheaded. Young people burned
+  alive. I could go on, but it's simply depravity in the worst
+  imaginable way."`,
+    ],
+    featuredImage:
+      "https://firebasestorage.googleapis.com/v0/b/celesshoe-6121f.appspot.com/o/products%2FCS-16.jpg?alt=media&token=4749ca07-3fcb-4083-b1f5-cd1cf91d0153",
+  },
+  {
+    id: "1",
+    title: `How to use search engine optimization to drive sales`,
+    subtitle: `How to use search engine optimization to drive sales`,
+    date: "Mar 10, 2020",
+    category: "Flats",
+    contents: [
+      `Secretary of State Antony Blinken on Thursday described gruesome
+  photos and videos he reviewed depicting victims of Hamas'
+  terrorist attack on Israeli civilians.`,
+      `"It's hard to find the right words. It's beyond what anyone
+  would ever want to imagine, much less, God forbid, experience,"
+  he said at a press conference in Israel. "A baby, an infant,
+  riddled with bullets. Soldiers beheaded. Young people burned
+  alive. I could go on, but it's simply depravity in the worst
+  imaginable way."`,
+    ],
+    featuredImage:
+      "https://firebasestorage.googleapis.com/v0/b/celesshoe-6121f.appspot.com/o/products%2FCS-17.jpg?alt=media&token=b4af70e4-fc43-44d6-8137-9992cc5842de",
+  },
+  {
+    id: "2",
+    title: `Improve your customer experience`,
+    subtitle: `Improve your customer experience`,
+    date: "Feb 12, 2020",
+    category: "Heels",
+    contents: [
+      `Secretary of State Antony Blinken on Thursday described gruesome
+  photos and videos he reviewed depicting victims of Hamas'
+  terrorist attack on Israeli civilians.`,
+      `"It's hard to find the right words. It's beyond what anyone
+  would ever want to imagine, much less, God forbid, experience,"
+  he said at a press conference in Israel. "A baby, an infant,
+  riddled with bullets. Soldiers beheaded. Young people burned
+  alive. I could go on, but it's simply depravity in the worst
+  imaginable way."`,
+    ],
+    featuredImage:
+      "https://firebasestorage.googleapis.com/v0/b/celesshoe-6121f.appspot.com/o/products%2FCS-17.jpg?alt=media&token=b4af70e4-fc43-44d6-8137-9992cc5842de",
+  },
+];
+
 export const ITEMS_PER_PAGE = 8;

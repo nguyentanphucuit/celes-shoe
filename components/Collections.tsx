@@ -13,8 +13,8 @@ import { useSearchParams } from "next/navigation";
 import { addDoc, collection, doc, getDocs } from "firebase/firestore";
 
 const Collections = () => {
-  const products = useAppSelector((state) => state.productsReducer.items);
-  // const [products, setProducts] = useState([] as ProductProps[]);
+  // const products = useAppSelector((state) => state.productsReducer.items);
+  const [products, setProducts] = useState([] as ProductProps[]);
   const [isLoading, setIsLoading] = useState(false);
   const searchParams = useSearchParams();
 
@@ -25,20 +25,18 @@ const Collections = () => {
   const startIndex = (current_page - 1) * per_page;
   const endIndex = current_page * per_page;
   const collections = products.slice(startIndex, endIndex);
-  console.log(products);
 
-  // get list data
-  // const productsCollectionRef = collection(db, "products");
+  const productsCollectionRef = collection(db, "products");
 
-  // useEffect(() => {
-  //   const getProducts = async () => {
-  //     const data = await getDocs(productsCollectionRef).finally(() =>
-  //       setIsLoading(false)
-  //     );
-  //     setProducts(data.docs.map((doc: any) => ({ ...doc.data(), id: doc.id })));
-  //   };
-  //   getProducts();
-  // }, []);
+  useEffect(() => {
+    const getProducts = async () => {
+      const data = await getDocs(productsCollectionRef).finally(() =>
+        setIsLoading(false)
+      );
+      setProducts(data.docs.map((doc: any) => ({ ...doc.data(), id: doc.id })));
+    };
+    getProducts();
+  }, []);
 
   return (
     <>
