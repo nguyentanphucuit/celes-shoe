@@ -121,6 +121,10 @@ export const listSorts = [
 
 export const listProducts = [
   {
+    imageUrl:
+      "https://firebasestorage.googleapis.com/v0/b/celesshoe-6121f.appspot.com/o/products%2FCS-18.jpg?alt=media&token=5aa95feb-4913-4425-99e9-fa4795ab2637",
+    price: 456.99,
+    subtitle: "Subtitle",
     sizes: [
       {
         inStock: false,
@@ -139,29 +143,406 @@ export const listProducts = [
         name: "XL",
       },
       {
+        inStock: true,
         name: "XXL",
+      },
+    ],
+    title: "Flats",
+    selectedColor: "Red",
+    quantity: 1,
+    discount: 31,
+    type: "Flats",
+    category: "Flats",
+    colors: [
+      {
+        name: "Red",
+        selectedClass: "ring-red-500",
+        inStock: true,
+        class: "bg-red-500",
+      },
+      {
+        inStock: true,
+        class: "bg-green-500",
+        name: "Green",
+        selectedClass: "ring-gray-400",
+      },
+      {
+        inStock: true,
+        selectedClass: "ring-gray-900",
+        class: "bg-black",
+        name: "Black",
+      },
+    ],
+    selectedSize: "S",
+    rating: 2.8,
+    id: "1HnSud9pT6IPWIhQajwV",
+  },
+  {
+    sizes: [
+      {
+        name: "S",
+        inStock: false,
+      },
+      {
+        inStock: true,
+        name: "M",
+      },
+      {
+        name: "L",
+        inStock: false,
+      },
+      {
+        inStock: true,
+        name: "XL",
+      },
+      {
+        inStock: true,
+        name: "XXL",
+      },
+    ],
+    category: "Flats",
+    selectedColor: "White",
+    quantity: 1,
+    discount: 25,
+    title: "Flats",
+    selectedSize: "S",
+    rating: 2.8,
+    price: 456.99,
+    subtitle: "Subtitle",
+    colors: [
+      {
+        inStock: true,
+        class: "bg-white",
+        selectedClass: "ring-gray-400",
+        name: "White",
+      },
+      {
+        inStock: true,
+        name: "Indigo",
+        selectedClass: "ring-indigo-500",
+        class: "bg-indigo-500",
+      },
+      {
+        selectedClass: "ring-gray-900",
+        class: "bg-black",
+        name: "Black",
+        inStock: true,
+      },
+    ],
+    type: "Flats",
+    imageUrl:
+      "https://firebasestorage.googleapis.com/v0/b/celesshoe-6121f.appspot.com/o/products%2FCS-14.jpg?alt=media&token=1137abaa-7a31-47f6-a264-1ffb83b696fb",
+    id: "440oc9zI5zTT6DuUTqPB",
+  },
+  {
+    sizes: [
+      {
+        name: "S",
+        inStock: false,
+      },
+      {
+        name: "M",
+        inStock: true,
+      },
+      {
+        name: "L",
+        inStock: false,
+      },
+      {
+        name: "XL",
+        inStock: true,
+      },
+      {
+        inStock: true,
+        name: "XXL",
+      },
+    ],
+    price: 456.99,
+    selectedColor: "White",
+    quantity: 1,
+    type: "Flats",
+    category: "Flats",
+    colors: [
+      {
+        class: "bg-white",
+        inStock: true,
+        name: "White",
+        selectedClass: "ring-gray-400",
+      },
+      {
+        inStock: true,
+        name: "Green",
+        class: "bg-green-500",
+        selectedClass: "ring-gray-400",
+      },
+      {
+        selectedClass: "ring-yellow-500",
+        name: "Yellow",
+        class: "bg-yellow-500",
         inStock: true,
       },
     ],
     selectedSize: "S",
-    imageUrl:
-      "https://firebasestorage.googleapis.com/v0/b/celesshoe-6121f.appspot.com/o/products%2FCS-16.jpg?alt=media&token=4749ca07-3fcb-4083-b1f5-cd1cf91d0153",
     title: "Flats",
-    category: "Flats",
-    price: 456.99,
+    subtitle: "Subtitle",
+    discount: 14,
+    imageUrl:
+      "https://firebasestorage.googleapis.com/v0/b/celesshoe-6121f.appspot.com/o/products%2FCS-2.jpg?alt=media&token=f61cd563-8c94-4cd6-97a1-bd433d78803f",
+    rating: 2.8,
+    id: "4igwPxtkltX5CrQRoqgM",
+  },
+  {
+    imageUrl:
+      "https://firebasestorage.googleapis.com/v0/b/celesshoe-6121f.appspot.com/o/products%2FCS-13.jpg?alt=media&token=8319c9c9-80b3-409a-88fd-32c541f153db",
+    category: "Heels",
+    discount: 27,
+    selectedColor: "White",
+    title: "Heels",
+    selectedSize: "S",
+    price: 123.99,
+    rating: 4.1,
+    subtitle: "Subtitle",
+    sizes: [
+      {
+        inStock: true,
+        name: "S",
+      },
+      {
+        inStock: false,
+        name: "M",
+      },
+      {
+        name: "L",
+        inStock: true,
+      },
+      {
+        name: "XL",
+        inStock: false,
+      },
+      {
+        inStock: true,
+        name: "XXL",
+      },
+    ],
     quantity: 1,
     colors: [
       {
         selectedClass: "ring-gray-400",
+        inStock: true,
         name: "White",
         class: "bg-white",
+      },
+      {
+        selectedClass: "ring-blue-500",
+        class: "bg-blue-500",
+        name: "Blue",
         inStock: true,
       },
       {
+        class: "bg-red-500",
+        name: "Red",
+        inStock: true,
+        selectedClass: "ring-red-500",
+      },
+    ],
+    type: "Heels",
+    id: "69YltCJPPtzHgrsJrUBg",
+  },
+  {
+    title: "Flats",
+    colors: [
+      {
+        class: "bg-white",
+        selectedClass: "ring-gray-400",
+        inStock: true,
+        name: "White",
+      },
+      {
+        inStock: true,
+        name: "Green",
+        class: "bg-green-500",
+        selectedClass: "ring-gray-400",
+      },
+      {
+        selectedClass: "ring-gray-900",
+        class: "bg-black",
+        name: "Black",
+        inStock: true,
+      },
+    ],
+    category: "Flats",
+    quantity: 1,
+    price: 456.99,
+    selectedColor: "White",
+    imageUrl:
+      "https://firebasestorage.googleapis.com/v0/b/celesshoe-6121f.appspot.com/o/products%2FCS-15.jpg?alt=media&token=a9ca704c-a5c3-4c0b-821b-7f62fc951434",
+    selectedSize: "S",
+    discount: 43,
+    subtitle: "Subtitle",
+    type: "Flats",
+    rating: 2.8,
+    sizes: [
+      {
+        name: "S",
+        inStock: false,
+      },
+      {
+        name: "M",
+        inStock: true,
+      },
+      {
+        name: "L",
+        inStock: false,
+      },
+      {
+        name: "XL",
+        inStock: true,
+      },
+      {
+        name: "XXL",
+        inStock: true,
+      },
+    ],
+    id: "CXmBbehNYP8PtI2kl6b1",
+  },
+  {
+    selectedColor: "white",
+    title: "Heels",
+    sizes: [
+      {
+        name: "S",
+        inStock: true,
+      },
+      {
+        inStock: true,
+        name: "M",
+      },
+      {
+        name: "L",
+        inStock: false,
+      },
+      {
+        inStock: true,
+        name: "XL",
+      },
+      {
+        inStock: true,
+        name: "XXL",
+      },
+    ],
+    colors: [
+      {
+        selectedClass: "ring-gray-400",
+        class: "bg-white",
+        inStock: true,
+        name: "white",
+      },
+      {
+        name: "indigo",
+        inStock: true,
+        class: "bg-indigo-500",
+        selectedClass: "ring-indigo-500",
+      },
+      {
+        selectedClass: "ring-gray-900",
+        inStock: true,
+        class: "black",
+        name: "Black",
+      },
+    ],
+    subtitle: "Subtitle",
+    discount: 2,
+    category: "Heels",
+    quantity: 1,
+    imageUrl:
+      "https://firebasestorage.googleapis.com/v0/b/celesshoe-6121f.appspot.com/o/products%2FCS-10.jpg?alt=media&token=fc03586a-b766-49d9-b715-22a18857bf65",
+    price: 12.99,
+    type: "Heels",
+    selectedSize: "S",
+    rating: 4.6,
+    id: "E9zyfbvvujnV96x50zci",
+  },
+  {
+    selectedSize: "S",
+    type: "Boots",
+    title: "Boots",
+    subtitle: "Subtitle",
+    rating: 3.7,
+    imageUrl:
+      "https://firebasestorage.googleapis.com/v0/b/celesshoe-6121f.appspot.com/o/products%2FCS-12.jpg?alt=media&token=82730e1b-b54f-4d53-9741-af858d3dfb82",
+    price: 10.99,
+    colors: [
+      {
+        name: "White",
+        inStock: false,
+        class: "bg-white",
+        selectedClass: "ring-gray-400",
+      },
+      {
+        selectedClass: "ring-green-500",
+        name: "Green",
+        class: "bg-green-500",
+        inStock: true,
+      },
+      {
+        class: "bg-black",
+        selectedClass: "ring-gray-900",
+        name: "Black",
+        inStock: true,
+      },
+      {
+        inStock: true,
+        class: "bg-red-500",
+        name: "Red",
+        selectedClass: "ring-red-500",
+      },
+    ],
+    sizes: [
+      {
+        name: "S",
+        inStock: true,
+      },
+      {
+        inStock: false,
+        name: "M",
+      },
+      {
+        inStock: true,
+        name: "L",
+      },
+      {
+        name: "XL",
+        inStock: true,
+      },
+      {
+        name: "XXL",
+        inStock: true,
+      },
+    ],
+    category: "Boots",
+    selectedColor: "White",
+    discount: 41,
+    quantity: 1,
+    id: "Ffk7UIXrnzpie9BFWxfx",
+  },
+  {
+    selectedColor: "White",
+    type: "Flats",
+    selectedSize: "S",
+    rating: 2.8,
+    discount: 31,
+    colors: [
+      {
+        class: "bg-white",
+        name: "White",
+        inStock: true,
+        selectedClass: "ring-gray-400",
+      },
+      {
+        name: "Green",
         selectedClass: "ring-gray-400",
         class: "bg-green-500",
         inStock: true,
-        name: "Green",
       },
       {
         name: "Black",
@@ -170,89 +551,98 @@ export const listProducts = [
         inStock: true,
       },
     ],
-    selectedColor: "White",
-    rating: 2.8,
-    type: "Flats",
+    title: "Flats",
     subtitle: "Subtitle",
-    id: "2yMuGpkgag3Z3wrYb3GH",
-  },
-  {
+    price: 456.99,
+    quantity: 1,
+    category: "Flats",
+    imageUrl:
+      "https://firebasestorage.googleapis.com/v0/b/celesshoe-6121f.appspot.com/o/products%2FCS-19.jpg?alt=media&token=57925677-3a9a-4c32-9ce6-c05513c977e1",
     sizes: [
       {
-        inStock: true,
+        inStock: false,
         name: "S",
       },
       {
-        name: "M",
         inStock: true,
+        name: "M",
       },
       {
-        inStock: false,
         name: "L",
+        inStock: false,
       },
       {
         inStock: true,
         name: "XL",
       },
       {
+        inStock: true,
+        name: "XXL",
+      },
+    ],
+    id: "OtQ3QHrREBbhcrasmHZ6",
+  },
+  {
+    selectedSize: "S",
+    type: "Boots",
+    rating: 4.1,
+    imageUrl:
+      "https://firebasestorage.googleapis.com/v0/b/celesshoe-6121f.appspot.com/o/products%2FCS-1.jpg?alt=media&token=16396d75-15cf-4714-b9e0-60f0b4c10cc0",
+    sizes: [
+      {
+        inStock: true,
+        name: "S",
+      },
+      {
+        inStock: true,
+        name: "M",
+      },
+      {
+        name: "L",
+        inStock: false,
+      },
+      {
+        name: "XL",
+        inStock: true,
+      },
+      {
         name: "XXL",
         inStock: true,
       },
     ],
-    title: "Boots",
-    rating: 4.1,
-    type: "Boots",
-    selectedSize: "S",
-    selectedColor: "white",
+    discount: 13,
     subtitle: "Subtitle",
-    imageUrl:
-      "https://firebasestorage.googleapis.com/v0/b/celesshoe-6121f.appspot.com/o/products%2FCS-1.jpg?alt=media&token=16396d75-15cf-4714-b9e0-60f0b4c10cc0",
-    price: 10.99,
-    quantity: 1,
+    selectedColor: "white",
     category: "Boots",
+    quantity: 1,
+    price: 10.99,
     colors: [
       {
-        inStock: true,
-        selectedClass: "ring-gray-400",
         class: "bg-white",
+        selectedClass: "ring-gray-400",
+        inStock: true,
         name: "white",
       },
       {
-        class: "bg-red-500",
         inStock: true,
+        class: "bg-red-500",
         selectedClass: "ring-red-500",
         name: "red",
       },
       {
         inStock: true,
         selectedClass: "ring-gray-900",
-        class: "bg-black",
         name: "black",
+        class: "bg-black",
       },
     ],
-    id: "69rKkFr1ZLpRTflLMLME",
+    title: "Boots",
+    id: "THaPq51kZNqqFnt2jhQ0",
   },
   {
-    colors: [
-      {
-        selectedClass: "ring-gray-400",
-        class: "bg-white",
-        name: "White",
-        inStock: true,
-      },
-      {
-        inStock: true,
-        class: "bg-yellow-500",
-        name: "Yellow",
-        selectedClass: "ring-yellow-500",
-      },
-      {
-        inStock: true,
-        name: "Black",
-        class: "bg-black",
-        selectedClass: "ring-gray-900",
-      },
-    ],
+    quantity: 1,
+    type: "Flats",
+    category: "Flats",
     sizes: [
       {
         inStock: true,
@@ -263,463 +653,89 @@ export const listProducts = [
         name: "M",
       },
       {
-        name: "L",
         inStock: true,
+        name: "L",
       },
       {
-        name: "XL",
         inStock: true,
+        name: "XL",
       },
       {
         name: "XXL",
         inStock: true,
       },
     ],
-    type: "Flats",
-    category: "Flats",
-    subtitle: "Subtitle",
-    rating: 3.3,
+    discount: 0,
     price: 789.99,
-    quantity: 1,
+    title: "Flats",
     selectedColor: "White",
+    rating: 3.3,
+    subtitle: "Subtitle",
     imageUrl:
       "https://firebasestorage.googleapis.com/v0/b/celesshoe-6121f.appspot.com/o/products%2FCS-11.jpg?alt=media&token=201f0829-a995-4c20-938b-aebb0f7d43b0",
-    selectedSize: "S",
-    title: "Flats",
-    id: "BXaub9ts4F9twCZAZNMe",
-  },
-  {
-    quantity: 1,
-    category: "Flats",
-    type: "Flats",
-    price: 444.99,
-    rating: 3.8,
-    colors: [
-      {
-        inStock: true,
-        selectedClass: "ring-gray-400",
-        name: "White",
-        class: "bg-white",
-      },
-      {
-        inStock: true,
-        name: "Green",
-        class: "bg-green-500",
-        selectedClass: "ring-gray-400",
-      },
-      {
-        selectedClass: "ring-indigo-500",
-        class: "bg-indigo-500",
-        name: "Indigo",
-        inStock: true,
-      },
-    ],
-    subtitle: "Subtitle",
-    sizes: [
-      {
-        inStock: false,
-        name: "S",
-      },
-      {
-        inStock: true,
-        name: "M",
-      },
-      {
-        name: "L",
-        inStock: false,
-      },
-      {
-        name: "XL",
-        inStock: true,
-      },
-      {
-        name: "XXL",
-        inStock: true,
-      },
-    ],
-    selectedColor: "White",
-    imageUrl:
-      "https://firebasestorage.googleapis.com/v0/b/celesshoe-6121f.appspot.com/o/products%2FCS-20.jpg?alt=media&token=df7eaf72-5275-4b35-b2e9-c988f3626579",
-    selectedSize: "S",
-    title: "Flats",
-    id: "FAJTod25MTRdIWb9vCqt",
-  },
-  {
-    type: "Flats",
-    category: "Flats",
-    quantity: 1,
-    selectedColor: "White",
-    rating: 2.8,
-    sizes: [
-      {
-        name: "S",
-        inStock: false,
-      },
-      {
-        name: "M",
-        inStock: true,
-      },
-      {
-        inStock: false,
-        name: "L",
-      },
-      {
-        name: "XL",
-        inStock: true,
-      },
-      {
-        inStock: true,
-        name: "XXL",
-      },
-    ],
-    title: "Flats",
-    imageUrl:
-      "https://firebasestorage.googleapis.com/v0/b/celesshoe-6121f.appspot.com/o/products%2FCS-17.jpg?alt=media&token=b4af70e4-fc43-44d6-8137-9992cc5842de",
-    subtitle: "Subtitle",
-    selectedSize: "S",
-    colors: [
-      {
-        selectedClass: "ring-gray-400",
-        name: "White",
-        inStock: true,
-        class: "bg-white",
-      },
-      {
-        class: "bg-blue-500",
-        inStock: true,
-        name: "Blue",
-        selectedClass: "ring-blue-500",
-      },
-      {
-        class: "bg-black",
-        name: "Black",
-        selectedClass: "ring-gray-900",
-        inStock: true,
-      },
-    ],
-    price: 456.99,
-    id: "HGE0JVDO3ZyLPplZJoUr",
-  },
-  {
-    rating: 2.8,
-    selectedColor: "White",
-    quantity: 1,
-    selectedSize: "S",
     colors: [
       {
         name: "White",
-        class: "bg-white",
         inStock: true,
-        selectedClass: "ring-gray-400",
-      },
-      {
-        inStock: true,
-        class: "bg-green-500",
-        selectedClass: "ring-gray-400",
-        name: "Green",
-      },
-      {
-        name: "Black",
-        selectedClass: "ring-gray-900",
-        inStock: true,
-        class: "bg-black",
-      },
-    ],
-    subtitle: "Subtitle",
-    price: 456.99,
-    type: "Flats",
-    imageUrl:
-      "https://firebasestorage.googleapis.com/v0/b/celesshoe-6121f.appspot.com/o/products%2FCS-15.jpg?alt=media&token=a9ca704c-a5c3-4c0b-821b-7f62fc951434",
-    sizes: [
-      {
-        inStock: false,
-        name: "S",
-      },
-      {
-        name: "M",
-        inStock: true,
-      },
-      {
-        name: "L",
-        inStock: false,
-      },
-      {
-        name: "XL",
-        inStock: true,
-      },
-      {
-        name: "XXL",
-        inStock: true,
-      },
-    ],
-    category: "Flats",
-    title: "Flats",
-    id: "M2BPZBzF4Fbn8ESlYl0B",
-  },
-  {
-    rating: 2.8,
-    title: "Flats",
-    price: 456.99,
-    quantity: 1,
-    type: "Flats",
-    imageUrl:
-      "https://firebasestorage.googleapis.com/v0/b/celesshoe-6121f.appspot.com/o/products%2FCS-14.jpg?alt=media&token=1137abaa-7a31-47f6-a264-1ffb83b696fb",
-    selectedSize: "S",
-    selectedColor: "White",
-    subtitle: "Subtitle",
-    category: "Flats",
-    colors: [
-      {
-        selectedClass: "ring-gray-400",
-        class: "bg-white",
-        name: "White",
-        inStock: true,
-      },
-      {
-        inStock: true,
-        name: "Indigo",
-        class: "bg-indigo-500",
-        selectedClass: "ring-indigo-500",
-      },
-      {
-        inStock: true,
-        name: "Black",
-        class: "bg-black",
-        selectedClass: "ring-gray-900",
-      },
-    ],
-    sizes: [
-      {
-        name: "S",
-        inStock: false,
-      },
-      {
-        inStock: true,
-        name: "M",
-      },
-      {
-        name: "L",
-        inStock: false,
-      },
-      {
-        name: "XL",
-        inStock: true,
-      },
-      {
-        inStock: true,
-        name: "XXL",
-      },
-    ],
-    id: "UVLfcT83nyqoD3IHzzXO",
-  },
-  {
-    sizes: [
-      {
-        inStock: true,
-        name: "S",
-      },
-      {
-        name: "M",
-        inStock: true,
-      },
-      {
-        inStock: false,
-        name: "L",
-      },
-      {
-        name: "XL",
-        inStock: true,
-      },
-      {
-        name: "XXL",
-        inStock: true,
-      },
-    ],
-    category: "Heels",
-    colors: [
-      {
         class: "bg-white",
         selectedClass: "ring-gray-400",
-        inStock: true,
-        name: "white",
       },
       {
-        name: "indigo",
-        class: "bg-indigo-500",
-        selectedClass: "ring-indigo-500",
-        inStock: true,
-      },
-      {
-        selectedClass: "ring-gray-900",
-        class: "black",
-        name: "Black",
-        inStock: true,
-      },
-    ],
-    subtitle: "Subtitle",
-    quantity: 1,
-    selectedColor: "white",
-    selectedSize: "S",
-    imageUrl:
-      "https://firebasestorage.googleapis.com/v0/b/celesshoe-6121f.appspot.com/o/products%2FCS-10.jpg?alt=media&token=fc03586a-b766-49d9-b715-22a18857bf65",
-    price: 12.99,
-    title: "Heels",
-    type: "Heels",
-    rating: 4.6,
-    id: "aSxSoFdpv1Cu9m24isTq",
-  },
-  {
-    title: "Flats",
-    selectedSize: "S",
-    subtitle: "Subtitle",
-    category: "Flats",
-    selectedColor: "Red",
-    sizes: [
-      {
-        name: "S",
-        inStock: false,
-      },
-      {
-        name: "M",
-        inStock: true,
-      },
-      {
-        name: "L",
-        inStock: false,
-      },
-      {
-        inStock: true,
-        name: "XL",
-      },
-      {
-        name: "XXL",
-        inStock: true,
-      },
-    ],
-    colors: [
-      {
-        class: "bg-red-500",
-        selectedClass: "ring-red-500",
-        name: "Red",
-        inStock: true,
-      },
-      {
-        name: "Green",
-        selectedClass: "ring-gray-400",
-        inStock: true,
-        class: "bg-green-500",
-      },
-      {
-        name: "Black",
-        class: "bg-black",
-        selectedClass: "ring-gray-900",
-        inStock: true,
-      },
-    ],
-    quantity: 1,
-    rating: 2.8,
-    type: "Flats",
-    price: 456.99,
-    imageUrl:
-      "https://firebasestorage.googleapis.com/v0/b/celesshoe-6121f.appspot.com/o/products%2FCS-18.jpg?alt=media&token=5aa95feb-4913-4425-99e9-fa4795ab2637",
-    id: "bRAOGWjXNgijfzKn6v8d",
-  },
-  {
-    selectedColor: "White",
-    imageUrl:
-      "https://firebasestorage.googleapis.com/v0/b/celesshoe-6121f.appspot.com/o/products%2FCS-12.jpg?alt=media&token=82730e1b-b54f-4d53-9741-af858d3dfb82",
-    subtitle: "Subtitle",
-    sizes: [
-      {
-        name: "S",
-        inStock: true,
-      },
-      {
-        inStock: false,
-        name: "M",
-      },
-      {
-        inStock: true,
-        name: "L",
-      },
-      {
-        inStock: true,
-        name: "XL",
-      },
-      {
-        name: "XXL",
-        inStock: true,
-      },
-    ],
-    category: "Boots",
-    quantity: 1,
-    title: "Boots",
-    rating: 3.7,
-    price: 10.99,
-    type: "Boots",
-    colors: [
-      {
-        inStock: false,
-        class: "bg-white",
-        name: "White",
-        selectedClass: "ring-gray-400",
-      },
-      {
-        inStock: true,
-        class: "bg-green-500",
-        name: "Green",
-        selectedClass: "ring-green-500",
-      },
-      {
-        selectedClass: "ring-gray-900",
-        name: "Black",
-        class: "bg-black",
-        inStock: true,
-      },
-      {
-        inStock: true,
-        name: "Red",
-        selectedClass: "ring-red-500",
-        class: "bg-red-500",
-      },
-    ],
-    selectedSize: "S",
-    id: "nRZHMKWDG9PoxRHU5DfP",
-  },
-  {
-    colors: [
-      {
-        class: "bg-white",
-        selectedClass: "ring-gray-400",
-        inStock: true,
-        name: "White",
-      },
-      {
-        name: "Green",
-        selectedClass: "ring-gray-400",
-        class: "bg-green-500",
-        inStock: true,
-      },
-      {
-        inStock: true,
-        name: "Yellow",
         class: "bg-yellow-500",
         selectedClass: "ring-yellow-500",
+        inStock: true,
+        name: "Yellow",
+      },
+      {
+        selectedClass: "ring-gray-900",
+        class: "bg-black",
+        inStock: true,
+        name: "Black",
       },
     ],
-    imageUrl:
-      "https://firebasestorage.googleapis.com/v0/b/celesshoe-6121f.appspot.com/o/products%2FCS-2.jpg?alt=media&token=f61cd563-8c94-4cd6-97a1-bd433d78803f",
-    title: "Flats",
-    type: "Flats",
+    selectedSize: "S",
+    id: "YNMZlwj0tgJvgpqhb73a",
+  },
+  {
     selectedColor: "White",
-    sizes: [
+    selectedSize: "S",
+    type: "Flats",
+    rating: 2.8,
+    imageUrl:
+      "https://firebasestorage.googleapis.com/v0/b/celesshoe-6121f.appspot.com/o/products%2FCS-16.jpg?alt=media&token=4749ca07-3fcb-4083-b1f5-cd1cf91d0153",
+    quantity: 1,
+    colors: [
       {
-        name: "S",
-        inStock: false,
+        name: "White",
+        inStock: true,
+        class: "bg-white",
+        selectedClass: "ring-gray-400",
       },
       {
         inStock: true,
+        name: "Green",
+        selectedClass: "ring-gray-400",
+        class: "bg-green-500",
+      },
+      {
+        name: "Black",
+        inStock: true,
+        selectedClass: "ring-gray-900",
+        class: "bg-black",
+      },
+    ],
+    category: "Flats",
+    subtitle: "Subtitle",
+    price: 456.99,
+    title: "Flats",
+    sizes: [
+      {
+        inStock: false,
+        name: "S",
+      },
+      {
         name: "M",
+        inStock: true,
       },
       {
         inStock: false,
@@ -730,75 +746,73 @@ export const listProducts = [
         name: "XL",
       },
       {
-        name: "XXL",
         inStock: true,
+        name: "XXL",
       },
     ],
-    selectedSize: "S",
-    rating: 2.8,
-    subtitle: "Subtitle",
-    price: 456.99,
-    category: "Flats",
-    quantity: 1,
-    id: "oygvp5s2TTKU4IF0PNcB",
+    discount: 45,
+    id: "bn4bov4OwoeKv6RDNZ1r",
   },
   {
-    title: "Heels",
-    selectedSize: "S",
-    imageUrl:
-      "https://firebasestorage.googleapis.com/v0/b/celesshoe-6121f.appspot.com/o/products%2FCS-13.jpg?alt=media&token=8319c9c9-80b3-409a-88fd-32c541f153db",
-    rating: 4.1,
-    category: "Heels",
-    subtitle: "Subtitle",
-    type: "Heels",
     quantity: 1,
+    subtitle: "Subtitle",
+    type: "Flats",
+    imageUrl:
+      "https://firebasestorage.googleapis.com/v0/b/celesshoe-6121f.appspot.com/o/products%2FCS-17.jpg?alt=media&token=b4af70e4-fc43-44d6-8137-9992cc5842de",
+    rating: 2.8,
     colors: [
       {
-        class: "bg-white",
-        name: "White",
         inStock: true,
+        name: "White",
         selectedClass: "ring-gray-400",
+        class: "bg-white",
       },
       {
-        class: "bg-blue-500",
+        name: "Blue",
         inStock: true,
         selectedClass: "ring-blue-500",
-        name: "Blue",
+        class: "bg-blue-500",
       },
       {
-        selectedClass: "ring-red-500",
-        class: "bg-red-500",
-        name: "Red",
+        class: "bg-black",
+        name: "Black",
         inStock: true,
+        selectedClass: "ring-gray-900",
       },
     ],
+    discount: 59,
     sizes: [
       {
         name: "S",
-        inStock: true,
+        inStock: false,
       },
       {
-        inStock: false,
         name: "M",
+        inStock: true,
       },
       {
         name: "L",
-        inStock: true,
-      },
-      {
         inStock: false,
-        name: "XL",
       },
       {
-        name: "XXL",
+        name: "XL",
         inStock: true,
+      },
+      {
+        inStock: true,
+        name: "XXL",
       },
     ],
+    price: 456.99,
+    title: "Flats",
     selectedColor: "White",
-    price: 123.99,
-    id: "tfs93cAMD0a5ParRpkwV",
+    selectedSize: "S",
+    category: "Flats",
+    id: "x9vZOkA1sLJSqzGDdzIV",
   },
   {
+    imageUrl:
+      "https://firebasestorage.googleapis.com/v0/b/celesshoe-6121f.appspot.com/o/products%2FCS-20.jpg?alt=media&token=df7eaf72-5275-4b35-b2e9-c988f3626579",
     sizes: [
       {
         inStock: false,
@@ -809,8 +823,8 @@ export const listProducts = [
         inStock: true,
       },
       {
-        name: "L",
         inStock: false,
+        name: "L",
       },
       {
         inStock: true,
@@ -821,38 +835,37 @@ export const listProducts = [
         inStock: true,
       },
     ],
-    title: "Flats",
-    quantity: 1,
-    price: 456.99,
-    rating: 2.8,
-    subtitle: "Subtitle",
-    type: "Flats",
     category: "Flats",
-    imageUrl:
-      "https://firebasestorage.googleapis.com/v0/b/celesshoe-6121f.appspot.com/o/products%2FCS-19.jpg?alt=media&token=57925677-3a9a-4c32-9ce6-c05513c977e1",
-    selectedSize: "S",
     selectedColor: "White",
+    selectedSize: "S",
+    rating: 3.8,
+    price: 444.99,
+    discount: 33,
     colors: [
       {
-        class: "bg-white",
         name: "White",
-        inStock: true,
+        class: "bg-white",
         selectedClass: "ring-gray-400",
+        inStock: true,
       },
       {
         inStock: true,
-        class: "bg-green-500",
         selectedClass: "ring-gray-400",
+        class: "bg-green-500",
         name: "Green",
       },
       {
         inStock: true,
-        selectedClass: "ring-gray-900",
-        class: "bg-black",
-        name: "Black",
+        name: "Indigo",
+        selectedClass: "ring-indigo-500",
+        class: "bg-indigo-500",
       },
     ],
-    id: "zhctlrp7baeNiTrz1LLE",
+    quantity: 1,
+    type: "Flats",
+    title: "Flats",
+    subtitle: "Subtitle",
+    id: "zdWi9p6ZVvw85iC2Vnnk",
   },
 ];
 

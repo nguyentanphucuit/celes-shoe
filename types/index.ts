@@ -20,6 +20,7 @@ export interface ProductProps {
   title: string;
   subtitle: string;
   price: number;
+  discount: number | 0;
   quantity: number;
   description?: string;
   category: string;

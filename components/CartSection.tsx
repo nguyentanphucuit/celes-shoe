@@ -1,5 +1,6 @@
 "use client";
 import { textAlert } from "@/constants";
+import { calculateDiscountPrice } from "@/constants/common";
 import { changeQuantity, removeCart } from "@/redux/features/cartSlice";
 import { useAppDispatch } from "@/redux/hooks";
 import { ProductProps } from "@/types";
@@ -57,7 +58,12 @@ const CartSection = ({ ...product }: ProductProps) => {
             <p className="block lg:hidden text-gray-500">
               Size : <b>{product.selectedSize}</b>
             </p>
-            <p className="hidden lg:block ml-4">${product.price}</p>
+            <p className="hidden lg:block ml-4 line-through text-gray-400">
+              ${product.price}
+            </p>
+            <p className="hidden lg:block">
+              ${calculateDiscountPrice(product.price, product.discount)}
+            </p>
           </div>
 
           <select
@@ -73,14 +79,25 @@ const CartSection = ({ ...product }: ProductProps) => {
             ))}
           </select>
           <p className="hidden lg:block ml-4">
-            ${+(product.price * quantity).toFixed(2)}
+            $
+            {
+              +(
+                calculateDiscountPrice(product.price, product.discount) *
+                quantity
+              ).toFixed(2)
+            }
           </p>
         </div>
         <p className="hidden lg:block mt-1 text-gray-500">
           Color : {product.selectedColor?.toUpperCase()}
         </p>
         <p className="block lg:hidden mt-2">
-          ${+(product.price * quantity).toFixed(2)}
+          $
+          {
+            +(
+              calculateDiscountPrice(product.price, product.discount) * quantity
+            ).toFixed(2)
+          }
         </p>
         <div className="flex flex-1 items-end justify-between text-sm">
           <p className="hidden lg:block text-gray-500">

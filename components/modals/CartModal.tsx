@@ -5,6 +5,7 @@ import { useAppSelector } from "@/redux/hooks";
 import Link from "next/link";
 import { XMarkIcon } from "@heroicons/react/24/outline";
 import CartSection from "../CartSection";
+import { calculateDiscountPrice } from "@/constants/common";
 
 const CartModal = () => {
   const [showCartModal, setShowCartModal] = useState(false);
@@ -12,7 +13,11 @@ const CartModal = () => {
   const cartItem = useAppSelector((state) => state.cartReducer.cart);
 
   const totalPrice = +cartItem
-    .reduce((acc, item) => acc + item.price * item.quantity, 0)
+    .reduce(
+      (acc, item) =>
+        acc + calculateDiscountPrice(item.price, item.discount) * item.quantity,
+      0
+    )
     .toFixed(2);
   const totalQuantity = cartItem.reduce((acc, item) => acc + item.quantity, 0);
   const isEmpty = cartItem.length === 0;

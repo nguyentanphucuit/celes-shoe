@@ -66,8 +66,9 @@ export default Collections;
 // const imageListRef = ref(storage, "products/");
 
 // const createProduct = async () => {
-//   for (let i = 0; i < data.length; i++) {
-//     const { id, ...newData } = { ...data[i] };
+//   for (let i = 0; i < products.length; i++) {
+//     const random = Math.floor(Math.random() * 60);
+//     const { id, ...newData } = { ...products[i], discount: random };
 //     await addDoc(productsCollectionRef, newData);
 //   }
 // };

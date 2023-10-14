@@ -1,3 +1,4 @@
+import { calculateDiscountPrice } from "@/constants/common";
 import { ProductProps } from "@/types";
 import sendgrid from "@sendgrid/mail";
 
@@ -146,7 +147,10 @@ async function sendEmail(req: any, res: any) {
                                                           <tr>
                                                               <td align="right" class="esd-block-text es-p20t es-p20b es-m-p0t es-m-p0b">
                                                                   <p class="p_price">$${
-                                                                    item.price *
+                                                                    calculateDiscountPrice(
+                                                                      item.price,
+                                                                      item.discount
+                                                                    ) *
                                                                     item.quantity
                                                                   }</p>
                                                               </td>

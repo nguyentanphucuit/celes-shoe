@@ -12,6 +12,7 @@ import CustomButton from "../CustomButton";
 import { addToCart } from "@/redux/features/cartSlice";
 import ColorsComponent from "../ColorComponent";
 import SizeComponent from "../SizeComponent";
+import { calculateDiscountPrice } from "@/constants/common";
 
 function classNames(...classes: any[]) {
   return classes.filter(Boolean).join(" ");
@@ -71,6 +72,7 @@ export function ProductDetailModal() {
                           alt={item.title}
                           width={500}
                           height={500}
+                          style={{ height: 400 }}
                           className="object-cover object-center"
                         />
                       </div>
@@ -86,9 +88,18 @@ export function ProductDetailModal() {
                             Product information
                           </h3>
 
-                          <p className="text-2xl text-gray-900">
-                            ${item.price}
-                          </p>
+                          <div className="space-x-2">
+                            <span className="text-xl font-semibold line-through text-gray-500 dark:text-white">
+                              ${item.price}
+                            </span>
+                            <span className="text-2xl font-bold text-gray-900 dark:text-white">
+                              $
+                              {calculateDiscountPrice(
+                                item.price,
+                                item.discount
+                              )}
+                            </span>
+                          </div>
 
                           {/* Reviews */}
                           <div className="mt-6">

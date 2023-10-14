@@ -3,5 +3,5 @@ export function classNames(...classes: any) {
 }
 
 export function calculateDiscountPrice(price: number, discount: number) {
-  return price - price * (discount / 100);
+  return +(price - price * (discount / 100)).toFixed(2);
 }
