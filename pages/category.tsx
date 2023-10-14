@@ -1,6 +1,6 @@
 import "@/app/globals.css";
-import CategoryFilters from "@/components/CategoryFilters";
-import ProductDetailModal from "@/components/product/ProductDetailModal";
+import CategoryFilters from "@/components/category/CategoryFilters";
+import ProductDetailModal from "@/components/modals/ProductDetailModal";
 
 const Category = () => {
   return (

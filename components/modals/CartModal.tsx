@@ -1,10 +1,10 @@
 import React, { Fragment, useState } from "react";
 import { Dialog, RadioGroup, Transition } from "@headlessui/react";
-import CustomButton from "./CustomButton";
+import CustomButton from "../CustomButton";
 import { useAppSelector } from "@/redux/hooks";
-import Cart from "./Cart";
 import Link from "next/link";
 import { XMarkIcon } from "@heroicons/react/24/outline";
+import CartSection from "../CartSection";
 
 const CartModal = () => {
   const [showCartModal, setShowCartModal] = useState(false);
@@ -62,7 +62,7 @@ const CartModal = () => {
         totalQuantity={totalQuantity}
       />
       <Transition.Root appear show={showCartModal} as={Fragment}>
-        <Dialog as="div" className="relative z-10" onClose={handleClosedModal}>
+        <Dialog as="div" className="relative z-30" onClose={handleClosedModal}>
           <Transition.Child
             as={Fragment}
             enter="ease-out duration-300"
@@ -107,7 +107,7 @@ const CartModal = () => {
                             <div className="-my-6">
                               <ol className="divide-y divide-gray-200 list-none mx-0">
                                 {...cartItem.map((item) => (
-                                  <Cart {...item} key={item.id} />
+                                  <CartSection {...item} key={item.id} />
                                 ))}
                               </ol>
                             </div>

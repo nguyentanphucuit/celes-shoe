@@ -1,7 +1,7 @@
-import Cart from "@/components/CartModal";
-import Collections from "@/components/Collections";
-import Hero from "@/components/Hero";
-import ProductDetailModal from "@/components/product/ProductDetailModal";
+import Cart from "@/components/modals/CartModal";
+import Collections from "@/components/collection/Collections";
+import Hero from "@/components/collection/Hero";
+import ProductDetailModal from "@/components/modals/ProductDetailModal";
 import Image from "next/image";
 
 export const metadata = {

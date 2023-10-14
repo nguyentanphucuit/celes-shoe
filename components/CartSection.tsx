@@ -7,7 +7,7 @@ import { ToastInput, useToasts } from "@geist-ui/core";
 import Image from "next/image";
 import { useState } from "react";
 
-const Cart = ({ ...product }: ProductProps) => {
+const CartSection = ({ ...product }: ProductProps) => {
   const [quantity, setQuantity] = useState(product.quantity);
   const dispatch = useAppDispatch();
   const { setToast } = useToasts();
@@ -112,4 +112,4 @@ const Cart = ({ ...product }: ProductProps) => {
   );
 };
 
-export default Cart;
+export default CartSection;

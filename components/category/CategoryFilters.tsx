@@ -11,8 +11,8 @@ import { Dialog, Transition } from "@headlessui/react";
 import { useSearchParams } from "next/navigation";
 import { Fragment, useState } from "react";
 import { FilterSection, FilterSectionRange } from "./FilterSection";
-import PaginationControls from "./pagination/PaginationControls";
-import ProductCard from "./product/ProductCard";
+import PaginationControls from "../pagination/PaginationControls";
+import ProductCard from "../product/ProductCard";
 import { XMarkIcon } from "@heroicons/react/20/solid";
 
 const CategoryFilters = () => {

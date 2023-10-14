@@ -32,7 +32,7 @@ export function ProductDetailModal() {
   return (
     item && (
       <Transition.Root appear show={isOpen} as={Fragment}>
-        <Dialog as="div" className="relative z-10" onClose={handleClosedModal}>
+        <Dialog as="div" className="relative z-30" onClose={handleClosedModal}>
           <Transition.Child
             as={Fragment}
             enter="ease-out duration-300"

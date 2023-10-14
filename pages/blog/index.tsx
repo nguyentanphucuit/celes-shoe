@@ -3,7 +3,7 @@ import {
   LatestArticles,
   MainArticle,
   RelatedArticle,
-} from "@/components/BlogComponent";
+} from "@/components/blog/BlogComponent";
 
 const Blog = () => {
   const data = useAppSelector((state) => state.blogReducer.items);

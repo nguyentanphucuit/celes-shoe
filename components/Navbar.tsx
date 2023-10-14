@@ -3,7 +3,7 @@ import Image from "next/legacy/image";
 import Link from "next/link";
 import { Fragment, useEffect, useState } from "react";
 import Banner from "./Banner";
-import CartModal from "./CartModal";
+import CartModal from "./modals/CartModal";
 import { useRouter } from "next/router";
 import { Popover, Transition } from "@headlessui/react";
 import { usePathname } from "next/navigation";
@@ -73,7 +73,7 @@ const Navbar = () => {
 
   return (
     <>
-      <nav className="w-full fixed z-10 bg-gray-800 ">
+      <nav className="w-full fixed z-20 bg-gray-800 ">
         <Banner />
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <div className="flex h-16 items-center justify-between">

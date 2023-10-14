@@ -1,9 +1,9 @@
 "use client";
 import React, { useEffect, useState } from "react";
-import ProductCard from "./product/ProductCard";
+import ProductCard from "../product/ProductCard";
 import { ProductProps } from "@/types";
 import { useAppDispatch, useAppSelector } from "@/redux/hooks";
-import PaginationControls from "./pagination/PaginationControls";
+import PaginationControls from "../pagination/PaginationControls";
 import { ITEMS_PER_PAGE } from "@/constants";
 import { Loading } from "@geist-ui/core";
 import { getDownloadURL, listAll, ref } from "firebase/storage";

@@ -4,7 +4,7 @@ import {
   LatestArticles,
   MainArticle,
   RelatedArticle,
-} from "@/components/BlogComponent";
+} from "@/components/blog/BlogComponent";
 
 const Blog = () => {
   const router = useRouter();

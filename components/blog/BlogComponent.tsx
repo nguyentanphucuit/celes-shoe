@@ -33,7 +33,7 @@ const LatestArticles = (props: any) => {
     <div>
       <div className="mx-auto max-w-2xl lg:mx-0 py-4">
         <h2 className="text-lg font-bold tracking-tight text-gray-900 sm:text-2xl">
-          Latest Article
+          Latest Articles
         </h2>
       </div>
       <article className="grid grid-cols-3 gap-4 py-4 border-t">
@@ -83,7 +83,7 @@ const RelatedArticle = (props: any) => {
       <div className="mx-auto max-w-7xl">
         <div className="mx-auto max-w-2xl lg:mx-0">
           <h2 className="text-lg font-bold tracking-tight text-gray-900 sm:text-2xl">
-            Related article
+            Related Articles
           </h2>
         </div>
         <div className="mx-auto grid max-w-2xl grid-cols-1 gap-x-8 gap-y-16 border-t border-gray-200 pt-4 mt-4 sm:pt-8 lg:mx-0 lg:max-w-none lg:grid-cols-3">
