@@ -1,14 +1,14 @@
 import "@/app/globals.css";
-import CategoryFilters from "@/components/category/CategoryFilters";
+import ProductFilters from "@/components/product/ProductFilters";
 import ProductDetailModal from "@/components/modals/ProductDetailModal";
 
-const Category = () => {
+const Product = () => {
   return (
     <div>
       <ProductDetailModal />
-      <CategoryFilters />
+      <ProductFilters />
     </div>
   );
 };
 
-export default Category;
+export default Product;

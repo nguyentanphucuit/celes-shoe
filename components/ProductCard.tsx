@@ -3,17 +3,17 @@
 import { ProductProps } from "@/types";
 import Image from "next/image";
 import React, { use } from "react";
-import CustomButton from "../CustomButton";
-import Rating from "../Rating";
+import CustomButton from "./CustomButton";
+import Rating from "./Rating";
 import { useAppDispatch, useAppSelector } from "@/redux/hooks";
 import { addToCart } from "@/redux/features/cartSlice";
 import { isOpenModal } from "@/redux/features/productDetailSlice";
 
-import ColorsComponent from "../ColorComponent";
-import SizeComponent from "../SizeComponent";
+import ColorsComponent from "./ColorComponent";
+import SizeComponent from "./SizeComponent";
 import { ToastInput, useToasts } from "@geist-ui/core";
 import { textAlert } from "@/constants";
-import SkeletonProduct from "../SkeletonProduct";
+import SkeletonProduct from "./SkeletonProduct";
 import { calculateDiscountPrice } from "@/constants/common";
 
 const ProductCard = (props: any) => {

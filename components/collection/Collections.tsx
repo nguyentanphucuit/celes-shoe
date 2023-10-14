@@ -1,6 +1,6 @@
 "use client";
 import React, { useEffect, useState } from "react";
-import ProductCard from "../product/ProductCard";
+import ProductCard from "../ProductCard";
 import { ProductProps } from "@/types";
 import { useAppDispatch, useAppSelector } from "@/redux/hooks";
 import PaginationControls from "../pagination/PaginationControls";

@@ -53,7 +53,7 @@ const LatestArticles = (props: any) => {
                   {blog.date}
                 </time>
                 <Link
-                  href={`/category?categories=${blog.category.toLowerCase()}`}
+                  href={`/product?categories=${blog.category.toLowerCase()}`}
                   className="relative z-9 rounded-full bg-gray-50 px-3 py-1.5 font-medium text-gray-600 hover:bg-gray-100">
                   {blog.category}
                 </Link>
@@ -104,7 +104,7 @@ const RelatedArticle = (props: any) => {
                   {blog.date}
                 </time>
                 <Link
-                  href={`/category?categories=${blog.category.toLowerCase()}`}
+                  href={`/product?categories=${blog.category.toLowerCase()}`}
                   className="relative z-9 rounded-full bg-gray-50 px-3 py-1.5 font-medium text-gray-600 hover:bg-gray-100">
                   {blog.category}
                 </Link>

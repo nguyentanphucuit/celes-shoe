@@ -12,10 +12,10 @@ import { useSearchParams } from "next/navigation";
 import { Fragment, useState } from "react";
 import { FilterSection, FilterSectionRange } from "./FilterSection";
 import PaginationControls from "../pagination/PaginationControls";
-import ProductCard from "../product/ProductCard";
+import ProductCard from "../ProductCard";
 import { XMarkIcon } from "@heroicons/react/20/solid";
 
-const CategoryFilters = () => {
+const ProductFilters = () => {
   const [isExpandSort, setIsExpandSort] = useState(false);
   const [isShowFilters, setIsShowFilters] = useState(false);
   const searchParams = useSearchParams();
@@ -280,4 +280,4 @@ const ListFiltersSection = (props: any) => {
   );
 };
 
-export default CategoryFilters;
+export default ProductFilters;
