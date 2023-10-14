@@ -94,10 +94,9 @@ export function ProductDetailModal() {
                             </span>
                             <span className="text-2xl font-bold text-gray-900 dark:text-white">
                               $
-                              {calculateDiscountPrice(
-                                item.price,
+                              {calculateDiscountPrice(item.price)(
                                 item.discount
-                              )}
+                              )()}
                             </span>
                           </div>
 

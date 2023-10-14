@@ -146,13 +146,13 @@ async function sendEmail(req: any, res: any) {
                                                       <tbody>
                                                           <tr>
                                                               <td align="right" class="esd-block-text es-p20t es-p20b es-m-p0t es-m-p0b">
-                                                                  <p class="p_price">$${
-                                                                    calculateDiscountPrice(
-                                                                      item.price,
-                                                                      item.discount
-                                                                    ) *
+                                                                  <p class="p_price">$${calculateDiscountPrice(
+                                                                    item.price
+                                                                  )(
+                                                                    item.discount
+                                                                  )(
                                                                     item.quantity
-                                                                  }</p>
+                                                                  )}</p>
                                                               </td>
                                                           </tr>
                                                       </tbody>

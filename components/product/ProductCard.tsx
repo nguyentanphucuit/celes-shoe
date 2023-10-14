@@ -124,7 +124,7 @@ const ProductCard = (props: any) => {
               ${props.price}
             </span>
             <span className="text-xl font-bold text-gray-900 dark:text-white">
-              ${calculateDiscountPrice(props.price, props.discount)}
+              ${calculateDiscountPrice(props.price)(props.discount)()}
             </span>
           </div>
           <CustomButton

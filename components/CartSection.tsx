@@ -62,7 +62,7 @@ const CartSection = ({ ...product }: ProductProps) => {
               ${product.price}
             </p>
             <p className="hidden lg:block">
-              ${calculateDiscountPrice(product.price, product.discount)}
+              ${calculateDiscountPrice(product.price)(product.discount)()}
             </p>
           </div>
 
@@ -79,25 +79,14 @@ const CartSection = ({ ...product }: ProductProps) => {
             ))}
           </select>
           <p className="hidden lg:block ml-4">
-            $
-            {
-              +(
-                calculateDiscountPrice(product.price, product.discount) *
-                quantity
-              ).toFixed(2)
-            }
+            ${calculateDiscountPrice(product.price)(product.discount)(quantity)}
           </p>
         </div>
         <p className="hidden lg:block mt-1 text-gray-500">
           Color : {product.selectedColor?.toUpperCase()}
         </p>
         <p className="block lg:hidden mt-2">
-          $
-          {
-            +(
-              calculateDiscountPrice(product.price, product.discount) * quantity
-            ).toFixed(2)
-          }
+          ${calculateDiscountPrice(product.price)(product.discount)(quantity)}
         </p>
         <div className="flex flex-1 items-end justify-between text-sm">
           <p className="hidden lg:block text-gray-500">
