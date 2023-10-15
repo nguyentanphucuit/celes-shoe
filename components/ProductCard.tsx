@@ -119,10 +119,10 @@ const ProductCard = (props: any) => {
         <Rating rating={props.rating} />
         <div className="flex items-center justify-between">
           <div className="space-x-2">
-            <span className="text-base font-semibold line-through text-gray-500 dark:text-white">
+            <span className="text-sm font-semibold line-through text-gray-500 dark:text-white">
               ${props.price}
             </span>
-            <span className="text-xl font-bold text-gray-900 dark:text-white">
+            <span className="text-md font-bold text-gray-900 dark:text-white">
               ${calculateDiscountPrice(props.price)(props.discount)()}
             </span>
           </div>

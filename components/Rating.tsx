@@ -4,7 +4,7 @@ import React from "react";
 const Rating = ({ rating }: RatingProps) => {
   const _rating = Math.round(rating);
   return (
-    <div className="flex items-center mt-2.5 mb-5">
+    <div className="flex items-center my-2.5">
       {Array.from(Array(_rating)).map((r, index) => (
         <div key={index}>
           <svg
