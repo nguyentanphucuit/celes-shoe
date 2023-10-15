@@ -15,7 +15,7 @@ import { addDoc, collection, doc, getDocs } from "firebase/firestore";
 const Collections = () => {
   // const products = useAppSelector((state) => state.productsReducer.items);
   const [products, setProducts] = useState([] as ProductProps[]);
-  const [isLoading, setIsLoading] = useState(false);
+  const [isLoading, setIsLoading] = useState(true);
   const searchParams = useSearchParams();
 
   // pagination
@@ -38,7 +38,9 @@ const Collections = () => {
     getProducts();
   }, []);
 
-  return (
+  return isLoading ? (
+    <Loading />
+  ) : (
     <>
       <div className="home__text-container my-6">
         <h1 className="text-4xl font-extrabold my-2">Shoe Catalogue</h1>

@@ -10,9 +10,10 @@ import ColorsComponent from "../ColorComponent";
 import CustomButton from "../CustomButton";
 import { addToCart, changeQuantity } from "@/redux/features/cartSlice";
 import { useAppDispatch } from "@/redux/hooks";
-import Rating from "../Rating";
+import RatingComponent from "../RatingComponent";
 import Link from "next/link";
 import { current } from "@reduxjs/toolkit";
+import { Grid, Rating } from "@geist-ui/core";
 
 const ProductDetailComponent = (props: ProductProps) => {
   const [selectedImage, setSelectedImage] = useState(props.imageUrl);
@@ -26,9 +27,6 @@ const ProductDetailComponent = (props: ProductProps) => {
     const newQuantity = Number(e.target.value);
     setQuantity(newQuantity);
     dispatch(changeQuantity({ id, newQuantity }));
-  };
-  const handleSelectedTab = (e: any) => {
-    console.log(e.target);
   };
 
   const tabs = [
@@ -103,7 +101,7 @@ const ProductDetailComponent = (props: ProductProps) => {
             {props.category}
           </Link>
           <div className="text-3xl font-semibold">{props.title}</div>
-          <Rating rating={props.rating} />
+          <RatingComponent rating={props.rating} />
           <p>{props.description}</p>
           <div className="space-x-4 flex items-center">
             <span className="text-lg text-gray-600 line-through">
@@ -200,10 +198,18 @@ const Description = (props: any) => {
   );
 };
 const Reviews = (props: any) => {
+  const [review, setReview] = useState({ rating: 1 });
+  const handleReview = (e: any) => {
+    setReview({ ...review, [e.target.id]: e.target.value });
+  };
+  const handleSubmitReview = (e: any) => {
+    e.preventDefault();
+    console.log(review);
+  };
   return (
     <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
       <div className="col-span-1 space-y-4">
-        <Rating rating={4.95} />
+        <RatingComponent rating={4.95} />
         <p className="text-sm font-medium text-gray-500 dark:text-gray-400">
           {props.totalReviews} global ratings
         </p>
@@ -240,7 +246,7 @@ const Reviews = (props: any) => {
               alt=""
             />
             <div className="space-y-1 text-sm font-medium dark:text-white">
-              <Rating rating={4} />
+              <RatingComponent rating={4} />
               <div>
                 Peter Nguyen -{" "}
                 <span className="text-sm text-gray-500 dark:text-gray-400">
@@ -258,30 +264,44 @@ const Reviews = (props: any) => {
       <div className="space-y-4 text-md text-gray-600">
         <div className="text-xl">Review this product</div>
         <div>Your email address will not be published.</div>
-        <div>Your Rating :</div>
+        <div>
+          Your Rating :
+          <Grid.Container gap={2} justify="center">
+            <Grid xs={24} sm={12} md={8} justify="center">
+              <Rating
+                type="warning"
+                onValueChange={(value) =>
+                  setReview({ ...review, rating: value })
+                }
+              />
+            </Grid>
+          </Grid.Container>
+        </div>
         <form className="space-y-4">
           <div>
             <label
-              htmlFor="your-review"
+              htmlFor="review"
               className="block mb-2 text-sm font-medium  dark:text-white">
               Your Review
             </label>
             <textarea
-              id="your-review"
+              id="review"
               rows={4}
               cols={4}
+              onChange={handleReview}
               className="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
               placeholder="Write your thoughts here..."></textarea>
           </div>
           <div>
             <label
-              htmlFor="your_name"
+              htmlFor="name"
               className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
               Your name
             </label>
             <input
               type="text"
-              id="your_name"
+              id="name"
+              onChange={handleReview}
               className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
               placeholder="John"
               required
@@ -296,6 +316,7 @@ const Reviews = (props: any) => {
             <input
               type="email"
               id="email"
+              onChange={handleReview}
               className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
               placeholder="peter.nguyen@company.com"
               required
@@ -305,7 +326,7 @@ const Reviews = (props: any) => {
             btnType="submit"
             title="Submit"
             containerStyles="btn-add-to-cart-full"
-            handleClick={() => {}}
+            handleClick={handleSubmitReview}
           />
         </form>
       </div>

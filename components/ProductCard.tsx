@@ -4,7 +4,7 @@ import { ProductProps } from "@/types";
 import Image from "next/image";
 import React, { use } from "react";
 import CustomButton from "./CustomButton";
-import Rating from "./Rating";
+import RatingComponent from "./RatingComponent";
 import { useAppDispatch, useAppSelector } from "@/redux/hooks";
 import { addToCart } from "@/redux/features/cartSlice";
 import { isOpenModal } from "@/redux/features/productDetailSlice";
@@ -116,7 +116,7 @@ const ProductCard = (props: any) => {
         </a>
         <ColorsComponent colors={props.colors} productId={props.id} />
         <SizeComponent sizes={props.sizes} productId={props.id} />
-        <Rating rating={props.rating} />
+        <RatingComponent rating={props.rating} />
         <div className="flex items-center justify-between">
           <div className="space-x-2">
             <span className="text-sm font-semibold line-through text-gray-500 dark:text-white">

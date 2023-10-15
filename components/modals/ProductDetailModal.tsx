@@ -3,7 +3,7 @@
 import { Fragment, useState } from "react";
 import { Dialog, RadioGroup, Transition } from "@headlessui/react";
 import { XMarkIcon } from "@heroicons/react/24/outline";
-import Rating from "../Rating";
+import RatingComponent from "../RatingComponent";
 import Image from "next/image";
 import { useSelector } from "react-redux";
 import { useAppDispatch } from "@/redux/hooks";
@@ -103,7 +103,9 @@ export function ProductDetailModal() {
                           {/* Reviews */}
                           <div className="mt-6">
                             <h4 className="sr-only">Reviews</h4>
-                            {item.rating && <Rating rating={item.rating} />}
+                            {item.rating && (
+                              <RatingComponent rating={item.rating} />
+                            )}
                           </div>
                         </section>
 
