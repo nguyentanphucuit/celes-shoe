@@ -15,6 +15,7 @@ import { ToastInput, useToasts } from "@geist-ui/core";
 import { textAlert } from "@/constants";
 import SkeletonProduct from "./SkeletonProduct";
 import { calculateDiscountPrice } from "@/constants/common";
+import Link from "next/link";
 
 const ProductCard = (props: any) => {
   const dispatch = useAppDispatch();
@@ -34,29 +35,27 @@ const ProductCard = (props: any) => {
   const handleOpenDetail = () => {
     dispatch(isOpenModal({ isOpen: true, item: { ...props } }));
   };
-  const handleClickImage = (id: string) => {
-    console.log(id);
-  };
 
   return props.isLoading ? (
     <SkeletonProduct />
   ) : (
-    <div className="w-full max-w-sm group relative bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
+    <div className="w-full max-w-sm group relative bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700 hover:shadow-lg">
       <label className="absolute flex justify-center items-center w-12 h-12 top-2 z-10 left-2 p-2 bg-red-500 text-white text-sm rounded-full">
         -{props.discount}%
       </label>
       <div className="overflow-hidden">
-        <Image
-          src={props.imageUrl}
-          alt="shoe card"
-          onClick={() => handleClickImage(props.id)}
-          width={400}
-          height={320}
-          className="object-cover w-full h-60 rounded-t-lg cursor-pointer transition duration-500 group-hover:scale-105"
-        />
+        <Link href={`/product/${encodeURIComponent(props.id)}`}>
+          <Image
+            src={props.imageUrl}
+            alt="shoe card"
+            width={400}
+            height={320}
+            className="object-cover w-full h-60 rounded-t-lg cursor-pointer transition duration-500 group-hover:scale-105"
+          />
+        </Link>
       </div>
       <div className="absolute top-4 right-0 text-black dark:text-white flex flex-col gap-1 invisible transition group-hover:-translate-x-4 duration-300 group-hover:visible">
-        <button className="bg-white p-2 hover:bg-black hover:text-white">
+        <button className="bg-white p-2 hover:bg-black hover:text-white shadow-lg border border-gray-200">
           <svg
             xmlns="http://www.w3.org/2000/svg"
             fill="none"
@@ -72,7 +71,7 @@ const ProductCard = (props: any) => {
           </svg>
         </button>
         <button
-          className="bg-white p-2 hover:bg-black hover:text-white"
+          className="bg-white p-2 hover:bg-black hover:text-white shadow-lg border border-gray-200"
           onClick={handleOpenDetail}>
           <svg
             xmlns="http://www.w3.org/2000/svg"
@@ -93,7 +92,7 @@ const ProductCard = (props: any) => {
             />
           </svg>
         </button>
-        <button className="bg-white p-2 hover:bg-black hover:text-white">
+        <button className="bg-white p-2 hover:bg-black hover:text-white shadow-lg border border-gray-200">
           <svg
             xmlns="http://www.w3.org/2000/svg"
             fill="none"

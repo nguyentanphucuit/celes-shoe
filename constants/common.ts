@@ -26,3 +26,7 @@ export const totalPrice = (cartItem: ProductProps[]) =>
     .toFixed(2);
 export const totalQuantity = (cartItem: ProductProps[]) =>
   cartItem.reduce((acc, item) => acc + item.quantity, 0);
+
+export const capitalizeFirstLetter = (str: string) => {
+  return str.charAt(0).toUpperCase() + str.slice(1);
+};

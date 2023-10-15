@@ -158,7 +158,7 @@ const CartModal = () => {
                           )}
                           <CustomButton
                             handleClick={handleCheckout}
-                            containerStyles="w-full flex items-center justify-center rounded-md border border-transparent bg-primary py-3 text-base font-medium text-white shadow-sm enabled:hover:bg-indigo-700"
+                            containerStyles="w-full flex items-center justify-center border border-transparent bg-primary py-3 text-base font-medium text-white shadow-sm enabled:hover:bg-indigo-700"
                             title="Checkout"
                             isDisabled={isEmpty || email === ""}
                           />
