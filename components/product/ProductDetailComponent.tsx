@@ -155,23 +155,19 @@ const ProductDetailComponent = (props: ProductProps) => {
 const TabContents = (props: any) => {
   const content = props.contents;
   return (
-    <div className="my-12 px-6 lg:px-24 text-start items-center ">
-      <div className="border-b border-gray-300">
-        {content.map((item: any) => (
-          <div key={item} className="grid grid-cols-4 divide-y">
-            <div className="col-span-2 md:col-span-1">
-              <p className="p-4 text-gray-500 bg-gray-200 border-l border-gray-300">
-                {item.name}
-              </p>
-            </div>
-            <div className="col-span-2 md:col-span-3 ">
-              <p className="p-4 text-gray-500 border-r border-gray-300">
-                {item.value}
-              </p>
-            </div>
-          </div>
-        ))}
-      </div>
+    <div className="my-12 px-6 lg:px-24 flex flex-col text-start items-center relative overflow-x-auto">
+      <table className="table-fixed border-r border-gray-100">
+        <tbody>
+          {content.map((item: any) => (
+            <tr
+              key={item.name}
+              className=" border-b dark:bg-gray-800 dark:border-gray-700">
+              <td className="w-1/3 px-6 py-4 bg-gray-50 ">{item.name}</td>
+              <td className="w-2/3 px-6 py-4">{item.value}</td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
     </div>
   );
 };
