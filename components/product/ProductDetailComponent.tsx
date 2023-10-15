@@ -42,16 +42,16 @@ const ProductDetailComponent = (props: ProductProps) => {
     {
       name: "Additional Information",
       contents: [
-        { name: "ScreenDisplay", value: "10.4 inches" },
+        { name: "Screen Display", value: "10.4 inches" },
         { name: "Colors", value: ["Cyan", "Dark Grey", "Orange"] },
-        { name: "ScreenResolution", value: "1920 x 1200 Pixels" },
+        { name: "Screen Resolution", value: "1920 x 1200 Pixels" },
         { name: "Resolution", value: "2000 x 1200" },
         { name: "Processor", value: "2.3 GHz (128 GB)" },
         {
           name: "Graphics",
           value: "Exynos 9611, Octa Core (4x2.3GHz + 4x1.7GHz)",
         },
-        { name: "WirelessType", value: "802.11a/b/g/n/ac, Bluetooth" },
+        { name: "Wireless Type", value: "802.11a/b/g/n/ac, Bluetooth" },
       ],
     },
     {
@@ -201,7 +201,7 @@ const Description = (props: any) => {
 };
 const Reviews = (props: any) => {
   return (
-    <div className="grid grid-cols-2 gap-8">
+    <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
       <div className="col-span-1 space-y-4">
         <Rating rating={4.95} />
         <p className="text-sm font-medium text-gray-500 dark:text-gray-400">
