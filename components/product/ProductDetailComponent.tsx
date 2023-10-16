@@ -54,7 +54,7 @@ const ProductDetailComponent = (props: ProductProps) => {
     },
     {
       name: "Reviews",
-      reviews: [{ 1: 1221 }, { 2: 296 }, { 3: 140 }, { 4: 70 }, { 5: 17 }],
+      reviews: { 1: 17, 2: 70, 3: 140, 4: 296, 5: 1221 },
       totalReviews: 1745,
     },
   ];
@@ -213,27 +213,29 @@ const Reviews = (props: any) => {
         <p className="text-sm font-medium text-gray-500 dark:text-gray-400">
           {props.totalReviews} global ratings
         </p>
-        {props.reviews.map((review: any, index: number) => (
-          <div key={index + 1} className="flex items-center mt-4">
-            <a
-              href="#"
-              className="text-sm font-medium text-blue-600 dark:text-blue-500 hover:underline">
-              {index + 1} star
-            </a>
-            <div className="w-2/4 h-5 mx-4 bg-gray-200 rounded dark:bg-gray-700">
-              <div
-                className="h-5 bg-yellow-300 rounded"
-                style={{
-                  width: `${Math.round(
-                    (review[index + 1] * 100) / props.totalReviews
-                  )}%`,
-                }}></div>
+        {[...Object.keys(props.reviews).reverse()].map(
+          (key: any, index: number) => (
+            <div key={key} className="flex items-center mt-4">
+              <a
+                href="#"
+                className="text-sm font-medium text-blue-600 dark:text-blue-500 hover:underline">
+                {key} star
+              </a>
+              <div className="w-2/4 h-5 mx-4 bg-gray-200 rounded dark:bg-gray-700">
+                <div
+                  className="h-5 bg-yellow-300 rounded"
+                  style={{
+                    width: `${Math.round(
+                      (props.reviews[key] * 100) / props.totalReviews
+                    )}%`,
+                  }}></div>
+              </div>
+              <span className="text-sm font-medium text-gray-500 dark:text-gray-400">
+                {Math.round((props.reviews[key] * 100) / props.totalReviews)}%
+              </span>
             </div>
-            <span className="text-sm font-medium text-gray-500 dark:text-gray-400">
-              {Math.round((review[index + 1] * 100) / props.totalReviews)}%
-            </span>
-          </div>
-        ))}
+          )
+        )}
         <div className="pt-4 text-2xl font-semibold">Rating & Reviews</div>
         <div>
           <div className="flex items-center mb-4 space-x-4">
