@@ -42,5 +42,5 @@ module.exports = {
         /bg-(red|green|blue|yellow|indigo|gray)-(100|200|300|400|500|600|700|800|900)/,
     },
   ],
-  plugins: [require("@tailwindcss/forms")],
+  plugins: [require("@tailwindcss/forms"), require("daisyui")],
 };

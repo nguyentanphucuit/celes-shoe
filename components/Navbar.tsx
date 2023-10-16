@@ -110,7 +110,7 @@ const Navbar = () => {
               </div>
             </div>
             <div className="">
-              <div className="ml-4 flex items-center md:ml-6">
+              <div className="flex items-center">
                 <CartModal />
 
                 <div className="hidden md:block relative ml-3 px-2">
