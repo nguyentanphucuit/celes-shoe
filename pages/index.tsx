@@ -18,7 +18,7 @@ export default function Home({
     <div>
       <header></header>
       <Hero />
-      <div className="mt-12 padding-x padding-y max-width" id="discover">
+      <div className="padding-x padding-y max-width" id="discover">
         <ProductDetailModal />
         <Collections />
       </div>

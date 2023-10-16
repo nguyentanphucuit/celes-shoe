@@ -95,16 +95,19 @@ const Collections = () => {
 
 const ListCategory = (props: any) => {
   return (
-    <div className="grid grid-flow-row justify-center md:grid-cols-2 lg:grid-cols-3 gap-4 my-5 ">
+    <div className=" grid grid-flow-row justify-center md:grid-cols-2 lg:grid-cols-3 gap-4 overflow-hidden">
       {props.categories.map((category: any) => (
-        <div key={category.id} className="relative ">
-          <Image
-            src={category.imageUrl}
-            alt={category}
-            width={500}
-            height={500}
-            style={{ height: 300 }}
-          />
+        <div key={category.id} className="relative overflow-hidden">
+          <div className="">
+            <Image
+              src={category.imageUrl}
+              alt={category}
+              className="object-cover w-full hover:scale-110 transition duration-500"
+              width={500}
+              height={500}
+              style={{ height: 300 }}
+            />
+          </div>
           <div className="absolute top-10 left-10 z-10">
             <div className="text-3xl text-white my-5">
               {capitalizeFirstLetter(category.name)}
