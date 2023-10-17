@@ -8,7 +8,7 @@ import { useRouter } from "next/router";
 import { Popover, Transition } from "@headlessui/react";
 import { usePathname } from "next/navigation";
 import { classNames } from "@/constants/common";
-import ActionButton from "./ActionButton";
+import SpeedDial from "./SpeedDial";
 
 const Navbar = () => {
   const [showMenu, setShowMenu] = useState(false);
@@ -75,7 +75,7 @@ const Navbar = () => {
   return (
     <>
       <nav className="w-full fixed z-20 bg-gray-800 ">
-        <ActionButton />
+        <SpeedDial />
         <Banner />
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <div className="flex h-16 items-center justify-between">
