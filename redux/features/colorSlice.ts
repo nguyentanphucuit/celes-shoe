@@ -5,16 +5,23 @@ const initialState = [...listColors];
 
 const colorSlice = createSlice({
   name: "color",
-  initialState,
+  initialState: { items: [...initialState] },
   reducers: {
     addColor: (state, action) => {
-      state.push(action.payload);
+      state.items.push(action.payload);
+    },
+    updateAllColor: (state, action) => {
+      state.items = action.payload;
+      return state;
     },
     removeColor: (state, action) => {
-      return state.filter((color) => color.name !== action.payload.name);
+      state.items = state.items.filter(
+        (color) => color.name !== action.payload.name
+      );
+      return state;
     },
   },
 });
 
-export const { addColor, removeColor } = colorSlice.actions;
+export const { addColor, removeColor, updateAllColor } = colorSlice.actions;
 export default colorSlice.reducer;

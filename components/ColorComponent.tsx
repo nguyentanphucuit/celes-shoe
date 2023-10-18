@@ -13,14 +13,7 @@ const ColorsComponent = (props: any) => {
     setSelectedColor(color);
     dispatch(changeColor({ productId, newColor }));
   };
-  // const colorsCollectionRef = collection(db, "colors");
-  // const createColor = async () => {
-  //     for (let i = 0; i < colors.length; i++) {
-  //       const random = Math.floor(Math.random() * 60);
-  //       const { id, ...newData } = { ...colors[i], discount: random };
-  //       await addDoc(colorsCollectionRef, newData);
-  //     }
-  //   };
+
   return (
     <RadioGroup
       value={selectedColor}

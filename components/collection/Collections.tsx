@@ -10,6 +10,8 @@ import { useSearchParams } from "next/navigation";
 import CustomButton from "../CustomButton";
 import ProductCard from "../ProductCard";
 import PaginationControls from "../pagination/PaginationControls";
+import { updateAllColor } from "@/redux/features/colorSlice";
+import { useAppDispatch } from "@/redux/hooks";
 
 const Collections = () => {
   const searchParams = useSearchParams();
@@ -23,6 +25,9 @@ const Collections = () => {
 
   const { data: products, loading, error } = useApiDataFireStore("products");
   const { data: categories } = useApiDataFireStore("categories");
+  // const { data: colors } = useApiDataFireStore("colors");
+  // const dispatch = useAppDispatch();
+  // dispatch(updateAllColor(colors));
   const collections = products.slice(startIndex, endIndex);
 
   return loading ? (

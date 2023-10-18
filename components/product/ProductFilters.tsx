@@ -1,7 +1,6 @@
 import {
   ITEMS_PER_PAGE,
   listCategories,
-  listColors,
   listSizes,
   listSorts,
 } from "@/constants";
@@ -246,6 +245,8 @@ const ProductFilters = () => {
 };
 
 const ListFiltersSection = (props: any) => {
+  const listColors = useAppSelector((state: any) => state.colorReducer.items);
+
   return (
     <>
       <h3 className="sr-only">Categories</h3>

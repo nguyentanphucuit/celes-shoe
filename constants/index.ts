@@ -45,30 +45,44 @@ export const listCategories = [
 export const listColors = [
   {
     name: "white",
+    hex: "",
+    rgb: "",
     class: "white-500",
   },
   {
     name: "red",
+    hex: "",
+    rgb: "",
     class: "red-500",
   },
   {
     name: "yellow",
+    hex: "",
+    rgb: "",
     class: "yellow-500",
   },
   {
     name: "green",
+    hex: "",
+    rgb: "",
     class: "green-500",
   },
   {
     name: "blue",
+    hex: "",
+    rgb: "",
     class: "blue-500",
   },
   {
     name: "indigo",
+    hex: "",
+    rgb: "",
     class: "indigo-500",
   },
   {
     name: "black",
+    hex: "",
+    rgb: "",
     class: "black",
   },
 ];
