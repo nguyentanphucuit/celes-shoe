@@ -45,31 +45,31 @@ export const listCategories = [
 export const listColors = [
   {
     name: "white",
-    value: "white-500",
+    class: "white-500",
   },
   {
     name: "red",
-    value: "red-500",
+    class: "red-500",
   },
   {
     name: "yellow",
-    value: "yellow-500",
+    class: "yellow-500",
   },
   {
     name: "green",
-    value: "green-500",
+    class: "green-500",
   },
   {
     name: "blue",
-    value: "blue-500",
+    class: "blue-500",
   },
   {
     name: "indigo",
-    value: "indigo-500",
+    class: "indigo-500",
   },
   {
     name: "black",
-    value: "black",
+    class: "black",
   },
 ];
 
@@ -165,6 +165,12 @@ export const listProducts = [
         class: "bg-green-500",
         name: "Green",
         selectedClass: "ring-gray-400",
+      },
+      {
+        inStock: true,
+        class: "bg-pink-500",
+        name: "Pink",
+        selectedClass: "ring-pink-400",
       },
       {
         inStock: true,

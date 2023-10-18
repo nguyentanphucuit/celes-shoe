@@ -36,7 +36,7 @@ const ProductCard = (props: any) => {
     dispatch(isOpenModal({ isOpen: true, item: { ...props } }));
   };
 
-  return props.isLoading ? (
+  return props.loading ? (
     <SkeletonProduct />
   ) : (
     <div className="w-full max-w-sm group relative bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700 hover:shadow-lg">

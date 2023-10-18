@@ -1,27 +1,17 @@
 "use client";
-import React, { useEffect, useState } from "react";
-import ProductCard from "../ProductCard";
-import { ProductProps } from "@/types";
-import { useAppDispatch, useAppSelector } from "@/redux/hooks";
-import PaginationControls from "../pagination/PaginationControls";
 import { ITEMS_PER_PAGE } from "@/constants";
-import Image from "next/image";
-import { Loading } from "@geist-ui/core";
-import { getDownloadURL, listAll, ref } from "firebase/storage";
-import { db, storage } from "@/firebaseConfig";
-import { changeImage } from "@/redux/features/productsSlice";
-import { useSearchParams } from "next/navigation";
-import { addDoc, collection, doc, getDocs } from "firebase/firestore";
-import CustomButton from "../CustomButton";
 import { capitalizeFirstLetter } from "@/constants/common";
+import { useApiDataFireStore } from "@/pages/api/useApiData";
+import { ProductProps } from "@/types";
+import { Loading } from "@geist-ui/core";
+import Image from "next/image";
 import Link from "next/link";
+import { useSearchParams } from "next/navigation";
+import CustomButton from "../CustomButton";
+import ProductCard from "../ProductCard";
+import PaginationControls from "../pagination/PaginationControls";
 
 const Collections = () => {
-  // const products = useAppSelector((state) => state.productsReducer.items);
-  const [products, setProducts] = useState([] as ProductProps[]);
-  const [categories, setCategories] = useState([] as string[]);
-
-  const [isLoading, setIsLoading] = useState(true);
   const searchParams = useSearchParams();
 
   // pagination
@@ -30,31 +20,12 @@ const Collections = () => {
 
   const startIndex = (current_page - 1) * per_page;
   const endIndex = current_page * per_page;
+
+  const { data: products, loading, error } = useApiDataFireStore("products");
+  const { data: categories } = useApiDataFireStore("categories");
   const collections = products.slice(startIndex, endIndex);
 
-  const productsCollectionRef = collection(db, "products");
-  const categoriesCollectionRef = collection(db, "categories");
-
-  useEffect(() => {
-    const getProducts = async () => {
-      const products = await getDocs(productsCollectionRef).finally(() =>
-        setIsLoading(false)
-      );
-      setProducts(
-        products.docs.map((doc: any) => ({ ...doc.data(), id: doc.id }))
-      );
-    };
-    const getCategories = async () => {
-      const categories = await getDocs(categoriesCollectionRef);
-      setCategories(
-        categories.docs.map((doc: any) => ({ ...doc.data(), id: doc.id }))
-      );
-    };
-    getProducts();
-    getCategories();
-  }, []);
-
-  return isLoading ? (
+  return loading ? (
     <Loading />
   ) : (
     <>
@@ -65,7 +36,7 @@ const Collections = () => {
       </div>
       <div className="grid grid-flow-row justify-center md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 my-6">
         {collections.map((product: ProductProps) => (
-          <ProductCard {...product} key={product.id} isLoading={isLoading} />
+          <ProductCard {...product} key={product.id} loading={loading} />
         ))}
       </div>
       <div className="home__text-container my-6">
@@ -77,7 +48,7 @@ const Collections = () => {
           <div
             key={product.id}
             className="carousel-item w-full md:w-1/2 lg:w-1/3 xl:w-1/4">
-            <ProductCard {...product} key={product.id} isLoading={isLoading} />
+            <ProductCard {...product} key={product.id} loading={loading} />
           </div>
         ))}
       </div>
@@ -126,29 +97,3 @@ const ListCategory = (props: any) => {
 };
 
 export default Collections;
-
-// const imageListRef = ref(storage, "products/");
-
-// const createProduct = async () => {
-//   for (let i = 0; i < products.length; i++) {
-//     const random = Math.floor(Math.random() * 60);
-//     const { id, ...newData } = { ...products[i], discount: random };
-//     await addDoc(productsCollectionRef, newData);
-//   }
-// };
-
-// useEffect(() => {
-//   listAll(imageListRef).then((res) => {
-//     res.items.forEach((item, index) => {
-//       getDownloadURL(item)
-//         .then((url) => {
-//           setImageList((prev: any) => [...prev, url]);
-//           if (data[index])
-//             dispatch(
-//               changeImage({ productId: data[index].id, newImage: url })
-//             );
-//         })
-//         .finally(() => setIsLoading(false));
-//     });
-//   });
-// }, []);

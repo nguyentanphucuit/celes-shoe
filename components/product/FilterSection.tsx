@@ -27,9 +27,9 @@ const FilterSection = (props: any) => {
       : params.delete(e.target.name.toLowerCase());
     router.push(`${newPath}${params.toString()}`, { scroll: false });
   };
-
+  console.log(listColors);
   const bgColorVariants = Object.fromEntries(
-    listColors.map((color) => [color.name, `bg-${color.value}`])
+    listColors.map((color) => [color.name, `bg-${color.class}`])
   );
 
   return (
