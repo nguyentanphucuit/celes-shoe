@@ -1,29 +1,17 @@
 import { classNames } from "@/constants/common";
-import { changeSize } from "@/redux/features/productsSlice";
-import { useAppDispatch } from "@/redux/hooks";
 import { RadioGroup } from "@headlessui/react";
-import React, { useState } from "react";
 
 const SizeComponent = (props: any) => {
-  const [selectedSize, setSelectedSize] = useState(props.sizes?.[0]);
-  const dispatch = useAppDispatch();
-  const handleChangeSize = (size: any) => {
-    const productId = props.productId;
-    const newSize = size.name;
-    setSelectedSize(size);
-    dispatch(changeSize({ productId, newSize }));
-  };
-
   return (
     <RadioGroup
-      value={selectedSize}
-      onChange={handleChangeSize}
+      value={props.selectedSize}
+      onChange={props.setSelectedSize}
       className="mt-4">
       <RadioGroup.Label className="sr-only">Choose a size</RadioGroup.Label>
       <div className="grid grid-cols-5 gap-3">
-        {props.sizes?.map((size: any) => (
+        {props.option.sizes?.map((size: any) => (
           <RadioGroup.Option
-            key={size.name}
+            key={size.size}
             value={size}
             disabled={!size.inStock}
             className={({ active }) =>
@@ -38,7 +26,7 @@ const SizeComponent = (props: any) => {
             }>
             {({ active, checked }) => (
               <>
-                <RadioGroup.Label as="span">{size.name}</RadioGroup.Label>
+                <RadioGroup.Label as="span">{size.size}</RadioGroup.Label>
                 {size.inStock ? (
                   <span
                     className={classNames(

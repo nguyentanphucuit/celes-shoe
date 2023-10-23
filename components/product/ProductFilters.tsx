@@ -30,22 +30,26 @@ const ProductFilters = () => {
 
   const filterItems = [
     ...data
-      .filter((item) => item.price >= filters.minPrice)
+      .filter((item) => item.options[0].price >= filters.minPrice)
       .filter((item) => {
         if (filters.colors.length === 0) return true;
-        const itemColors = item.colors.filter((color: any) => color.inStock);
-        const isMatchColor = itemColors.find((color: any) =>
-          filters.colors.includes(color.name.toLowerCase())
+        const itemOptions = item.options.filter(
+          (option: any) => option.inStock
+        );
+        const isMatchColor = itemOptions.find((option: any) =>
+          filters.colors.includes(option.color.toLowerCase())
         );
         return isMatchColor;
       })
       .filter((item) => {
         if (filters.sizes.length === 0) return true;
-        const itemSizes = item.sizes.filter((size: any) => size.inStock);
-        const isMatchSize = itemSizes.find((size: any) =>
-          filters.sizes.includes(size.name)
-        );
-        return isMatchSize;
+        const itemOptions = item.options.filter((option: any) => {
+          const itemSize = option.sizes.find(
+            (size: any) => size.inStock && filters.sizes.includes(size.size)
+          );
+          return itemSize;
+        });
+        return itemOptions.length > 0;
       })
       .filter((item) => {
         if (filters.categories.length === 0) return true;
@@ -246,7 +250,6 @@ const ProductFilters = () => {
 
 const ListFiltersSection = (props: any) => {
   const listColors = useAppSelector((state: any) => state.colorReducer.items);
-
   return (
     <>
       <h3 className="sr-only">Categories</h3>

@@ -15,21 +15,29 @@ export interface RatingProps {
   rating: number;
 }
 
+export interface ProductOptionsProps {
+  price: number;
+  discount: number | 0;
+  quantity: number;
+  imageUrl: string;
+  sizes: any;
+  color: string;
+  inStock: boolean;
+}
 export interface ProductProps {
   id: string;
   title: string;
   subtitle: string;
-  price: number;
-  discount: number | 0;
-  quantity: number;
   description?: string;
   category: string;
-  imageUrl: string;
   rating: number;
-  colors?: any;
-  sizes?: any;
-  selectedColor?: string;
-  selectedSize?: string;
+  options: ProductOptionsProps[];
+}
+
+export interface CartProps {
+  product: ProductProps;
+  option: ProductOptionsProps;
+  quantity: number;
 }
 
 export interface PaginationControlsProps {

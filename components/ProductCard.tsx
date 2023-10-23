@@ -1,27 +1,31 @@
 "use client";
 
-import { ProductProps } from "@/types";
+import { ProductOptionsProps, ProductProps } from "@/types";
 import Image from "next/image";
-import React, { use } from "react";
+import React, { use, useState } from "react";
 import CustomButton from "./CustomButton";
 import RatingComponent from "./RatingComponent";
 import { useAppDispatch, useAppSelector } from "@/redux/hooks";
-import { addToCart } from "@/redux/features/cartSlice";
 import { isOpenModal } from "@/redux/features/productDetailSlice";
 
-import ColorsComponent from "./ColorComponent";
+import ColorComponent from "./ColorComponent";
 import SizeComponent from "./SizeComponent";
-import { ToastInput, useToasts } from "@geist-ui/core";
 import { textAlert } from "@/constants";
 import SkeletonProduct from "./SkeletonProduct";
 import { calculateDiscountPrice } from "@/constants/common";
 import Link from "next/link";
+import { ToastInput, useToasts } from "@geist-ui/core";
+import { addToCart } from "@/redux/features/cartSlice";
 
 const ProductCard = (props: any) => {
   const dispatch = useAppDispatch();
   const product = useAppSelector((state) => state.productsReducer.items).find(
     (item) => item.id === props.id
   );
+  const [option, setOption] = useState(
+    product?.options[0] as ProductOptionsProps
+  );
+  const [selectedSize, setSelectedSize] = useState(option?.sizes[0]);
   const { setToast } = useToasts();
   const handleAddToCart = () => {
     const type = "success" as ToastInput["type"];
@@ -29,11 +33,20 @@ const ProductCard = (props: any) => {
       text: textAlert.success,
       type,
     });
-    dispatch(addToCart({ ...product }));
+    dispatch(
+      addToCart({
+        product: props,
+        option: { ...option, sizes: [selectedSize] },
+      })
+    );
   };
-
   const handleOpenDetail = () => {
     dispatch(isOpenModal({ isOpen: true, item: { ...props } }));
+  };
+
+  const handleChangeOption = (option: any) => {
+    setOption(option);
+    setSelectedSize(option.sizes[0]);
   };
 
   return props.loading ? (
@@ -41,12 +54,12 @@ const ProductCard = (props: any) => {
   ) : (
     <div className="w-full max-w-sm group relative bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700 hover:shadow-lg">
       <label className="absolute flex justify-center items-center w-12 h-12 top-2 z-10 left-2 p-2 bg-red-500 text-white text-sm rounded-full">
-        -{props.discount}%
+        -{option.discount}%
       </label>
       <div className="overflow-hidden">
         <Link href={`/product/${encodeURIComponent(props.id)}`}>
           <Image
-            src={props.imageUrl}
+            src={option.imageUrl}
             alt="shoe card"
             width={400}
             height={320}
@@ -114,16 +127,23 @@ const ProductCard = (props: any) => {
             {props.title}
           </h5>
         </a>
-        <ColorsComponent colors={props.colors} productId={props.id} />
-        <SizeComponent sizes={props.sizes} productId={props.id} />
+        <ColorComponent
+          options={props.options}
+          handleChangeOption={handleChangeOption}
+        />
         <RatingComponent rating={props.rating} />
+        <SizeComponent
+          option={option}
+          selectedSize={selectedSize}
+          setSelectedSize={setSelectedSize}
+        />
         <div className="flex items-center justify-between">
           <div className="space-x-2">
             <span className="text-sm font-semibold line-through text-gray-500 dark:text-white">
-              ${props.price}
+              ${option.price}
             </span>
             <span className="text-md font-bold text-gray-900 dark:text-white">
-              ${calculateDiscountPrice(props.price)(props.discount)()}
+              ${calculateDiscountPrice(option.price)(option.discount)()}
             </span>
           </div>
           <CustomButton

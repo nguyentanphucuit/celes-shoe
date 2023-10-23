@@ -1,17 +1,12 @@
 import { createSlice } from "@reduxjs/toolkit";
 import { ProductProps } from "@/types";
+import { emptyProductDetail } from "@/constants";
+
+const initialState = { ...emptyProductDetail };
 
 const ProductDetailSlice = createSlice({
   name: "productDetail",
-  initialState: {
-    isOpen: false as boolean,
-    item: {
-      colors: [
-        { name: "White", class: "bg-white", selectedClass: "ring-gray-400" },
-      ],
-      sizes: [{ name: "XXS", inStock: true }],
-    } as ProductProps,
-  },
+  initialState,
   reducers: {
     isOpenModal: (state, action) => {
       const isOpen = action.payload.isOpen as boolean;

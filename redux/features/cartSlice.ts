@@ -1,41 +1,49 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
-import { ProductProps } from "@/types";
+import { CartProps, ProductProps } from "@/types";
 
 const cartSlice = createSlice({
   name: "cart",
   initialState: {
-    cart: [] as ProductProps[],
+    cart: [] as CartProps[],
   },
   reducers: {
     addToCart: (state, action) => {
-      const newItem = action.payload as ProductProps; // specify the type of newItem
+      const { product, option, quantity } = action.payload as any;
       const existingItem = state.cart.find(
-        (item: ProductProps) => item.id === newItem.id
+        (item: CartProps) =>
+          item.product.id === product.id &&
+          item.option.color === option.color &&
+          item.option.sizes[0].size === option.sizes[0].size
       );
       if (!existingItem) {
-        state.cart.push({ ...newItem, quantity: 1 });
+        state.cart.push({ product, option, quantity: quantity ?? 1 });
       } else {
-        existingItem.quantity++;
+        existingItem.quantity = quantity ?? existingItem.quantity + 1;
       }
       return state;
     },
     removeCart: (state, action) => {
-      const id = action.payload as string;
-      state.cart = state.cart.filter((item) => item.id !== id);
-
+      const { id, option } = action.payload as any;
+      state.cart = state.cart.filter(
+        (item) =>
+          !(
+            item.product.id === id &&
+            item.option.color === option.color &&
+            item.option.sizes[0].size === option.sizes[0].size
+          )
+      );
       return state;
     },
     changeQuantity: (state, action) => {
-      const { id, newQuantity } = action.payload as {
-        id: string;
-        newQuantity: number;
-      };
-
+      const { id, option, quantity } = action.payload as any;
       const existingItem = state.cart.find(
-        (item: ProductProps) => item.id === id
+        (item: CartProps) =>
+          item.product.id === id &&
+          item.option.color === option.color &&
+          item.option.sizes[0].size === option.sizes[0].size
       );
       if (existingItem) {
-        existingItem.quantity = newQuantity;
+        existingItem.quantity = quantity;
       }
       return state;
     },

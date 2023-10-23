@@ -3,20 +3,20 @@ import { textAlert } from "@/constants";
 import { calculateDiscountPrice } from "@/constants/common";
 import { changeQuantity, removeCart } from "@/redux/features/cartSlice";
 import { useAppDispatch } from "@/redux/hooks";
-import { ProductProps } from "@/types";
+import { CartProps, ProductProps } from "@/types";
 import { ToastInput, useToasts } from "@geist-ui/core";
 import Image from "next/image";
 import { useState } from "react";
 
-const CartSection = ({ ...product }: ProductProps) => {
-  const [quantity, setQuantity] = useState(product.quantity);
+const CartSection = ({ product, option, quantity }: CartProps) => {
+  const [_quantity, _setQuantity] = useState(quantity);
   const dispatch = useAppDispatch();
   const { setToast } = useToasts();
 
   const handleChangeQuantity = (id: string, e: any) => {
-    const newQuantity = Number(e.target.value);
-    setQuantity(newQuantity);
-    dispatch(changeQuantity({ id, newQuantity }));
+    const quantity = Number(e.target.value);
+    _setQuantity(quantity);
+    dispatch(changeQuantity({ id, option, quantity }));
   };
 
   const handleRemoveItem = (id: string) => {
@@ -24,7 +24,7 @@ const CartSection = ({ ...product }: ProductProps) => {
       name: "Remove",
       handler: (event: any, cancel: any) => {
         cancel();
-        dispatch(removeCart(id));
+        dispatch(removeCart({ id, option }));
       },
     };
     setToast({
@@ -38,7 +38,7 @@ const CartSection = ({ ...product }: ProductProps) => {
     <li className="flex py-6" key={product.id}>
       <div className="h-24 w-24 flex-shrink-0 overflow-hidden rounded-md border border-gray-200">
         <Image
-          src={product.imageUrl}
+          src={option.imageUrl}
           width={100}
           height={100}
           alt="Salmon orange fabric pouch with match zipper, gray zipper pull, and adjustable hip belt."
@@ -53,16 +53,16 @@ const CartSection = ({ ...product }: ProductProps) => {
               <a href="#">{product.title}</a>
             </p>
             <p className="block lg:hidden text-gray-500">
-              Color : <b>{product.selectedColor?.toUpperCase()}</b>
+              Color : <b>{option.color.toUpperCase()}</b>
             </p>
             <p className="block lg:hidden text-gray-500">
-              Size : <b>{product.selectedSize}</b>
+              Size : <b>{option.color}</b>
             </p>
             <p className="hidden lg:block ml-4 line-through text-gray-400">
-              ${product.price}
+              ${option.price}
             </p>
             <p className="hidden lg:block">
-              ${calculateDiscountPrice(product.price)(product.discount)()}
+              ${calculateDiscountPrice(option.price)(option.discount)()}
             </p>
           </div>
 
@@ -79,18 +79,18 @@ const CartSection = ({ ...product }: ProductProps) => {
             ))}
           </select>
           <p className="hidden lg:block ml-4">
-            ${calculateDiscountPrice(product.price)(product.discount)(quantity)}
+            ${calculateDiscountPrice(option.price)(option.discount)(quantity)}
           </p>
         </div>
         <p className="hidden lg:block mt-1 text-gray-500">
-          Color : {product.selectedColor?.toUpperCase()}
+          Color : {option.color?.toUpperCase()}
         </p>
         <p className="block lg:hidden mt-2">
-          ${calculateDiscountPrice(product.price)(product.discount)(quantity)}
+          ${calculateDiscountPrice(option.price)(option.discount)(quantity)}
         </p>
         <div className="flex flex-1 items-end justify-between text-sm">
           <p className="hidden lg:block text-gray-500">
-            Size : {product.selectedSize}
+            Size : {option.sizes[0].size}
           </p>
           <select
             id="quantity-0"

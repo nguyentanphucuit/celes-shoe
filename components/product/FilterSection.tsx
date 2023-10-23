@@ -1,5 +1,5 @@
 import { listColors, listFilters } from "@/constants";
-import { classNames } from "@/constants/common";
+import { classNames, getColorVariants } from "@/constants/common";
 import { Transition } from "@headlessui/react";
 import { constants } from "fs";
 import { usePathname, useSearchParams } from "next/navigation";
@@ -27,9 +27,6 @@ const FilterSection = (props: any) => {
       : params.delete(e.target.name.toLowerCase());
     router.push(`${newPath}${params.toString()}`, { scroll: false });
   };
-  const bgColorVariants = Object.fromEntries(
-    listColors.map((color) => [color.name, `bg-${color.class}`])
-  );
 
   return (
     <div className="border-b border-gray-200 py-6">
@@ -103,7 +100,7 @@ const FilterSection = (props: any) => {
                         <span
                           aria-hidden="true"
                           className={classNames(
-                            bgColorVariants[item.name],
+                            getColorVariants(item.name),
                             "h-8 w-8 rounded-full border border-black border-opacity-10"
                           )}
                         />

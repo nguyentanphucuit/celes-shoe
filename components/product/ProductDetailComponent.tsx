@@ -6,27 +6,45 @@ import {
 import { ProductProps } from "@/types";
 import Image from "next/image";
 import React, { useState } from "react";
-import ColorsComponent from "../ColorComponent";
+import ColorComponent from "../ColorComponent";
 import CustomButton from "../CustomButton";
 import { addToCart, changeQuantity } from "@/redux/features/cartSlice";
 import { useAppDispatch } from "@/redux/hooks";
 import RatingComponent from "../RatingComponent";
 import Link from "next/link";
 import { current } from "@reduxjs/toolkit";
-import { Grid, Rating } from "@geist-ui/core";
+import { Grid, Rating, ToastInput, useToasts } from "@geist-ui/core";
+import SizeComponent from "../SizeComponent";
+import { textAlert } from "@/constants";
 
 const ProductDetailComponent = (props: ProductProps) => {
-  const [selectedImage, setSelectedImage] = useState(props.imageUrl);
+  const [selectedImage, setSelectedImage] = useState(props.options[0].imageUrl);
+  const [option, setOption] = useState(props?.options[0]);
   const [currentTab, setCurrentTab] = useState("Description");
-  const [quantity, setQuantity] = useState(props.quantity);
+  const [quantity, setQuantity] = useState(1);
+  const [selectedSize, setSelectedSize] = useState(option?.sizes[0]);
+  const { setToast } = useToasts();
   const dispatch = useAppDispatch();
   const handleAddToCart = () => {
-    dispatch(addToCart({ ...props }));
+    const type = "success" as ToastInput["type"];
+    setToast({
+      text: textAlert.success,
+      type,
+    });
+    dispatch(
+      addToCart({
+        product: props,
+        option: { ...option, sizes: [selectedSize] },
+      })
+    );
   };
   const handleChangeQuantity = (id: string, e: any) => {
     const newQuantity = Number(e.target.value);
     setQuantity(newQuantity);
-    dispatch(changeQuantity({ id, newQuantity }));
+  };
+  const handleChangeOption = (option: any) => {
+    setOption(option);
+    setSelectedSize(option.sizes[0]);
   };
 
   const tabs = [
@@ -60,7 +78,7 @@ const ProductDetailComponent = (props: ProductProps) => {
   ];
 
   const listImgTest = [
-    props.imageUrl,
+    props.options[0].imageUrl,
     "https://firebasestorage.googleapis.com/v0/b/celesshoe-6121f.appspot.com/o/products%2FCS-12.jpg?alt=media&token=82730e1b-b54f-4d53-9741-af858d3dfb82",
     "https://firebasestorage.googleapis.com/v0/b/celesshoe-6121f.appspot.com/o/products%2FCS-1.jpg?alt=media&token=16396d75-15cf-4714-b9e0-60f0b4c10cc0",
     "https://firebasestorage.googleapis.com/v0/b/celesshoe-6121f.appspot.com/o/products%2FCS-17.jpg?alt=media&token=b4af70e4-fc43-44d6-8137-9992cc5842de",
@@ -94,10 +112,10 @@ const ProductDetailComponent = (props: ProductProps) => {
             ))}
           </div>
         </div>
-        <div className="space-y-6">
+        <div className="space-y-6 my-1.5">
           <Link
             href={`/product?categories=${props.category.toLowerCase()}`}
-            className="relative z-10 rounded-md bg-gray-200 px-3 py-1.5 font-medium text-gray-600 hover:bg-gray-100">
+            className="relative z-10 rounded-md bg-gray-200 px-3  py-1.5 font-medium text-gray-600 hover:bg-gray-100">
             {props.category}
           </Link>
           <div className="text-3xl font-semibold">{props.title}</div>
@@ -105,17 +123,26 @@ const ProductDetailComponent = (props: ProductProps) => {
           <p>{props.description}</p>
           <div className="space-x-4 flex items-center">
             <span className="text-lg text-gray-600 line-through">
-              ${props.price}{" "}
+              ${option.price}{" "}
             </span>
             <span className="text-2xl ">
-              ${calculateDiscountPrice(props.price)(props.discount)()}
+              ${calculateDiscountPrice(option.price)(option.discount)()}
             </span>
             <span className="inline-flex items-center rounded-md bg-red-400 px-2 py-1 text-xs font-medium text-white ring-1 ring-inset ring-indigo-700/10">
-              -{props.discount}%
+              -{option.discount}%
             </span>
           </div>
           <p>Color:</p>
-          <ColorsComponent colors={props.colors} productId={props.id} />
+          <ColorComponent
+            options={props.options}
+            handleChangeOption={handleChangeOption}
+          />
+          <SizeComponent
+            option={option}
+            selectedSize={selectedSize}
+            setSelectedSize={setSelectedSize}
+            type="detail"
+          />
           <p>Quantity:</p>
           <select
             id="quantity-0"

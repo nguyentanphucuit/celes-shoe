@@ -1,21 +1,15 @@
-import React, { Fragment, useState } from "react";
-import { Dialog, RadioGroup, Transition } from "@headlessui/react";
-import CustomButton from "../CustomButton";
+import { totalPrice, totalQuantity } from "@/constants/common";
 import { useAppSelector } from "@/redux/hooks";
-import Link from "next/link";
+import { Dialog, Transition } from "@headlessui/react";
 import { XMarkIcon } from "@heroicons/react/24/outline";
+import { Fragment, useState } from "react";
 import CartSection from "../CartSection";
-import {
-  calculateDiscountPrice,
-  totalPrice,
-  totalQuantity,
-} from "@/constants/common";
+import CustomButton from "../CustomButton";
 
 const CartModal = () => {
   const [showCartModal, setShowCartModal] = useState(false);
   const [email, setEmail] = useState("");
   const cartItem = useAppSelector((state) => state.cartReducer.cart);
-
   const isEmpty = cartItem.length === 0;
 
   const handleShowCartModal = () => {
@@ -108,7 +102,14 @@ const CartModal = () => {
                             <div className="-my-6">
                               <ol className="divide-y divide-gray-200 list-none mx-0">
                                 {...cartItem.map((item) => (
-                                  <CartSection {...item} key={item.id} />
+                                  <CartSection
+                                    {...item}
+                                    key={
+                                      item.product.id +
+                                      item.option.color +
+                                      item.option.sizes[0].size
+                                    }
+                                  />
                                 ))}
                               </ol>
                             </div>

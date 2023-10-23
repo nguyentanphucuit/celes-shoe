@@ -1,5 +1,5 @@
 import { calculateDiscountPrice } from "@/constants/common";
-import { ProductProps } from "@/types";
+import { CartProps, ProductProps } from "@/types";
 import sendgrid from "@sendgrid/mail";
 
 sendgrid.setApiKey(process.env.SENDGRID_API_KEY as string);
@@ -71,7 +71,7 @@ async function sendEmail(req: any, res: any) {
                     <table width="560" cellpadding="0" cellspacing="0" class="esdev-mso-table">
                         <tbody>
                             ${items
-                              .map((item: ProductProps) => {
+                              .map((item: CartProps) => {
                                 return `<tr>
                               <td class="esdev-mso-td" valign="top">
                                   <table cellpadding="0" cellspacing="0" class="es-left" align="left">
@@ -82,7 +82,8 @@ async function sendEmail(req: any, res: any) {
                                                       <tbody>
                                                           <tr>
                                                               <td align="center" class="esd-block-image" style="font-size: 0px;"><a target="_blank" href="https://viewstripo.email"><img class="adapt-img p_image" src="${
-                                                                item.imageUrl
+                                                                item.option
+                                                                  .imageUrl
                                                               }" alt="Marshall Monitor" style="display: block;" width="125" title="Marshall Monitor"></a></td>
                                                           </tr>
                                                       </tbody>
@@ -103,7 +104,8 @@ async function sendEmail(req: any, res: any) {
                                                           <tr>
                                                               <td align="left" class="esd-block-text es-p20t es-p20b es-m-p0t es-m-p0b es-m-txt-l">
                                                                   <h3><strong class="p_name">${
-                                                                    item.title
+                                                                    item.product
+                                                                      .title
                                                                   }</strong></h3>
                                                               </td>
                                                           </tr>
@@ -147,9 +149,11 @@ async function sendEmail(req: any, res: any) {
                                                           <tr>
                                                               <td align="right" class="esd-block-text es-p20t es-p20b es-m-p0t es-m-p0b">
                                                                   <p class="p_price">$${calculateDiscountPrice(
-                                                                    item.price
+                                                                    item.option
+                                                                      .price
                                                                   )(
-                                                                    item.discount
+                                                                    item.option
+                                                                      .discount
                                                                   )(
                                                                     item.quantity
                                                                   )}</p>

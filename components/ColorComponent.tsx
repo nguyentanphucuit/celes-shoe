@@ -1,17 +1,11 @@
-import { classNames } from "@/constants/common";
-import { changeColor } from "@/redux/features/productsSlice";
-import { useAppDispatch } from "@/redux/hooks";
+import { classNames, getColorVariants } from "@/constants/common";
 import { RadioGroup } from "@headlessui/react";
-import React, { useState } from "react";
-
-const ColorsComponent = (props: any) => {
-  const [selectedColor, setSelectedColor] = useState(props.colors?.[0]);
-  const dispatch = useAppDispatch();
+import { useState } from "react";
+const ColorComponent = (props: any) => {
+  const [selectedColor, setSelectedColor] = useState(props.options[0]);
   const handleChangeColor = (color: any) => {
-    const productId = props.productId;
-    const newColor = color.name;
     setSelectedColor(color);
-    dispatch(changeColor({ productId, newColor }));
+    props.handleChangeOption(color);
   };
 
   return (
@@ -21,25 +15,25 @@ const ColorsComponent = (props: any) => {
       className="mt-4">
       <RadioGroup.Label className="sr-only">Choose a color</RadioGroup.Label>
       <span className="flex items-center space-x-3">
-        {props.colors?.map((color: any) => (
+        {props.options?.map((option: any) => (
           <RadioGroup.Option
-            key={color.name}
-            value={color}
+            key={option.color}
+            value={option}
             className={({ active, checked }) =>
               classNames(
-                color.selectedClass,
+                option.color,
                 active && checked ? "ring ring-offset-1" : "",
                 !active && checked ? "ring-2" : "",
                 "relative -m-0.5 flex cursor-pointer items-center justify-center rounded-full p-0.5 focus:outline-none"
               )
             }>
             <RadioGroup.Label as="span" className="sr-only">
-              {color.name}
+              {option.color}
             </RadioGroup.Label>
             <span
               aria-hidden="true"
               className={classNames(
-                color.class,
+                getColorVariants(option.color),
                 "h-8 w-8 rounded-full border border-black border-opacity-10"
               )}
             />
@@ -50,4 +44,4 @@ const ColorsComponent = (props: any) => {
   );
 };
 
-export default ColorsComponent;
+export default ColorComponent;

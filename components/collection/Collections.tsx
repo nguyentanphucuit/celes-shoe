@@ -12,6 +12,8 @@ import ProductCard from "../ProductCard";
 import PaginationControls from "../pagination/PaginationControls";
 import { updateAllColor } from "@/redux/features/colorSlice";
 import { useAppDispatch } from "@/redux/hooks";
+import { addDoc, collection } from "firebase/firestore";
+import { db } from "@/firebaseConfig";
 
 const Collections = () => {
   const searchParams = useSearchParams();
@@ -25,9 +27,13 @@ const Collections = () => {
 
   const { data: products, loading, error } = useApiDataFireStore("products");
   const { data: categories } = useApiDataFireStore("categories");
-  // const { data: colors } = useApiDataFireStore("colors");
-  // const dispatch = useAppDispatch();
-  // dispatch(updateAllColor(colors));
+  const { data: colors } = useApiDataFireStore("colors");
+  console.log(colors);
+  console.log(products);
+
+  const dispatch = useAppDispatch();
+  dispatch(updateAllColor(colors));
+
   const collections = products.slice(startIndex, endIndex);
 
   return loading ? (
