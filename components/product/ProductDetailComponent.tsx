@@ -35,6 +35,7 @@ const ProductDetailComponent = (props: ProductProps) => {
       addToCart({
         product: props,
         option: { ...option, sizes: [selectedSize] },
+        quantity: quantity,
       })
     );
   };
@@ -143,19 +144,21 @@ const ProductDetailComponent = (props: ProductProps) => {
             setSelectedSize={setSelectedSize}
             type="detail"
           />
-          <p>Quantity:</p>
-          <select
-            id="quantity-0"
-            name="quantity-0"
-            value={quantity}
-            onChange={(e) => handleChangeQuantity(props.id, e)}
-            className="hidden lg:block rounded-md bg-gray-50 py-1 border border-gray-300 text-gray-900 text-sm focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
-            {[...Array(10)].map((_, i) => (
-              <option value={i + 1} key={i + 1}>
-                {i + 1}
-              </option>
-            ))}
-          </select>
+          <div className="flex flex-cols items-center gap-4">
+            <p>Quantity:</p>
+            <select
+              id="quantity-0"
+              name="quantity-0"
+              value={quantity}
+              onChange={(e) => handleChangeQuantity(props.id, e)}
+              className="block rounded-md bg-gray-50 py-1 border border-gray-300 text-gray-900 text-sm focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+              {[...Array(10)].map((_, i) => (
+                <option value={i + 1} key={i + 1}>
+                  {i + 1}
+                </option>
+              ))}
+            </select>
+          </div>
           <CustomButton
             handleClick={handleAddToCart}
             containerStyles="btn-add-to-cart-full"
