@@ -101,7 +101,7 @@ const CartModal = () => {
                           ) : (
                             <div className="-my-6">
                               <ol className="divide-y divide-gray-200 list-none mx-0">
-                                {...cartItem.map((item) => (
+                                {cartItem.map((item) => (
                                   <CartSection
                                     {...item}
                                     key={

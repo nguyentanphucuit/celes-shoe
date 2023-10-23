@@ -9,10 +9,7 @@ const ColorComponent = (props: any) => {
   };
 
   return (
-    <RadioGroup
-      value={selectedColor}
-      onChange={handleChangeColor}
-      className="mt-4">
+    <RadioGroup value={selectedColor} onChange={handleChangeColor}>
       <RadioGroup.Label className="sr-only">Choose a color</RadioGroup.Label>
       <span className="flex items-center space-x-3">
         {props.options?.map((option: any) => (
@@ -34,7 +31,8 @@ const ColorComponent = (props: any) => {
               aria-hidden="true"
               className={classNames(
                 getColorVariants(option.color),
-                "h-8 w-8 rounded-full border border-black border-opacity-10"
+                props.type === "small" ? "h-5 w-5" : "h-8 w-8",
+                "rounded-full border border-black border-opacity-10"
               )}
             />
           </RadioGroup.Option>

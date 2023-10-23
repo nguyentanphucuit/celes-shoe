@@ -128,15 +128,22 @@ export const listSorts = [
 
 export const listProducts = [
   {
+    subtitle: "Subtitle",
+    title: "Flats",
+    type: "Flats",
     options: [
       {
         discount: 31,
-        inStock: true,
+        color: "Red",
+        inStock: false,
+        price: 456.99,
+        imageUrl:
+          "https://firebasestorage.googleapis.com/v0/b/celesshoe-6121f.appspot.com/o/products%2FCS-18.jpg?alt=media&token=5aa95feb-4913-4425-99e9-fa4795ab2637",
         sizes: [
           {
-            price: 19.99,
             inStock: true,
             size: "35",
+            price: 19.99,
           },
           {
             size: "36",
@@ -144,152 +151,148 @@ export const listProducts = [
             price: 24.99,
           },
           {
-            size: "37",
-            price: 29.99,
             inStock: true,
+            price: 29.99,
+            size: "37",
           },
         ],
-        price: 456.99,
-        color: "Red",
-        imageUrl:
-          "https://firebasestorage.googleapis.com/v0/b/celesshoe-6121f.appspot.com/o/products%2FCS-18.jpg?alt=media&token=5aa95feb-4913-4425-99e9-fa4795ab2637",
         quantity: 1,
       },
       {
-        color: "Black",
-        discount: 31,
-        price: 234.99,
         inStock: true,
         imageUrl:
           "https://firebasestorage.googleapis.com/v0/b/celesshoe-6121f.appspot.com/o/products%2FCS-18.jpg?alt=media&token=5aa95feb-4913-4425-99e9-fa4795ab2637",
+        discount: 31,
+        price: 234.99,
+        color: "Black",
         sizes: [
           {
-            inStock: true,
-            size: "38",
             price: 21.99,
+            inStock: false,
+            size: "38",
           },
           {
-            inStock: true,
-            price: 26.99,
             size: "39",
+            price: 26.99,
+            inStock: true,
           },
         ],
         quantity: 1,
       },
     ],
-    subtitle: "Subtitle",
-    title: "Flats",
-    type: "Flats",
-    rating: 2.8,
     category: "Flats",
     id: "0IkS8A1ZBu0XduaK8iai",
+    rating: 2.8,
   },
   {
+    title: "Heels",
+    type: "Heels",
+    id: "33g7ulOloe7Ryr4ssa2r",
     category: "Heels",
     options: [
       {
+        price: 12.99,
+        sizes: [
+          {
+            inStock: true,
+            size: "37",
+            price: 29.99,
+          },
+          {
+            size: "38",
+            price: 31.99,
+            inStock: true,
+          },
+        ],
+        discount: 2,
         inStock: true,
         color: "Red",
         quantity: 1,
-        price: 12.99,
-        discount: 2,
         imageUrl:
           "https://firebasestorage.googleapis.com/v0/b/celesshoe-6121f.appspot.com/o/products%2FCS-10.jpg?alt=media&token=fc03586a-b766-49d9-b715-22a18857bf65",
-        sizes: [
-          {
-            size: "37",
-            price: 29.99,
-            inStock: true,
-          },
-          {
-            price: 31.99,
-            size: "38",
-            inStock: true,
-          },
-        ],
       },
       {
-        discount: 2,
+        imageUrl:
+          "https://firebasestorage.googleapis.com/v0/b/celesshoe-6121f.appspot.com/o/products%2FCS-10.jpg?alt=media&token=fc03586a-b766-49d9-b715-22a18857bf65",
+        price: 12.99,
+        inStock: true,
+        color: "Black",
         sizes: [
           {
-            price: 24.99,
             size: "35",
             inStock: false,
+            price: 24.99,
           },
         ],
-        color: "Black",
-        imageUrl:
-          "https://firebasestorage.googleapis.com/v0/b/celesshoe-6121f.appspot.com/o/products%2FCS-10.jpg?alt=media&token=fc03586a-b766-49d9-b715-22a18857bf65",
-        price: 12.99,
         quantity: 1,
-        inStock: true,
+        discount: 2,
       },
     ],
-    type: "Heels",
-    title: "Heels",
     subtitle: "Subtitle",
     rating: 4.6,
-    id: "33g7ulOloe7Ryr4ssa2r",
   },
   {
-    id: "8uTN48myWGZspOs9vsD2",
-    title: "Flats",
     type: "Flats",
-    subtitle: "Subtitle",
+    id: "8uTN48myWGZspOs9vsD2",
+    category: "Flats",
     options: [
       {
-        color: "Blue",
+        imageUrl:
+          "https://firebasestorage.googleapis.com/v0/b/celesshoe-6121f.appspot.com/o/products%2FCS-14.jpg?alt=media&token=1137abaa-7a31-47f6-a264-1ffb83b696fb",
         discount: 25,
+        inStock: true,
         quantity: 1,
         sizes: [
           {
-            price: 22.99,
-            inStock: true,
             size: "35",
+            inStock: true,
+            price: 22.99,
           },
           {
-            size: "36",
-            price: 27.99,
             inStock: true,
+            price: 27.99,
+            size: "36",
           },
         ],
-        imageUrl:
-          "https://firebasestorage.googleapis.com/v0/b/celesshoe-6121f.appspot.com/o/products%2FCS-14.jpg?alt=media&token=1137abaa-7a31-47f6-a264-1ffb83b696fb",
-        inStock: true,
         price: 456.99,
+        color: "Blue",
       },
     ],
     rating: 2.8,
-    category: "Flats",
+    subtitle: "Subtitle",
+    title: "Flats",
   },
   {
-    id: "AJP5RIEuMq3Sk1tXDKV7",
-    rating: 3.3,
-    subtitle: "Subtitle",
+    type: "Flats",
     options: [
       {
-        color: "Red",
-        discount: 15,
-        quantity: 1,
         price: 789.99,
         imageUrl:
           "https://firebasestorage.googleapis.com/v0/b/celesshoe-6121f.appspot.com/o/products%2FCS-11.jpg?alt=media&token=201f0829-a995-4c20-938b-aebb0f7d43b0",
+        quantity: 1,
+        inStock: true,
+        discount: 15,
         sizes: [
           {
+            price: 19.99,
             inStock: true,
             size: "35",
-            price: 19.99,
           },
           {
             price: 24.99,
-            inStock: false,
             size: "36",
+            inStock: false,
           },
         ],
-        inStock: true,
+        color: "Red",
       },
       {
-        discount: 15,
+        color: "Black",
+        quantity: 1,
+        imageUrl:
+          "https://firebasestorage.googleapis.com/v0/b/celesshoe-6121f.appspot.com/o/products%2FCS-1.jpg?alt=media&token=16396d75-15cf-4714-b9e0-60f0b4c10cc0",
+        inStock: true,
+        price: 678.99,
         sizes: [
           {
             price: 29.99,
@@ -297,311 +300,310 @@ export const listProducts = [
             inStock: true,
           },
         ],
-        quantity: 1,
-        inStock: true,
-        imageUrl:
-          "https://firebasestorage.googleapis.com/v0/b/celesshoe-6121f.appspot.com/o/products%2FCS-1.jpg?alt=media&token=16396d75-15cf-4714-b9e0-60f0b4c10cc0",
-        color: "Black",
-        price: 678.99,
+        discount: 15,
       },
       {
-        discount: 15,
+        color: "Blue",
+        quantity: 1,
+        inStock: true,
+        price: 489.99,
+        sizes: [
+          {
+            inStock: true,
+            price: 21.99,
+            size: "38",
+          },
+        ],
         imageUrl:
           "https://firebasestorage.googleapis.com/v0/b/celesshoe-6121f.appspot.com/o/products%2FCS-18.jpg?alt=media&token=5aa95feb-4913-4425-99e9-fa4795ab2637",
-        quantity: 1,
-        price: 489.99,
-        inStock: true,
-        color: "Blue",
-        sizes: [
-          {
-            price: 21.99,
-            size: "38",
-            inStock: true,
-          },
-        ],
+        discount: 15,
       },
     ],
-    type: "Flats",
-    category: "Flats",
     title: "Flats",
+    id: "AJP5RIEuMq3Sk1tXDKV7",
+    subtitle: "Subtitle",
+    rating: 3.3,
+    category: "Flats",
   },
   {
-    id: "CO6TUzmrOobplWSTMjfX",
-    category: "Boots",
-    rating: 3.7,
-    title: "Boots",
     type: "Boots",
+    category: "Boots",
+    title: "Boots",
+    id: "CO6TUzmrOobplWSTMjfX",
+    subtitle: "Subtitle",
+    rating: 3.7,
     options: [
       {
-        sizes: [
-          {
-            inStock: false,
-            size: "37",
-            price: 32.99,
-          },
-          {
-            size: "38",
-            inStock: true,
-            price: 34.99,
-          },
-        ],
+        color: "Blue",
+        price: 10.99,
+        quantity: 1,
+        inStock: true,
         imageUrl:
           "https://firebasestorage.googleapis.com/v0/b/celesshoe-6121f.appspot.com/o/products%2FCS-12.jpg?alt=media&token=82730e1b-b54f-4d53-9741-af858d3dfb82",
-        inStock: true,
-        discount: 41,
-        color: "Blue",
-        price: 10.99,
-        quantity: 1,
-      },
-    ],
-    subtitle: "Subtitle",
-  },
-  {
-    title: "Flats",
-    type: "Flats",
-    subtitle: "Subtitle",
-    category: "Flats",
-    id: "GsMOamt8WKFAkTPdaH6y",
-    options: [
-      {
-        quantity: 1,
-        imageUrl:
-          "https://firebasestorage.googleapis.com/v0/b/celesshoe-6121f.appspot.com/o/products%2FCS-20.jpg?alt=media&token=df7eaf72-5275-4b35-b2e9-c988f3626579",
         sizes: [
           {
-            price: 21.99,
+            price: 32.99,
+            size: "37",
+            inStock: false,
+          },
+          {
             inStock: true,
+            price: 34.99,
             size: "38",
           },
         ],
-        inStock: true,
-        price: 444.99,
-        color: "Blue",
-        discount: 33,
+        discount: 41,
       },
+    ],
+  },
+  {
+    subtitle: "Subtitle",
+    title: "Flats",
+    type: "Flats",
+    rating: 3.8,
+    category: "Flats",
+    options: [
       {
-        color: "Green",
+        inStock: true,
+        sizes: [
+          {
+            inStock: true,
+            size: "38",
+            price: 21.99,
+          },
+        ],
         quantity: 1,
+        price: 444.99,
         imageUrl:
           "https://firebasestorage.googleapis.com/v0/b/celesshoe-6121f.appspot.com/o/products%2FCS-20.jpg?alt=media&token=df7eaf72-5275-4b35-b2e9-c988f3626579",
         discount: 33,
-        inStock: true,
-        price: 444.99,
+        color: "Blue",
+      },
+      {
         sizes: [
           {
-            size: "36",
             inStock: false,
+            size: "36",
             price: 24.99,
           },
         ],
+        price: 444.99,
+        inStock: true,
+        color: "Green",
+        discount: 33,
+        quantity: 1,
+        imageUrl:
+          "https://firebasestorage.googleapis.com/v0/b/celesshoe-6121f.appspot.com/o/products%2FCS-20.jpg?alt=media&token=df7eaf72-5275-4b35-b2e9-c988f3626579",
       },
     ],
-    rating: 3.8,
+    id: "GsMOamt8WKFAkTPdaH6y",
   },
   {
+    title: "Flats",
+    type: "Flats",
+    id: "L0B96w1BBJG3sq94qTHx",
+    subtitle: "Subtitle",
+    rating: 2.8,
     options: [
       {
         inStock: true,
-        sizes: [
-          {
-            price: 23.99,
-            size: "38",
-            inStock: true,
-          },
-          {
-            size: "39",
-            price: 28.99,
-            inStock: false,
-          },
-        ],
-        price: 456.99,
-        discount: 14,
         imageUrl:
           "https://firebasestorage.googleapis.com/v0/b/celesshoe-6121f.appspot.com/o/products%2FCS-2.jpg?alt=media&token=f61cd563-8c94-4cd6-97a1-bd433d78803f",
+        discount: 14,
         quantity: 1,
         color: "Green",
+        price: 456.99,
+        sizes: [
+          {
+            inStock: true,
+            size: "38",
+            price: 23.99,
+          },
+          {
+            inStock: false,
+            size: "39",
+            price: 28.99,
+          },
+        ],
       },
     ],
-    type: "Flats",
-    subtitle: "Subtitle",
-    rating: 2.8,
-    title: "Flats",
     category: "Flats",
-    id: "L0B96w1BBJG3sq94qTHx",
   },
   {
+    category: "Boots",
+    id: "ORlo9jSkdS6gLlT7ruzP",
+    title: "Boots",
     options: [
       {
         color: "White",
-        price: 10.99,
-        discount: 13,
-        sizes: [
-          {
-            price: 25.99,
-            size: "36",
-            inStock: true,
-          },
-        ],
         imageUrl:
           "https://firebasestorage.googleapis.com/v0/b/celesshoe-6121f.appspot.com/o/products%2FCS-1.jpg?alt=media&token=16396d75-15cf-4714-b9e0-60f0b4c10cc0",
+        sizes: [
+          {
+            inStock: true,
+            size: "36",
+            price: 25.99,
+          },
+        ],
         quantity: 1,
+        price: 10.99,
         inStock: true,
+        discount: 13,
       },
     ],
     type: "Boots",
-    subtitle: "Subtitle",
     rating: 4.1,
-    title: "Boots",
-    category: "Boots",
-    id: "ORlo9jSkdS6gLlT7ruzP",
+    subtitle: "Subtitle",
   },
   {
+    title: "Flats",
+    subtitle: "Subtitle",
+    category: "Flats",
+    type: "Flats",
     options: [
       {
-        imageUrl:
-          "https://firebasestorage.googleapis.com/v0/b/celesshoe-6121f.appspot.com/o/products%2FCS-16.jpg?alt=media&token=4749ca07-3fcb-4083-b1f5-cd1cf91d0153",
-        price: 456.99,
-        discount: 45,
         sizes: [
           {
-            price: 19.99,
             inStock: true,
             size: "35",
+            price: 19.99,
           },
         ],
-        inStock: true,
         quantity: 1,
+        inStock: true,
+        price: 456.99,
         color: "Red",
-      },
-      {
+        discount: 45,
         imageUrl:
           "https://firebasestorage.googleapis.com/v0/b/celesshoe-6121f.appspot.com/o/products%2FCS-16.jpg?alt=media&token=4749ca07-3fcb-4083-b1f5-cd1cf91d0153",
-        discount: 45,
-        quantity: 1,
+      },
+      {
         price: 456.99,
+        discount: 45,
         color: "Black",
         sizes: [
           {
-            inStock: false,
             size: "36",
             price: 24.99,
+            inStock: false,
           },
         ],
-        inStock: true,
-      },
-      {
         imageUrl:
           "https://firebasestorage.googleapis.com/v0/b/celesshoe-6121f.appspot.com/o/products%2FCS-16.jpg?alt=media&token=4749ca07-3fcb-4083-b1f5-cd1cf91d0153",
+        inStock: true,
+        quantity: 1,
+      },
+      {
+        inStock: true,
         discount: 45,
+        price: 456.99,
+        imageUrl:
+          "https://firebasestorage.googleapis.com/v0/b/celesshoe-6121f.appspot.com/o/products%2FCS-16.jpg?alt=media&token=4749ca07-3fcb-4083-b1f5-cd1cf91d0153",
+        color: "Green",
         sizes: [
           {
             size: "37",
-            inStock: true,
             price: 29.99,
+            inStock: true,
           },
         ],
-        inStock: true,
-        color: "Green",
         quantity: 1,
-        price: 456.99,
       },
       {
-        imageUrl:
-          "https://firebasestorage.googleapis.com/v0/b/celesshoe-6121f.appspot.com/o/products%2FCS-16.jpg?alt=media&token=4749ca07-3fcb-4083-b1f5-cd1cf91d0153",
-        price: 456.99,
-        color: "White",
-        inStock: true,
         discount: 45,
+        quantity: 1,
+        color: "White",
+        price: 456.99,
         sizes: [
           {
             size: "38",
-            inStock: true,
             price: 21.99,
+            inStock: true,
           },
         ],
-        quantity: 1,
+        inStock: true,
+        imageUrl:
+          "https://firebasestorage.googleapis.com/v0/b/celesshoe-6121f.appspot.com/o/products%2FCS-16.jpg?alt=media&token=4749ca07-3fcb-4083-b1f5-cd1cf91d0153",
       },
     ],
-    type: "Flats",
-    category: "Flats",
     rating: 2.8,
-    title: "Flats",
     id: "Xf7rrhdMLIfCZVzy6JCC",
-    subtitle: "Subtitle",
   },
   {
-    category: "Flats",
+    subtitle: "Subtitle",
     title: "Flats",
-    rating: 2.8,
     type: "Flats",
+    rating: 2.8,
+    id: "Ya8sRH0t9LVhkJZzzlTw",
+    category: "Flats",
     options: [
       {
         sizes: [
           {
-            inStock: true,
             price: 19.99,
+            inStock: true,
             size: "35",
           },
         ],
-        inStock: true,
-        imageUrl:
-          "https://firebasestorage.googleapis.com/v0/b/celesshoe-6121f.appspot.com/o/products%2FCS-17.jpg?alt=media&token=b4af70e4-fc43-44d6-8137-9992cc5842de",
         color: "Red",
         discount: 59,
         price: 456.99,
         quantity: 1,
-      },
-      {
-        price: 456.99,
-        inStock: true,
         imageUrl:
           "https://firebasestorage.googleapis.com/v0/b/celesshoe-6121f.appspot.com/o/products%2FCS-17.jpg?alt=media&token=b4af70e4-fc43-44d6-8137-9992cc5842de",
+        inStock: true,
+      },
+      {
+        inStock: true,
         sizes: [
           {
             inStock: true,
-            size: "37",
             price: 29.99,
+            size: "37",
           },
         ],
+        imageUrl:
+          "https://firebasestorage.googleapis.com/v0/b/celesshoe-6121f.appspot.com/o/products%2FCS-17.jpg?alt=media&token=b4af70e4-fc43-44d6-8137-9992cc5842de",
         discount: 59,
         quantity: 1,
         color: "Black",
+        price: 456.99,
       },
     ],
-    subtitle: "Subtitle",
-    id: "Ya8sRH0t9LVhkJZzzlTw",
   },
   {
-    title: "Flats",
-    category: "Flats",
-    id: "kzpdYthZATjl8c191bqj",
-    type: "Flats",
     rating: 2.8,
-    subtitle: "Subtitle",
     options: [
       {
-        price: 456.99,
+        quantity: 1,
+        color: "Black",
+        discount: 43,
         sizes: [
           {
-            size: "38",
             inStock: true,
             price: 21.99,
+            size: "38",
           },
         ],
-        inStock: true,
-        color: "Black",
-        quantity: 1,
         imageUrl:
           "https://firebasestorage.googleapis.com/v0/b/celesshoe-6121f.appspot.com/o/products%2FCS-15.jpg?alt=media&token=a9ca704c-a5c3-4c0b-821b-7f62fc951434",
-        discount: 43,
+        price: 456.99,
+        inStock: true,
       },
     ],
+    title: "Flats",
+    type: "Flats",
+    id: "kzpdYthZATjl8c191bqj",
+    subtitle: "Subtitle",
+    category: "Flats",
   },
   {
-    type: "Heels",
+    subtitle: "Subtitle",
     rating: 4.1,
-    id: "o0xaqhekL3dEGEGlqjMb",
     category: "Heels",
+    title: "Heels",
+    id: "o0xaqhekL3dEGEGlqjMb",
+    type: "Heels",
     options: [
       {
         color: "Red",
@@ -613,25 +615,22 @@ export const listProducts = [
             price: 19.99,
           },
         ],
+        price: 123.99,
         imageUrl:
           "https://firebasestorage.googleapis.com/v0/b/celesshoe-6121f.appspot.com/o/products%2FCS-13.jpg?alt=media&token=8319c9c9-80b3-409a-88fd-32c541f153db",
         discount: 27,
         quantity: 1,
-        price: 123.99,
       },
     ],
-    subtitle: "Subtitle",
-    title: "Heels",
   },
   {
-    type: "Flats",
-    category: "Flats",
-    id: "rEKFUdtt7Imt5qIFXAR6",
     options: [
       {
+        discount: 31,
         inStock: true,
         imageUrl:
           "https://firebasestorage.googleapis.com/v0/b/celesshoe-6121f.appspot.com/o/products%2FCS-19.jpg?alt=media&token=57925677-3a9a-4c32-9ce6-c05513c977e1",
+        quantity: 1,
         sizes: [
           {
             size: "35",
@@ -639,24 +638,25 @@ export const listProducts = [
             price: 26.99,
           },
           {
+            size: "36",
             price: 27.99,
             inStock: false,
-            size: "36",
           },
           {
             price: 30.99,
-            size: "37",
             inStock: true,
+            size: "37",
           },
         ],
-        discount: 31,
-        price: 456.99,
-        quantity: 1,
         color: "Green",
+        price: 456.99,
       },
     ],
-    title: "Flats",
+    id: "rEKFUdtt7Imt5qIFXAR6",
     rating: 2.8,
+    type: "Flats",
+    title: "Flats",
+    category: "Flats",
     subtitle: "Subtitle",
   },
 ];

@@ -13,6 +13,7 @@ export interface CustomButtonProps {
 }
 export interface RatingProps {
   rating: number;
+  type?: string;
 }
 
 export interface ProductOptionsProps {

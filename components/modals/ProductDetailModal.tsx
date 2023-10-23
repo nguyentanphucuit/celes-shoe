@@ -97,14 +97,11 @@ export function ProductDetailModal() {
                         className="object-cover object-center"
                       />
                     </div>
-                    <div className="sm:col-span-8 lg:col-span-7">
+                    <div className=" sm:col-span-8 lg:col-span-7 flex flex-col gap-2">
                       <h2 className="text-2xl font-bold text-gray-900 sm:pr-12">
                         {product.title}
                       </h2>
-
-                      <section
-                        aria-labelledby="information-heading"
-                        className="mt-2">
+                      <section aria-labelledby="information-heading">
                         <h3 id="information-heading" className="sr-only">
                           Product information
                         </h3>
@@ -122,22 +119,17 @@ export function ProductDetailModal() {
                         </div>
 
                         {/* Reviews */}
-                        <div className="mt-6">
+                        <div className="mt-4">
                           <h4 className="sr-only">Reviews</h4>
-                          {product.rating && (
-                            <RatingComponent rating={product.rating} />
-                          )}
+                          <RatingComponent rating={product.rating} />
                         </div>
                       </section>
-
-                      <section
-                        aria-labelledby="options-heading"
-                        className="mt-10">
+                      <section aria-labelledby="options-heading">
                         <h3 id="options-heading" className="sr-only">
                           Product options
                         </h3>
 
-                        <form>
+                        <div className="flex flex-col gap-4">
                           {/* Colors */}
                           <h4 className="text-sm font-medium text-gray-900">
                             Color
@@ -148,31 +140,37 @@ export function ProductDetailModal() {
                           />
 
                           {/* Sizes */}
-                          <div className="mt-10">
-                            <div className="flex items-center justify-between">
-                              <h4 className="text-sm font-medium text-gray-900">
-                                Size
-                              </h4>
-                              <a
-                                href="#"
-                                className="text-sm font-medium text-primary hover:text-indigo-500">
-                                Size guide
-                              </a>
-                            </div>
-                            <SizeComponent
-                              option={option}
-                              selectedSize={selectedSize}
-                              setSelectedSize={setSelectedSize}
-                              type="detail"
-                            />
+                          <div className="flex items-center justify-between">
+                            <h4 className="text-sm font-medium text-gray-900">
+                              Size
+                            </h4>
+                            <a
+                              href="#"
+                              className="text-sm font-medium text-primary hover:text-indigo-500">
+                              Size guide
+                            </a>
                           </div>
-
-                          <CustomButton
-                            handleClick={handleAddToCart}
-                            containerStyles="btn-add-to-cart-full"
-                            title="Add to Cart"
+                          <SizeComponent
+                            option={option}
+                            selectedSize={selectedSize}
+                            setSelectedSize={setSelectedSize}
+                            type="detail"
                           />
-                        </form>
+                          {option.inStock ? (
+                            <CustomButton
+                              handleClick={handleAddToCart}
+                              containerStyles="btn-add-to-cart-full"
+                              title="Add to Cart"
+                            />
+                          ) : (
+                            <CustomButton
+                              handleClick={handleAddToCart}
+                              isDisabled={true}
+                              containerStyles="w-full px-3 py-2 items-center justify-center border border-transparent bg-gray-900 border-gray-700 text-white text-sm font-medium "
+                              title="SOLD OUT"
+                            />
+                          )}
+                        </div>
                       </section>
                     </div>
                   </div>

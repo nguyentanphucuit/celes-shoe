@@ -3,10 +3,7 @@ import { RadioGroup } from "@headlessui/react";
 
 const SizeComponent = (props: any) => {
   return (
-    <RadioGroup
-      value={props.selectedSize}
-      onChange={props.setSelectedSize}
-      className="mt-4">
+    <RadioGroup value={props.selectedSize} onChange={props.setSelectedSize}>
       <RadioGroup.Label className="sr-only">Choose a size</RadioGroup.Label>
       <div className="grid grid-cols-5 gap-3">
         {props.option.sizes?.map((size: any) => (

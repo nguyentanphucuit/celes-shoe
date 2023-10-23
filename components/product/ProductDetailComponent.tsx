@@ -1,21 +1,20 @@
+import { textAlert } from "@/constants";
 import {
   calculateDiscountPrice,
   capitalizeFirstLetter,
   classNames,
 } from "@/constants/common";
+import { addToCart } from "@/redux/features/cartSlice";
+import { useAppDispatch } from "@/redux/hooks";
 import { ProductProps } from "@/types";
+import { Grid, Rating, ToastInput, useToasts } from "@geist-ui/core";
 import Image from "next/image";
-import React, { useState } from "react";
+import Link from "next/link";
+import { useState } from "react";
 import ColorComponent from "../ColorComponent";
 import CustomButton from "../CustomButton";
-import { addToCart, changeQuantity } from "@/redux/features/cartSlice";
-import { useAppDispatch } from "@/redux/hooks";
 import RatingComponent from "../RatingComponent";
-import Link from "next/link";
-import { current } from "@reduxjs/toolkit";
-import { Grid, Rating, ToastInput, useToasts } from "@geist-ui/core";
 import SizeComponent from "../SizeComponent";
-import { textAlert } from "@/constants";
 
 const ProductDetailComponent = (props: ProductProps) => {
   const [selectedImage, setSelectedImage] = useState(props.options[0].imageUrl);
@@ -144,7 +143,7 @@ const ProductDetailComponent = (props: ProductProps) => {
             setSelectedSize={setSelectedSize}
             type="detail"
           />
-          <div className="flex flex-cols items-center gap-4">
+          <div className="flex flex-row items-center gap-4">
             <p>Quantity:</p>
             <select
               id="quantity-0"
@@ -159,11 +158,20 @@ const ProductDetailComponent = (props: ProductProps) => {
               ))}
             </select>
           </div>
-          <CustomButton
-            handleClick={handleAddToCart}
-            containerStyles="btn-add-to-cart-full"
-            title="Add to Cart"
-          />
+          {option.inStock ? (
+            <CustomButton
+              handleClick={handleAddToCart}
+              containerStyles="btn-add-to-cart-full"
+              title="ADD TO CART"
+            />
+          ) : (
+            <CustomButton
+              handleClick={handleAddToCart}
+              isDisabled={true}
+              containerStyles="w-full px-3 py-2 items-center justify-center border border-transparent bg-gray-900 border-gray-700 text-white text-sm font-medium "
+              title="SOLD OUT"
+            />
+          )}
         </div>
         <div className="col-span-2">
           <div className="text-md font-medium text-center text-gray-500 border-b border-gray-200 dark:text-gray-400 dark:border-gray-700">
