@@ -76,14 +76,14 @@ const ProductCard = (props: any) => {
           {option.inStock ? (
             <CustomButton
               handleClick={handleAddToCart}
-              containerStyles="w-full px-3 py-2 items-center justify-center border border-transparent bg-indigo-200 border-indigo-400 text-indigo-700 text-sm font-medium hover:bg-indigo-100 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2"
+              containerStyles="w-full px-3 opacity-95 py-2 items-center justify-center border border-transparent bg-indigo-200 border-indigo-400 text-indigo-700 text-sm font-semibold hover:bg-indigo-100 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2"
               title="ADD TO CART"
             />
           ) : (
             <CustomButton
               handleClick={handleAddToCart}
               isDisabled={true}
-              containerStyles="w-full px-3 py-2 items-center justify-center border border-transparent bg-gray-900 border-gray-700 text-white text-sm font-medium "
+              containerStyles="w-full  px-3 py-2 items-center justify-center border border-transparent bg-gray-900 border-gray-700 text-white text-sm font-semibold "
               title="SOLD OUT"
             />
           )}
