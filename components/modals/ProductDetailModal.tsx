@@ -3,15 +3,15 @@
 import { Fragment, useEffect, useState } from "react";
 import { Dialog, RadioGroup, Transition } from "@headlessui/react";
 import { XMarkIcon } from "@heroicons/react/24/outline";
-import RatingComponent from "../RatingComponent";
+import RatingComp from "../RatingComp";
 import Image from "next/image";
 import { useSelector } from "react-redux";
 import { useAppDispatch } from "@/redux/hooks";
 import { isOpenModal } from "@/redux/features/productDetailSlice";
 import CustomButton from "../CustomButton";
 import { addToCart } from "@/redux/features/cartSlice";
-import ColorComponent from "../ColorComponent";
-import SizeComponent from "../SizeComponent";
+import ColorComp from "../ColorComp";
+import SizeComp from "../SizeComp";
 import { calculateDiscountPrice } from "@/constants/common";
 import { ProductOptionsProps } from "@/types";
 import { emptyProductDetail, textAlert } from "@/constants";
@@ -121,7 +121,7 @@ export function ProductDetailModal() {
                         {/* Reviews */}
                         <div className="mt-4">
                           <h4 className="sr-only">Reviews</h4>
-                          <RatingComponent rating={product.rating} />
+                          <RatingComp rating={product.rating} />
                         </div>
                       </section>
                       <section aria-labelledby="options-heading">
@@ -134,7 +134,7 @@ export function ProductDetailModal() {
                           <h4 className="text-sm font-medium text-gray-900">
                             Color
                           </h4>
-                          <ColorComponent
+                          <ColorComp
                             options={product.options}
                             handleChangeOption={handleChangeOption}
                           />
@@ -150,7 +150,7 @@ export function ProductDetailModal() {
                               Size guide
                             </a>
                           </div>
-                          <SizeComponent
+                          <SizeComp
                             option={option}
                             selectedSize={selectedSize}
                             setSelectedSize={setSelectedSize}

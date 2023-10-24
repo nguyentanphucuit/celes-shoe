@@ -1,7 +1,7 @@
 import { classNames } from "@/constants/common";
 import { RadioGroup } from "@headlessui/react";
 
-const SizeComponent = (props: any) => {
+const SizeComp = (props: any) => {
   return (
     <RadioGroup value={props.selectedSize} onChange={props.setSelectedSize}>
       <RadioGroup.Label className="sr-only">Choose a size</RadioGroup.Label>
@@ -61,4 +61,4 @@ const SizeComponent = (props: any) => {
   );
 };
 
-export default SizeComponent;
+export default SizeComp;

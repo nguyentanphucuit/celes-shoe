@@ -1,7 +1,7 @@
 import { RatingProps } from "@/types";
 import React from "react";
 
-const RatingComponent = (props: RatingProps) => {
+const RatingComp = (props: RatingProps) => {
   const _rating = Math.round(props.rating);
   return (
     <div className="flex items-center">
@@ -49,4 +49,4 @@ const RatingComponent = (props: RatingProps) => {
   );
 };
 
-export default RatingComponent;
+export default RatingComp;

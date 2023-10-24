@@ -1,7 +1,7 @@
 import React from "react";
 import { useRouter } from "next/router";
 import { useAppSelector } from "@/redux/hooks";
-import ProductDetailComponent from "@/components/product/ProductDetailComponent";
+import ProductDetailComponent from "@/components/product/ProductDetailComp";
 import { ProductProps } from "@/types";
 
 const ProductDetail = () => {

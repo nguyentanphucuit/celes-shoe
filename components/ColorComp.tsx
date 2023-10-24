@@ -1,7 +1,7 @@
 import { classNames, getColorVariants } from "@/constants/common";
 import { RadioGroup } from "@headlessui/react";
 import { useState } from "react";
-const ColorComponent = (props: any) => {
+const ColorComp = (props: any) => {
   const [selectedColor, setSelectedColor] = useState(props.options[0]);
   const handleChangeColor = (color: any) => {
     setSelectedColor(color);
@@ -42,4 +42,4 @@ const ColorComponent = (props: any) => {
   );
 };
 
-export default ColorComponent;
+export default ColorComp;

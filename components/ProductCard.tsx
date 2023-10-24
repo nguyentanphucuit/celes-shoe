@@ -4,12 +4,12 @@ import { ProductOptionsProps, ProductProps } from "@/types";
 import Image from "next/image";
 import React, { use, useEffect, useState } from "react";
 import CustomButton from "./CustomButton";
-import RatingComponent from "./RatingComponent";
+import RatingComp from "./RatingComp";
 import { useAppDispatch, useAppSelector } from "@/redux/hooks";
 import { isOpenModal } from "@/redux/features/productDetailSlice";
 
-import ColorComponent from "./ColorComponent";
-import SizeComponent from "./SizeComponent";
+import ColorComp from "./ColorComp";
+import SizeComp from "./SizeComp";
 import { textAlert } from "@/constants";
 import SkeletonProduct from "./SkeletonProduct";
 import { calculateDiscountPrice, classNames } from "@/constants/common";
@@ -155,7 +155,7 @@ const ProductCard = (props: any) => {
           </h5>
         </a>
 
-        <SizeComponent
+        <SizeComp
           option={option}
           selectedSize={selectedSize}
           setSelectedSize={setSelectedSize}
@@ -169,9 +169,9 @@ const ProductCard = (props: any) => {
               ${calculateDiscountPrice(option.price)(option.discount)()}
             </span>
           </div>
-          <RatingComponent rating={props.rating} type="small" />
+          <RatingComp rating={props.rating} type="small" />
         </div>
-        <ColorComponent
+        <ColorComp
           options={props.options}
           handleChangeOption={handleChangeOption}
           type="small"

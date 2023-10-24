@@ -11,10 +11,10 @@ import { Grid, Rating, ToastInput, useToasts } from "@geist-ui/core";
 import Image from "next/image";
 import Link from "next/link";
 import { useState } from "react";
-import ColorComponent from "../ColorComponent";
+import ColorComp from "../ColorComp";
 import CustomButton from "../CustomButton";
-import RatingComponent from "../RatingComponent";
-import SizeComponent from "../SizeComponent";
+import RatingComp from "../RatingComp";
+import SizeComp from "../SizeComp";
 
 const ProductDetailComponent = (props: ProductProps) => {
   const [selectedImage, setSelectedImage] = useState(props.options[0].imageUrl);
@@ -119,7 +119,7 @@ const ProductDetailComponent = (props: ProductProps) => {
             {props.category}
           </Link>
           <div className="text-3xl font-semibold">{props.title}</div>
-          <RatingComponent rating={props.rating} />
+          <RatingComp rating={props.rating} />
           <p>{props.description}</p>
           <div className="space-x-4 flex items-center">
             <span className="text-lg text-gray-600 line-through">
@@ -133,11 +133,11 @@ const ProductDetailComponent = (props: ProductProps) => {
             </span>
           </div>
           <p>Color:</p>
-          <ColorComponent
+          <ColorComp
             options={props.options}
             handleChangeOption={handleChangeOption}
           />
-          <SizeComponent
+          <SizeComp
             option={option}
             selectedSize={selectedSize}
             setSelectedSize={setSelectedSize}
@@ -246,7 +246,7 @@ const Reviews = (props: any) => {
   return (
     <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
       <div className="col-span-1 space-y-4">
-        <RatingComponent rating={4.95} />
+        <RatingComp rating={4.95} />
         <p className="text-sm font-medium text-gray-500 dark:text-gray-400">
           {props.totalReviews} global ratings
         </p>
@@ -285,7 +285,7 @@ const Reviews = (props: any) => {
               alt=""
             />
             <div className="space-y-1 text-sm font-medium dark:text-white">
-              <RatingComponent rating={4} />
+              <RatingComp rating={4} />
               <div>
                 Peter Nguyen -{" "}
                 <span className="text-sm text-gray-500 dark:text-gray-400">
