@@ -148,18 +148,23 @@ const ProductCard = (props: any) => {
         </button>
       </div>
 
-      <div className="flex flex-col gap-2 px-5 pb-5">
+      <div className="flex flex-col gap-1.5 px-5 pb-5">
         <a>
           <h5 className="text-xl font-semibold tracking-tight text-gray-900 dark:text-white">
             {props.title}
           </h5>
         </a>
+        <a>
+          <h5 className="text-base font-semibold tracking-tight text-gray-900 dark:text-white">
+            {props.subtitle}
+          </h5>
+        </a>
 
-        <SizeComp
+        {/* <SizeComp
           option={option}
           selectedSize={selectedSize}
           setSelectedSize={setSelectedSize}
-        />
+        /> */}
         <div className="flex items-center justify-between">
           <div className="space-x-2">
             <span className="text-sm font-semibold line-through text-gray-500 dark:text-white">
