@@ -17,6 +17,7 @@ import { XMarkIcon } from "@heroicons/react/20/solid";
 const ProductFilters = () => {
   const [isExpandSort, setIsExpandSort] = useState(false);
   const [isShowFilters, setIsShowFilters] = useState(false);
+  const [searchValue, setSearchValue] = useState("");
   const searchParams = useSearchParams();
 
   const filters = {
@@ -54,8 +55,16 @@ const ProductFilters = () => {
       .filter((item) => {
         if (filters.categories.length === 0) return true;
         return filters.categories.includes(item.category.toLowerCase());
+      })
+      .filter((item) => {
+        if (searchValue === "") return true;
+        return item.title.toLowerCase().includes(searchValue.toLowerCase());
       }),
   ];
+
+  const handleSearch = (value: string) => {
+    setSearchValue(value);
+  };
 
   const current_page = +(searchParams?.get("page") ?? 1);
   const per_page = +(searchParams?.get("per_page") ?? ITEMS_PER_PAGE);
@@ -112,11 +121,11 @@ const ProductFilters = () => {
         </Dialog>
       </Transition.Root>
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-        <div className="flex items-baseline justify-between border-b border-gray-200 pb-6 pt-32 md:pt-24">
-          <h1 className="-mt-2 lg:mt-10 lg:text-4xl text-2xl font-bold tracking-tight text-gray-900">
+        <div className="flex items-baseline justify-between border-b border-gray-200 pb-6 pt-32 lg:pt-24">
+          <h1 className="hidden md:block -mt-2 lg:mt-10 lg:text-4xl text-2xl font-bold tracking-tight text-gray-900">
             New Collections
           </h1>
-
+          <SearchBar handleSearch={(value: any) => handleSearch(value)} />
           <div className="flex items-center">
             <div className="relative inline-block text-left">
               <div>
@@ -172,7 +181,7 @@ const ProductFilters = () => {
               </Transition>
             </div>
 
-            <button
+            {/* <button
               type="button"
               className="-m-2 ml-5 p-2 text-gray-400 hover:text-gray-500 sm:ml-7">
               <span className="sr-only">View grid</span>
@@ -187,7 +196,7 @@ const ProductFilters = () => {
                   clipRule="evenodd"
                 />
               </svg>
-            </button>
+            </button> */}
             <button
               type="button"
               className="-m-2 ml-4 p-2 text-gray-400 hover:text-gray-500 sm:ml-6 lg:hidden"
@@ -281,6 +290,57 @@ const ListFiltersSection = (props: any) => {
         filters={props.filters.sizes}
       />
     </>
+  );
+};
+
+const SearchBar = (props: any) => {
+  const [searchValue, setSearchValue] = useState("");
+
+  const handleSubmit = (e: any) => {
+    e.preventDefault();
+    props.handleSearch(searchValue);
+  };
+  return (
+    <form className="w-80">
+      <label
+        htmlFor="default-search"
+        className="mb-2 text-sm font-medium text-gray-900 sr-only dark:text-white">
+        Search
+      </label>
+      <div className="relative">
+        <div className="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
+          <svg
+            className="w-4 h-4 text-gray-500 dark:text-gray-400"
+            aria-hidden="true"
+            xmlns="http://www.w3.org/2000/svg"
+            fill="none"
+            viewBox="0 0 20 20">
+            <path
+              stroke="currentColor"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              strokeWidth="2"
+              d="m19 19-4-4m0-7A7 7 0 1 1 1 8a7 7 0 0 1 14 0Z"
+            />
+          </svg>
+        </div>
+        <input
+          type="search"
+          id="default-search"
+          value={searchValue}
+          onChange={(e) => setSearchValue(e.target.value)}
+          className="block pr-24 w-full p-4 pl-10 text-sm text-gray-900 border border-gray-300 rounded-lg bg-gray-50 focus:ring-indigo-500 focus:border-indigo-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-indigo-500 dark:focus:border-indigo-500"
+          placeholder="Search Title, Category..."
+          required
+        />
+        <button
+          type="submit"
+          onClick={handleSubmit}
+          className="text-white absolute right-2.5 bottom-2.5 bg-primary hover:bg-indigo-800 focus:ring-4 focus:outline-none focus:ring-indigo-300 font-medium rounded-lg text-sm px-4 py-2 dark:bg-indigo-600 dark:hover:bg-indigo-700 dark:focus:ring-indigo-800">
+          Search
+        </button>
+      </div>
+    </form>
   );
 };
 

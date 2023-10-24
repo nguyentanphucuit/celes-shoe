@@ -127,7 +127,7 @@ const SpeedDial = () => {
         aria-controls="speed-dial-menu-default"
         aria-expanded="false"
         onMouseEnter={() => setIsOpen(true)}
-        className="flex items-center justify-center text-white bg-blue-700 rounded-full w-14 h-14 hover:bg-blue-800 dark:bg-blue-600 dark:hover:bg-blue-700 focus:ring-4 focus:ring-blue-300 focus:outline-none dark:focus:ring-blue-800">
+        className="flex items-center justify-center text-white bg-indigo-700 rounded-full w-14 h-14 hover:bg-indigo-800 dark:bg-primary dark:hover:bg-indigo-700 focus:ring-4 focus:ring-indigo-300 focus:outline-none dark:focus:ring-indigo-800">
         <svg
           className="w-5 h-5 transition-transform group-hover:rotate-45"
           aria-hidden="true"
