@@ -7,19 +7,21 @@ import {
 import { useAppSelector } from "@/redux/hooks";
 import { ProductProps } from "@/types";
 import { Dialog, Transition } from "@headlessui/react";
+import { Loading, Spinner } from "@geist-ui/core";
 import { useSearchParams } from "next/navigation";
-import { Fragment, useState } from "react";
+import { Fragment, useEffect, useState } from "react";
 import { FilterSection, FilterSectionRange } from "./FilterSection";
 import PaginationControls from "../pagination/PaginationControls";
 import ProductCard from "../ProductCard";
 import { XMarkIcon } from "@heroicons/react/20/solid";
+import useDebounce from "@/hooks/useDebounce";
 
 const ProductFilters = () => {
   const [isExpandSort, setIsExpandSort] = useState(false);
   const [isShowFilters, setIsShowFilters] = useState(false);
   const [searchValue, setSearchValue] = useState("");
+  const [debouncedSearchTerm, loading] = useDebounce(searchValue, 500) as any;
   const searchParams = useSearchParams();
-
   const filters = {
     minPrice: +(searchParams?.get("minPrice") || 0),
     colors: searchParams?.get("colors")?.split("%") || [],
@@ -57,14 +59,13 @@ const ProductFilters = () => {
         return filters.categories.includes(item.category.toLowerCase());
       })
       .filter((item) => {
-        if (searchValue === "") return true;
-        return item.title.toLowerCase().includes(searchValue.toLowerCase());
+        if (debouncedSearchTerm === "") return true;
+        return (
+          debouncedSearchTerm &&
+          item.title.toLowerCase().includes(debouncedSearchTerm.toLowerCase())
+        );
       }),
   ];
-
-  const handleSearch = (value: string) => {
-    setSearchValue(value);
-  };
 
   const current_page = +(searchParams?.get("page") ?? 1);
   const per_page = +(searchParams?.get("per_page") ?? ITEMS_PER_PAGE);
@@ -125,7 +126,10 @@ const ProductFilters = () => {
           <h1 className="hidden md:block -mt-2 lg:mt-10 lg:text-4xl text-2xl font-bold tracking-tight text-gray-900">
             New Collections
           </h1>
-          <SearchBar handleSearch={(value: any) => handleSearch(value)} />
+          <SearchBar
+            searchValue={searchValue}
+            setSearchValue={(value: any) => setSearchValue(value)}
+          />
           <div className="flex items-center">
             <div className="relative inline-block text-left">
               <div>
@@ -228,21 +232,27 @@ const ProductFilters = () => {
               <ListFiltersSection filters={filters} />
             </form>
             {/* Product grid */}
-            <div className="lg:col-span-3">
-              {filterItems.length === 0 ? (
-                <p className="flex justify-center items-center text-center">
-                  Oops...
-                  <br />
-                  Items not found
-                </p>
-              ) : (
-                <div className="grid grid-flow-row justify-center md:grid-cols-2 lg:grid-cols-2 xl:grid-cols-3 gap-4">
-                  {listCollections.map((shoe: ProductProps) => (
-                    <ProductCard {...shoe} key={shoe.id} />
-                  ))}
-                </div>
-              )}
-            </div>
+            {loading ? (
+              <div className="flex justify-center items-center text-center">
+                <Spinner />
+              </div>
+            ) : (
+              <div className="lg:col-span-3">
+                {filterItems.length === 0 ? (
+                  <p className="flex justify-center items-center text-center">
+                    Oops...
+                    <br />
+                    Items not found
+                  </p>
+                ) : (
+                  <div className="grid grid-flow-row justify-center sm:grid-cols-2 xl:grid-cols-3 gap-4">
+                    {listCollections.map((shoe: ProductProps) => (
+                      <ProductCard {...shoe} key={shoe.id} />
+                    ))}
+                  </div>
+                )}
+              </div>
+            )}
           </div>
         </section>
         <PaginationControls
@@ -294,14 +304,8 @@ const ListFiltersSection = (props: any) => {
 };
 
 const SearchBar = (props: any) => {
-  const [searchValue, setSearchValue] = useState("");
-
-  const handleSubmit = (e: any) => {
-    e.preventDefault();
-    props.handleSearch(searchValue);
-  };
   return (
-    <form className="w-80">
+    <div className="w-64">
       <label
         htmlFor="default-search"
         className="mb-2 text-sm font-medium text-gray-900 sr-only dark:text-white">
@@ -327,20 +331,14 @@ const SearchBar = (props: any) => {
         <input
           type="search"
           id="default-search"
-          value={searchValue}
-          onChange={(e) => setSearchValue(e.target.value)}
-          className="block pr-24 w-full p-4 pl-10 text-sm text-gray-900 border border-gray-300 rounded-lg bg-gray-50 focus:ring-indigo-500 focus:border-indigo-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-indigo-500 dark:focus:border-indigo-500"
+          value={props.searchValue}
+          onChange={(e) => props.setSearchValue(e.target.value)}
+          className="block w-full p-2 pl-10 text-sm text-gray-900 border border-gray-300 rounded-lg bg-gray-50 focus:ring-indigo-500 focus:border-indigo-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-indigo-500 dark:focus:border-indigo-500"
           placeholder="Search Title, Category..."
           required
         />
-        <button
-          type="submit"
-          onClick={handleSubmit}
-          className="text-white absolute right-2.5 bottom-2.5 bg-primary hover:bg-indigo-800 focus:ring-4 focus:outline-none focus:ring-indigo-300 font-medium rounded-lg text-sm px-4 py-2 dark:bg-indigo-600 dark:hover:bg-indigo-700 dark:focus:ring-indigo-800">
-          Search
-        </button>
       </div>
-    </form>
+    </div>
   );
 };
 

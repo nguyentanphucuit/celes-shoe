@@ -209,11 +209,11 @@ export const listProducts = [
         color: "Red",
         quantity: 1,
         imageUrl:
-          "https://firebasestorage.googleapis.com/v0/b/celesshoe-6121f.appspot.com/o/products%2FCS-10.jpg?alt=media&token=fc03586a-b766-49d9-b715-22a18857bf65",
+          "https://firebasestorage.googleapis.com/v0/b/celesshoe-6121f.appspot.com/o/products%2FCS-18.jpg?alt=media&token=5aa95feb-4913-4425-99e9-fa4795ab2637",
       },
       {
         imageUrl:
-          "https://firebasestorage.googleapis.com/v0/b/celesshoe-6121f.appspot.com/o/products%2FCS-10.jpg?alt=media&token=fc03586a-b766-49d9-b715-22a18857bf65",
+          "https://firebasestorage.googleapis.com/v0/b/celesshoe-6121f.appspot.com/o/products%2FCS-18.jpg?alt=media&token=5aa95feb-4913-4425-99e9-fa4795ab2637",
         price: 12.99,
         inStock: true,
         color: "Black",
