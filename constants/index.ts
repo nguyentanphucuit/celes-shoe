@@ -30,16 +30,16 @@ export const footerLinks = [
 
 export const listCategories = [
   {
+    id: "heels",
     name: "heels",
-    value: "heels",
   },
   {
+    id: "boots",
     name: "boots",
-    value: "boots",
   },
   {
+    id: "flats",
     name: "flats",
-    value: "flats",
   },
 ];
 export const listColors = [
@@ -82,24 +82,24 @@ export const listColors = [
 
 export const listSizes = [
   {
+    id: "35",
     name: "35",
-    value: "35",
   },
   {
+    id: "36",
     name: "36",
-    value: "36",
   },
   {
+    id: "37",
     name: "37",
-    value: "37",
   },
   {
+    id: "38",
     name: "38",
-    value: "38",
   },
   {
+    id: "39",
     name: "39",
-    value: "39",
   },
 ];
 
