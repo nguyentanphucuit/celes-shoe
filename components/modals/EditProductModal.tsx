@@ -1,4 +1,4 @@
-import { listCategories } from "@/constants";
+import { listCategories, listSizes } from "@/constants";
 import { classNames } from "@/constants/common";
 import { updateProduct } from "@/redux/features/productsSlice";
 import { Dialog, Listbox, Transition } from "@headlessui/react";
@@ -22,21 +22,57 @@ const EditProductModal = (props: any) => {
   };
 
   const headers = [
+    { key: "id", title: "ID", type: "input", isDisabled: true },
     { key: "title", title: "Title", type: "input" },
+    { key: "subtitle", title: "Subtitle", type: "input" },
     {
       key: "category",
       title: "Category",
       type: "select",
       listOptions: [...listCategoryOptions],
     },
-    { key: "price", title: "Price", type: "input" },
     {
-      key: "inStock",
-      title: "In Stock",
-      type: "select",
-      listOptions: [
-        { id: "0", name: "true" },
-        { id: "1", name: "false" },
+      key: "options",
+      title: "Options",
+      type: "map",
+      listKeys: [
+        {
+          key: "color",
+          title: "Color",
+          type: "select",
+          listOptions: [...listColorOptions],
+        },
+        { key: "price", title: "Price", type: "input" },
+        {
+          key: "discount",
+          title: "Discount",
+          type: "input",
+        },
+        {
+          key: "imageUrl",
+          title: "ImageUrl",
+          type: "input",
+        },
+        {
+          key: "quantity",
+          title: "Quantity",
+          type: "input",
+        },
+        {
+          key: "size",
+          title: "Size",
+          type: "select",
+          listOptions: [...listSizes],
+        },
+        {
+          key: "inStock",
+          title: "In Stock",
+          type: "select",
+          listOptions: [
+            { id: "0", name: "true" },
+            { id: "1", name: "false" },
+          ],
+        },
       ],
     },
   ];
@@ -98,7 +134,7 @@ const EditProductModal = (props: any) => {
                     <div className="p-6 space-y-6">
                       <div className="grid grid-cols-6 gap-6">
                         {headers.map((item, index) => (
-                          <div className="col-span-6 sm:col-span-3" key={index}>
+                          <Fragment key={index}>
                             {
                               {
                                 ["input"]: (
@@ -116,9 +152,32 @@ const EditProductModal = (props: any) => {
                                     item={item}
                                   />
                                 ),
+                                ["map"]: item.listKeys?.map((item, index) => (
+                                  <Fragment key={item.key + index}>
+                                    {
+                                      {
+                                        ["input"]: (
+                                          <CustomInput
+                                            inputValue={inputValue}
+                                            setInputValue={setInputValue}
+                                            item={item}
+                                          />
+                                        ),
+                                        ["select"]: (
+                                          <CustomListbox
+                                            inputValue={inputValue}
+                                            setInputValue={setInputValue}
+                                            listOptions={item.listOptions}
+                                            item={item}
+                                          />
+                                        ),
+                                      }[item.type]
+                                    }
+                                  </Fragment>
+                                )),
                               }[item.type]
                             }
-                          </div>
+                          </Fragment>
                         ))}
                         <div className="col-span-6 sm:col-span-3"></div>
                       </div>
@@ -144,38 +203,43 @@ const EditProductModal = (props: any) => {
 const CustomInput = (props: any) => {
   const { item, inputValue, setInputValue } = props;
   return (
-    <>
+    <div className="col-span-6 sm:col-span-3">
       <label
         htmlFor={item.key}
         className="block mb-2 uppercase text-sm font-medium text-gray-900 dark:text-white">
         {item.key}
       </label>
       <input
+        disabled={item.isDisabled}
         type="text"
         name={item.key}
         value={inputValue[item.key] || ""}
         id={item.key}
-        className="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-600 focus:border-blue-600 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+        className={classNames(
+          item.isDisabled ? "bg-gray-200" : "bg-gray-50",
+          "shadow-sm  border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-600 focus:border-blue-600 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+        )}
         placeholder={item.key}
         onChange={(e) =>
           setInputValue({ ...inputValue, [e.target.name]: e.target.value })
         }
         required
       />
-    </>
+    </div>
   );
 };
 
 const CustomListbox = (props: any) => {
   const { item, inputValue, setInputValue, listOptions } = props;
+
   const selected =
     listOptions.find(
       (option: any) =>
-        option.name.toLowerCase() === inputValue[item.key].toLowerCase()
+        option.name?.toLowerCase() == inputValue[item.key]?.toLowerCase()
     ) ?? listOptions[0];
-  console.log(listOptions, inputValue[item.key].toLowerCase());
+  console.log(selected, inputValue[item.key]);
   return (
-    <>
+    <div className="col-span-6 sm:col-span-3">
       <label
         htmlFor={item.key}
         className="block mb-2 uppercase text-sm font-medium text-gray-900 dark:text-white">
@@ -184,7 +248,7 @@ const CustomListbox = (props: any) => {
       <Listbox
         value={selected}
         onChange={(selected: any) =>
-          setInputValue({ ...inputValue, [item.key]: selected.value })
+          setInputValue({ ...inputValue, [item.key]: selected.name })
         }>
         <div className="relative mt-1">
           <Listbox.Button className="capitalize relative w-full cursor-default rounded-lg bg-gray-50 py-2 pl-3 pr-10 text-left shadow-md focus:outline-none focus-visible:border-indigo-500 focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-opacity-75 focus-visible:ring-offset-2 focus-visible:ring-offset-orange-300 sm:text-sm">
@@ -232,7 +296,7 @@ const CustomListbox = (props: any) => {
           </Transition>
         </div>
       </Listbox>
-    </>
+    </div>
   );
 };
 
