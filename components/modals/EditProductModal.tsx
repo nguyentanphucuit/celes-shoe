@@ -237,7 +237,6 @@ const CustomListbox = (props: any) => {
       (option: any) =>
         option.name?.toLowerCase() == inputValue[item.key]?.toLowerCase()
     ) ?? listOptions[0];
-  console.log(selected, inputValue[item.key]);
   return (
     <div className="col-span-6 sm:col-span-3">
       <label

@@ -14,6 +14,7 @@ import { updateAllColor } from "@/redux/features/colorSlice";
 import { useAppDispatch } from "@/redux/hooks";
 import { addDoc, collection } from "firebase/firestore";
 import { db } from "@/firebaseConfig";
+import { useTranslations } from "next-intl";
 
 const Collections = () => {
   const searchParams = useSearchParams();
@@ -91,7 +92,7 @@ const ListCategory = (props: any) => {
             />
           </div>
           <div className="absolute top-10 left-10 z-10">
-            <div className="text-3xl text-white my-5">
+            <div className="text-3xl text-gray-800 my-5">
               {capitalizeFirstLetter(category.name)}
             </div>
             <Link href={`/product/?category=${category.href}`}>

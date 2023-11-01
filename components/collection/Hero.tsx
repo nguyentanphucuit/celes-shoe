@@ -9,22 +9,22 @@ const Hero = () => {
   const handleClick = () => {};
   return (
     <div className="hero mt-16 lg:mt-28">
-      <div className="bg-slate-400 flex flex-col text-center justify-center items-center ">
+      <div className="bg-slate-400 my-20 py-3 flex flex-col text-center justify-center items-center ">
         <Image
-          src="https://www.famousfootwear.com.au/cdn/shop/files/DESKTOP_WEBSITE_BANNERS_67_2880x.jpg?v=1695621004"
+          src="/thumbnail_1.png"
           alt="hero"
           fill
           className="object-cover object-center"
         />
         <div className="hero__title mt-36">WINTER CLEARANCE</div>
         <div className="hero__subtitle">UP TO 200 STYLES ON SALE</div>
-        <Link href="https://zalo.me/0905075588">
+        {/* <Link href="https://zalo.me/0905075588">
           <CustomButton
             title="CONTINUE ->"
-            containerStyles="px-8 bg-slate-400 text-white border-2 border-white my-20 py-3"
+            containerStyles="px-8 bg-slate-400 text-white border-2 border-white "
             handleClick={handleClick}
           />
-        </Link>
+        </Link> */}
       </div>
     </div>
   );

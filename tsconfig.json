@@ -28,7 +28,8 @@
     "**/*.ts",
     "**/*.tsx",
     ".next/types/**/*.ts",
-    "pages/api/sendgrid.ts"
+    "pages/api/sendgrid.ts",
+    "i18n.js"
   ],
   "exclude": ["node_modules"]
 }

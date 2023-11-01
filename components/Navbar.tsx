@@ -1,14 +1,16 @@
 "use client";
+import { classNames } from "@/constants/common";
+import { Popover, Switch, Transition } from "@headlessui/react";
 import Image from "next/legacy/image";
 import Link from "next/link";
+import { usePathname } from "next/navigation";
+import { useRouter } from "next/router";
 import { Fragment, useEffect, useState } from "react";
 import Banner from "./Banner";
-import CartModal from "./modals/CartModal";
-import { useRouter } from "next/router";
-import { Popover, Transition } from "@headlessui/react";
-import { usePathname } from "next/navigation";
-import { classNames } from "@/constants/common";
 import SpeedDial from "./SpeedDial";
+import CartModal from "./modals/CartModal";
+import LanguageSelector from "./LanguageSelector";
+import { useTranslations } from "next-intl";
 
 const Navbar = () => {
   const [showMenu, setShowMenu] = useState(false);
@@ -17,6 +19,7 @@ const Navbar = () => {
   const pathname = usePathname();
   const currentNav = pathname?.split("/")[1] || "";
   const listPath = pathname?.split("/").slice(1) ?? [];
+  const t = useTranslations("Navbar");
 
   useEffect(() => {
     setShowMenu(false);
@@ -33,27 +36,27 @@ const Navbar = () => {
 
   const navItem = [
     {
-      title: "Home",
+      title: t("Home"),
       path: "/",
     },
     {
-      title: "Product",
+      title: t("Product"),
       path: "/product",
     },
     {
-      title: "Blog",
+      title: t("Blog"),
       path: "/blog",
     },
     {
-      title: "About",
+      title: t("About"),
       path: "/about",
     },
     {
-      title: "Contact",
+      title: t("Contact"),
       path: "/contact",
     },
     {
-      title: "Login",
+      title: t("Login"),
       path: "/login",
     },
   ];
@@ -113,6 +116,8 @@ const Navbar = () => {
             </div>
             <div className="">
               <div className="flex items-center">
+                <LanguageSelector />
+                {/* <ModeSwitcher /> */}
                 <CartModal />
 
                 <div className="hidden md:block relative ml-3 px-2">
@@ -292,6 +297,27 @@ export const BreadCrumb = (props: any) => {
         ))}
       </ol>
     </nav>
+  );
+};
+
+const ModeSwitcher = () => {
+  const [enabled, setEnabled] = useState(false);
+
+  return (
+    <div className="py-8">
+      <Switch
+        checked={enabled}
+        onChange={setEnabled}
+        className={`${enabled ? "bg-indigo-900" : "bg-indigo-700"}
+          relative inline-flex h-[23px] w-[40px] shrink-0 cursor-pointer rounded-full border-2 border-transparent transition-colors duration-200 ease-in-out focus:outline-none focus-visible:ring-2  focus-visible:ring-white focus-visible:ring-opacity-75`}>
+        <span className="sr-only">Use setting</span>
+        <span
+          aria-hidden="true"
+          className={`${enabled ? "translate-x-4" : "translate-x-0"}
+            pointer-events-none inline-block h-[20px] w-[20px] transform rounded-full bg-white shadow-lg ring-0 transition duration-200 ease-in-out`}
+        />
+      </Switch>
+    </div>
   );
 };
 
