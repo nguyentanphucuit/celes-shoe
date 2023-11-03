@@ -4,12 +4,13 @@ import { useSelector } from "react-redux";
 import { classNames } from "@/constants/common";
 import EditProductModal from "../modals/EditProductModal";
 import { ProductProps } from "@/types";
+import CustomButton from "../CustomButton";
 
 const ProductManagement = () => {
   const products = useSelector((state: any) => state.productsReducer.items);
   const [product, setProduct] = useState<ProductProps>(products[0] ?? {});
   const [isOpenModal, setIsOpenModal] = useState(false);
-  const handleOpenModal = (id: string) => {
+  const handleEditModal = (id?: string) => {
     setProduct(products.find((product: any) => product.id === id));
     setIsOpenModal(true);
   };
@@ -102,7 +103,7 @@ const ProductManagement = () => {
       isShow: true,
       className: "",
       render: (id: string) => (
-        <button className="text-blue-500" onClick={() => handleOpenModal(id)}>
+        <button className="text-blue-500" onClick={() => handleEditModal(id)}>
           <svg
             xmlns="http://www.w3.org/2000/svg"
             fill="none"
@@ -152,29 +153,36 @@ const ProductManagement = () => {
         <label htmlFor="table-search" className="sr-only">
           Search
         </label>
-        <div className="relative">
-          <div className="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
-            <svg
-              className="w-4 h-4 text-gray-500 dark:text-gray-400"
-              aria-hidden="true"
-              xmlns="http://www.w3.org/2000/svg"
-              fill="none"
-              viewBox="0 0 20 20">
-              <path
-                stroke="currentColor"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                strokeWidth="2"
-                d="m19 19-4-4m0-7A7 7 0 1 1 1 8a7 7 0 0 1 14 0Z"
-              />
-            </svg>
-          </div>
-          <input
-            type="text"
-            id="table-search-users"
-            className="block p-2 pl-10 text-sm text-gray-900 border border-gray-300 rounded-lg w-80 bg-gray-50 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-            placeholder="Search for product"
+        <div className="flex flex-row justify-end gap-4">
+          <CustomButton
+            title="Create Product"
+            containerStyles="px-3 py-2 items-center justify-center border border-transparent bg-blue-700 border-blue-400 text-white text-sm font-semibold hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2"
+            handleClick={() => handleEditModal()}
           />
+          <div className="relative">
+            <div className="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
+              <svg
+                className="w-4 h-4 text-gray-500 dark:text-gray-400"
+                aria-hidden="true"
+                xmlns="http://www.w3.org/2000/svg"
+                fill="none"
+                viewBox="0 0 20 20">
+                <path
+                  stroke="currentColor"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth="2"
+                  d="m19 19-4-4m0-7A7 7 0 1 1 1 8a7 7 0 0 1 14 0Z"
+                />
+              </svg>
+            </div>
+            <input
+              type="text"
+              id="table-search-users"
+              className="block p-2 pl-10 text-sm text-gray-900 border border-gray-300 rounded-lg w-80 bg-gray-50 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+              placeholder="Search for product"
+            />
+          </div>
         </div>
       </div>
       <table className="w-full text-sm text-left text-gray-500 dark:text-gray-400">

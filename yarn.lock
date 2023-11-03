@@ -3240,6 +3240,11 @@
   dependencies:
     "punycode" "^2.1.0"
 
+"use-immer@^0.9.0":
+  "integrity" "sha512-/L+enLi0nvuZ6j4WlyK0US9/ECUtV5v9RUbtxnn5+WbtaXYUaOBoKHDNL9I5AETdurQ4rIFIj/s+Z5X80ATyKw=="
+  "resolved" "https://registry.npmjs.org/use-immer/-/use-immer-0.9.0.tgz"
+  "version" "0.9.0"
+
 "use-intl@3.0.0-beta.3":
   "integrity" "sha512-b5c9F6F3Yw7xbdIVdDBj2qh5BHntdr2Obp3c40OTxXOwqDIyjAbOxjezGe7ak8EGo0TEezyN6oPvi6aQWPjDdQ=="
   "resolved" "https://registry.npmjs.org/use-intl/-/use-intl-3.0.0-beta.3.tgz"

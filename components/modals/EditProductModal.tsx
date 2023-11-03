@@ -1,20 +1,24 @@
 import { listCategories, listSizes } from "@/constants";
 import { classNames } from "@/constants/common";
 import { updateProduct } from "@/redux/features/productsSlice";
-import { Dialog, Listbox, Transition } from "@headlessui/react";
+import { Dialog, Disclosure, Listbox, Transition } from "@headlessui/react";
 import {
   CheckIcon,
   ChevronUpDownIcon,
+  ChevronUpIcon,
   XMarkIcon,
 } from "@heroicons/react/20/solid";
 import React, { Fragment, useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
+import CustomModal from "./CustomModal";
 
 const EditProductModal = (props: any) => {
   const [inputValue, setInputValue] = useState<{ [key: string]: any }>({});
   const listColorOptions = useSelector(
     (state: any) => state.colorReducer.items
   );
+  const isCreate = props.product === undefined;
+
   const listCategoryOptions = [...listCategories];
 
   const handleClosedModal = () => {
@@ -31,51 +35,48 @@ const EditProductModal = (props: any) => {
       type: "select",
       listOptions: [...listCategoryOptions],
     },
+  ];
+
+  const headers_option = [
     {
-      key: "options",
-      title: "Options",
-      type: "map",
-      listKeys: [
-        {
-          key: "color",
-          title: "Color",
-          type: "select",
-          listOptions: [...listColorOptions],
-        },
-        { key: "price", title: "Price", type: "input" },
-        {
-          key: "discount",
-          title: "Discount",
-          type: "input",
-        },
-        {
-          key: "imageUrl",
-          title: "ImageUrl",
-          type: "input",
-        },
-        {
-          key: "quantity",
-          title: "Quantity",
-          type: "input",
-        },
-        {
-          key: "size",
-          title: "Size",
-          type: "select",
-          listOptions: [...listSizes],
-        },
-        {
-          key: "inStock",
-          title: "In Stock",
-          type: "select",
-          listOptions: [
-            { id: "0", name: "true" },
-            { id: "1", name: "false" },
-          ],
-        },
+      key: "color",
+      title: "Color",
+      type: "select",
+      listOptions: [...listColorOptions],
+    },
+    { key: "price", title: "Price", type: "input" },
+    {
+      key: "discount",
+      title: "Discount",
+      type: "input",
+    },
+    {
+      key: "imageUrl",
+      title: "ImageUrl",
+      type: "input",
+    },
+    {
+      key: "quantity",
+      title: "Quantity",
+      type: "input",
+    },
+    {
+      key: "size",
+      title: "Size",
+      type: "select",
+      listOptions: [...listSizes],
+    },
+    {
+      key: "inStock",
+      title: "In Stock",
+      type: "select",
+      listOptions: [
+        { id: "true", name: true },
+        { id: "false", name: false },
       ],
     },
   ];
+
   const dispatch = useDispatch();
 
   const handleSubmit = (e: any) => {
@@ -89,114 +90,118 @@ const EditProductModal = (props: any) => {
   }, [props.product]);
 
   return (
-    <Transition.Root appear show={props.isOpenModal} as={Fragment}>
-      <Dialog as="div" className="relative z-30" onClose={handleClosedModal}>
-        <Transition.Child
-          as={Fragment}
-          enter="ease-out duration-300"
-          enterFrom="opacity-0"
-          enterTo="opacity-100"
-          leave="ease-in duration-100"
-          leaveFrom="opacity-100"
-          leaveTo="opacity-0">
-          <div className="fixed inset-0 hidden bg-gray-500 bg-opacity-75 transition-opacity md:block" />
-        </Transition.Child>
-
-        <div className="fixed inset-0 z-10 w-screen overflow-y-auto">
-          <div className="flex min-h-full items-stretch justify-center text-center md:items-center md:px-2 lg:px-4">
-            <Transition.Child
-              as={Fragment}
-              enter="ease-out duration-300"
-              enterFrom="opacity-0 translate-y-4 md:translate-y-0 md:scale-95"
-              enterTo="opacity-100 translate-y-0 md:scale-100"
-              leave="ease-in duration-0"
-              leaveFrom="opacity-100 translate-y-0 md:scale-100"
-              leaveTo="opacity-0 translate-y-4 md:translate-y-0 md:scale-95">
-              <Dialog.Panel className="w-full bg-white transform text-left text-base transition md:my-8 md:max-w-2xl md:px-4 lg:max-w-4xl rounded-lg">
-                <div className="flex items-start justify-between p-4 border-b rounded-t dark:border-gray-600">
-                  <h3 className="text-xl font-semibold text-gray-900 dark:text-white">
-                    Edit product
-                  </h3>
-                  <button
-                    type="button"
-                    className="text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm w-8 h-8 ml-auto inline-flex justify-center items-center dark:hover:bg-gray-600 dark:hover:text-white"
-                    onClick={handleClosedModal}
-                    data-modal-hide="editUserModal">
-                    <XMarkIcon className="h-6 w-6" aria-hidden="true" />
-                    <span className="sr-only">Close modal</span>
-                  </button>
-                </div>
-                {/* Content modal */}
-                <>
-                  <form
-                    onSubmit={handleSubmit}
-                    className="relative bg-white dark:bg-gray-700">
-                    <div className="p-6 space-y-6">
-                      <div className="grid grid-cols-6 gap-6">
-                        {headers.map((item, index) => (
-                          <Fragment key={index}>
-                            {
-                              {
-                                ["input"]: (
-                                  <CustomInput
-                                    inputValue={inputValue}
-                                    setInputValue={setInputValue}
-                                    item={item}
-                                  />
-                                ),
-                                ["select"]: (
-                                  <CustomListbox
-                                    inputValue={inputValue}
-                                    setInputValue={setInputValue}
-                                    listOptions={item.listOptions}
-                                    item={item}
-                                  />
-                                ),
-                                ["map"]: item.listKeys?.map((item, index) => (
-                                  <Fragment key={item.key + index}>
-                                    {
-                                      {
-                                        ["input"]: (
-                                          <CustomInput
-                                            inputValue={inputValue}
-                                            setInputValue={setInputValue}
-                                            item={item}
-                                          />
-                                        ),
-                                        ["select"]: (
-                                          <CustomListbox
-                                            inputValue={inputValue}
-                                            setInputValue={setInputValue}
-                                            listOptions={item.listOptions}
-                                            item={item}
-                                          />
-                                        ),
-                                      }[item.type]
-                                    }
-                                  </Fragment>
-                                )),
-                              }[item.type]
-                            }
-                          </Fragment>
-                        ))}
-                        <div className="col-span-6 sm:col-span-3"></div>
-                      </div>
-                    </div>
-                    <div className="flex items-center p-6 space-x-2 border-t border-gray-200 rounded-b dark:border-gray-600">
-                      <button
-                        type="submit"
-                        className="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
-                        Save
-                      </button>
-                    </div>
-                  </form>
-                </>
-              </Dialog.Panel>
-            </Transition.Child>
+    <CustomModal
+      handleClosedModal={handleClosedModal}
+      isOpenModal={props.isOpenModal}
+      title={isCreate ? "Create Product" : "Edit Product"}>
+      <form
+        onSubmit={handleSubmit}
+        className="relative bg-white dark:bg-gray-700 ">
+        <div className="p-6 space-y-6 max-h-[70vh] overflow-y-auto">
+          <div className="grid grid-cols-6 gap-6">
+            {headers.map((item, index) => (
+              <Fragment key={index}>
+                {
+                  {
+                    ["input"]: (
+                      <CustomInput
+                        inputValue={inputValue}
+                        setInputValue={setInputValue}
+                        item={item}
+                      />
+                    ),
+                    ["select"]: (
+                      <CustomListbox
+                        inputValue={inputValue}
+                        setInputValue={setInputValue}
+                        listOptions={item.listOptions}
+                        item={item}
+                      />
+                    ),
+                  }[item.type]
+                }
+              </Fragment>
+            ))}
           </div>
+          {inputValue.options?.map((option: any, optionIdx: number) => (
+            <Disclosure key={option + optionIdx}>
+              {({ open }) => (
+                <>
+                  <Disclosure.Button className="flex w-full justify-between rounded-lg bg-purple-100 px-4 py-2 text-left text-sm font-medium text-purple-900 hover:bg-purple-200 focus:outline-none focus-visible:ring focus-visible:ring-purple-500 focus-visible:ring-opacity-75">
+                    <span>{option.color}</span>
+                    <ChevronUpIcon
+                      className={`${
+                        open ? "rotate-180 transform" : ""
+                      } h-5 w-5 text-purple-500`}
+                    />
+                  </Disclosure.Button>
+                  <Disclosure.Panel className="px-4 pt-4 pb-2 text-sm text-gray-500">
+                    <div className="grid grid-cols-6 gap-6">
+                      {headers_option.map((item, itemIdx) => (
+                        <Fragment key={option + item + itemIdx}>
+                          {
+                            {
+                              ["input"]: (
+                                <CustomInput
+                                  inputValue={inputValue.options?.[optionIdx]}
+                                  setInputValue={(value: any) => {
+                                    const newOptions = inputValue.options.map(
+                                      (item: any, index: number) => {
+                                        if (index === optionIdx) {
+                                          return { ...value };
+                                        }
+                                        return item;
+                                      }
+                                    );
+                                    setInputValue({
+                                      ...inputValue,
+                                      options: newOptions,
+                                    });
+                                  }}
+                                  item={item}
+                                />
+                              ),
+                              ["select"]: (
+                                <CustomListbox
+                                  inputValue={inputValue.options?.[optionIdx]}
+                                  setInputValue={(value: any) => {
+                                    const newOptions = inputValue.options.map(
+                                      (item: any, index: number) => {
+                                        if (index === optionIdx) {
+                                          return { ...value };
+                                        }
+                                        return item;
+                                      }
+                                    );
+                                    setInputValue({
+                                      ...inputValue,
+                                      options: newOptions,
+                                    });
+                                  }}
+                                  listOptions={item.listOptions}
+                                  item={item}
+                                />
+                              ),
+                            }[item.type]
+                          }
+                        </Fragment>
+                      ))}
+                    </div>
+                  </Disclosure.Panel>
+                </>
+              )}
+            </Disclosure>
+          ))}
         </div>
-      </Dialog>
-    </Transition.Root>
+        <div className="flex items-center p-6 space-x-2 border-t border-gray-200 rounded-b dark:border-gray-600">
+          <button
+            type="submit"
+            className="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
+            Save
+          </button>
+        </div>
+      </form>
+    </CustomModal>
   );
 };
 
@@ -231,14 +236,12 @@ const CustomInput = (props: any) => {
 
 const CustomListbox = (props: any) => {
   const { item, inputValue, setInputValue, listOptions } = props;
-
   const selected =
-    listOptions.find(
-      (option: any) =>
-        option.name?.toLowerCase() == inputValue[item.key]?.toLowerCase()
-    ) ?? listOptions[0];
+    listOptions.find((option: any) => {
+      return option.name === inputValue[item.key];
+    }) ?? listOptions[0];
   return (
-    <div className="col-span-6 sm:col-span-3">
+    <div className="col-span-6 sm:col-span-3" key={item}>
       <label
         htmlFor={item.key}
         className="block mb-2 uppercase text-sm font-medium text-gray-900 dark:text-white">
@@ -251,7 +254,7 @@ const CustomListbox = (props: any) => {
         }>
         <div className="relative mt-1">
           <Listbox.Button className="capitalize relative w-full cursor-default rounded-lg bg-gray-50 py-2 pl-3 pr-10 text-left shadow-md focus:outline-none focus-visible:border-indigo-500 focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-opacity-75 focus-visible:ring-offset-2 focus-visible:ring-offset-orange-300 sm:text-sm">
-            <span className="block truncate">{selected.name}</span>
+            <span className="block truncate">{`${selected.name}`}</span>
             <span className="pointer-events-none absolute inset-y-0 right-0 flex items-center pr-2">
               <ChevronUpDownIcon
                 className="h-5 w-5 text-gray-400"
@@ -280,7 +283,7 @@ const CustomListbox = (props: any) => {
                         className={`block truncate ${
                           selected ? "font-medium" : "font-normal"
                         }`}>
-                        {item.name}
+                        {`${item.name}`}
                       </span>
                       {selected ? (
                         <span className="absolute inset-y-0 left-0 flex items-center pl-3 text-amber-600">
