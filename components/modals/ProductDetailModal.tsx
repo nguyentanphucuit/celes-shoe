@@ -1,6 +1,6 @@
 "use client";
 
-import { textAlert } from "@/constants";
+import { alertMessage } from "@/constants";
 import { calculateDiscountPrice } from "@/constants/common";
 import { addToCart } from "@/redux/features/cartSlice";
 import { isOpenModal } from "@/redux/features/productDetailSlice";
@@ -33,7 +33,7 @@ export function ProductDetailModal() {
   const handleAddToCart = () => {
     const type = "success" as ToastInput["type"];
     setToast({
-      text: textAlert.success,
+      text: alertMessage.success,
       type,
     });
     dispatch(

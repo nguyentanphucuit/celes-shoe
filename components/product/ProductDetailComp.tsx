@@ -1,4 +1,4 @@
-import { textAlert } from "@/constants";
+import { alertMessage } from "@/constants";
 import {
   calculateDiscountPrice,
   capitalizeFirstLetter,
@@ -27,7 +27,7 @@ const ProductDetailComponent = (props: ProductProps) => {
   const handleAddToCart = () => {
     const type = "success" as ToastInput["type"];
     setToast({
-      text: textAlert.success,
+      text: alertMessage.success,
       type,
     });
     dispatch(

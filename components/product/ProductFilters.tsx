@@ -129,6 +129,7 @@ const ProductFilters = () => {
           <SearchBar
             searchValue={searchValue}
             setSearchValue={(value: any) => setSearchValue(value)}
+            loading={loading}
           />
           <div className="flex items-center">
             <div className="relative inline-block text-left">
@@ -232,27 +233,22 @@ const ProductFilters = () => {
               <ListFiltersSection filters={filters} />
             </form>
             {/* Product grid */}
-            {loading ? (
-              <div className="flex justify-center items-center text-center">
-                <Spinner />
-              </div>
-            ) : (
-              <div className="lg:col-span-3">
-                {filterItems.length === 0 ? (
-                  <p className="flex justify-center items-center text-center">
-                    Oops...
-                    <br />
-                    Items not found
-                  </p>
-                ) : (
-                  <div className="grid grid-flow-row justify-center sm:grid-cols-2 xl:grid-cols-3 gap-4">
-                    {listCollections.map((shoe: ProductProps) => (
-                      <ProductCard {...shoe} key={shoe.id} />
-                    ))}
-                  </div>
-                )}
-              </div>
-            )}
+
+            <div className="lg:col-span-3">
+              {filterItems.length === 0 ? (
+                <p className="flex justify-center items-center text-center">
+                  Oops...
+                  <br />
+                  Items not found
+                </p>
+              ) : (
+                <div className="grid grid-flow-row justify-center sm:grid-cols-2 xl:grid-cols-3 gap-4">
+                  {listCollections.map((shoe: ProductProps) => (
+                    <ProductCard {...shoe} key={shoe.id} />
+                  ))}
+                </div>
+              )}
+            </div>
           </div>
         </section>
         <PaginationControls
@@ -329,7 +325,7 @@ const SearchBar = (props: any) => {
           </svg>
         </div>
         <input
-          type="search"
+          type={props.loading ? "input" : "search"}
           id="default-search"
           value={props.searchValue}
           onChange={(e) => props.setSearchValue(e.target.value)}
@@ -337,6 +333,11 @@ const SearchBar = (props: any) => {
           placeholder="Search Title, Category..."
           required
         />
+        {props.loading && (
+          <div className="absolute inset-y-0 right-0 flex items-center pr-3 pointer-events-none">
+            <Spinner />
+          </div>
+        )}
       </div>
     </div>
   );

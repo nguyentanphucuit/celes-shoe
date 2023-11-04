@@ -1,5 +1,5 @@
 "use client";
-import { textAlert } from "@/constants";
+import { alertMessage } from "@/constants";
 import { calculateDiscountPrice } from "@/constants/common";
 import { changeQuantity, removeCart } from "@/redux/features/cartSlice";
 import { useAppDispatch } from "@/redux/hooks";
@@ -28,7 +28,7 @@ const CartSection = ({ product, option, quantity }: CartProps) => {
       },
     };
     setToast({
-      text: textAlert.warning,
+      text: alertMessage.warning,
       actions: [action],
       delay: 5000,
     });

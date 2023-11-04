@@ -1,4 +1,10 @@
-import { genericProducts, genericProducts_option } from "@/constants";
+import {
+  alertMessage,
+  emptyProductDetail,
+  genericProducts,
+  genericProducts_option,
+  productTemplate,
+} from "@/constants";
 import { classNames } from "@/constants/common";
 import { updateProduct } from "@/redux/features/productsSlice";
 import { Disclosure, Listbox, Transition } from "@headlessui/react";
@@ -10,10 +16,13 @@ import {
 import { Fragment, useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
 import CustomModal from "./CustomModal";
+import CustomButton from "../CustomButton";
+import { addProductFireStore } from "@/pages/api/useApiData";
 
 const ActionProductModal = (props: any) => {
-  const [inputValue, setInputValue] = useState<{ [key: string]: any }>({});
-  const isCreate = props.product === undefined;
+  const [inputValue, setInputValue] = useState<{ [key: string]: any }>({
+    ...productTemplate,
+  });
 
   const handleClosedModal = () => {
     props.setIsOpenModal(false);
@@ -27,125 +36,184 @@ const ActionProductModal = (props: any) => {
     dispatch(updateProduct({ product: newProduct, id: props.product.id }));
     props.setIsOpenModal(false);
   };
+  const handleAddProduct = (e: any) => {
+    e.preventDefault();
+    addProductFireStore("products", { ...inputValue });
+    // dispatch(updateProduct({ product: newProduct }));
+    props.setIsOpenModal(false);
+  };
+  const handleEditProduct = () => {};
+  const handleDeleteProduct = () => {};
   useEffect(() => {
-    if (props.product === undefined)
-      setInputValue({ genericProducts, options: [genericProducts_option] });
-    else setInputValue({ ...props.product });
+    if (props.action === "edit") setInputValue({ ...props.product });
+    // else setInputValue({ ...emptyProductDetail.item });
   }, [props.product]);
 
   return (
     <CustomModal
       handleClosedModal={handleClosedModal}
       isOpenModal={props.isOpenModal}
-      title={isCreate ? "Create Product" : "Edit Product"}>
+      title={props.action + " Product"}>
       <form
-        onSubmit={handleSubmit}
+        onSubmit={
+          {
+            ["create"]: handleAddProduct,
+            ["edit"]: handleEditProduct,
+            ["delete"]: handleDeleteProduct,
+          }[props.action as string] ?? (() => {})
+        }
         className="relative bg-white dark:bg-gray-700 ">
-        <div className="p-6 space-y-6 max-h-[70vh] overflow-y-auto">
-          <div className="grid grid-cols-6 gap-6">
-            {genericProducts.map((item, index) => (
-              <Fragment key={index}>
-                {
-                  {
-                    ["input"]: (
-                      <CustomInput
-                        inputValue={inputValue}
-                        setInputValue={setInputValue}
-                        item={item}
-                      />
-                    ),
-                    ["select"]: (
-                      <CustomListbox
-                        inputValue={inputValue}
-                        setInputValue={setInputValue}
-                        listOptions={item.listOptions}
-                        item={item}
-                      />
-                    ),
-                  }[item.type]
-                }
-              </Fragment>
-            ))}
-          </div>
-          {inputValue.options?.map((option: any, optionIdx: number) => (
-            <Disclosure key={option + optionIdx}>
-              {({ open }) => (
-                <>
-                  <Disclosure.Button className="flex w-full justify-between rounded-lg bg-purple-100 px-4 py-2 text-left text-sm font-medium text-purple-900 hover:bg-purple-200 focus:outline-none focus-visible:ring focus-visible:ring-purple-500 focus-visible:ring-opacity-75">
-                    <span>{option.color}</span>
-                    <ChevronUpIcon
-                      className={`${
-                        open ? "rotate-180 transform" : ""
-                      } h-5 w-5 text-purple-500`}
-                    />
-                  </Disclosure.Button>
-                  <Disclosure.Panel className="px-4 pt-4 pb-2 text-sm text-gray-500">
-                    <div className="grid grid-cols-6 gap-6">
-                      {genericProducts_option.map((item, itemIdx) => (
-                        <Fragment key={option + item + itemIdx}>
-                          {
-                            {
-                              ["input"]: (
-                                <CustomInput
-                                  inputValue={inputValue.options?.[optionIdx]}
-                                  setInputValue={(value: any) => {
-                                    const newOptions = inputValue.options.map(
-                                      (item: any, index: number) => {
-                                        if (index === optionIdx) {
-                                          return { ...value };
-                                        }
-                                        return item;
+        <div className="p-3 space-y-6 max-h-[70vh] overflow-y-auto">
+          {props.action === "delete" ? (
+            <DeleteProductModal />
+          ) : (
+            <>
+              <div className="grid grid-cols-6 gap-6">
+                {genericProducts.map((item, index) => (
+                  <Fragment key={index}>
+                    {
+                      {
+                        ["input"]: (
+                          <CustomInput
+                            inputValue={inputValue}
+                            setInputValue={setInputValue}
+                            item={item}
+                          />
+                        ),
+                        ["select"]: (
+                          <CustomListbox
+                            inputValue={inputValue}
+                            setInputValue={setInputValue}
+                            listOptions={item.listOptions}
+                            item={item}
+                          />
+                        ),
+                      }[item.type]
+                    }
+                  </Fragment>
+                ))}
+              </div>
+              {inputValue.options?.map((option: any, optionIdx: number) => (
+                <Disclosure key={option + optionIdx}>
+                  {({ open }) => (
+                    <>
+                      <Disclosure.Button className="flex w-full justify-between rounded-lg bg-purple-100 px-4 py-2 text-left text-sm font-medium text-purple-900 hover:bg-purple-200 focus:outline-none focus-visible:ring focus-visible:ring-purple-500 focus-visible:ring-opacity-75">
+                        <span>{option.color}</span>
+                        <ChevronUpIcon
+                          className={`${
+                            open ? "rotate-180 transform" : ""
+                          } h-5 w-5 text-purple-500`}
+                        />
+                      </Disclosure.Button>
+                      <Disclosure.Panel className="px-4 pt-4 pb-2 text-sm text-gray-500">
+                        <div className="grid grid-cols-6 gap-6">
+                          {genericProducts_option.map((item, itemIdx) => (
+                            <Fragment key={option + item + itemIdx}>
+                              {
+                                {
+                                  ["input"]: (
+                                    <CustomInput
+                                      inputValue={
+                                        inputValue.options?.[optionIdx]
                                       }
-                                    );
-                                    setInputValue({
-                                      ...inputValue,
-                                      options: newOptions,
-                                    });
-                                  }}
-                                  item={item}
-                                />
-                              ),
-                              ["select"]: (
-                                <CustomListbox
-                                  inputValue={inputValue.options?.[optionIdx]}
-                                  setInputValue={(value: any) => {
-                                    const newOptions = inputValue.options.map(
-                                      (item: any, index: number) => {
-                                        if (index === optionIdx) {
-                                          return { ...value };
-                                        }
-                                        return item;
+                                      setInputValue={(value: any) => {
+                                        const newOptions =
+                                          inputValue.options.map(
+                                            (item: any, index: number) => {
+                                              if (index === optionIdx) {
+                                                return { ...value };
+                                              }
+                                              return item;
+                                            }
+                                          );
+                                        setInputValue({
+                                          ...inputValue,
+                                          options: newOptions,
+                                        });
+                                      }}
+                                      item={item}
+                                    />
+                                  ),
+                                  ["select"]: (
+                                    <CustomListbox
+                                      inputValue={
+                                        inputValue.options?.[optionIdx]
                                       }
-                                    );
-                                    setInputValue({
-                                      ...inputValue,
-                                      options: newOptions,
-                                    });
-                                  }}
-                                  listOptions={item.listOptions}
-                                  item={item}
-                                />
-                              ),
-                            }[item.type]
-                          }
-                        </Fragment>
-                      ))}
-                    </div>
-                  </Disclosure.Panel>
-                </>
-              )}
-            </Disclosure>
-          ))}
+                                      setInputValue={(value: any) => {
+                                        const newOptions =
+                                          inputValue.options.map(
+                                            (item: any, index: number) => {
+                                              if (index === optionIdx) {
+                                                return { ...value };
+                                              }
+                                              return item;
+                                            }
+                                          );
+                                        setInputValue({
+                                          ...inputValue,
+                                          options: newOptions,
+                                        });
+                                      }}
+                                      listOptions={item.listOptions}
+                                      item={item}
+                                    />
+                                  ),
+                                }[item.type]
+                              }
+                            </Fragment>
+                          ))}
+                        </div>
+                      </Disclosure.Panel>
+                    </>
+                  )}
+                </Disclosure>
+              ))}
+            </>
+          )}
         </div>
-        <div className="flex items-center p-6 space-x-2 border-t border-gray-200 rounded-b dark:border-gray-600">
-          <button
-            type="submit"
-            className="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
-            Save
-          </button>
+        <div className="flex justify-end items-center p-6 space-x-2 border-t border-gray-200 rounded-b dark:border-gray-600">
+          <CustomButton
+            title={
+              {
+                ["create"]: "Create",
+                ["edit"]: "Save",
+                ["delete"]: "Delete",
+              }[props.action as string] ?? ""
+            }
+            btnType="submit"
+            containerStyles={classNames(
+              props.action === "delete"
+                ? "bg-red-700 hover:bg-red-800 focus:ring-red-300 dark:bg-red-600 dark:hover:bg-red-700 dark:focus:ring-red-800"
+                : "bg-blue-700 hover:bg-blue-800 focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800",
+              "text-white focus:ring-4 focus:outline-none font-medium rounded-lg text-sm px-5 py-2.5 text-center"
+            )}
+          />
         </div>
       </form>
     </CustomModal>
+  );
+};
+
+const DeleteProductModal = (props: any) => {
+  return (
+    <div className="flex flex-row justify-center gap-4">
+      <div className="mx-auto flex h-12 w-12 flex-shrink-0 items-center justify-center rounded-full bg-red-100 sm:mx-0 sm:h-10 sm:w-10">
+        <svg
+          className="h-6 w-6 text-red-600"
+          fill="none"
+          viewBox="0 0 24 24"
+          stroke-width="1.5"
+          stroke="currentColor"
+          aria-hidden="true">
+          <path
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            d="M12 9v3.75m-9.303 3.376c-.866 1.5.217 3.374 1.948 3.374h14.71c1.73 0 2.813-1.874 1.948-3.374L13.949 3.378c-.866-1.5-3.032-1.5-3.898 0L2.697 16.126zM12 15.75h.007v.008H12v-.008z"
+          />
+        </svg>
+      </div>
+      <span className="text-sm text-gray-500">{alertMessage.warning}</span>
+    </div>
   );
 };
 

@@ -8,7 +8,7 @@ import { useState } from "react";
 import CustomButton from "./CustomButton";
 import RatingComp from "./RatingComp";
 
-import { textAlert } from "@/constants";
+import { alertMessage } from "@/constants";
 import { calculateDiscountPrice, classNames } from "@/constants/common";
 import { addToCart } from "@/redux/features/cartSlice";
 import { ToastInput, useToasts } from "@geist-ui/core";
@@ -29,7 +29,7 @@ const ProductCard = (props: any) => {
   const handleAddToCart = () => {
     const type = "success" as ToastInput["type"];
     setToast({
-      text: textAlert.success,
+      text: alertMessage.success,
       type,
     });
     dispatch(

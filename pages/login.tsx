@@ -1,4 +1,5 @@
 import "@/app/globals.css";
+import CustomButton from "@/components/CustomButton";
 
 import Link from "next/link";
 import React from "react";
@@ -64,9 +65,13 @@ const Login = () => {
               Forgot Password?
             </a>
           </div>
-          <button type="submit" className="btn-add-to-cart-full">
-            <Link href="/">Log in</Link>
-          </button>
+          <Link href="/admin">
+            <CustomButton
+              title="Log in"
+              btnType="submit"
+              containerStyles="btn-add-to-cart-full"
+            />
+          </Link>
           <div className="text-sm font-medium text-gray-500 dark:text-gray-300">
             Not registered?{" "}
             <Link

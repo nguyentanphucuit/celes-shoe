@@ -32,7 +32,7 @@ const CustomModal = (props: any) => {
               leaveTo="opacity-0 translate-y-4 md:translate-y-0 md:scale-95">
               <Dialog.Panel className="w-full bg-white transform text-left text-base transition md:my-8 md:max-w-2xl md:px-4 lg:max-w-4xl rounded-lg">
                 <div className="flex items-start justify-between p-4 border-b rounded-t dark:border-gray-600">
-                  <h3 className="text-xl font-semibold text-gray-900 dark:text-white">
+                  <h3 className="text-xl capitalize font-semibold text-gray-900 dark:text-white">
                     {props.title}
                   </h3>
                   <button
