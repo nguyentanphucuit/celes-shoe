@@ -1,12 +1,20 @@
 import {
   alertMessage,
-  emptyProductDetail,
   genericProducts,
   genericProducts_option,
   productTemplate,
 } from "@/constants";
 import { classNames } from "@/constants/common";
-import { updateProduct } from "@/redux/features/productsSlice";
+import {
+  addProductFireStore,
+  deleteProductFireStore,
+  editProductFireStore,
+} from "@/pages/api/useApiData";
+import {
+  addProduct,
+  deleteProduct,
+  updateProduct,
+} from "@/redux/features/productsSlice";
 import { Disclosure, Listbox, Transition } from "@headlessui/react";
 import {
   CheckIcon,
@@ -15,9 +23,8 @@ import {
 } from "@heroicons/react/20/solid";
 import { Fragment, useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
-import CustomModal from "./CustomModal";
 import CustomButton from "../CustomButton";
-import { addProductFireStore } from "@/pages/api/useApiData";
+import CustomModal from "./CustomModal";
 
 const ActionProductModal = (props: any) => {
   const [inputValue, setInputValue] = useState<{ [key: string]: any }>({
@@ -30,23 +37,28 @@ const ActionProductModal = (props: any) => {
 
   const dispatch = useDispatch();
 
-  const handleSubmit = (e: any) => {
-    e.preventDefault();
-    const newProduct = { ...props.product, ...inputValue };
-    dispatch(updateProduct({ product: newProduct, id: props.product.id }));
-    props.setIsOpenModal(false);
-  };
+  const handleSubmit = (e: any) => {};
   const handleAddProduct = (e: any) => {
     e.preventDefault();
     addProductFireStore("products", { ...inputValue });
-    // dispatch(updateProduct({ product: newProduct }));
+    dispatch(addProduct({ ...inputValue }));
     props.setIsOpenModal(false);
   };
-  const handleEditProduct = () => {};
-  const handleDeleteProduct = () => {};
+  const handleEditProduct = (e: any) => {
+    e.preventDefault();
+    const newProduct = { ...props.product, ...inputValue };
+    editProductFireStore("products", newProduct, props.product.id);
+    dispatch(updateProduct({ product: newProduct, id: props.product.id }));
+    props.setIsOpenModal(false);
+  };
+  const handleDeleteProduct = (e: any) => {
+    e.preventDefault();
+    deleteProductFireStore("products", props.product.id);
+    dispatch(deleteProduct({ id: props.product.id }));
+    props.setIsOpenModal(false);
+  };
   useEffect(() => {
     if (props.action === "edit") setInputValue({ ...props.product });
-    // else setInputValue({ ...emptyProductDetail.item });
   }, [props.product]);
 
   return (

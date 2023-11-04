@@ -1,7 +1,15 @@
 import { useState, useEffect } from "react";
 
 import axios from "axios";
-import { addDoc, collection, getDocs } from "firebase/firestore";
+import {
+  addDoc,
+  collection,
+  deleteDoc,
+  doc,
+  getDocs,
+  setDoc,
+  updateDoc,
+} from "firebase/firestore";
 import { db } from "@/firebaseConfig";
 import { ProductProps } from "@/types";
 
@@ -52,10 +60,28 @@ function useApiDataFireStore(collectionName: string) {
 
 const addProductFireStore = async (
   collectionName: string,
-  data: { [x: string]: any }
+  data: { [key: string]: any }
 ) => {
   const apiRef = collection(db, collectionName);
   await addDoc(apiRef, data);
 };
+const editProductFireStore = async (
+  collectionName: string,
+  data: { [key: string]: any },
+  id: string
+) => {
+  const apiRef = doc(db, collectionName, id);
+  await updateDoc(apiRef, data);
+};
+const deleteProductFireStore = async (collectionName: string, id: string) => {
+  const apiRef = doc(db, collectionName, id);
+  await deleteDoc(apiRef);
+};
 
-export { useApiData, useApiDataFireStore, addProductFireStore };
+export {
+  useApiData,
+  useApiDataFireStore,
+  addProductFireStore,
+  editProductFireStore,
+  deleteProductFireStore,
+};

@@ -667,7 +667,10 @@ export const listProducts = [
         color: "Black",
         inStock: true,
         discount: 20,
-        sizes: ["35", "36"],
+        sizes: [
+          { size: "35", inStock: true, price: 19.99 },
+          { size: "36", inStock: true, price: 29.99 },
+        ],
         imageUrl:
           "https://firebasestorage.googleapis.com/v0/b/celesshoe-6121f.appspot.com/o/products%2FCS-20.jpg?alt=media&token=df7eaf72-5275-4b35-b2e9-c988f3626579&_gl=1*r7g6ww*_ga*MTI5MjM1MTE4MS4xNjk1ODM0NTk4*_ga_CW55HF8NVT*MTY5OTExMjA4MS4zNi4xLjE2OTkxMTI3NTkuMzAuMC4w",
         price: 99.99,
@@ -675,7 +678,7 @@ export const listProducts = [
     ],
     category: "Flats",
     description: "Flats",
-    rating: "4",
+    rating: 4,
     id: "sQVW4G1zxrHIVjcxMgX4",
     subtitle: "Flats",
   },
@@ -820,17 +823,17 @@ export const productTemplate = {
   subtitle: "Flats",
   description: "Flats",
   category: "Flats",
-  rating: "4",
+  rating: 4,
   options: [
     {
-      price: 99,
+      price: 99.99,
       discount: 20,
       quantity: 1,
       imageUrl:
         "https://firebasestorage.googleapis.com/v0/b/celesshoe-6121f.appspot.com/o/products%2FCS-20.jpg?alt=media&token=df7eaf72-5275-4b35-b2e9-c988f3626579&_gl=1*r7g6ww*_ga*MTI5MjM1MTE4MS4xNjk1ODM0NTk4*_ga_CW55HF8NVT*MTY5OTExMjA4MS4zNi4xLjE2OTkxMTI3NTkuMzAuMC4w",
       sizes: [
         { size: "35", inStock: true, price: 19.99 },
-        { size: "36", inStock: true, price: 19.99 },
+        { size: "36", inStock: true, price: 29.99 },
       ],
       color: "Black",
       inStock: true,
