@@ -1,21 +1,20 @@
 "use client";
 
-import { ProductOptionsProps, ProductProps } from "@/types";
+import { isOpenModal } from "@/redux/features/productDetailSlice";
+import { useAppDispatch, useAppSelector } from "@/redux/hooks";
+import { ProductOptionsProps } from "@/types";
 import Image from "next/image";
-import React, { use, useEffect, useState } from "react";
+import { useState } from "react";
 import CustomButton from "./CustomButton";
 import RatingComp from "./RatingComp";
-import { useAppDispatch, useAppSelector } from "@/redux/hooks";
-import { isOpenModal } from "@/redux/features/productDetailSlice";
 
-import ColorComp from "./ColorComp";
-import SizeComp from "./SizeComp";
 import { textAlert } from "@/constants";
-import SkeletonProduct from "./SkeletonProduct";
 import { calculateDiscountPrice, classNames } from "@/constants/common";
-import Link from "next/link";
-import { ToastInput, useToasts } from "@geist-ui/core";
 import { addToCart } from "@/redux/features/cartSlice";
+import { ToastInput, useToasts } from "@geist-ui/core";
+import Link from "next/link";
+import ColorComp from "./ColorComp";
+import SkeletonProduct from "./SkeletonProduct";
 
 const ProductCard = (props: any) => {
   const dispatch = useAppDispatch();

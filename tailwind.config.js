@@ -34,6 +34,9 @@ module.exports = {
       },
       transparent: "transparent",
       current: "currentColor",
+      spacing: {
+        128: "32rem",
+      },
     },
   },
   safelist: [

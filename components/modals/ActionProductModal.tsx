@@ -1,81 +1,23 @@
-import { listCategories, listSizes } from "@/constants";
+import { genericProducts, genericProducts_option } from "@/constants";
 import { classNames } from "@/constants/common";
 import { updateProduct } from "@/redux/features/productsSlice";
-import { Dialog, Disclosure, Listbox, Transition } from "@headlessui/react";
+import { Disclosure, Listbox, Transition } from "@headlessui/react";
 import {
   CheckIcon,
   ChevronUpDownIcon,
   ChevronUpIcon,
-  XMarkIcon,
 } from "@heroicons/react/20/solid";
-import React, { Fragment, useEffect, useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
+import { Fragment, useEffect, useState } from "react";
+import { useDispatch } from "react-redux";
 import CustomModal from "./CustomModal";
 
-const EditProductModal = (props: any) => {
+const ActionProductModal = (props: any) => {
   const [inputValue, setInputValue] = useState<{ [key: string]: any }>({});
-  const listColorOptions = useSelector(
-    (state: any) => state.colorReducer.items
-  );
   const isCreate = props.product === undefined;
-
-  const listCategoryOptions = [...listCategories];
 
   const handleClosedModal = () => {
     props.setIsOpenModal(false);
   };
-
-  const headers = [
-    { key: "id", title: "ID", type: "input", isDisabled: true },
-    { key: "title", title: "Title", type: "input" },
-    { key: "subtitle", title: "Subtitle", type: "input" },
-    {
-      key: "category",
-      title: "Category",
-      type: "select",
-      listOptions: [...listCategoryOptions],
-    },
-  ];
-
-  const headers_option = [
-    {
-      key: "color",
-      title: "Color",
-      type: "select",
-      listOptions: [...listColorOptions],
-    },
-    { key: "price", title: "Price", type: "input" },
-    {
-      key: "discount",
-      title: "Discount",
-      type: "input",
-    },
-    {
-      key: "imageUrl",
-      title: "ImageUrl",
-      type: "input",
-    },
-    {
-      key: "quantity",
-      title: "Quantity",
-      type: "input",
-    },
-    {
-      key: "size",
-      title: "Size",
-      type: "select",
-      listOptions: [...listSizes],
-    },
-    {
-      key: "inStock",
-      title: "In Stock",
-      type: "select",
-      listOptions: [
-        { id: "true", name: true },
-        { id: "false", name: false },
-      ],
-    },
-  ];
 
   const dispatch = useDispatch();
 
@@ -86,7 +28,9 @@ const EditProductModal = (props: any) => {
     props.setIsOpenModal(false);
   };
   useEffect(() => {
-    setInputValue({ ...props.product });
+    if (props.product === undefined)
+      setInputValue({ genericProducts, options: [genericProducts_option] });
+    else setInputValue({ ...props.product });
   }, [props.product]);
 
   return (
@@ -99,7 +43,7 @@ const EditProductModal = (props: any) => {
         className="relative bg-white dark:bg-gray-700 ">
         <div className="p-6 space-y-6 max-h-[70vh] overflow-y-auto">
           <div className="grid grid-cols-6 gap-6">
-            {headers.map((item, index) => (
+            {genericProducts.map((item, index) => (
               <Fragment key={index}>
                 {
                   {
@@ -137,7 +81,7 @@ const EditProductModal = (props: any) => {
                   </Disclosure.Button>
                   <Disclosure.Panel className="px-4 pt-4 pb-2 text-sm text-gray-500">
                     <div className="grid grid-cols-6 gap-6">
-                      {headers_option.map((item, itemIdx) => (
+                      {genericProducts_option.map((item, itemIdx) => (
                         <Fragment key={option + item + itemIdx}>
                           {
                             {
@@ -302,4 +246,4 @@ const CustomListbox = (props: any) => {
   );
 };
 
-export default EditProductModal;
+export default ActionProductModal;

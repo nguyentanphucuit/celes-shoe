@@ -741,6 +741,58 @@ export const listBlogs = [
 
 export const ITEMS_PER_PAGE = 8;
 
+export const genericProducts = [
+  { key: "id", title: "ID", type: "input", isDisabled: true },
+  { key: "title", title: "Title", type: "input" },
+  { key: "subtitle", title: "Subtitle", type: "input" },
+  {
+    key: "category",
+    title: "Category",
+    type: "select",
+    listOptions: [...listCategories],
+  },
+];
+
+export const genericProducts_option = [
+  {
+    key: "color",
+    title: "Color",
+    type: "select",
+    listOptions: [...listColors],
+  },
+  { key: "price", title: "Price", type: "input" },
+  {
+    key: "discount",
+    title: "Discount",
+    type: "input",
+  },
+  {
+    key: "imageUrl",
+    title: "ImageUrl",
+    type: "input",
+  },
+  {
+    key: "quantity",
+    title: "Quantity",
+    type: "input",
+  },
+  {
+    key: "size",
+    title: "Size",
+    type: "select",
+    listOptions: [...listSizes],
+  },
+  {
+    key: "inStock",
+    title: "In Stock",
+    type: "select",
+    listOptions: [
+      { id: "true", name: true },
+      { id: "false", name: false },
+    ],
+  },
+];
+
 export const emptyProductDetail = {
   isOpen: false,
   item: {

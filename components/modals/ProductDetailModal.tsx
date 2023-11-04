@@ -1,21 +1,20 @@
 "use client";
 
-import { Fragment, useEffect, useState } from "react";
-import { Dialog, RadioGroup, Transition } from "@headlessui/react";
-import { XMarkIcon } from "@heroicons/react/24/outline";
-import RatingComp from "../RatingComp";
-import Image from "next/image";
-import { useSelector } from "react-redux";
-import { useAppDispatch } from "@/redux/hooks";
-import { isOpenModal } from "@/redux/features/productDetailSlice";
-import CustomButton from "../CustomButton";
-import { addToCart } from "@/redux/features/cartSlice";
-import ColorComp from "../ColorComp";
-import SizeComp from "../SizeComp";
+import { textAlert } from "@/constants";
 import { calculateDiscountPrice } from "@/constants/common";
-import { ProductOptionsProps } from "@/types";
-import { emptyProductDetail, textAlert } from "@/constants";
+import { addToCart } from "@/redux/features/cartSlice";
+import { isOpenModal } from "@/redux/features/productDetailSlice";
+import { useAppDispatch } from "@/redux/hooks";
 import { ToastInput, useToasts } from "@geist-ui/core";
+import { Dialog, Popover, Transition } from "@headlessui/react";
+import { XMarkIcon } from "@heroicons/react/24/outline";
+import { Fragment, useEffect, useState } from "react";
+import { useSelector } from "react-redux";
+import Image from "next/image";
+import ColorComp from "../ColorComp";
+import CustomButton from "../CustomButton";
+import RatingComp from "../RatingComp";
+import SizeComp from "../SizeComp";
 
 function classNames(...classes: any[]) {
   return classes.filter(Boolean).join(" ");
@@ -144,11 +143,7 @@ export function ProductDetailModal() {
                             <h4 className="text-sm font-medium text-gray-900">
                               Size
                             </h4>
-                            <a
-                              href="#"
-                              className="text-sm font-medium text-primary hover:text-indigo-500">
-                              Size guide
-                            </a>
+                            <SizeGuide />
                           </div>
                           <SizeComp
                             option={option}
@@ -183,5 +178,45 @@ export function ProductDetailModal() {
     </Transition.Root>
   );
 }
+
+const SizeGuide = () => {
+  return (
+    <Popover className="relative">
+      {({ open }) => (
+        <>
+          <Popover.Button
+            className={`
+                ${open ? "" : "text-opacity-90"}
+                group `}>
+            <a
+              href="#"
+              className="text-sm font-medium text-primary hover:text-indigo-500">
+              Size guide
+            </a>
+          </Popover.Button>
+          <Transition
+            as={Fragment}
+            enter="transition ease-out duration-200"
+            enterFrom="opacity-0 translate-y-1"
+            enterTo="opacity-100 translate-y-0"
+            leave="transition ease-in duration-150"
+            leaveFrom="opacity-100 translate-y-0"
+            leaveTo="opacity-0 translate-y-1">
+            <Popover.Panel className="absolute w-128 -top-24 -right-40 z-10 mt-3 -translate-x-1/2 transform px-4 max-w-3xl sm:px-0 ">
+              <div className="rounded-lg shadow-lg ring-1 ring-black ring-opacity-5">
+                <Image
+                  src="/size_guide.png"
+                  width={512}
+                  height={512}
+                  alt="size guide"
+                />
+              </div>
+            </Popover.Panel>
+          </Transition>
+        </>
+      )}
+    </Popover>
+  );
+};
 
 export default ProductDetailModal;
