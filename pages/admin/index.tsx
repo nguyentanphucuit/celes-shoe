@@ -1,4 +1,5 @@
 import ProductManagement from "@/components/admin/ProductManagement";
+import { GetStaticPropsContext } from "next";
 import React from "react";
 
 const Management = () => {
@@ -8,5 +9,13 @@ const Management = () => {
     </div>
   );
 };
+
+export async function getStaticProps({ locale }: GetStaticPropsContext) {
+  return {
+    props: {
+      messages: (await import(`@/messages/${locale}.json`)).default,
+    },
+  };
+}
 
 export default Management;

@@ -1,5 +1,6 @@
 import "@/app/globals.css";
 import CustomButton from "@/components/CustomButton";
+import { GetStaticPropsContext } from "next";
 
 import Link from "next/link";
 import React from "react";
@@ -85,5 +86,13 @@ const Login = () => {
     </div>
   );
 };
+
+export async function getStaticProps({ locale }: GetStaticPropsContext) {
+  return {
+    props: {
+      messages: (await import(`@/messages/${locale}.json`)).default,
+    },
+  };
+}
 
 export default Login;

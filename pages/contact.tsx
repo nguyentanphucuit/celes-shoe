@@ -3,6 +3,7 @@ import React from "react";
 
 import { useState } from "react";
 import { Switch } from "@headlessui/react";
+import { GetStaticPropsContext } from "next";
 
 function classNames(...classes: any[]) {
   return classes.filter(Boolean).join(" ");
@@ -197,4 +198,13 @@ export function Contact() {
     </div>
   );
 }
+
+export async function getStaticProps({ locale }: GetStaticPropsContext) {
+  return {
+    props: {
+      messages: (await import(`@/messages/${locale}.json`)).default,
+    },
+  };
+}
+
 export default Contact;

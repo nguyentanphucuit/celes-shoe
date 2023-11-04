@@ -4,6 +4,7 @@ import {
   MainArticle,
   RelatedArticle,
 } from "@/components/blog/BlogComp";
+import { GetStaticPropsContext } from "next";
 
 const Blog = () => {
   const data = useAppSelector((state) => state.blogReducer.items);
@@ -17,5 +18,13 @@ const Blog = () => {
     </div>
   );
 };
+
+export async function getStaticProps({ locale }: GetStaticPropsContext) {
+  return {
+    props: {
+      messages: (await import(`@/messages/${locale}.json`)).default,
+    },
+  };
+}
 
 export default Blog;
