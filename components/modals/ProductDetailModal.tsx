@@ -16,10 +16,6 @@ import CustomButton from "../CustomButton";
 import RatingComp from "../RatingComp";
 import SizeComp from "../SizeComp";
 
-function classNames(...classes: any[]) {
-  return classes.filter(Boolean).join(" ");
-}
-
 export function ProductDetailModal() {
   const isOpen = useSelector((state: any) => state.productDetailReducer.isOpen);
   const product = useSelector((state: any) => state.productDetailReducer.item);

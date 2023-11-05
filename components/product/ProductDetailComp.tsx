@@ -112,7 +112,7 @@ const ProductDetailComponent = (props: ProductProps) => {
             ))}
           </div>
         </div>
-        <div className="space-y-6 my-1.5">
+        <div className="space-y-6 my-1.5 col-span-2 md:col-span-1">
           <Link
             href={`/product?categories=${props.category.toLowerCase()}`}
             className="relative z-10 rounded-md bg-gray-200 px-3  py-1.5 font-medium text-gray-600 hover:bg-gray-100">

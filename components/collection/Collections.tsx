@@ -2,6 +2,8 @@
 import { ITEMS_PER_PAGE } from "@/constants";
 import { capitalizeFirstLetter } from "@/constants/common";
 import { useApiDataFireStore } from "@/pages/api/useApiData";
+import { updateAllColor } from "@/redux/features/colorSlice";
+import { useAppDispatch } from "@/redux/hooks";
 import { ProductProps } from "@/types";
 import { Loading } from "@geist-ui/core";
 import Image from "next/image";
@@ -10,11 +12,7 @@ import { useSearchParams } from "next/navigation";
 import CustomButton from "../CustomButton";
 import ProductCard from "../ProductCard";
 import PaginationControls from "../pagination/PaginationControls";
-import { updateAllColor } from "@/redux/features/colorSlice";
-import { useAppDispatch } from "@/redux/hooks";
-import { addDoc, collection } from "firebase/firestore";
-import { db } from "@/firebaseConfig";
-import { useTranslations } from "next-intl";
+import PromoSections from "./PromoSections";
 
 const Collections = () => {
   const searchParams = useSearchParams();
@@ -51,6 +49,7 @@ const Collections = () => {
           <ProductCard {...product} key={product.id} loading={loading} />
         ))}
       </div>
+      <PromoSections />
       <div className="home__text-container my-6">
         <h1 className="text-4xl font-extrabold my-2">Best Sellers</h1>
         <p>Explore the shoes you might like</p>

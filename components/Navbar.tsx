@@ -116,7 +116,9 @@ const Navbar = () => {
             </div>
             <div className="">
               <div className="flex items-center">
-                <LanguageSelector />
+                <div className="hidden md:block relative ml-3 px-2">
+                  <LanguageSelector />
+                </div>
                 {/* <ModeSwitcher /> */}
                 <CartModal />
 
@@ -234,6 +236,9 @@ const Navbar = () => {
                   nguyentanphucuit@gmail.com
                 </div>
               </div>
+            </div>
+            <div className="mt-3 px-3">
+              <LanguageSelector />
             </div>
             <div className="mt-3 space-y-1 px-2">
               {profileItem.map((item, index) => (
