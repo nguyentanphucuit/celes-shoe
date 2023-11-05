@@ -6,5 +6,20 @@
     "About": "Thông tin",
     "Contact": "Liên hệ",
     "Login": "Đăng nhập"
+  },
+  "Footer": {
+    "Company Info": "Thông tin",
+    "Help & Support": "Hỗ trợ",
+    "Customer Care": "Chăm sóc khách hàng",
+    "About Us": "Về chúng tôi",
+    "Blog": "Blog",
+    "Careers": "Nghề nghiệp",
+    "Shipping Info": "Thông tin ship",
+    "Return": "Trả hàng",
+    "Refund": "Hoàn tiền",
+    "Warranty Policy": "Chính sách bảo hành",
+    "Contact Us": "Liên hệ chúng tôi",
+    "Payment & Tax": "Thanh toán & Thuế",
+    "Bonus Point": "Điểm thưởng"
   }
 }

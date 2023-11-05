@@ -6,5 +6,20 @@
     "About": "About",
     "Contact": "Contact",
     "Login": "Login"
+  },
+  "Footer": {
+    "Company Info": "Company Info",
+    "Help & Support": "Help & Support",
+    "Customer Care": "Customer Care",
+    "About Us": "About Us",
+    "Blog": "Blog",
+    "Careers": "Careers",
+    "Shipping Info": "Shipping Info",
+    "Return": "Return",
+    "Refund": "Refund",
+    "Warranty Policy": "Warranty Policy",
+    "Contact Us": "Contact Us",
+    "Payment & Tax": "Payment & Tax",
+    "Bonus Point": "Bonus Point"
   }
 }

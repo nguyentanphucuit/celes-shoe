@@ -1,8 +1,38 @@
-import { footerLinks } from "@/constants";
+import { useTranslations } from "next-intl";
 import Image from "next/image";
 import Link from "next/link";
 
 const Footer = () => {
+  const t = useTranslations("Footer");
+
+  const footerLinks = [
+    {
+      title: t("Company Info"),
+      links: [
+        { title: t("About Us"), url: "/" },
+        { title: t("Blog"), url: "/" },
+        { title: t("Careers"), url: "/" },
+      ],
+    },
+    {
+      title: t("Help & Support"),
+      links: [
+        { title: t("Shipping Info"), url: "/" },
+        { title: t("Return"), url: "/" },
+        { title: t("Refund"), url: "/" },
+        { title: t("Warranty Policy"), url: "/" },
+      ],
+    },
+    {
+      title: t("Customer Care"),
+      links: [
+        { title: t("Contact Us"), url: "/" },
+        { title: t("Payment & Tax"), url: "/" },
+        { title: t("Bonus Point"), url: "/" },
+      ],
+    },
+  ];
+
   return (
     <footer className="flex flex-col text-black-100 mt-5 border-t border-gray-100">
       <div className="flex max-md:flex-col flex-wrap justify-between gap-5 sm:px-16 px-6 py-10">
