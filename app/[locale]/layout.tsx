@@ -2,7 +2,7 @@ import "@/app/globals.css";
 import GeistProviders from "@/providers/GeistProviders";
 import { Providers } from "@/redux/provider";
 import { notFound } from "next/navigation";
-import { NextIntlClientProvider, useLocale } from "next-intl";
+import { NextIntlClientProvider } from "next-intl";
 import Footer from "@/components/Footer";
 import Navbar from "@/components/Navbar";
 
