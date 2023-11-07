@@ -1,7 +1,4 @@
-import "@/app/globals.css";
 import CustomButton from "@/components/CustomButton";
-import { GetStaticPropsContext } from "next";
-
 import Link from "next/link";
 import React from "react";
 

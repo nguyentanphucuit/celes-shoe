@@ -1,17 +1,11 @@
 "use client";
-
 import CustomButton from "@/components/CustomButton";
 import React from "react";
-
 import { useState } from "react";
 import { Switch } from "@headlessui/react";
-import { GetStaticPropsContext } from "next";
+import { classNames } from "@/constants/common";
 
-function classNames(...classes: any[]) {
-  return classes.filter(Boolean).join(" ");
-}
-
-export function Contact() {
+const Contact = () => {
   const [agreed, setAgreed] = useState(false);
 
   return (
@@ -199,6 +193,6 @@ export function Contact() {
       </form>
     </div>
   );
-}
+};
 
 export default Contact;

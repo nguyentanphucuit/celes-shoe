@@ -1,4 +1,3 @@
-import "@/app/globals.css";
 import ProductDetailComponent from "@/components/product/ProductDetailComp";
 import { listProducts } from "@/constants";
 import { ProductProps } from "@/types";
