@@ -3,8 +3,8 @@ import { alertMessage } from "@/constants";
 import { calculateDiscountPrice } from "@/constants/common";
 import { changeQuantity, removeCart } from "@/redux/features/cartSlice";
 import { useAppDispatch } from "@/redux/hooks";
-import { CartProps, ProductProps } from "@/types";
-import { ToastInput, useToasts } from "@geist-ui/core";
+import { CartProps } from "@/types";
+import { useToasts } from "@geist-ui/core";
 import Image from "next/image";
 import { useState } from "react";
 

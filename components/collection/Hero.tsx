@@ -5,7 +5,7 @@ import Image from "next/image";
 const Hero = () => {
   const handleClick = () => {};
   return (
-    <div className="hero mt-28">
+    <div className="hero -mt-8">
       <Image
         src="/thumbnail_1.png"
         alt="hero"

@@ -7,7 +7,7 @@ import React from "react";
 
 const Login = () => {
   return (
-    <div className="flex justify-center items-center h-screen">
+    <div className="flex justify-center items-center">
       <div className="w-full max-w-sm p-4 bg-white border border-gray-200 rounded-lg shadow sm:p-6 md:p-8 dark:bg-gray-800 dark:border-gray-700">
         <form className="space-y-6" action="#">
           <h5 className="text-xl font-medium text-gray-900 dark:text-white">
@@ -86,13 +86,5 @@ const Login = () => {
     </div>
   );
 };
-
-export async function getStaticProps({ locale }: GetStaticPropsContext) {
-  return {
-    props: {
-      messages: (await import(`@/messages/${locale}.json`)).default,
-    },
-  };
-}
 
 export default Login;

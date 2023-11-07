@@ -1,3 +1,5 @@
+"use client";
+
 import {
   ITEMS_PER_PAGE,
   listCategories,
@@ -7,7 +9,6 @@ import {
 import { useAppSelector } from "@/redux/hooks";
 import { ProductProps } from "@/types";
 import { Dialog, Transition } from "@headlessui/react";
-import { Loading, Spinner } from "@geist-ui/core";
 import { useSearchParams } from "next/navigation";
 import { Fragment, useEffect, useState } from "react";
 import { FilterSection, FilterSectionRange } from "./FilterSection";
@@ -15,6 +16,7 @@ import PaginationControls from "../pagination/PaginationControls";
 import ProductCard from "../ProductCard";
 import { XMarkIcon } from "@heroicons/react/20/solid";
 import useDebounce from "@/hooks/useDebounce";
+import { LoadingSpinner } from "../LoadingComp";
 
 const ProductFilters = () => {
   const [isExpandSort, setIsExpandSort] = useState(false);
@@ -122,7 +124,7 @@ const ProductFilters = () => {
         </Dialog>
       </Transition.Root>
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-        <div className="flex items-baseline justify-between border-b border-gray-200 pb-6 pt-32 lg:pt-24">
+        <div className="flex items-baseline justify-between border-b border-gray-200 pb-6">
           <h1 className="hidden md:block -mt-2 lg:mt-10 lg:text-4xl text-2xl font-bold tracking-tight text-gray-900">
             New Collections
           </h1>
@@ -335,7 +337,7 @@ const SearchBar = (props: any) => {
         />
         {props.loading && (
           <div className="absolute inset-y-0 right-0 flex items-center pr-3 pointer-events-none">
-            <Spinner />
+            <LoadingSpinner />
           </div>
         )}
       </div>

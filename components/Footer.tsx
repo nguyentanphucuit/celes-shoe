@@ -1,4 +1,5 @@
 import { useTranslations } from "next-intl";
+// import { footerLinks } from "@/constants/index";
 import Image from "next/image";
 import Link from "next/link";
 

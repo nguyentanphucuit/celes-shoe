@@ -9,7 +9,7 @@ import {
   addProductFireStore,
   deleteProductFireStore,
   editProductFireStore,
-} from "@/pages/api/useApiData";
+} from "@/app/[locale]/api/useApiData";
 import {
   addProduct,
   deleteProduct,

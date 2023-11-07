@@ -1,21 +1,15 @@
-import { NextRequest, NextResponse } from "next/server";
+import createMiddleware from "next-intl/middleware";
 
-const PUBLIC_FILE = /\.(.*)$/;
+export default createMiddleware({
+  // A list of all locales that are supported
+  locales: ["en", "vi"],
 
-export async function middleware(req: NextRequest) {
-  if (
-    req.nextUrl.pathname.startsWith("/_next") ||
-    req.nextUrl.pathname.includes("/api/") ||
-    PUBLIC_FILE.test(req.nextUrl.pathname)
-  ) {
-    return;
-  }
+  // If this locale is matched, pathnames work without a prefix (e.g. `/about`)
+  defaultLocale: "en",
+});
 
-  if (req.nextUrl.locale === "default") {
-    const locale = req.cookies.get("NEXT_LOCALE")?.value || "en";
-
-    return NextResponse.redirect(
-      new URL(`/${locale}${req.nextUrl.pathname}${req.nextUrl.search}`, req.url)
-    );
-  }
-}
+export const config = {
+  // Skip all paths that should not be internationalized. This example skips
+  // certain folders and all pathnames with a dot (e.g. favicon.ico)
+  matcher: ["/((?!api|_next|_vercel|.*\\..*).*)"],
+};

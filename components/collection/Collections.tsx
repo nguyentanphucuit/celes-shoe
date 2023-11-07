@@ -1,11 +1,10 @@
 "use client";
 import { ITEMS_PER_PAGE } from "@/constants";
 import { capitalizeFirstLetter } from "@/constants/common";
-import { useApiDataFireStore } from "@/pages/api/useApiData";
+import { useApiDataFireStore } from "@/app/[locale]/api/useApiData";
 import { updateAllColor } from "@/redux/features/colorSlice";
 import { useAppDispatch } from "@/redux/hooks";
 import { ProductProps } from "@/types";
-import { Loading } from "@geist-ui/core";
 import Image from "next/image";
 import Link from "next/link";
 import { useSearchParams } from "next/navigation";
@@ -13,6 +12,7 @@ import CustomButton from "../CustomButton";
 import ProductCard from "../ProductCard";
 import PaginationControls from "../pagination/PaginationControls";
 import PromoSections from "./PromoSections";
+import { LoadingComp } from "../LoadingComp";
 
 const Collections = () => {
   const searchParams = useSearchParams();
@@ -36,7 +36,7 @@ const Collections = () => {
   const collections = products.slice(startIndex, endIndex);
 
   return loading ? (
-    <Loading />
+    <LoadingComp />
   ) : (
     <>
       <ListCategory categories={categories} />

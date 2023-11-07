@@ -1,21 +1,26 @@
-import { Fragment, useState } from "react";
+import { Fragment, useEffect, useState } from "react";
 import { Listbox, Transition } from "@headlessui/react";
 import { CheckIcon, ChevronUpDownIcon } from "@heroicons/react/20/solid";
-import { useRouter } from "next/router";
+import { useRouter, usePathname } from "next-intl/client";
 
 const language = [
   { name: "EN", value: "en" },
   { name: "VN", value: "vi" },
 ];
 
-const LanguageSelector = () => {
+const LanguageSelector = ({ locale }: { locale: string }) => {
   const [selected, setSelected] = useState(language[0]);
   const router = useRouter();
-  const { pathname, asPath, query } = router;
+  const pathname = usePathname();
   const handleOnChange = (selected: any) => {
     setSelected(selected);
-    router.push({ pathname, query }, asPath, { locale: selected.value });
+    router.replace(pathname, { locale: selected.value });
   };
+
+  useEffect(() => {
+    const matchLang = language.find((l) => l.value == locale) ?? language[0];
+    setSelected(matchLang);
+  }, [locale]);
 
   return (
     <div className="top-16 w-20">

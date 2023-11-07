@@ -17,7 +17,6 @@ export default function Home({
 }) {
   return (
     <div>
-      <header></header>
       <Hero />
       <div className="padding-x padding-y max-width" id="discover">
         <ProductDetailModal />
@@ -27,10 +26,10 @@ export default function Home({
   );
 }
 
-export async function getStaticProps({ locale }: GetStaticPropsContext) {
-  return {
-    props: {
-      messages: (await import(`@/messages/${locale}.json`)).default,
-    },
-  };
-}
+// export async function getStaticProps({ locale }: GetStaticPropsContext) {
+//   return {
+//     props: {
+//       messages: (await import(`@/messages/${locale}.json`)).default,
+//     },
+//   };
+// }

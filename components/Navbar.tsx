@@ -4,7 +4,7 @@ import { Popover, Switch, Transition } from "@headlessui/react";
 import Image from "next/legacy/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { useRouter } from "next/router";
+import { useRouter } from "next/navigation";
 import { Fragment, useEffect, useState } from "react";
 import Banner from "./Banner";
 import SpeedDial from "./SpeedDial";
@@ -12,10 +12,9 @@ import CartModal from "./modals/CartModal";
 import LanguageSelector from "./LanguageSelector";
 import { useTranslations } from "next-intl";
 
-const Navbar = () => {
+const Navbar = ({ locale }: { locale: string }) => {
   const [showMenu, setShowMenu] = useState(false);
   const [showProfile, setShowProfile] = useState(false);
-  const router = useRouter();
   const pathname = usePathname();
   const currentNav = pathname?.split("/")[1] || "";
   const listPath = pathname?.split("/").slice(1) ?? [];
@@ -24,7 +23,7 @@ const Navbar = () => {
   useEffect(() => {
     setShowMenu(false);
     setShowProfile(false);
-  }, [router.asPath]);
+  }, [pathname]);
 
   const handleOpenMenu = () => {
     setShowMenu(!showMenu);
@@ -77,7 +76,7 @@ const Navbar = () => {
 
   return (
     <>
-      <nav className="w-full fixed z-20 bg-gray-800 ">
+      <nav className="w-full fixed z-20 bg-gray-800">
         <SpeedDial />
         <Banner />
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
@@ -117,7 +116,7 @@ const Navbar = () => {
             <div className="">
               <div className="flex items-center">
                 <div className="hidden md:block relative ml-3 px-2">
-                  <LanguageSelector />
+                  <LanguageSelector locale={locale} />
                 </div>
                 {/* <ModeSwitcher /> */}
                 <CartModal />
@@ -238,7 +237,7 @@ const Navbar = () => {
               </div>
             </div>
             <div className="mt-3 px-3">
-              <LanguageSelector />
+              <LanguageSelector locale={locale} />
             </div>
             <div className="mt-3 space-y-1 px-2">
               {profileItem.map((item, index) => (
@@ -260,7 +259,7 @@ const Navbar = () => {
 export const BreadCrumb = (props: any) => {
   let listPath = props.listPath;
   return (
-    <nav
+    <div
       className="flex px-5 py-3 justify-center text-gray-700 border border-gray-200 bg-gray-50 dark:bg-gray-800 dark:border-gray-700"
       aria-label="Breadcrumb">
       <ol className="inline-flex items-center space-x-1 md:space-x-3">
@@ -301,7 +300,7 @@ export const BreadCrumb = (props: any) => {
           </li>
         ))}
       </ol>
-    </nav>
+    </div>
   );
 };
 

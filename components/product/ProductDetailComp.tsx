@@ -1,3 +1,4 @@
+"use client";
 import { alertMessage } from "@/constants";
 import {
   calculateDiscountPrice,
