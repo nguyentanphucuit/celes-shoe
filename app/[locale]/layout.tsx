@@ -5,6 +5,7 @@ import { notFound } from "next/navigation";
 import { NextIntlClientProvider } from "next-intl";
 import Footer from "@/components/Footer";
 import Navbar from "@/components/Navbar";
+import NextIntlProvider from "./NextIntlProvider";
 
 export const metadata = {
   title: "Celes shoe",
@@ -33,7 +34,7 @@ export default async function LocaleLayout({
   return (
     <html lang={locale}>
       <body suppressHydrationWarning={true}>
-        <NextIntlClientProvider locale={locale} messages={messages}>
+        <NextIntlProvider locale={locale} messages={messages}>
           <Providers>
             <Navbar locale={locale} />
             <GeistProviders>
@@ -41,7 +42,7 @@ export default async function LocaleLayout({
             </GeistProviders>
             <Footer />
           </Providers>
-        </NextIntlClientProvider>
+        </NextIntlProvider>
       </body>
     </html>
   );
