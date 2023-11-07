@@ -6,6 +6,7 @@ import { NextIntlClientProvider } from "next-intl";
 import Footer from "@/components/Footer";
 import Navbar from "@/components/Navbar";
 import NextIntlProvider from "./NextIntlProvider";
+import { unstable_setRequestLocale } from "next-intl/server";
 
 export const metadata = {
   title: "Celes shoe",
@@ -31,6 +32,7 @@ export default async function LocaleLayout({
   } catch (error) {
     notFound();
   }
+  unstable_setRequestLocale(locale);
   return (
     <html lang={locale}>
       <body suppressHydrationWarning={true}>

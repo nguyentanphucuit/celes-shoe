@@ -4,6 +4,7 @@ import Hero from "@/components/collection/Hero";
 import ProductDetailModal from "@/components/modals/ProductDetailModal";
 import Image from "next/image";
 import { GetStaticPropsContext } from "next";
+import { unstable_setRequestLocale } from "next-intl/server";
 
 export const metadata = {
   title: "Celes shoe",
@@ -12,9 +13,13 @@ export const metadata = {
 
 export default function Home({
   searchParams,
+  params: { locale },
 }: {
   searchParams: { [key: string]: string | string[] | undefined };
+  params: { locale: string };
 }) {
+  unstable_setRequestLocale(locale);
+
   return (
     <div>
       <Hero />
