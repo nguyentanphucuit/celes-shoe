@@ -37,3 +37,10 @@ export const getColorVariants = (color: string, type = "bg", shade = 500) =>
   "transparent"
     ? [type, color.toLowerCase(), shade].join("-")
     : [type, color.toLowerCase()].join("-");
+
+export const includeTexts = (...args: string[]) => {
+  const query = args.pop() ?? "";
+  return args.some((text: string) =>
+    text.toLowerCase().includes(query.toLowerCase())
+  );
+};
