@@ -44,3 +44,28 @@ export const includeTexts = (...args: string[]) => {
     text.toLowerCase().includes(query.toLowerCase())
   );
 };
+
+export const sortByKeyOrder = (arr: any[], key: string, order: string) => {
+  if (typeof arr[0][key] === "string") {
+    if (order === "desc") {
+      return arr.sort((a, b) => {
+        if (a[key] > b[key]) return -1;
+        if (a[key] < b[key]) return 1;
+        return 0;
+      });
+    } else if (order === "asc") {
+      return arr.sort((a, b) => {
+        if (b[key] > a[key]) return -1;
+        if (b[key] < a[key]) return 1;
+        return 0;
+      });
+    }
+  } else if (typeof arr[0][key] === "number") {
+    if (order === "desc") {
+      return arr.sort((a, b) => b[key] - a[key]);
+    } else if (order === "asc") {
+      return arr.sort((a, b) => a[key] - b[key]);
+    }
+  }
+  return [...arr];
+};

@@ -2,7 +2,7 @@
 import React, { Suspense, useEffect, useState } from "react";
 import Image from "next/image";
 import { useSelector } from "react-redux";
-import { classNames, includeTexts } from "@/constants/common";
+import { classNames, includeTexts, sortByKeyOrder } from "@/constants/common";
 import ActionProductModal from "../modals/ActionProductModal";
 import { ProductProps } from "@/types";
 import CustomButton from "../CustomButton";
@@ -17,6 +17,7 @@ const ProductManagement = () => {
   const [listProducts, setListProducts] = useState<ProductProps[]>([]); // [
   const [action, setAction] = useState("");
   const [searchQuery, setSearchQuery] = useState("");
+  const [sortOrder, setSortOrder] = useState({});
   const [selectAll, setSelectAll] = useState(false);
   const [isOpenModal, setIsOpenModal] = useState(false);
 
@@ -49,9 +50,23 @@ const ProductManagement = () => {
 
   useEffect(() => {
     setSearchQuery(decodeURI(searchParams.get("q") ?? ""));
-    const productsFilter = products.filter((product: any) =>
+    let productsFilter = products.filter((product: any) =>
       includeTexts(product.title, product.category, searchParams.get("q") ?? "")
     );
+    if (searchParams.get("sortBy")) {
+      const getSortByParams = decodeURI(searchParams.get("sortBy") ?? "");
+      const getOrderParams = decodeURI(
+        searchParams.get("order") ?? "undefined"
+      );
+      setSortOrder({ [getSortByParams]: getOrderParams ?? "undefined" });
+      productsFilter = sortByKeyOrder(
+        [...productsFilter],
+        getSortByParams,
+        getOrderParams
+      );
+      console.log(getSortByParams, productsFilter);
+    }
+
     setListProducts(productsFilter);
   }, [searchParams]);
 
@@ -106,6 +121,7 @@ const ProductManagement = () => {
       key: "title",
       title: "Name",
       isShow: true,
+      sort: true,
       className: "",
       render: (title: string) => <>{title}</>,
     },
@@ -113,6 +129,7 @@ const ProductManagement = () => {
       key: "category",
       title: "Category",
       isShow: true,
+      sort: true,
       className: "",
       render: (category: string) => <>{category}</>,
     },
@@ -120,13 +137,23 @@ const ProductManagement = () => {
       key: "price",
       title: "Price",
       isShow: true,
+      sort: true,
       className: "",
       render: (price: string) => <>{price}</>,
+    },
+    {
+      key: "rating",
+      title: "Rating",
+      isShow: true,
+      sort: true,
+      className: "",
+      render: (rating: string) => <>{rating}</>,
     },
     {
       key: "inStock",
       title: "Status",
       isShow: true,
+      sort: true,
       className: "",
       render: (inStock: string) => (
         <div className="flex items-center">
@@ -233,9 +260,18 @@ const ProductManagement = () => {
               (header) =>
                 header?.isShow && (
                   <th scope="col" className="sm:px-6 py-3" key={header?.key}>
-                    {typeof header?.title == "string"
-                      ? header?.title
-                      : header?.title()}
+                    <div className="flex items-center">
+                      {typeof header?.title == "string"
+                        ? header?.title
+                        : header?.title()}
+                      {header?.sort && (
+                        <CustomSortIcon
+                          sortOrder={sortOrder}
+                          setSortOrder={setSortOrder}
+                          sortKey={header?.key}
+                        />
+                      )}
+                    </div>
                   </th>
                 )
             )}
@@ -283,6 +319,69 @@ const ProductManagement = () => {
         setIsOpenModal={setIsOpenModal}
       />
     </div>
+  );
+};
+
+const CustomSortIcon = (props: any) => {
+  const { sortOrder, setSortOrder, sortKey } = props;
+  const router = useRouter();
+  const pathname = usePathname();
+  const searchParams = useSearchParams();
+  const params = new URLSearchParams(searchParams);
+  const handleSort = (value: string) => {
+    setSortOrder({ [sortKey]: value });
+    params.set("sortBy", `${sortKey}`);
+    if (value != "undefined") params.set("order", `${value}`);
+    else {
+      params.delete("order");
+      params.delete("sortBy");
+    }
+    router.push(`${pathname}?${params.toString()}`);
+  };
+
+  return (
+    <>
+      {
+        {
+          ["undefined"]: (
+            <a onClick={() => handleSort("asc")}>
+              <svg
+                className="w-3 h-3 ml-1.5 text-gray-800 dark:text-white cursor-pointer"
+                aria-hidden="true"
+                xmlns="http://www.w3.org/2000/svg"
+                fill="currentColor"
+                viewBox="0 0 24 24">
+                <path d="M8.574 11.024h6.852a2.075 2.075 0 0 0 1.847-1.086 1.9 1.9 0 0 0-.11-1.986L13.736 2.9a2.122 2.122 0 0 0-3.472 0L6.837 7.952a1.9 1.9 0 0 0-.11 1.986 2.074 2.074 0 0 0 1.847 1.086Zm6.852 1.952H8.574a2.072 2.072 0 0 0-1.847 1.087 1.9 1.9 0 0 0 .11 1.985l3.426 5.05a2.123 2.123 0 0 0 3.472 0l3.427-5.05a1.9 1.9 0 0 0 .11-1.985 2.074 2.074 0 0 0-1.846-1.087Z" />
+              </svg>
+            </a>
+          ),
+          ["asc"]: (
+            <a onClick={() => handleSort("desc")}>
+              <svg
+                className="w-2 h-2 ml-2 mr-0.5 text-gray-800 dark:text-white cursor-pointer"
+                aria-hidden="true"
+                xmlns="http://www.w3.org/2000/svg"
+                fill="currentColor"
+                viewBox="0 0 16 10">
+                <path d="M9.207 1A2 2 0 0 0 6.38 1L.793 6.586A2 2 0 0 0 2.207 10H13.38a2 2 0 0 0 1.414-3.414L9.207 1Z" />
+              </svg>
+            </a>
+          ),
+          ["desc"]: (
+            <a onClick={() => handleSort("undefined")}>
+              <svg
+                className="w-2 h-2 ml-2 mr-0.5 text-gray-800 dark:text-white cursor-pointer"
+                aria-hidden="true"
+                xmlns="http://www.w3.org/2000/svg"
+                fill="currentColor"
+                viewBox="0 0 16 10">
+                <path d="M15.434 1.235A2 2 0 0 0 13.586 0H2.414A2 2 0 0 0 1 3.414L6.586 9a2 2 0 0 0 2.828 0L15 3.414a2 2 0 0 0 .434-2.179Z" />
+              </svg>
+            </a>
+          ),
+        }[sortOrder[sortKey] as string]
+      }
+    </>
   );
 };
 
