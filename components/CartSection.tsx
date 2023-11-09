@@ -48,12 +48,12 @@ const CartSection = ({ product, option, quantity }: CartProps) => {
 
       <div className="ml-4 flex flex-1 flex-col">
         <div className="flex justify-between text-base font-medium text-gray-900">
-          <div className="flex flex-row gap-2 text-sm justify-center">
+          <div className="flex capitalize flex-row gap-2 text-sm justify-center">
             <p>
               <a href="#">{product.title}</a>
             </p>
             <p className="block lg:hidden text-gray-500">
-              Color : <b>{option.color.toUpperCase()}</b>
+              Color : <b>{option.color}</b>
             </p>
             <p className="block lg:hidden text-gray-500">
               Size : <b>{option.color}</b>
@@ -82,8 +82,8 @@ const CartSection = ({ product, option, quantity }: CartProps) => {
             ${calculateDiscountPrice(option.price)(option.discount)(quantity)}
           </p>
         </div>
-        <p className="hidden lg:block mt-1 text-gray-500">
-          Color : {option.color?.toUpperCase()}
+        <p className="hidden capitalize lg:block mt-1 text-gray-500">
+          Color : {option.color}
         </p>
         <p className="block lg:hidden mt-2">
           ${calculateDiscountPrice(option.price)(option.discount)(quantity)}

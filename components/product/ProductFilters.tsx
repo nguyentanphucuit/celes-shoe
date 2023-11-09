@@ -15,14 +15,15 @@ import { FilterSection, FilterSectionRange } from "./FilterSection";
 import PaginationControls from "../pagination/PaginationControls";
 import ProductCard from "../ProductCard";
 import { XMarkIcon } from "@heroicons/react/20/solid";
-import useDebounce from "@/hooks/useDebounce";
 import { LoadingSpinner } from "../LoadingComp";
+import { includeTexts } from "@/constants/common";
+import SearchBarComp from "../SearchBarComp";
 
 const ProductFilters = () => {
+  const [listProducts, setListProducts] = useState([] as ProductProps[]);
   const [isExpandSort, setIsExpandSort] = useState(false);
   const [isShowFilters, setIsShowFilters] = useState(false);
-  const [searchValue, setSearchValue] = useState("");
-  const [debouncedSearchTerm, loading] = useDebounce(searchValue, 500) as any;
+  const [searchQuery, setSearchQuery] = useState("");
   const searchParams = useSearchParams();
   const filters = {
     minPrice: +(searchParams?.get("minPrice") || 0),
@@ -33,49 +34,55 @@ const ProductFilters = () => {
 
   const data = useAppSelector((state) => state.productsReducer.items);
 
-  const filterItems = [
-    ...data
-      .filter((item) => item.options[0].price >= filters.minPrice)
-      .filter((item) => {
-        if (filters.colors.length === 0) return true;
-        const itemOptions = item.options.filter(
-          (option: any) => option.inStock
-        );
-        const isMatchColor = itemOptions.find((option: any) =>
-          filters.colors.includes(option.color.toLowerCase())
-        );
-        return isMatchColor;
-      })
-      .filter((item) => {
-        if (filters.sizes.length === 0) return true;
-        const itemOptions = item.options.filter((option: any) => {
-          const itemSize = option.sizes.find(
-            (size: any) => size.inStock && filters.sizes.includes(size.size)
-          );
-          return itemSize;
-        });
-        return itemOptions.length > 0;
-      })
-      .filter((item) => {
-        if (filters.categories.length === 0) return true;
-        return filters.categories.includes(item.category.toLowerCase());
-      })
-      .filter((item) => {
-        if (debouncedSearchTerm === "") return true;
-        return (
-          debouncedSearchTerm &&
-          item.title.toLowerCase().includes(debouncedSearchTerm.toLowerCase())
-        );
-      }),
-  ];
-
   const current_page = +(searchParams?.get("page") ?? 1);
   const per_page = +(searchParams?.get("per_page") ?? ITEMS_PER_PAGE);
-
   const startIndex = (current_page - 1) * per_page;
   const endIndex = current_page * per_page;
 
-  const listCollections = filterItems.slice(startIndex, endIndex);
+  useEffect(() => {
+    setSearchQuery(decodeURI(searchParams.get("q") ?? ""));
+    let productsFilter = data.filter((product: any) =>
+      includeTexts(product.title, product.category, searchParams.get("q") ?? "")
+    );
+    const filterItems = [
+      ...productsFilter
+        .filter((item) => item.options[0].price >= filters.minPrice)
+        .filter((item) => {
+          if (filters.colors.length === 0) return true;
+          const itemOptions = item.options.filter(
+            (option: any) => option.inStock
+          );
+          const isMatchColor = itemOptions.find((option: any) =>
+            filters.colors.includes(option.color.toLowerCase())
+          );
+          return isMatchColor;
+        })
+        .filter((item) => {
+          if (filters.sizes.length === 0) return true;
+          const itemOptions = item.options.filter((option: any) => {
+            const itemSize = option.sizes.find(
+              (size: any) => size.inStock && filters.sizes.includes(size.size)
+            );
+            return itemSize;
+          });
+          return itemOptions.length > 0;
+        })
+        .filter((item) => {
+          if (filters.categories.length === 0) return true;
+          return filters.categories.includes(item.category.toLowerCase());
+        })
+        .filter((item) => {
+          if (searchQuery === "") return true;
+          return (
+            searchQuery &&
+            item.title.toLowerCase().includes(searchQuery.toLowerCase())
+          );
+        }),
+    ];
+    setListProducts(filterItems);
+  }, [searchParams]);
+
+  const listCollections = listProducts.slice(startIndex, endIndex);
 
   return (
     <div className="bg-white">
@@ -128,10 +135,9 @@ const ProductFilters = () => {
           <h1 className="hidden md:block -mt-2 lg:mt-10 lg:text-4xl text-2xl font-bold tracking-tight text-gray-900">
             New Collections
           </h1>
-          <SearchBar
-            searchValue={searchValue}
-            setSearchValue={(value: any) => setSearchValue(value)}
-            loading={loading}
+          <SearchBarComp
+            searchQuery={searchQuery}
+            setSearchQuery={setSearchQuery}
           />
           <div className="flex items-center">
             <div className="relative inline-block text-left">
@@ -187,23 +193,6 @@ const ProductFilters = () => {
                 </div>
               </Transition>
             </div>
-
-            {/* <button
-              type="button"
-              className="-m-2 ml-5 p-2 text-gray-400 hover:text-gray-500 sm:ml-7">
-              <span className="sr-only">View grid</span>
-              <svg
-                className="h-5 w-5"
-                aria-hidden="true"
-                viewBox="0 0 20 20"
-                fill="currentColor">
-                <path
-                  fillRule="evenodd"
-                  d="M4.25 2A2.25 2.25 0 002 4.25v2.5A2.25 2.25 0 004.25 9h2.5A2.25 2.25 0 009 6.75v-2.5A2.25 2.25 0 006.75 2h-2.5zm0 9A2.25 2.25 0 002 13.25v2.5A2.25 2.25 0 004.25 18h2.5A2.25 2.25 0 009 15.75v-2.5A2.25 2.25 0 006.75 11h-2.5zm9-9A2.25 2.25 0 0011 4.25v2.5A2.25 2.25 0 0013.25 9h2.5A2.25 2.25 0 0018 6.75v-2.5A2.25 2.25 0 0015.75 2h-2.5zm0 9A2.25 2.25 0 0011 13.25v2.5A2.25 2.25 0 0013.25 18h2.5A2.25 2.25 0 0018 15.75v-2.5A2.25 2.25 0 0015.75 11h-2.5z"
-                  clipRule="evenodd"
-                />
-              </svg>
-            </button> */}
             <button
               type="button"
               className="-m-2 ml-4 p-2 text-gray-400 hover:text-gray-500 sm:ml-6 lg:hidden"
@@ -237,7 +226,7 @@ const ProductFilters = () => {
             {/* Product grid */}
 
             <div className="lg:col-span-3">
-              {filterItems.length === 0 ? (
+              {listProducts.length === 0 ? (
                 <p className="flex justify-center items-center text-center">
                   Oops...
                   <br />
@@ -254,10 +243,10 @@ const ProductFilters = () => {
           </div>
         </section>
         <PaginationControls
-          hasNextPage={endIndex < filterItems.length}
+          hasNextPage={endIndex < listProducts.length}
           hasPreviousPage={startIndex > 0}
-          totalPages={Math.ceil(filterItems.length / per_page)}
-          totalResults={filterItems.length}
+          totalPages={Math.ceil(listProducts.length / per_page)}
+          totalResults={listProducts.length}
           startIndex={startIndex}
         />
       </div>
@@ -272,7 +261,7 @@ const ListFiltersSection = (props: any) => {
       <h3 className="sr-only">Categories</h3>
       <ol
         role="list"
-        className="list-none mx-0 space-y-4 border-b border-gray-200 pb-6 text-sm font-medium text-gray-900">
+        className="list-none capitalize mx-0 space-y-4 border-b border-gray-200 pb-6 text-sm font-medium text-gray-900">
         {listCategories.map((category, index) => (
           <li key={index} className="px-4 lg:px-0">
             <a href="#">{category.name}</a>
@@ -298,50 +287,6 @@ const ListFiltersSection = (props: any) => {
         filters={props.filters.sizes}
       />
     </>
-  );
-};
-
-const SearchBar = (props: any) => {
-  return (
-    <div className="w-64">
-      <label
-        htmlFor="default-search"
-        className="mb-2 text-sm font-medium text-gray-900 sr-only dark:text-white">
-        Search
-      </label>
-      <div className="relative">
-        <div className="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
-          <svg
-            className="w-4 h-4 text-gray-500 dark:text-gray-400"
-            aria-hidden="true"
-            xmlns="http://www.w3.org/2000/svg"
-            fill="none"
-            viewBox="0 0 20 20">
-            <path
-              stroke="currentColor"
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              strokeWidth="2"
-              d="m19 19-4-4m0-7A7 7 0 1 1 1 8a7 7 0 0 1 14 0Z"
-            />
-          </svg>
-        </div>
-        <input
-          type={props.loading ? "input" : "search"}
-          id="default-search"
-          value={props.searchValue}
-          onChange={(e) => props.setSearchValue(e.target.value)}
-          className="block w-full p-2 pl-10 text-sm text-gray-900 border border-gray-300 rounded-lg bg-gray-50 focus:ring-indigo-500 focus:border-indigo-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-indigo-500 dark:focus:border-indigo-500"
-          placeholder="Search Title, Category..."
-          required
-        />
-        {props.loading && (
-          <div className="absolute inset-y-0 right-0 flex items-center pr-3 pointer-events-none">
-            <LoadingSpinner />
-          </div>
-        )}
-      </div>
-    </div>
   );
 };
 

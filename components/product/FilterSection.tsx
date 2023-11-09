@@ -29,7 +29,7 @@ const FilterSection = (props: any) => {
   };
 
   return (
-    <div className="border-b border-gray-200 py-6">
+    <div className="border-b  border-gray-200 py-6">
       <h3 className="lg:mx-0 mx-4 -my-3 flow-root">
         <button
           type="button"
@@ -37,8 +37,8 @@ const FilterSection = (props: any) => {
           onClick={() => setIsExpand(!isExpand)}
           aria-controls="filter-section-0"
           aria-expanded="false">
-          <span className="font-medium text-gray-900">
-            {props.name.toUpperCase()}
+          <span className="font-medium text-gray-900 capitalize">
+            {props.name}
           </span>
           <span className="ml-6 flex items-center">
             {isExpand ? (
@@ -119,8 +119,8 @@ const FilterSection = (props: any) => {
                       />
                       <label
                         htmlFor={`filter-${props.name}-${index}`}
-                        className="ml-3 text-sm text-gray-600">
-                        {item.name.charAt(0).toUpperCase() + item.name.slice(1)}
+                        className="ml-3 capitalize text-sm text-gray-600">
+                        {item.name}
                       </label>
                     </div>
                   )}
@@ -149,11 +149,9 @@ const FilterSectionRange = (props: any) => {
   };
 
   return (
-    <div className="lg:mx-0 mx-4 border-b border-gray-200 py-6">
+    <div className="lg:mx-0 mx-4 capitalize border-b border-gray-200 py-6">
       <h3 className="-mt-3 mb-3 flow-root">
-        <span className="font-medium text-gray-900">
-          {props.name.toUpperCase()}
-        </span>
+        <span className="font-medium text-gray-900">{props.name}</span>
       </h3>
       <input
         id="minmax-range"

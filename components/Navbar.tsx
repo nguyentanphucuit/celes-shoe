@@ -262,7 +262,7 @@ export const BreadCrumb = (props: any) => {
     <div
       className="flex px-5 py-3 justify-center text-gray-700 border border-gray-200 bg-gray-50 dark:bg-gray-800 dark:border-gray-700"
       aria-label="Breadcrumb">
-      <ol className="inline-flex items-center space-x-1 md:space-x-3">
+      <ol className="inline-flex capitalize items-center space-x-1 md:space-x-3">
         {listPath.map((path: string, index: number) => (
           <li className="inline-flex items-center" key={index}>
             <Link
@@ -293,9 +293,7 @@ export const BreadCrumb = (props: any) => {
                   />
                 </svg>
               )}
-              {path == ""
-                ? "Home"
-                : path.charAt(0).toUpperCase() + path.slice(1)}
+              {path == "" ? "Home" : path}
             </Link>
           </li>
         ))}

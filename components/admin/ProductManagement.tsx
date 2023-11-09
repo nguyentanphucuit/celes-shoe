@@ -7,9 +7,12 @@ import ActionProductModal from "../modals/ActionProductModal";
 import { ProductProps } from "@/types";
 import CustomButton from "../CustomButton";
 import { usePathname, useRouter, useSearchParams } from "next/navigation";
-import { LoadingComp } from "../LoadingComp";
+import { LoadingComp, LoadingSpinner } from "../LoadingComp";
 import PaginationControls from "../pagination/PaginationControls";
 import { ITEMS_PER_PAGE } from "@/constants";
+import useURLParams from "@/hooks/useURLParams";
+import useDebounce from "@/hooks/useDebounce";
+import SearchBarComp from "../SearchBarComp";
 
 const ProductManagement = () => {
   const products = useSelector((state: any) => state.productsReducer.items);
@@ -21,10 +24,7 @@ const ProductManagement = () => {
   const [selectAll, setSelectAll] = useState(false);
   const [isOpenModal, setIsOpenModal] = useState(false);
 
-  const router = useRouter();
-  const pathname = usePathname();
   const searchParams = useSearchParams();
-  const params = new URLSearchParams(searchParams);
 
   const current_page = +(searchParams?.get("page") ?? 1);
   const per_page = +(searchParams?.get("per_page") ?? ITEMS_PER_PAGE);
@@ -37,15 +37,6 @@ const ProductManagement = () => {
     setProduct(products.find((product: any) => product.id === id));
     setAction(action);
     setIsOpenModal(true);
-  };
-  const handleOnSearch = (e: React.FormEvent) => {
-    e.preventDefault();
-    const encodedSearchQuery = encodeURI(searchQuery);
-    params.set("q", encodedSearchQuery);
-    params.set("page", "1");
-    pathname.includes("search")
-      ? router.push(`${pathname}?${params.toString()}`)
-      : router.push(`${pathname}/search?q=${encodedSearchQuery}`);
   };
 
   useEffect(() => {
@@ -64,7 +55,6 @@ const ProductManagement = () => {
         getSortByParams,
         getOrderParams
       );
-      console.log(getSortByParams, productsFilter);
     }
 
     setListProducts(productsFilter);
@@ -224,34 +214,10 @@ const ProductManagement = () => {
           Search
         </label>
 
-        <div className="relative ">
-          <div className="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
-            <svg
-              className="w-4 h-4 text-gray-500 dark:text-gray-400"
-              aria-hidden="true"
-              xmlns="http://www.w3.org/2000/svg"
-              fill="none"
-              viewBox="0 0 20 20">
-              <path
-                stroke="currentColor"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                strokeWidth="2"
-                d="m19 19-4-4m0-7A7 7 0 1 1 1 8a7 7 0 0 1 14 0Z"
-              />
-            </svg>
-          </div>
-          <form action="" onSubmit={handleOnSearch}>
-            <input
-              type="text"
-              onChange={(e) => setSearchQuery(e.target.value)}
-              value={searchQuery}
-              id="table-search-users"
-              className="block p-2 pl-10 text-sm text-gray-900 border border-gray-300 rounded-lg w-80 bg-gray-50 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-              placeholder="Search by title, category"
-            />
-          </form>
-        </div>
+        <SearchBarComp
+          searchQuery={searchQuery}
+          setSearchQuery={setSearchQuery}
+        />
       </div>
       <table className="w-full text-sm text-left text-gray-500 dark:text-gray-400 shadow-md sm:rounded-lg">
         <thead className="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
