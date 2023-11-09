@@ -13,6 +13,7 @@ import ProductCard from "../ProductCard";
 import PaginationControls from "../pagination/PaginationControls";
 import PromoSections from "./PromoSections";
 import { LoadingComp } from "../LoadingComp";
+import ProductCardSwiper from "./ProductCardSwiper";
 
 const Collections = () => {
   const searchParams = useSearchParams();
@@ -54,15 +55,7 @@ const Collections = () => {
         <h1 className="text-4xl font-extrabold my-2">Best Sellers</h1>
         <p>Explore the shoes you might like</p>
       </div>
-      <div className="carousel max-w-full carousel-center p-4 space-x-4 bg-gray-100 rounded-box">
-        {collections.map((product: ProductProps) => (
-          <div
-            key={product.id}
-            className="carousel-item w-full md:w-1/2 lg:w-1/3 xl:w-1/4">
-            <ProductCard {...product} key={product.id} loading={loading} />
-          </div>
-        ))}
-      </div>
+      <ProductCardSwiper data={collections} />
 
       <PaginationControls
         hasNextPage={endIndex < products.length}

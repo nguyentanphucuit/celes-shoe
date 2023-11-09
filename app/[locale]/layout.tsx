@@ -1,12 +1,11 @@
 import "@/app/globals.css";
-import GeistProviders from "@/providers/GeistProviders";
-import { Providers } from "@/redux/provider";
-import { notFound } from "next/navigation";
-import { NextIntlClientProvider } from "next-intl";
 import Footer from "@/components/Footer";
 import Navbar from "@/components/Navbar";
-import NextIntlProvider from "./NextIntlProvider";
+import GeistProviders from "@/providers/GeistProviders";
+import { Providers } from "@/redux/provider";
 import { unstable_setRequestLocale } from "next-intl/server";
+import { notFound } from "next/navigation";
+import NextIntlProvider from "./NextIntlProvider";
 
 export const metadata = {
   title: "Celes shoe",
