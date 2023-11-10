@@ -15,7 +15,7 @@ const CategorySection = (props: any) => {
               className="object-cover w-full hover:scale-110 transition duration-500"
               width={500}
               height={500}
-              style={{ height: 240 }}
+              style={{ height: 260 }}
             />
           </div>
           <div className="absolute top-10 left-10 z-10">
@@ -25,7 +25,7 @@ const CategorySection = (props: any) => {
             <Link href={`/product/?category=${category.href}`}>
               <CustomButton
                 title="Shop Now ->"
-                containerStyles="px-6 py-2 items-center justify-center border bg-indigo-200 border-indigo-400 text-indigo-700 text-sm font-medium hover:bg-indigo-100 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2"
+                containerStyles="px-6 py-2 items-center justify-center border bg-transparent border-indigo-400 text-indigo-700 text-sm font-medium hover:bg-indigo-100 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2"
               />
             </Link>
           </div>

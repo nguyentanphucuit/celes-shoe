@@ -1,18 +1,13 @@
 "use client";
 import { useApiDataFireStore } from "@/app/[locale]/api/useApiData";
-import { capitalizeFirstLetter } from "@/constants/common";
 import { updateAllColor } from "@/redux/features/colorSlice";
 import { useAppDispatch } from "@/redux/hooks";
-import { ProductProps } from "@/types";
-import Image from "next/image";
-import Link from "next/link";
-import CustomButton from "../CustomButton";
 import { LoadingComp } from "../LoadingComp";
-import ProductCard from "../ProductCard";
 import BestSellerSection from "./BestSellerSection";
-import PromoSection from "./PromoSection";
-import PopularSection from "./PopularSection";
 import CategorySection from "./CategorySection";
+import FeatureSection from "./FeatureSection";
+import PopularSection from "./PopularSection";
+import PromoSection from "./PromoSection";
 import TrendingArrivalsSection from "./TrendingArrivalsSection";
 
 const Collections = () => {
@@ -35,6 +30,7 @@ const Collections = () => {
       <PromoSection />
       <TrendingArrivalsSection data={productsSection} />
       <BestSellerSection data={productsSection} />
+      <FeatureSection />
     </div>
   );
 };

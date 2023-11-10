@@ -2,7 +2,7 @@
 
 import Image from "next/image";
 
-const Hero = () => {
+const HeroSection = () => {
   const handleClick = () => {};
   return (
     <div className="hero -mt-8">
@@ -17,4 +17,4 @@ const Hero = () => {
   );
 };
 
-export default Hero;
+export default HeroSection;

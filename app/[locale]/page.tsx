@@ -1,6 +1,6 @@
 import Cart from "@/components/modals/CartModal";
 import Collections from "@/components/collection/Collections";
-import Hero from "@/components/collection/Hero";
+import HeroSection from "@/components/collection/HeroSection";
 import ProductDetailModal from "@/components/modals/ProductDetailModal";
 import Image from "next/image";
 import { GetStaticPropsContext } from "next";
@@ -22,7 +22,7 @@ export default function Home({
 
   return (
     <div>
-      <Hero />
+      <HeroSection />
       <div className="padding-x padding-y max-width" id="discover">
         <ProductDetailModal />
         <Collections />
@@ -30,11 +30,3 @@ export default function Home({
     </div>
   );
 }
-
-// export async function getStaticProps({ locale }: GetStaticPropsContext) {
-//   return {
-//     props: {
-//       messages: (await import(`@/messages/${locale}.json`)).default,
-//     },
-//   };
-// }

@@ -24,10 +24,6 @@ export const totalPrice = (cartItem: CartProps[]) =>
 export const totalQuantity = (cartItem: CartProps[]) =>
   cartItem.reduce((acc, item) => acc + item.quantity, 0);
 
-export const capitalizeFirstLetter = (str: string) => {
-  return str.charAt(0).toUpperCase() + str.slice(1);
-};
-
 // for TailwindCSS
 export const getColorVariants = (color: string, type = "bg", shade = 500) =>
   color.toLowerCase() !== "black" &&

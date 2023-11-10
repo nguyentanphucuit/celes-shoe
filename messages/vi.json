@@ -21,5 +21,28 @@
     "Contact Us": "Liên hệ chúng tôi",
     "Payment & Tax": "Thanh toán & Thuế",
     "Bonus Point": "Điểm thưởng"
+  },
+  "Home": {
+    "CategorySection": {
+      "Shop Now": "Mua ngay"
+    },
+    "FeatureSection": {
+      "Free Delivery": {
+        "title": "Free Delivery",
+        "description": "Giao hàng miễn phí"
+      },
+      "Return & Refund": {
+        "title": "Trả hàng & Hoàn tiền",
+        "description": "Đảm bảo trả tiền & hoàn tiền"
+      },
+      "Member Discount": {
+        "title": "Giảm giá thành viên",
+        "description": "Áp dụng cho đơn trên $140.00"
+      },
+      "Support 24/7": {
+        "title": "Hỗ trợ 24/7",
+        "description": "Liên hệ với chúng tôi 24/7"
+      }
+    }
   }
 }

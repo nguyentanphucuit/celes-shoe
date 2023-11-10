@@ -21,5 +21,28 @@
     "Contact Us": "Contact Us",
     "Payment & Tax": "Payment & Tax",
     "Bonus Point": "Bonus Point"
+  },
+  "Home": {
+    "CategorySection": {
+      "Shop Now": "Shop Now"
+    },
+    "FeatureSection": {
+      "Free Delivery": {
+        "title": "Free Delivery",
+        "description": "Orders from all item"
+      },
+      "Return & Refund": {
+        "title": "Return & Refund",
+        "description": "Money back guarantee"
+      },
+      "Member Discount": {
+        "title": "Member Discount",
+        "description": "On every order over $140.00"
+      },
+      "Support 24/7": {
+        "title": "Support 24/7",
+        "description": "Contact us 24 hours a day"
+      }
+    }
   }
 }

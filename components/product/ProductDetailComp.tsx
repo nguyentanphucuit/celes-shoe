@@ -1,10 +1,6 @@
 "use client";
 import { alertMessage } from "@/constants";
-import {
-  calculateDiscountPrice,
-  capitalizeFirstLetter,
-  classNames,
-} from "@/constants/common";
+import { calculateDiscountPrice, classNames } from "@/constants/common";
 import { addToCart } from "@/redux/features/cartSlice";
 import { useAppDispatch } from "@/redux/hooks";
 import { ProductProps } from "@/types";
@@ -185,9 +181,9 @@ const ProductDetailComponent = (props: ProductProps) => {
                     currentTab == tab.name
                       ? "border-primary text-black dark:text-gray-300"
                       : "border-transparent text-gray-500 dark:text-gray-400",
-                    "mr-2 text-xl inline-block p-4 border-b-2 rounded-t-lg hover:text-gray-600 hover:border-primary dark:hover:text-gray-300"
+                    "mr-2 text-xl capitalize inline-block p-4 border-b-2 rounded-t-lg hover:text-gray-600 hover:border-primary dark:hover:text-gray-300"
                   )}>
-                  {capitalizeFirstLetter(tab.name)}
+                  {tab.name}
                 </li>
               ))}
             </ul>
