@@ -51,7 +51,7 @@ const ProductCard = (props: any) => {
   return props.loading ? (
     <SkeletonProduct />
   ) : (
-    <div className="w-full max-w-sm group relative bg-white border border-gray-200 rounded-md shadow dark:bg-gray-800 dark:border-gray-700 hover:shadow-lg">
+    <div className="w-full max-w-sm group relative bg-white border border-gray-200 shadow dark:bg-gray-800 dark:border-gray-700 hover:shadow-lg">
       <label className="absolute flex justify-center items-center w-12 h-12 top-2 z-10 left-2 p-2 bg-red-500 text-white text-sm rounded-full">
         -{option.discount}%
       </label>
@@ -62,7 +62,7 @@ const ProductCard = (props: any) => {
             alt="shoe card"
             width={400}
             height={320}
-            className="object-cover w-full h-60 rounded-t-lg cursor-pointer transition duration-500 group-hover:scale-105"
+            className="object-cover w-full h-60 cursor-pointer transition duration-500 group-hover:scale-105"
           />
         </Link>
         <div

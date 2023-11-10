@@ -1,101 +1,40 @@
 "use client";
-import { ITEMS_PER_PAGE } from "@/constants";
-import { capitalizeFirstLetter } from "@/constants/common";
 import { useApiDataFireStore } from "@/app/[locale]/api/useApiData";
+import { capitalizeFirstLetter } from "@/constants/common";
 import { updateAllColor } from "@/redux/features/colorSlice";
 import { useAppDispatch } from "@/redux/hooks";
 import { ProductProps } from "@/types";
 import Image from "next/image";
 import Link from "next/link";
-import { useSearchParams } from "next/navigation";
 import CustomButton from "../CustomButton";
-import ProductCard from "../ProductCard";
-import PaginationControls from "../pagination/PaginationControls";
-import PromoSections from "./PromoSections";
 import { LoadingComp } from "../LoadingComp";
-import ProductCardSwiper from "./ProductCardSwiper";
+import ProductCard from "../ProductCard";
+import BestSellerSection from "./BestSellerSection";
+import PromoSection from "./PromoSection";
+import PopularSection from "./PopularSection";
+import CategorySection from "./CategorySection";
+import TrendingArrivalsSection from "./TrendingArrivalsSection";
 
 const Collections = () => {
-  const searchParams = useSearchParams();
-
-  // pagination
-  const current_page = +(searchParams?.get("page") ?? 1);
-  const per_page = +(searchParams?.get("per_page") ?? ITEMS_PER_PAGE);
-
-  const startIndex = (current_page - 1) * per_page;
-  const endIndex = current_page * per_page;
-
   const { data: products, loading, error } = useApiDataFireStore("products");
   const { data: categories } = useApiDataFireStore("categories");
   const { data: colors } = useApiDataFireStore("colors");
+  const productsSection = products?.slice(0, 8);
   console.log(colors);
   console.log(products);
 
   const dispatch = useAppDispatch();
   dispatch(updateAllColor(colors));
 
-  const collections = products.slice(startIndex, endIndex);
-
   return loading ? (
     <LoadingComp />
   ) : (
-    <>
-      <ListCategory categories={categories} />
-      <div className="home__text-container my-6">
-        <h1 className="text-4xl font-extrabold my-2">Shoe Catalogue</h1>
-        <p>Explore the shoes you might like</p>
-      </div>
-      <div className="grid grid-flow-row justify-center md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 my-6">
-        {collections.map((product: ProductProps) => (
-          <ProductCard {...product} key={product.id} loading={loading} />
-        ))}
-      </div>
-      <PromoSections />
-      <div className="home__text-container my-6">
-        <h1 className="text-4xl font-extrabold my-2">Best Sellers</h1>
-        <p>Explore the shoes you might like</p>
-      </div>
-      <ProductCardSwiper data={collections} />
-
-      <PaginationControls
-        hasNextPage={endIndex < products.length}
-        hasPreviousPage={startIndex > 0}
-        totalPages={Math.ceil(products.length / per_page)}
-        totalResults={products.length}
-        startIndex={startIndex}
-      />
-    </>
-  );
-};
-
-const ListCategory = (props: any) => {
-  return (
-    <div className=" grid grid-flow-row justify-center md:grid-cols-2 lg:grid-cols-3 gap-4 overflow-hidden">
-      {props.categories.map((category: any) => (
-        <div key={category.id} className="relative overflow-hidden">
-          <div className="">
-            <Image
-              src={category.imageUrl}
-              alt={category}
-              className="object-cover w-full hover:scale-110 transition duration-500"
-              width={500}
-              height={500}
-              style={{ height: 300 }}
-            />
-          </div>
-          <div className="absolute top-10 left-10 z-10">
-            <div className="text-3xl text-gray-800 my-5">
-              {capitalizeFirstLetter(category.name)}
-            </div>
-            <Link href={`/product/?category=${category.href}`}>
-              <CustomButton
-                title="Shop Now ->"
-                containerStyles="btn-add-to-cart "
-              />
-            </Link>
-          </div>
-        </div>
-      ))}
+    <div className="space-y-16">
+      <CategorySection data={categories} />
+      <PopularSection data={productsSection} />
+      <PromoSection />
+      <TrendingArrivalsSection data={productsSection} />
+      <BestSellerSection data={productsSection} />
     </div>
   );
 };

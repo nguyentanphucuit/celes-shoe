@@ -2,7 +2,7 @@ import { classNames } from "@/constants/common";
 import Image from "next/image";
 import React from "react";
 
-const PromoSections = () => {
+const PromoSection = () => {
   const listImgPromo = [
     [
       "https://firebasestorage.googleapis.com/v0/b/celesshoe-6121f.appspot.com/o/products%2FCS-16.jpg?alt=media&token=4749ca07-3fcb-4083-b1f5-cd1cf91d0153&_gl=1*nrumoj*_ga*MTI5MjM1MTE4MS4xNjk1ODM0NTk4*_ga_CW55HF8NVT*MTY5OTE3MjQ0OC4zOC4xLjE2OTkxNzI0NTguNTAuMC4w",
@@ -22,7 +22,7 @@ const PromoSections = () => {
     ],
   ];
 
-  const promoSections = {
+  const PromoSection = {
     title: "Summer styles are finally here",
     subtitle:
       "This year, our new summer collection will shelter you from the harsh elements of a world that doesn't care if you live or die.",
@@ -33,10 +33,10 @@ const PromoSections = () => {
         <div className="relative mx-auto max-w-7xl px-4 sm:static sm:px-6 lg:px-8">
           <div className="sm:max-w-lg">
             <h1 className="text-4xl font-bold tracking-tight text-gray-900 sm:text-6xl">
-              {promoSections.title}
+              {PromoSection.title}
             </h1>
             <p className="mt-4 text-xl text-gray-500">
-              {promoSections.subtitle}
+              {PromoSection.subtitle}
             </p>
           </div>
           <div>
@@ -86,4 +86,4 @@ const PromoSections = () => {
   );
 };
 
-export default PromoSections;
+export default PromoSection;
