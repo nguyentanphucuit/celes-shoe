@@ -18,6 +18,8 @@ import { XMarkIcon } from "@heroicons/react/20/solid";
 import { LoadingSpinner } from "../LoadingComp";
 import { includeTexts } from "@/constants/common";
 import SearchBarComp from "../SearchBarComp";
+import { useApiDataFireStore } from "@/app/[locale]/api/useApiData";
+import ProductSkeleton from "../ProductSkeleton";
 
 const ProductFilters = () => {
   const [listProducts, setListProducts] = useState([] as ProductProps[]);
@@ -32,7 +34,7 @@ const ProductFilters = () => {
     sizes: searchParams?.get("sizes")?.split("%") || [],
   };
 
-  const data = useAppSelector((state) => state.productsReducer.items);
+  const { data, loading, error } = useApiDataFireStore("products");
 
   const current_page = +(searchParams?.get("page") ?? 1);
   const per_page = +(searchParams?.get("per_page") ?? ITEMS_PER_PAGE);
@@ -40,14 +42,15 @@ const ProductFilters = () => {
   const endIndex = current_page * per_page;
 
   useEffect(() => {
+    if (loading) return;
     setSearchQuery(decodeURI(searchParams.get("q") ?? ""));
     let productsFilter = data.filter((product: any) =>
       includeTexts(product.title, product.category, searchParams.get("q") ?? "")
     );
     const filterItems = [
       ...productsFilter
-        .filter((item) => item.options[0].price >= filters.minPrice)
-        .filter((item) => {
+        .filter((item: any) => item.options[0].price >= filters.minPrice)
+        .filter((item: any) => {
           if (filters.colors.length === 0) return true;
           const itemOptions = item.options.filter(
             (option: any) => option.inStock
@@ -57,7 +60,7 @@ const ProductFilters = () => {
           );
           return isMatchColor;
         })
-        .filter((item) => {
+        .filter((item: any) => {
           if (filters.sizes.length === 0) return true;
           const itemOptions = item.options.filter((option: any) => {
             const itemSize = option.sizes.find(
@@ -67,11 +70,11 @@ const ProductFilters = () => {
           });
           return itemOptions.length > 0;
         })
-        .filter((item) => {
+        .filter((item: any) => {
           if (filters.categories.length === 0) return true;
           return filters.categories.includes(item.category.toLowerCase());
         })
-        .filter((item) => {
+        .filter((item: any) => {
           if (searchQuery === "") return true;
           return (
             searchQuery &&
@@ -80,7 +83,7 @@ const ProductFilters = () => {
         }),
     ];
     setListProducts(filterItems);
-  }, [searchParams]);
+  }, [searchParams, loading]);
 
   const listCollections = listProducts.slice(startIndex, endIndex);
 
@@ -226,19 +229,27 @@ const ProductFilters = () => {
             {/* Product grid */}
 
             <div className="lg:col-span-3">
-              {listProducts.length === 0 ? (
-                <p className="flex justify-center items-center text-center">
-                  Oops...
-                  <br />
-                  Items not found
-                </p>
-              ) : (
-                <div className="grid grid-flow-row justify-center sm:grid-cols-2 xl:grid-cols-3 gap-4">
-                  {listCollections.map((shoe: ProductProps) => (
-                    <ProductCard {...shoe} key={shoe.id} />
-                  ))}
-                </div>
-              )}
+              <div className="grid grid-flow-row justify-center sm:grid-cols-2 xl:grid-cols-3 gap-4">
+                {loading ? (
+                  Array.from(Array(6)).map((_, index) => (
+                    <ProductSkeleton key={index} />
+                  ))
+                ) : (
+                  <>
+                    {listProducts.length === 0 ? (
+                      <p className="flex justify-center items-center text-center">
+                        Oops...
+                        <br />
+                        Items not found
+                      </p>
+                    ) : (
+                      listCollections.map((product: ProductProps) => (
+                        <ProductCard {...product} key={product.id} />
+                      ))
+                    )}
+                  </>
+                )}
+              </div>
             </div>
           </div>
         </section>

@@ -14,7 +14,7 @@ import { addToCart } from "@/redux/features/cartSlice";
 import { ToastInput, useToasts } from "@geist-ui/core";
 import Link from "next/link";
 import ColorComp from "./ColorComp";
-import SkeletonProduct from "./SkeletonProduct";
+import ProductSkeleton from "./ProductSkeleton";
 
 const ProductCard = (props: any) => {
   const dispatch = useAppDispatch();
@@ -49,7 +49,7 @@ const ProductCard = (props: any) => {
   };
 
   return props.loading ? (
-    <SkeletonProduct />
+    <ProductSkeleton />
   ) : (
     <div className="w-full max-w-sm group relative bg-white border border-gray-200 shadow dark:bg-gray-800 dark:border-gray-700 hover:shadow-lg">
       <label className="absolute flex justify-center items-center w-12 h-12 top-2 z-10 left-2 p-2 bg-red-500 text-white text-sm rounded-full">
@@ -151,7 +151,7 @@ const ProductCard = (props: any) => {
         <div className="flex items-start text-xs">
           <Link
             href={`/product?categories=${props.category.toLowerCase()}`}
-            className="relative z-10 rounded bg-gray-200 px-3 py-1.5 font-medium text-gray-600 hover:bg-gray-300">
+            className="relative z-10 rounded bg-gray-200 px-2 py-1 font-medium text-gray-600 hover:bg-gray-300">
             {props.category}
           </Link>
         </div>
