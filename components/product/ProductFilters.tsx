@@ -227,29 +227,30 @@ const ProductFilters = () => {
               <ListFiltersSection filters={filters} />
             </form>
             {/* Product grid */}
-
             <div className="lg:col-span-3">
-              <div className="grid grid-flow-row justify-center sm:grid-cols-2 xl:grid-cols-3 gap-4">
-                {loading ? (
-                  Array.from(Array(6)).map((_, index) => (
+              {loading ? (
+                <div className="grid grid-flow-row justify-center sm:grid-cols-2 xl:grid-cols-3 gap-4">
+                  {Array.from(Array(6)).map((_, index) => (
                     <ProductSkeleton key={index} />
-                  ))
-                ) : (
-                  <>
-                    {listProducts.length === 0 ? (
-                      <p className="flex justify-center items-center text-center">
-                        Oops...
-                        <br />
-                        Items not found
-                      </p>
-                    ) : (
-                      listCollections.map((product: ProductProps) => (
+                  ))}
+                </div>
+              ) : (
+                <>
+                  {listProducts.length === 0 ? (
+                    <p className="flex justify-center items-center text-center">
+                      Oops...
+                      <br />
+                      Items not found
+                    </p>
+                  ) : (
+                    <div className="grid grid-flow-row justify-center sm:grid-cols-2 xl:grid-cols-3 gap-4">
+                      {listCollections.map((product: ProductProps) => (
                         <ProductCard {...product} key={product.id} />
-                      ))
-                    )}
-                  </>
-                )}
-              </div>
+                      ))}
+                    </div>
+                  )}
+                </>
+              )}
             </div>
           </div>
         </section>
