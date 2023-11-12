@@ -91,7 +91,7 @@ const FeatureSection = () => {
   ];
 
   return (
-    <div className="grid grid-cols-4 gap-12 divide-x border p-8">
+    <div className="grid grid-cols-1 md:grid-cols-2 xl:divide-x xl:grid-cols-4 gap-12 border p-8">
       {data.map((item) => (
         <div
           key={item.id}
