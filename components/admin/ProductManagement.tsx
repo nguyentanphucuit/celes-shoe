@@ -18,7 +18,11 @@ const ProductManagement = () => {
   const dispatch = useDispatch();
   const { data: products, loading, error } = useApiDataFireStore("products");
   dispatch(updateAllProducts({ products }));
-  return <ProductManagement1 />;
+  return (
+    <>
+      <ProductManagement1 />
+    </>
+  );
 };
 
 const ProductManagement1 = () => {
