@@ -24,7 +24,7 @@ const ProductDetailComponent = (props: ProductProps) => {
   const handleAddToCart = () => {
     const type = "success" as ToastInput["type"];
     setToast({
-      text: alertMessage.success,
+      text: alertMessage.success.replace("$action", "added"),
       type,
     });
     dispatch(

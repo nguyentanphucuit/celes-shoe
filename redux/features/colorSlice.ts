@@ -10,7 +10,7 @@ const colorSlice = createSlice({
     addColor: (state, action) => {
       state.items.push(action.payload);
     },
-    updateAllColor: (state, action) => {
+    updateAllColors: (state, action) => {
       state.items = action.payload;
       return state;
     },
@@ -23,5 +23,5 @@ const colorSlice = createSlice({
   },
 });
 
-export const { addColor, removeColor, updateAllColor } = colorSlice.actions;
+export const { addColor, removeColor, updateAllColors } = colorSlice.actions;
 export default colorSlice.reducer;

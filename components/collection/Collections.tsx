@@ -1,6 +1,6 @@
 "use client";
 import { useApiDataFireStore } from "@/app/[locale]/api/useApiData";
-import { updateAllColor } from "@/redux/features/colorSlice";
+import { updateAllColors } from "@/redux/features/colorSlice";
 import { useAppDispatch } from "@/redux/hooks";
 import { LoadingComp } from "../LoadingComp";
 import BestSellerSection from "./BestSellerSection";
@@ -9,6 +9,8 @@ import FeatureSection from "./FeatureSection";
 import PopularSection from "./PopularSection";
 import PromoSection from "./PromoSection";
 import TrendingArrivalsSection from "./TrendingArrivalsSection";
+import { updateAllProducts } from "@/redux/features/productsSlice";
+import { useEffect } from "react";
 
 const Collections = () => {
   const { data: products, loading, error } = useApiDataFireStore("products");
@@ -19,7 +21,8 @@ const Collections = () => {
   console.log(products);
 
   const dispatch = useAppDispatch();
-  dispatch(updateAllColor(colors));
+  dispatch(updateAllColors({ colors }));
+  dispatch(updateAllProducts({ products }));
 
   return loading ? (
     <LoadingComp />

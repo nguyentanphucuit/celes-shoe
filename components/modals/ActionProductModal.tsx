@@ -20,24 +20,43 @@ import {
   CheckIcon,
   ChevronUpDownIcon,
   ChevronUpIcon,
+  PlusIcon,
 } from "@heroicons/react/20/solid";
 import { Fragment, useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
 import CustomButton from "../CustomButton";
 import CustomModal from "./CustomModal";
+import { ToastInput, useToasts } from "@geist-ui/core";
 
 const ActionProductModal = (props: any) => {
   const [inputValue, setInputValue] = useState<{ [key: string]: any }>({
     ...productTemplate,
   });
 
+  const { setToast } = useToasts();
+  const dispatch = useDispatch();
+
+  const handleSubmit = (e: any) => {
+    const handleAction = {
+      ["create"]: handleAddProduct,
+      ["edit"]: handleEditProduct,
+      ["delete"]: handleDeleteProduct,
+    };
+    const handleAlert = {
+      ["create"]: alertMessage.success.replace("$action", "added"),
+      ["edit"]: alertMessage.success.replace("$action", "edited"),
+      ["delete"]: alertMessage.success.replace("$action", "deleted"),
+    };
+    const type = "success" as ToastInput["type"];
+    setToast({
+      text: handleAlert[props.action as "create" | "edit" | "delete"],
+      type,
+    });
+    handleAction[props.action as "create" | "edit" | "delete"](e);
+  };
   const handleClosedModal = () => {
     props.setIsOpenModal(false);
   };
-
-  const dispatch = useDispatch();
-
-  const handleSubmit = (e: any) => {};
   const handleAddProduct = (e: any) => {
     e.preventDefault();
     addProductFireStore("products", { ...inputValue });
@@ -57,9 +76,17 @@ const ActionProductModal = (props: any) => {
     dispatch(deleteProduct({ id: props.product.id }));
     props.setIsOpenModal(false);
   };
+  const handleAddColor = () => {
+    setInputValue({
+      ...inputValue,
+      options: [...inputValue.options, { ...productTemplate.options[0] }],
+    });
+  };
+
   useEffect(() => {
     if (props.action === "edit") setInputValue({ ...props.product });
-  }, [props.product]);
+    else if (props.action === "create") setInputValue({ ...productTemplate });
+  }, [props.product, props.action]);
 
   return (
     <CustomModal
@@ -67,13 +94,7 @@ const ActionProductModal = (props: any) => {
       isOpenModal={props.isOpenModal}
       title={props.action + " Product"}>
       <form
-        onSubmit={
-          {
-            ["create"]: handleAddProduct,
-            ["edit"]: handleEditProduct,
-            ["delete"]: handleDeleteProduct,
-          }[props.action as string] ?? (() => {})
-        }
+        onSubmit={handleSubmit}
         className="relative bg-white dark:bg-gray-700 ">
         <div className="p-3 space-y-6 max-h-[70vh] overflow-y-auto">
           {props.action === "delete" ? (
@@ -180,6 +201,14 @@ const ActionProductModal = (props: any) => {
                   )}
                 </Disclosure>
               ))}
+              <div className="flex flex-row justify-center">
+                <button
+                  type="button"
+                  className="bg-indigo-200 border-indigo-400 text-indigo-700 font-semibold hover:bg-indigo-100 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 rounded-lg text-sm w-8 h-8 m-auto inline-flex justify-center items-center dark:hover:bg-gray-600 dark:hover:text-white"
+                  onClick={handleAddColor}>
+                  <PlusIcon className="h-6 w-6" aria-hidden="true" />
+                </button>
+              </div>
             </>
           )}
         </div>

@@ -1,18 +1,16 @@
 "use client";
-import React, { Suspense, useEffect, useState } from "react";
-import Image from "next/image";
-import { useSelector } from "react-redux";
-import { classNames, includeTexts, sortByKeyOrder } from "@/constants/common";
-import ActionProductModal from "../modals/ActionProductModal";
-import { ProductProps } from "@/types";
-import CustomButton from "../CustomButton";
-import { usePathname, useRouter, useSearchParams } from "next/navigation";
-import { LoadingComp, LoadingSpinner } from "../LoadingComp";
-import PaginationControls from "../pagination/PaginationControls";
 import { ITEMS_PER_PAGE } from "@/constants";
-import useURLParams from "@/hooks/useURLParams";
-import useDebounce from "@/hooks/useDebounce";
+import { classNames, includeTexts, sortByKeyOrder } from "@/constants/common";
+import { ProductProps } from "@/types";
+import Image from "next/image";
+import { usePathname, useRouter, useSearchParams } from "next/navigation";
+import { Suspense, useEffect, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import CustomButton from "../CustomButton";
+import { LoadingComp } from "../LoadingComp";
 import SearchBarComp from "../SearchBarComp";
+import ActionProductModal from "../modals/ActionProductModal";
+import PaginationControls from "../pagination/PaginationControls";
 
 const ProductManagement = () => {
   const products = useSelector((state: any) => state.productsReducer.items);
@@ -25,6 +23,7 @@ const ProductManagement = () => {
   const [isOpenModal, setIsOpenModal] = useState(false);
 
   const searchParams = useSearchParams();
+  const dispatch = useDispatch();
 
   const current_page = +(searchParams?.get("page") ?? 1);
   const per_page = +(searchParams?.get("per_page") ?? ITEMS_PER_PAGE);
@@ -38,6 +37,9 @@ const ProductManagement = () => {
     setAction(action);
     setIsOpenModal(true);
   };
+  useEffect(() => {
+    setListProducts(products);
+  }, [products]);
 
   useEffect(() => {
     setSearchQuery(decodeURI(searchParams.get("q") ?? ""));

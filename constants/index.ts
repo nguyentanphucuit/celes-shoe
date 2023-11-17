@@ -704,7 +704,7 @@ export const listFilters = {
 };
 
 export const alertMessage = {
-  success: "Item added successfully",
+  success: "Item $action successfully",
   warning:
     "Are you sure you want to deactivate your account? All of your data will be permanently removed. This action cannot be undone.",
   error: "Remove item difficulty.",

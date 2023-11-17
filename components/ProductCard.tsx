@@ -21,6 +21,7 @@ const ProductCard = (props: any) => {
   const product = useAppSelector((state) => state.productsReducer.items).find(
     (item) => item.id === props.id
   );
+  console.log(product);
   const [option, setOption] = useState(
     product?.options[0] as ProductOptionsProps
   );
@@ -29,7 +30,7 @@ const ProductCard = (props: any) => {
   const handleAddToCart = () => {
     const type = "success" as ToastInput["type"];
     setToast({
-      text: alertMessage.success,
+      text: alertMessage.success.replace("$action", "added"),
       type,
     });
     dispatch(
@@ -147,7 +148,7 @@ const ProductCard = (props: any) => {
         </button>
       </div>
 
-      <div className="flex flex-col gap-1.5 px-5 pb-5 pt-1.5">
+      <div className="flex flex-col gap-1.5 px-5 pb-5 pt-1.5 capitalize">
         <div className="flex items-start text-xs">
           <Link
             href={`/product?categories=${props.category.toLowerCase()}`}
