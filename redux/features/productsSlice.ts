@@ -19,7 +19,6 @@ const ProductsSlice = createSlice({
     },
     updateProduct: (state, action) => {
       const { product, id } = action.payload as any;
-      console.log(product, id);
       const index = state.items.findIndex(
         (item: ProductProps) => item.id === id
       );

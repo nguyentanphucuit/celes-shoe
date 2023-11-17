@@ -21,7 +21,6 @@ const ProductCard = (props: any) => {
   const product = useAppSelector((state) => state.productsReducer.items).find(
     (item) => item.id === props.id
   );
-  console.log(product);
   const [option, setOption] = useState(
     product?.options[0] as ProductOptionsProps
   );
