@@ -20,6 +20,8 @@ import { includeTexts } from "@/constants/common";
 import SearchBarComp from "../SearchBarComp";
 import { useApiDataFireStore } from "@/app/[locale]/api/useApiData";
 import ProductSkeleton from "../ProductSkeleton";
+import { useDispatch } from "react-redux";
+import { updateAllProducts } from "@/redux/features/productsSlice";
 
 const ProductFilters = () => {
   const [listProducts, setListProducts] = useState([] as ProductProps[]);
@@ -34,7 +36,8 @@ const ProductFilters = () => {
     sizes: searchParams?.get("sizes")?.split("%") || [],
   };
 
-  const { data, loading, error } = useApiDataFireStore("products");
+  const { data: products, loading, error } = useApiDataFireStore("products");
+  const dispatch = useDispatch();
 
   const current_page = +(searchParams?.get("page") ?? 1);
   const per_page = +(searchParams?.get("per_page") ?? ITEMS_PER_PAGE);
@@ -43,8 +46,9 @@ const ProductFilters = () => {
 
   useEffect(() => {
     if (loading) return;
+    dispatch(updateAllProducts({ products }));
     setSearchQuery(decodeURI(searchParams.get("q") ?? ""));
-    let productsFilter = data.filter((product: any) =>
+    let productsFilter = products.filter((product: any) =>
       includeTexts(product.title, product.category, searchParams.get("q") ?? "")
     );
     const filterItems = [

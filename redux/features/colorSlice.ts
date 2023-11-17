@@ -11,7 +11,8 @@ const colorSlice = createSlice({
       state.items.push(action.payload);
     },
     updateAllColors: (state, action) => {
-      state.items = action.payload;
+      const { colors } = action.payload;
+      state.items = colors;
       return state;
     },
     removeColor: (state, action) => {
