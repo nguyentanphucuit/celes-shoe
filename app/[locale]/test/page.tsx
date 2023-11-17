@@ -6,8 +6,8 @@ import React from "react";
 const SkeletonTest = () => {
   return (
     <div className="flex flex-row justify-center gap-4">
-      <ProductSkeleton />
-      <ProductCard {...listProducts[0]} />
+      {/* <ProductSkeleton />
+      <ProductCard {...listProducts[0]} /> */}
     </div>
   );
 };
