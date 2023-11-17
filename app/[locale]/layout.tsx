@@ -33,8 +33,8 @@ export default async function LocaleLayout({
   }
   unstable_setRequestLocale(locale);
   return (
-    <html lang={locale}>
-      <body suppressHydrationWarning={true}>
+    <html suppressHydrationWarning lang={locale}>
+      <body suppressHydrationWarning>
         <NextIntlProvider locale={locale} messages={messages}>
           <Providers>
             <Navbar locale={locale} />

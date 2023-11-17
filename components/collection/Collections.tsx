@@ -1,5 +1,5 @@
 "use client";
-import { useApiDataFireStore } from "@/app/[locale]/api/useApiData";
+import { useApiDataFireStore } from "@/hooks/useApiData";
 import { updateAllColors } from "@/redux/features/colorSlice";
 import { updateAllProducts } from "@/redux/features/productsSlice";
 import { useAppDispatch } from "@/redux/hooks";

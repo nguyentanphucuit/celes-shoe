@@ -18,7 +18,7 @@ import { XMarkIcon } from "@heroicons/react/20/solid";
 import { LoadingSpinner } from "../LoadingComp";
 import { includeTexts } from "@/constants/common";
 import SearchBarComp from "../SearchBarComp";
-import { useApiDataFireStore } from "@/app/[locale]/api/useApiData";
+import { useApiDataFireStore } from "@/hooks/useApiData";
 import ProductSkeleton from "../ProductSkeleton";
 import { useDispatch } from "react-redux";
 import { updateAllProducts } from "@/redux/features/productsSlice";

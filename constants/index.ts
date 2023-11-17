@@ -804,11 +804,6 @@ export const genericProducts_option = [
     type: "input",
   },
   {
-    key: "imageUrl",
-    title: "ImageUrl",
-    type: "input",
-  },
-  {
     key: "quantity",
     title: "Quantity",
     type: "input",
@@ -827,6 +822,11 @@ export const genericProducts_option = [
       { id: "true", name: true },
       { id: "false", name: false },
     ],
+  },
+  {
+    key: "imageUrl",
+    title: "ImageUrl",
+    type: "file",
   },
 ];
 

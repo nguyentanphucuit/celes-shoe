@@ -1,6 +1,6 @@
 import ProductDetailModal from "@/components/modals/ProductDetailModal";
 import ProductFilters from "@/components/product/ProductFilters";
-import { useApiDataFireStore } from "../api/useApiData";
+import { useApiDataFireStore } from "../../../hooks/useApiData";
 
 const Product = () => {
   return (

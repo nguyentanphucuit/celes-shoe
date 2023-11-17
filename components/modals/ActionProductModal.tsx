@@ -9,7 +9,7 @@ import {
   addProductFireStore,
   deleteProductFireStore,
   editProductFireStore,
-} from "@/app/[locale]/api/useApiData";
+} from "@/hooks/useApiData";
 import {
   addProduct,
   deleteProduct,
@@ -22,11 +22,14 @@ import {
   ChevronUpIcon,
   PlusIcon,
 } from "@heroicons/react/20/solid";
-import { Fragment, useEffect, useState } from "react";
+import { Fragment, use, useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
 import CustomButton from "../CustomButton";
 import CustomModal from "./CustomModal";
 import { ToastInput, useToasts } from "@geist-ui/core";
+import Image from "next/image";
+import { useImageStorage, uploadImageStorage } from "@/hooks/useImageStorage";
+import { v4 } from "uuid";
 
 const ActionProductModal = (props: any) => {
   const [inputValue, setInputValue] = useState<{ [key: string]: any }>({
@@ -167,6 +170,29 @@ const ActionProductModal = (props: any) => {
                                       item={item}
                                     />
                                   ),
+                                  ["file"]: (
+                                    <CustomInputFile
+                                      inputValue={
+                                        inputValue.options?.[optionIdx]
+                                      }
+                                      setInputValue={(value: any) => {
+                                        const newOptions =
+                                          inputValue.options.map(
+                                            (item: any, index: number) => {
+                                              if (index === optionIdx) {
+                                                return { ...value };
+                                              }
+                                              return item;
+                                            }
+                                          );
+                                        setInputValue({
+                                          ...inputValue,
+                                          options: newOptions,
+                                        });
+                                      }}
+                                      item={item}
+                                    />
+                                  ),
                                   ["select"]: (
                                     <CustomListbox
                                       inputValue={
@@ -283,6 +309,97 @@ const CustomInput = (props: any) => {
         }
         required
       />
+    </div>
+  );
+};
+
+const CustomInputFile = (props: any) => {
+  const { item, inputValue, setInputValue } = props;
+  const [imageUrl, setImageUrl] = useState<string>(inputValue[item.key]);
+  const [progress, setProgress] = useState<number>(0);
+  const handleInputFile = (e: React.ChangeEvent<HTMLInputElement>): void => {
+    const files = Array.from(e.target.files as FileList);
+    uploadImageStorage(
+      `productss/${files[0].name}`,
+      files[0],
+      setImageUrl,
+      setProgress
+    );
+  };
+  useEffect(() => {
+    setInputValue({ ...inputValue, [item.key]: imageUrl });
+  }, [imageUrl]);
+  // const { data } = useImageStorage("productss", inputValue[item.key]);
+  return (
+    <div className="col-span-6 sm:col-span-3">
+      <label
+        htmlFor={item.key + "text"}
+        className="block mb-2 uppercase text-sm font-medium text-gray-900 dark:text-white">
+        {item.key}
+      </label>
+      <div className="flex justify-end mb-1">
+        <span className="text-sm font-medium text-blue-700 dark:text-white">
+          {progress.toFixed(0)}%
+        </span>
+      </div>
+      <div className="w-full bg-gray-200 rounded-full h-2.5 dark:bg-gray-700 my-2">
+        <div
+          className="bg-blue-600 h-2.5 rounded-full"
+          style={{ width: `${progress}%` }}></div>
+      </div>
+      <input
+        disabled={item.isDisabled}
+        type="text"
+        name={item.key}
+        value={inputValue[item.key] || ""}
+        id={item.key + "text"}
+        className={classNames(
+          item.isDisabled ? "bg-gray-200" : "bg-gray-50",
+          "shadow-sm  border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-600 focus:border-blue-600 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+        )}
+        placeholder={item.key}
+        readOnly
+      />
+      <div className="flex items-center justify-center w-full mt-2 ">
+        <label
+          htmlFor={item.key}
+          className="relative flex flex-col items-center justify-center w-full h-64 border-2 border-gray-300 border-dashed rounded-lg cursor-pointer bg-gray-50 dark:hover:bg-bray-800 dark:bg-gray-700 hover:bg-gray-100 dark:border-gray-600 dark:hover:border-gray-500 dark:hover:bg-gray-600">
+          {imageUrl ? (
+            <Image src={imageUrl} fill alt="Picture of the author" />
+          ) : null}
+          <div className=" flex flex-col items-center justify-center pt-5 pb-6">
+            <svg
+              className="w-8 h-8 mb-4 text-gray-500 dark:text-gray-400"
+              aria-hidden="true"
+              xmlns="http://www.w3.org/2000/svg"
+              fill="none"
+              viewBox="0 0 20 16">
+              <path
+                stroke="currentColor"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth="2"
+                d="M13 13h3a3 3 0 0 0 0-6h-.025A5.56 5.56 0 0 0 16 6.5 5.5 5.5 0 0 0 5.207 5.021C5.137 5.017 5.071 5 5 5a4 4 0 0 0 0 8h2.167M10 15V6m0 0L8 8m2-2 2 2"
+              />
+            </svg>
+            <p className="mb-2 text-sm text-gray-500 dark:text-gray-400">
+              <span className="font-semibold">Click to upload</span> or drag and
+              drop
+            </p>
+            <p className="text-xs text-gray-500 dark:text-gray-400">
+              SVG, PNG, JPG or GIF (MAX. 800x400px)
+            </p>
+          </div>
+          <input
+            id={item.key}
+            onChange={handleInputFile}
+            name={item.key}
+            type="file"
+            className="hidden"
+            accept="image/*"
+          />
+        </label>
+      </div>
     </div>
   );
 };

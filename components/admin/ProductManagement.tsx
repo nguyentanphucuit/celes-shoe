@@ -1,5 +1,5 @@
 "use client";
-import { ITEMS_PER_PAGE } from "@/constants";
+import { ITEMS_PER_PAGE, productTemplate } from "@/constants";
 import { classNames, includeTexts, sortByKeyOrder } from "@/constants/common";
 import { ProductProps } from "@/types";
 import Image from "next/image";
@@ -11,8 +11,17 @@ import { LoadingComp } from "../LoadingComp";
 import SearchBarComp from "../SearchBarComp";
 import ActionProductModal from "../modals/ActionProductModal";
 import PaginationControls from "../pagination/PaginationControls";
+import { useApiDataFireStore } from "@/hooks/useApiData";
+import { updateAllProducts } from "@/redux/features/productsSlice";
 
 const ProductManagement = () => {
+  const dispatch = useDispatch();
+  const { data: products, loading, error } = useApiDataFireStore("products");
+  dispatch(updateAllProducts({ products }));
+  return <ProductManagement1 />;
+};
+
+const ProductManagement1 = () => {
   const products = useSelector((state: any) => state.productsReducer.items);
   const [product, setProduct] = useState<ProductProps>(products[0] ?? {});
   const [listProducts, setListProducts] = useState<ProductProps[]>([]); // [
@@ -23,7 +32,6 @@ const ProductManagement = () => {
   const [isOpenModal, setIsOpenModal] = useState(false);
 
   const searchParams = useSearchParams();
-  const dispatch = useDispatch();
 
   const current_page = +(searchParams?.get("page") ?? 1);
   const per_page = +(searchParams?.get("per_page") ?? ITEMS_PER_PAGE);
@@ -37,6 +45,7 @@ const ProductManagement = () => {
     setAction(action);
     setIsOpenModal(true);
   };
+  // console.log(products);
   useEffect(() => {
     setListProducts(products);
   }, [products]);
