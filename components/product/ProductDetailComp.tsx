@@ -74,12 +74,7 @@ const ProductDetailComponent = (props: ProductProps) => {
     },
   ];
 
-  const listImgTest = [
-    props.options[0].imageUrl,
-    "https://firebasestorage.googleapis.com/v0/b/celesshoe-6121f.appspot.com/o/products%2FCS-12.jpg?alt=media&token=82730e1b-b54f-4d53-9741-af858d3dfb82",
-    "https://firebasestorage.googleapis.com/v0/b/celesshoe-6121f.appspot.com/o/products%2FCS-1.jpg?alt=media&token=16396d75-15cf-4714-b9e0-60f0b4c10cc0",
-    "https://firebasestorage.googleapis.com/v0/b/celesshoe-6121f.appspot.com/o/products%2FCS-17.jpg?alt=media&token=b4af70e4-fc43-44d6-8137-9992cc5842de",
-  ];
+  const listImgColors = props.options.map((option) => option.imageUrl);
   return (
     <>
       <div className="grid grid-cols-2 gap-6 lg:gap-24">
@@ -92,7 +87,7 @@ const ProductDetailComponent = (props: ProductProps) => {
             alt={props.id}
           />
           <div className="grid grid-cols-4 gap-2 py-2">
-            {listImgTest.map((url) => (
+            {listImgColors.map((url) => (
               <Image
                 key={url}
                 src={url}
