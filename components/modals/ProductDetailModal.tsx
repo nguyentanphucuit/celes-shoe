@@ -151,7 +151,7 @@ export function ProductDetailModal() {
                             <CustomButton
                               handleClick={handleAddToCart}
                               containerStyles="btn-add-to-cart-full"
-                              title="Add to Cart"
+                              title="ADD TO CART"
                             />
                           ) : (
                             <CustomButton

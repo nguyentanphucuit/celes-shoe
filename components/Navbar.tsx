@@ -82,16 +82,14 @@ const Navbar = ({ locale }: { locale: string }) => {
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <div className="flex h-16 items-center justify-between">
             <div className="flex items-center">
-              <div className="flex-shrink-0">
+              <div className="relative flex-shrink-0 mt-1">
                 <Link href="/">
-                  <button>
-                    <Image
-                      width={64}
-                      height={64}
-                      src="/logo.png"
-                      alt="Celes Shoe"
-                    />
-                  </button>
+                  <Image
+                    width={188}
+                    height={48}
+                    src="/logo.png"
+                    alt="Celes Shoe"
+                  />
                 </Link>
               </div>
             </div>
