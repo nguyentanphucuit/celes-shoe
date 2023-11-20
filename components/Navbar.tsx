@@ -1,16 +1,15 @@
 "use client";
 import { classNames } from "@/constants/common";
 import { Popover, Switch, Transition } from "@headlessui/react";
+import { useTranslations } from "next-intl";
 import Image from "next/legacy/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { useRouter } from "next/navigation";
 import { Fragment, useEffect, useState } from "react";
 import Banner from "./Banner";
+import LanguageSelector from "./LanguageSelector";
 import SpeedDial from "./SpeedDial";
 import CartModal from "./modals/CartModal";
-import LanguageSelector from "./LanguageSelector";
-import { useTranslations } from "next-intl";
 
 const Navbar = ({ locale }: { locale: string }) => {
   const [showMenu, setShowMenu] = useState(false);
