@@ -68,7 +68,7 @@ const ProductFilters = () => {
           if (filters.sizes.length === 0) return true;
           const itemOptions = item.options.filter((option: any) => {
             const itemSize = option.sizes.find(
-              (size: any) => size.inStock && filters.sizes.includes(size.size)
+              (size: any) => size.inStock && filters.sizes.includes(size.name)
             );
             return itemSize;
           });

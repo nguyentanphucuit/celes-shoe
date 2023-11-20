@@ -107,7 +107,7 @@ const CartModal = () => {
                                     key={
                                       item.product.id +
                                       item.option.color +
-                                      item.option.sizes[0].size
+                                      item.option.sizes[0].name
                                     }
                                   />
                                 ))}

@@ -12,6 +12,21 @@ import {
 } from "firebase/firestore";
 import { db } from "@/firebaseConfig";
 import { ProductProps } from "@/types";
+import { listProducts } from "@/constants";
+
+const rewriteDataBackup = () => {
+  const productsCollectionRef = collection(db, "products");
+
+  (async () => {
+    for (let i = 0; i < listProducts.length; i++) {
+      const { ...newData }: any = {
+        ...listProducts[i],
+      };
+      await addDoc(productsCollectionRef, newData);
+    }
+  })();
+  console.log("Done!");
+};
 
 function useApiData(apiUrl: string) {
   const [data, setData] = useState(null);
@@ -79,6 +94,7 @@ const deleteProductFireStore = async (collectionName: string, id: string) => {
 };
 
 export {
+  rewriteDataBackup,
   useApiData,
   useApiDataFireStore,
   addProductFireStore,

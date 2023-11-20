@@ -13,7 +13,7 @@ const cartSlice = createSlice({
         (item: CartProps) =>
           item.product.id === product.id &&
           item.option.color === option.color &&
-          item.option.sizes[0].size === option.sizes[0].size
+          item.option.sizes[0].name === option.sizes[0].name
       );
       if (!existingItem) {
         state.cart.push({ product, option, quantity: quantity ?? 1 });
@@ -29,7 +29,7 @@ const cartSlice = createSlice({
           !(
             item.product.id === id &&
             item.option.color === option.color &&
-            item.option.sizes[0].size === option.sizes[0].size
+            item.option.sizes[0].name === option.sizes[0].name
           )
       );
       return state;
@@ -40,7 +40,7 @@ const cartSlice = createSlice({
         (item: CartProps) =>
           item.product.id === id &&
           item.option.color === option.color &&
-          item.option.sizes[0].size === option.sizes[0].size
+          item.option.sizes[0].name === option.sizes[0].name
       );
       if (existingItem) {
         existingItem.quantity = quantity;

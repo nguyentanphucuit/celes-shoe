@@ -90,7 +90,7 @@ const CartSection = ({ product, option, quantity }: CartProps) => {
         </p>
         <div className="flex flex-1 items-end justify-between text-sm">
           <p className="hidden lg:block text-gray-500">
-            Size : {option.sizes[0].size}
+            Size : {option.sizes[0].name}
           </p>
           <select
             id="quantity-0"

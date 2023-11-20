@@ -8,7 +8,7 @@ const SizeComp = (props: any) => {
       <div className="grid grid-cols-5 gap-3">
         {props.option.sizes?.map((size: any) => (
           <RadioGroup.Option
-            key={size.size}
+            key={size.name}
             value={size}
             disabled={!size.inStock}
             className={({ active }) =>
@@ -23,7 +23,7 @@ const SizeComp = (props: any) => {
             }>
             {({ active, checked }) => (
               <>
-                <RadioGroup.Label as="span">{size.size}</RadioGroup.Label>
+                <RadioGroup.Label as="span">{size.name}</RadioGroup.Label>
                 {size.inStock ? (
                   <span
                     className={classNames(
