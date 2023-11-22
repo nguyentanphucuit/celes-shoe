@@ -6,23 +6,23 @@ import React from "react";
 const About = () => {
   // const t = useTranslations("About");
   return (
-    <div className="mx-auto max-w-7xl px-4 sm:px-6 l:px-8 ">
+    <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
       <div className="grid grid-cols-5 gap-20">
-        <div className="col-span-3">
+        <div className="col-span-5 lg:col-span-3">
           <Image
             src="/about-us.png"
             width={1000}
-            height={100}
+            height={800}
             alt="about us"
             className="object-contain"
           />
         </div>
-        <div className="col-span-2 space-y-4">
+        <div className="col-span-5 lg:col-span-2 space-y-2 xl:space-y-4">
           <p className="text-base font-medium text-primary">Our track record</p>
           <h5 className="text-4xl font-bold">
             Trusted by thousands of creators worldwide
           </h5>
-          <p className="py-4 pb-8">
+          <p className="py-4 xl:pb-8">
             Lorem ipsum, dolor sit amet consectetur adipisicing elit. Maiores
             impedit perferendis suscipit eaque, iste dolor cupiditate blanditiis
             ratione.
