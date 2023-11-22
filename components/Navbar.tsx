@@ -84,9 +84,10 @@ const Navbar = ({ locale }: { locale: string }) => {
               <div className="relative flex-shrink-0 mt-1">
                 <Link href="/">
                   <Image
-                    width={188}
-                    height={48}
+                    width={212}
+                    height={50}
                     src="/logo.png"
+                    className="object-contain"
                     alt="Celes Shoe"
                   />
                 </Link>

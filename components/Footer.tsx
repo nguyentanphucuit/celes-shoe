@@ -42,8 +42,8 @@ const Footer = () => {
             <Image
               src="/logo.png"
               alt="logo"
-              width={188}
-              height={48}
+              width={220}
+              height={32}
               className="object-contain"
             />
           </div>
