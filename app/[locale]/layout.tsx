@@ -6,6 +6,7 @@ import { Providers } from "@/redux/provider";
 import { unstable_setRequestLocale } from "next-intl/server";
 import { notFound } from "next/navigation";
 import NextIntlProvider from "./NextIntlProvider";
+import { AuthContextProvider } from "./context/AuthContext";
 
 export const metadata = {
   title: "Celes shoe",
@@ -37,11 +38,13 @@ export default async function LocaleLayout({
       <body suppressHydrationWarning>
         <NextIntlProvider locale={locale} messages={messages}>
           <Providers>
-            <Navbar locale={locale} />
             <GeistProviders>
-              <div className="pt-36">{children}</div>
+              <AuthContextProvider>
+                <Navbar locale={locale} />
+                <div className="pt-36">{children}</div>
+                <Footer />
+              </AuthContextProvider>
             </GeistProviders>
-            <Footer />
           </Providers>
         </NextIntlProvider>
       </body>

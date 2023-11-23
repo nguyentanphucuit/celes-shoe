@@ -9,7 +9,11 @@ const LoadingComp = () => {
 };
 
 const LoadingSpinner = () => {
-  return <span className="loading loading-spinner loading-md"></span>;
+  return (
+    <div className="w-full flex flex-row justify-center">
+      <span className="loading loading-spinner loading-md"></span>
+    </div>
+  );
 };
 
 export { LoadingComp, LoadingSpinner };

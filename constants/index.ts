@@ -1142,3 +1142,14 @@ export const emptyProductDetail = {
     ],
   } as any,
 };
+
+export const profileItem = [
+  {
+    title: "Your Profile",
+    path: "/profile",
+  },
+  {
+    title: "Settings",
+    path: "/settings",
+  },
+];

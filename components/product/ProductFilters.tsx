@@ -15,7 +15,6 @@ import { FilterSection, FilterSectionRange } from "./FilterSection";
 import PaginationControls from "../pagination/PaginationControls";
 import ProductCard from "../ProductCard";
 import { XMarkIcon } from "@heroicons/react/20/solid";
-import { LoadingSpinner } from "../LoadingComp";
 import { includeTexts } from "@/constants/common";
 import SearchBarComp from "../SearchBarComp";
 import { useApiDataFireStore } from "@/hooks/useApiData";

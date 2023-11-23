@@ -1,26 +1,43 @@
 "use client";
-import { ITEMS_PER_PAGE, productTemplate } from "@/constants";
+import { UserAuth } from "@/app/[locale]/context/AuthContext";
+import { ITEMS_PER_PAGE } from "@/constants";
 import { classNames, includeTexts, sortByKeyOrder } from "@/constants/common";
+import { useApiDataFireStore } from "@/hooks/useApiData";
+import { updateAllProducts } from "@/redux/features/productsSlice";
 import { ProductProps } from "@/types";
 import Image from "next/image";
 import { usePathname, useRouter, useSearchParams } from "next/navigation";
 import { Suspense, useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import CustomButton from "../CustomButton";
-import { LoadingComp } from "../LoadingComp";
+import { LoadingComp, LoadingSpinner } from "../LoadingComp";
 import SearchBarComp from "../SearchBarComp";
 import ActionProductModal from "../modals/ActionProductModal";
 import PaginationControls from "../pagination/PaginationControls";
-import { useApiDataFireStore } from "@/hooks/useApiData";
-import { updateAllProducts } from "@/redux/features/productsSlice";
 
 const ProductManagement = () => {
   const dispatch = useDispatch();
+  const { user } = UserAuth();
+  const [loadingLogin, setLoadingLogin] = useState(true);
   const { data: products, loading, error } = useApiDataFireStore("products");
   dispatch(updateAllProducts({ products }));
+
+  useEffect(() => {
+    const checkAuthentication = async () => {
+      await new Promise((resolve) => setTimeout(resolve, 1500));
+      setLoadingLogin(false);
+    };
+    checkAuthentication();
+  }, [user]);
   return (
     <>
-      <ProductManagement1 />
+      {loadingLogin ? (
+        <LoadingSpinner />
+      ) : user ? (
+        <ProductManagement1 />
+      ) : (
+        <p>Please login</p>
+      )}
     </>
   );
 };
