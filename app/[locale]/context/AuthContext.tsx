@@ -36,9 +36,9 @@ export const AuthContextProvider = ({
       .then((userCredential) => {
         // Signed in
         const user = userCredential.user;
-        // ...
+
         // updateProfile(userCredential.user, {
-        //   displayName: "User Test",
+        //   displayName: "Admin",
         // })
         //   .then(() => {
         //     // Profile updated!

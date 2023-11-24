@@ -13,7 +13,12 @@ import CartModal from "./modals/CartModal";
 import { UserAuth } from "@/app/[locale]/context/AuthContext";
 import { profileItem } from "@/constants";
 import CustomButton from "./CustomButton";
-import { ArrowRightOnRectangleIcon } from "@heroicons/react/20/solid";
+import {
+  ArrowLeftOnRectangleIcon,
+  ArrowRightOnRectangleIcon,
+  UserCircleIcon,
+  UserIcon,
+} from "@heroicons/react/20/solid";
 
 const Navbar = ({ locale }: { locale: string }) => {
   const [showMenu, setShowMenu] = useState(false);
@@ -292,67 +297,75 @@ const ModeSwitcher = () => {
 const ProfileDropdown = (props: any) => {
   return (
     <div className="hidden md:block w-full relative ml-3 px-2">
-      <Popover className="relative">
-        {() => (
-          <>
-            <Popover.Button>
-              <Image
-                width={32}
-                height={32}
-                src="/profile.png"
-                className="rounded-full"
-                style={{ height: "32px" }}
-                alt="avatar"
-                onClick={props.handleOpenProfile}
-              />
-            </Popover.Button>
-            <Transition
-              as={Fragment}
-              enter="transition ease-out duration-200"
-              enterFrom="opacity-0 translate-y-1"
-              enterTo="opacity-100 translate-y-0"
-              leave="transition ease-in duration-150"
-              leaveFrom="opacity-100 translate-y-0"
-              leaveTo="opacity-0 translate-y-1">
-              <Popover.Panel className="absolute left-0 z-10 mt-4 w-64 max-w-sm -translate-x-1/2 transform px-4 sm:px-0 lg:max-w-3xl">
-                <div className="bg-gray-50 p-4 flex flex-col justify-center items-center gap-4">
-                  <span className="text-sm font-medium text-gray-900">
-                    nguyentanphucuit@gmail.com
-                  </span>
-                  <Image
-                    width={48}
-                    height={48}
-                    src="/profile.png"
-                    className="rounded-full"
-                    style={{ height: "32px" }}
-                    alt="avatar"
-                  />
-                  <div>Hi, {props.user?.displayName}!</div>
-                </div>
-                <div className="overflow-hidden bg-white rounded-lg shadow-lg ring-1 ring-black ring-opacity-5">
-                  {profileItem.map((item, index) => (
-                    <Link
-                      key={index}
-                      href={item.path}
-                      className="profile-dropdown">
-                      {item.title}
-                    </Link>
-                  ))}
-                  <CustomButton
-                    title="Sign Out"
-                    leftIcon={
-                      <div className="w-6 h-6">
-                        <ArrowRightOnRectangleIcon />
-                      </div>
-                    }
-                    containerStyles="custom-btn w-32 px-3 py-2 items-center text-primary justify-center border border-transparent text-sm font-semibold"
-                    handleClick={() => props.handleSignOut()}></CustomButton>
-                </div>
-              </Popover.Panel>
-            </Transition>
-          </>
-        )}
-      </Popover>
+      {props.user ? (
+        <Popover className="relative">
+          {() => (
+            <>
+              <Popover.Button>
+                <Image
+                  width={32}
+                  height={32}
+                  src="/profile.png"
+                  className="rounded-full"
+                  style={{ height: "32px" }}
+                  alt="avatar"
+                  onClick={props.handleOpenProfile}
+                />
+              </Popover.Button>
+              <Transition
+                as={Fragment}
+                enter="transition ease-out duration-200"
+                enterFrom="opacity-0 translate-y-1"
+                enterTo="opacity-100 translate-y-0"
+                leave="transition ease-in duration-150"
+                leaveFrom="opacity-100 translate-y-0"
+                leaveTo="opacity-0 translate-y-1">
+                <Popover.Panel className="absolute left-0 z-10 mt-4 w-64 max-w-sm -translate-x-1/2 transform px-4 sm:px-0 lg:max-w-3xl rounded-lg shadow-lg ring-1 ring-black ring-opacity-5 divide-y">
+                  <div className="bg-gray-50 p-4 flex flex-col justify-center items-center gap-4">
+                    <span className="text-sm font-medium text-gray-900">
+                      {props.user?.email}
+                    </span>
+                    <Image
+                      width={48}
+                      height={48}
+                      src="/profile.png"
+                      className="rounded-full"
+                      style={{ height: "32px" }}
+                      alt="avatar"
+                    />
+                    <div>Hi, {props.user?.displayName}!</div>
+                  </div>
+                  <div className="overflow-hidden bg-white ">
+                    {profileItem.map((item, index) => (
+                      <Link
+                        key={index}
+                        href={item.path}
+                        className="profile-dropdown">
+                        {item.title}
+                      </Link>
+                    ))}
+                    <CustomButton
+                      title="Sign Out"
+                      leftIcon={
+                        <div className="w-6 h-6">
+                          <ArrowLeftOnRectangleIcon />
+                        </div>
+                      }
+                      containerStyles="custom-btn w-32 px-3 py-2 items-center text-primary justify-center border border-transparent text-sm font-semibold"
+                      handleClick={() => props.handleSignOut()}></CustomButton>
+                  </div>
+                </Popover.Panel>
+              </Transition>
+            </>
+          )}
+        </Popover>
+      ) : (
+        <Link href="/login">
+          <div className="w-6 h-6 text-white">
+            <UserIcon />
+          </div>
+        </Link>
+      )}
     </div>
   );
 };
