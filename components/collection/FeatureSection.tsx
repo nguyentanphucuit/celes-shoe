@@ -91,11 +91,11 @@ const FeatureSection = () => {
   ];
 
   return (
-    <div className="grid grid-cols-1 md:grid-cols-2 xl:divide-x xl:grid-cols-4 gap-12 border p-8">
+    <div className="grid grid-cols-1 md:grid-cols-2 xl:divide-x xl:grid-cols-4 divide-y md:divide-y-0 border">
       {data.map((item) => (
         <div
           key={item.id}
-          className="flex flex-row justify-center items-center gap-4">
+          className="flex flex-row justify-center items-center gap-4 p-8">
           <div>{item.icon}</div>
           <div className="capitalize ">
             <p className="text-base font-semibold">{item.title}</p>

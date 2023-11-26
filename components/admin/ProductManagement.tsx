@@ -128,10 +128,10 @@ const ProductManagement1 = () => {
       title: "image",
       isShow: true,
       className:
-        "flex items-center text-gray-900 whitespace-nowrap dark:text-white",
+        "flex w-28 h-28 items-center text-gray-900 whitespace-nowrap dark:text-white",
       render: (image: string) => (
         <Image
-          className="w-20 h-20"
+          className="object-contain"
           src={image}
           alt="product.imageUrl"
           width="80"
@@ -236,7 +236,7 @@ const ProductManagement1 = () => {
 
   return (
     <div className="relative overflow-x-auto ">
-      <div className="flex items-center justify-between py-4 px-0.5 bg-white dark:bg-gray-800 ">
+      <div className="flex flex-col space-y-2 items-start md:flex-row md:items-center md:justify-between py-4 px-0.5 bg-white dark:bg-gray-800 ">
         <CustomButton
           title="Create Product"
           containerStyles="px-3 py-2 items-center justify-center border border-transparent bg-blue-700 border-blue-400 text-white text-sm font-semibold hover:bg-blue-600 focus:outline-none focus:ring-1 focus:ring-indigo-500 focus:ring-offset-1"
@@ -257,7 +257,7 @@ const ProductManagement1 = () => {
             {headers.map(
               (header) =>
                 header?.isShow && (
-                  <th scope="col" className="sm:px-6 py-3" key={header?.key}>
+                  <th scope="col" className="px-6 py-3" key={header?.key}>
                     <div className="flex items-center">
                       {typeof header?.title == "string"
                         ? header?.title
@@ -286,10 +286,7 @@ const ProductManagement1 = () => {
                     header?.isShow && (
                       <td
                         key={header?.key + product.id}
-                        className={classNames(
-                          header?.className,
-                          "sm:px-6 py-3"
-                        )}>
+                        className={classNames(header?.className, "px-6 py-3")}>
                         {header?.render(
                           product[header.key] ??
                             product.options[0][header.key] ??
