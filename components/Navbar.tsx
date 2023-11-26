@@ -296,21 +296,22 @@ const ModeSwitcher = () => {
 
 const ProfileDropdown = (props: any) => {
   return (
-    <div className="hidden md:block w-full relative ml-3 px-2">
+    <div className="hidden md:block w-full relative ml-3 px-2 ">
       {props.user ? (
         <Popover className="relative">
           {() => (
             <>
               <Popover.Button>
-                <Image
-                  width={32}
-                  height={32}
-                  src="/profile.png"
-                  className="rounded-full"
-                  style={{ height: "32px" }}
-                  alt="avatar"
-                  onClick={props.handleOpenProfile}
-                />
+                <div className="w-6 h-6 mt-1">
+                  <Image
+                    width={24}
+                    height={24}
+                    src="/profile.png"
+                    className="rounded-full"
+                    alt="avatar"
+                    onClick={props.handleOpenProfile}
+                  />
+                </div>
               </Popover.Button>
               <Transition
                 as={Fragment}
