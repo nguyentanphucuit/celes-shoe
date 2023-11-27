@@ -974,6 +974,7 @@ export const alertMessage = {
   warning:
     "Are you sure you want to deactivate your account? All of your data will be permanently removed. This action cannot be undone.",
   error: "Remove item difficulty.",
+  passwordNotMatch: "Password not match",
 };
 
 export const listBlogs = [
@@ -1153,3 +1154,11 @@ export const profileItem = [
     path: "/settings",
   },
 ];
+
+export const errorMessages = {
+  required: "$field is required",
+  valid: "Please enter a valid field",
+  passwordNotMatch: "Password not match",
+  minLength: "Please enter at least $field $value characters",
+  maxLength: "Please enter at most $field $value characters",
+};
