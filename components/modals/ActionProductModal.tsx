@@ -30,6 +30,10 @@ import { ToastInput, useToasts } from "@geist-ui/core";
 import Image from "next/image";
 import { useImageStorage, uploadImageStorage } from "@/hooks/useImageStorage";
 import { v4 } from "uuid";
+import {
+  CloudArrowUpIcon,
+  ExclamationTriangleIcon,
+} from "@heroicons/react/24/outline";
 
 const ActionProductModal = (props: any) => {
   const [inputValue, setInputValue] = useState<{ [key: string]: any }>({
@@ -289,19 +293,7 @@ const DeleteProductModal = (props: any) => {
   return (
     <div className="flex flex-row justify-center gap-4">
       <div className="mx-auto flex h-12 w-12 flex-shrink-0 items-center justify-center rounded-full bg-red-100 sm:mx-0 sm:h-10 sm:w-10">
-        <svg
-          className="h-6 w-6 text-red-600"
-          fill="none"
-          viewBox="0 0 24 24"
-          strokeWidth="1.5"
-          stroke="currentColor"
-          aria-hidden="true">
-          <path
-            strokeLinecap="round"
-            strokeLinejoin="round"
-            d="M12 9v3.75m-9.303 3.376c-.866 1.5.217 3.374 1.948 3.374h14.71c1.73 0 2.813-1.874 1.948-3.374L13.949 3.378c-.866-1.5-3.032-1.5-3.898 0L2.697 16.126zM12 15.75h.007v.008H12v-.008z"
-          />
-        </svg>
+        <ExclamationTriangleIcon className="w-6 h-6 text-red-600" />
       </div>
       <span className="text-sm text-gray-500">{alertMessage.warning}</span>
     </div>
@@ -392,20 +384,7 @@ const CustomInputFile = (props: any) => {
             <Image src={imageUrl} fill alt="Picture of the author" />
           ) : null}
           <div className=" flex flex-col items-center justify-center pt-5 pb-6">
-            <svg
-              className="w-8 h-8 mb-4 text-gray-500 dark:text-gray-400"
-              aria-hidden="true"
-              xmlns="http://www.w3.org/2000/svg"
-              fill="none"
-              viewBox="0 0 20 16">
-              <path
-                stroke="currentColor"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                strokeWidth="2"
-                d="M13 13h3a3 3 0 0 0 0-6h-.025A5.56 5.56 0 0 0 16 6.5 5.5 5.5 0 0 0 5.207 5.021C5.137 5.017 5.071 5 5 5a4 4 0 0 0 0 8h2.167M10 15V6m0 0L8 8m2-2 2 2"
-              />
-            </svg>
+            <CloudArrowUpIcon className="w-8 h-8 text-gray-500 dark:text-gray-400" />
             <p className="mb-2 text-sm text-gray-500 dark:text-gray-400">
               <span className="font-semibold">Click to upload</span> or drag and
               drop

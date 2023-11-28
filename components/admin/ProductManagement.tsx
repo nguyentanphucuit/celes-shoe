@@ -14,6 +14,13 @@ import { LoadingComp, LoadingSpinner } from "../LoadingComp";
 import SearchBarComp from "../SearchBarComp";
 import ActionProductModal from "../modals/ActionProductModal";
 import PaginationControls from "../pagination/PaginationControls";
+import {
+  ArrowDownIcon,
+  ArrowUpIcon,
+  ArrowsUpDownIcon,
+  PencilSquareIcon,
+  TrashIcon,
+} from "@heroicons/react/20/solid";
 
 const ProductManagement = () => {
   const dispatch = useDispatch();
@@ -197,36 +204,12 @@ const ProductManagement1 = () => {
           <button
             className="text-blue-500"
             onClick={() => handleActionModal("edit", id)}>
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              fill="none"
-              viewBox="0 0 24 24"
-              strokeWidth={1.5}
-              stroke="currentColor"
-              className="w-5 h-5">
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                d="M16.862 4.487l1.687-1.688a1.875 1.875 0 112.652 2.652L10.582 16.07a4.5 4.5 0 01-1.897 1.13L6 18l.8-2.685a4.5 4.5 0 011.13-1.897l8.932-8.931zm0 0L19.5 7.125M18 14v4.75A2.25 2.25 0 0115.75 21H5.25A2.25 2.25 0 013 18.75V8.25A2.25 2.25 0 015.25 6H10"
-              />
-            </svg>
+            <PencilSquareIcon className="w-5 h-5" />
           </button>
           <button
             className="text-red-500"
             onClick={() => handleActionModal("delete", id)}>
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              fill="none"
-              viewBox="0 0 24 24"
-              strokeWidth="1.5"
-              stroke="currentColor"
-              className="w-5 h-5">
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                d="M14.74 9l-.346 9m-4.788 0L9.26 9m9.968-3.21c.342.052.682.107 1.022.166m-1.022-.165L18.16 19.673a2.25 2.25 0 01-2.244 2.077H8.084a2.25 2.25 0 01-2.244-2.077L4.772 5.79m14.456 0a48.108 48.108 0 00-3.478-.397m-12 .562c.34-.059.68-.114 1.022-.165m0 0a48.11 48.11 0 013.478-.397m7.5 0v-.916c0-1.18-.91-2.164-2.09-2.201a51.964 51.964 0 00-3.32 0c-1.18.037-2.09 1.022-2.09 2.201v.916m7.5 0a48.667 48.667 0 00-7.5 0"
-              />
-            </svg>
+            <TrashIcon className="w-5 h-5" />
           </button>
         </>
       ),
@@ -340,38 +323,17 @@ const CustomSortIcon = (props: any) => {
         {
           ["undefined"]: (
             <a onClick={() => handleSort("asc")}>
-              <svg
-                className="w-3 h-3 ml-1.5 text-gray-800 dark:text-white cursor-pointer"
-                aria-hidden="true"
-                xmlns="http://www.w3.org/2000/svg"
-                fill="currentColor"
-                viewBox="0 0 24 24">
-                <path d="M8.574 11.024h6.852a2.075 2.075 0 0 0 1.847-1.086 1.9 1.9 0 0 0-.11-1.986L13.736 2.9a2.122 2.122 0 0 0-3.472 0L6.837 7.952a1.9 1.9 0 0 0-.11 1.986 2.074 2.074 0 0 0 1.847 1.086Zm6.852 1.952H8.574a2.072 2.072 0 0 0-1.847 1.087 1.9 1.9 0 0 0 .11 1.985l3.426 5.05a2.123 2.123 0 0 0 3.472 0l3.427-5.05a1.9 1.9 0 0 0 .11-1.985 2.074 2.074 0 0 0-1.846-1.087Z" />
-              </svg>
+              <ArrowsUpDownIcon className="w-4 h-4 ml-2 mr-0.5 text-gray-800 dark:text-white cursor-pointer" />
             </a>
           ),
           ["asc"]: (
             <a onClick={() => handleSort("desc")}>
-              <svg
-                className="w-2 h-2 ml-2 mr-0.5 text-gray-800 dark:text-white cursor-pointer"
-                aria-hidden="true"
-                xmlns="http://www.w3.org/2000/svg"
-                fill="currentColor"
-                viewBox="0 0 16 10">
-                <path d="M9.207 1A2 2 0 0 0 6.38 1L.793 6.586A2 2 0 0 0 2.207 10H13.38a2 2 0 0 0 1.414-3.414L9.207 1Z" />
-              </svg>
+              <ArrowUpIcon className="w-4 h-4 ml-2 mr-0.5 text-gray-800 dark:text-white cursor-pointer" />
             </a>
           ),
           ["desc"]: (
             <a onClick={() => handleSort("undefined")}>
-              <svg
-                className="w-2 h-2 ml-2 mr-0.5 text-gray-800 dark:text-white cursor-pointer"
-                aria-hidden="true"
-                xmlns="http://www.w3.org/2000/svg"
-                fill="currentColor"
-                viewBox="0 0 16 10">
-                <path d="M15.434 1.235A2 2 0 0 0 13.586 0H2.414A2 2 0 0 0 1 3.414L6.586 9a2 2 0 0 0 2.828 0L15 3.414a2 2 0 0 0 .434-2.179Z" />
-              </svg>
+              <ArrowDownIcon className="w-4 h-4 ml-2 mr-0.5 text-gray-800 dark:text-white cursor-pointer" />
             </a>
           ),
         }[sortOrder[sortKey] as string]

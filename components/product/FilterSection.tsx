@@ -1,6 +1,7 @@
 import { listColors, listFilters } from "@/constants";
 import { classNames, getColorVariants } from "@/constants/common";
 import { Transition } from "@headlessui/react";
+import { MinusIcon, PlusIcon } from "@heroicons/react/24/outline";
 import { constants } from "fs";
 import { usePathname, useSearchParams } from "next/navigation";
 import { useRouter } from "next/navigation";
@@ -40,27 +41,11 @@ const FilterSection = (props: any) => {
           <span className="font-medium text-gray-900 capitalize">
             {props.name}
           </span>
-          <span className="ml-6 flex items-center">
+          <span className="ml-6 flex items-center h-5 w-5">
             {isExpand ? (
-              <svg
-                className="h-5 w-5"
-                viewBox="0 0 20 20"
-                fill="currentColor"
-                aria-hidden="true">
-                <path
-                  fillRule="evenodd"
-                  d="M4 10a.75.75 0 01.75-.75h10.5a.75.75 0 010 1.5H4.75A.75.75 0 014 10z"
-                  clipRule="evenodd"
-                />
-              </svg>
+              <MinusIcon aria-hidden="true" />
             ) : (
-              <svg
-                className="h-5 w-5"
-                viewBox="0 0 20 20"
-                fill="currentColor"
-                aria-hidden="true">
-                <path d="M10.75 4.75a.75.75 0 00-1.5 0v4.5h-4.5a.75.75 0 000 1.5h4.5v4.5a.75.75 0 001.5 0v-4.5h4.5a.75.75 0 000-1.5h-4.5v-4.5z" />
-              </svg>
+              <PlusIcon aria-hidden="true" />
             )}
           </span>
         </button>

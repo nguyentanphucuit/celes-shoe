@@ -1,10 +1,11 @@
 import { totalPrice, totalQuantity } from "@/constants/common";
 import { useAppSelector } from "@/redux/hooks";
 import { Dialog, Transition } from "@headlessui/react";
-import { XMarkIcon } from "@heroicons/react/24/outline";
+import { ShoppingCartIcon, XMarkIcon } from "@heroicons/react/24/outline";
 import { Fragment, useState } from "react";
 import CartSection from "../CartSection";
 import CustomButton from "../CustomButton";
+import { EnvelopeIcon } from "@heroicons/react/20/solid";
 
 const CartModal = () => {
   const [showCartModal, setShowCartModal] = useState(false);
@@ -135,15 +136,7 @@ const CartModal = () => {
                               <div className="flex ">
                                 <div className="relative mr-2 w-96">
                                   <div className="absolute inset-y-0 left-0 flex items-center pl-3.5 pointer-events-none">
-                                    <svg
-                                      className="w-4 h-4 text-gray-500 dark:text-gray-400"
-                                      aria-hidden="true"
-                                      xmlns="http://www.w3.org/2000/svg"
-                                      fill="currentColor"
-                                      viewBox="0 0 20 16">
-                                      <path d="m10.036 8.278 9.258-7.79A1.979 1.979 0 0 0 18 0H2A1.987 1.987 0 0 0 .641.541l9.395 7.737Z" />
-                                      <path d="M11.241 9.817c-.36.275-.801.425-1.255.427-.428 0-.845-.138-1.187-.395L0 2.6V14a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V2.5l-8.759 7.317Z" />
-                                    </svg>
+                                    <EnvelopeIcon className="w-5 h-5 text-gray-500" />
                                   </div>
                                   <input
                                     type="text"
@@ -185,22 +178,10 @@ export const CartIcon = ({
   totalQuantity: number;
 }) => {
   return (
-    <button className="relative text-white " onClick={handleShowCartModal}>
-      <svg
-        xmlns="http://www.w3.org/2000/svg"
-        fill="none"
-        viewBox="0 0 24 24"
-        strokeWidth="1.5"
-        stroke="currentColor"
-        className="h-6 w-6 mx-2">
-        <path
-          strokeLinecap="round"
-          strokeLinejoin="round"
-          d="M2.25 3h1.386c.51 0 .955.343 1.087.835l.383 1.437M7.5 14.25a3 3 0 00-3 3h15.75m-12.75-3h11.218c1.121-2.3 2.1-4.684 2.924-7.138a60.114 60.114 0 00-16.536-1.84M7.5 14.25L5.106 5.272M6 20.25a.75.75 0 11-1.5 0 .75.75 0 011.5 0zm12.75 0a.75.75 0 11-1.5 0 .75.75 0 011.5 0z"
-        />
-      </svg>
+    <button className="relative text-white" onClick={handleShowCartModal}>
+      <ShoppingCartIcon className="h-6 w-6" aria-hidden="true" />
       {totalQuantity > 0 ? (
-        <div className="absolute inline-flex items-center justify-center w-6 h-6 text-xs font-bold text-white bg-gray-800 border-2 border-white rounded-full -top-2 -right-2 dark:border-gray-900">
+        <div className="absolute inline-flex items-center justify-center w-5 h-5 text-xs font-bold text-white bg-gray-800 border-2 border-white rounded-full -top-2 -right-2 dark:border-gray-900">
           {totalQuantity}
         </div>
       ) : null}

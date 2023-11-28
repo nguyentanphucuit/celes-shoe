@@ -45,14 +45,8 @@ const Banner = () => {
             New
           </span>
           <p className="text-sm leading-6 text-gray-900">
-            <strong className="font-semibold">Celes Shoes 2023</strong>
-            <svg
-              viewBox="0 0 2 2"
-              className="mx-2 inline h-0.5 w-0.5 fill-current"
-              aria-hidden="true">
-              <circle cx={1} cy={1} r={1} />
-            </svg>
-            Free ship from Dec 1 – 30.
+            <strong className="font-semibold">Celes Shoes 2023 </strong> | Free
+            ship from Dec 1 – 30.
           </p>
           <Link
             href="/product"
