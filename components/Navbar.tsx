@@ -170,7 +170,6 @@ const Navbar = ({ locale }: { locale: string }) => {
                   className="rounded-full"
                   width={48}
                   height={48}
-                  style={{ height: "48px" }}
                   src="/profile.png"
                   alt=""
                 />

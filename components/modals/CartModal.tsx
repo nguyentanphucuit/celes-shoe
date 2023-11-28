@@ -178,10 +178,10 @@ export const CartIcon = ({
   totalQuantity: number;
 }) => {
   return (
-    <button className="relative text-white" onClick={handleShowCartModal}>
+    <button className="relative text-white px-2" onClick={handleShowCartModal}>
       <ShoppingCartIcon className="h-6 w-6" aria-hidden="true" />
       {totalQuantity > 0 ? (
-        <div className="absolute inline-flex items-center justify-center w-5 h-5 text-xs font-bold text-white bg-gray-800 border-2 border-white rounded-full -top-2 -right-2 dark:border-gray-900">
+        <div className="absolute inline-flex items-center justify-center w-5 h-5 text-xs font-bold text-white bg-gray-800 border-2 border-white rounded-full -top-2 -right-1 dark:border-gray-900">
           {totalQuantity}
         </div>
       ) : null}

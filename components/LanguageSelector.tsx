@@ -27,8 +27,8 @@ const LanguageSelector = ({ locale }: { locale: string }) => {
     <div className="top-16">
       <Listbox value={selected} onChange={handleOnChange}>
         <div className="relative mt-1">
-          <Listbox.Button className="relative w-full pr-4 cursor-default rounded-lg text-white bg-gray-800 py-2 text-left shadow-md focus:outline-none focus-visible:border-indigo-500 focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-opacity-75 focus-visible:ring-offset-2 focus-visible:ring-offset-orange-300 sm:text-sm">
-            <LanguageIcon className="w-6 h-6" aria-hidden="true" />
+          <Listbox.Button className="relative w-full ml-2 mr-2 md:ml-0 cursor-default rounded-lg text-white bg-gray-800 py-2 text-left shadow-md focus:outline-none focus-visible:border-indigo-500 focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-opacity-75 focus-visible:ring-offset-2 focus-visible:ring-offset-orange-300 sm:text-sm">
+            <LanguageIcon className="w-5 h-5" aria-hidden="true" />
           </Listbox.Button>
           <Transition
             as={Fragment}
