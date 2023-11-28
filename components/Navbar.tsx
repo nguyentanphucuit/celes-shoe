@@ -120,17 +120,16 @@ const Navbar = ({ locale }: { locale: string }) => {
             </div>
             <div className="">
               <div className="flex items-center">
-                <div className="hidden md:block relative ml-3 px-2">
-                  <LanguageSelector locale={locale} />
-                </div>
                 {/* <ModeSwitcher /> */}
                 <CartModal />
-
                 <ProfileDropdown
                   handleOpenProfile={handleOpenProfile}
                   handleSignOut={handleSignOut}
                   user={user}
                 />
+                <div className="hidden md:block relative px-2">
+                  <LanguageSelector locale={locale} />
+                </div>
               </div>
             </div>
             <div className="-mr-2 flex md:hidden">
@@ -296,13 +295,13 @@ const ModeSwitcher = () => {
 
 const ProfileDropdown = (props: any) => {
   return (
-    <div className="hidden md:block w-full relative ml-3 px-2 ">
+    <div className="hidden md:block w-full relative px-2 ">
       {props.user ? (
         <Popover className="relative">
           {() => (
             <>
               <Popover.Button>
-                <div className="w-6 h-6 mt-1">
+                <div className="w-6 h-6 mt-2">
                   <Image
                     width={24}
                     height={24}
@@ -321,7 +320,7 @@ const ProfileDropdown = (props: any) => {
                 leave="transition ease-in duration-150"
                 leaveFrom="opacity-100 translate-y-0"
                 leaveTo="opacity-0 translate-y-1">
-                <Popover.Panel className="absolute left-0 z-10 mt-4 w-64 max-w-sm -translate-x-1/2 transform px-4 sm:px-0 lg:max-w-3xl rounded-lg shadow-lg ring-1 ring-black ring-opacity-5 divide-y">
+                <Popover.Panel className="absolute left-0 z-10 mt-3 w-64 max-w-sm -translate-x-1/2 transform px-4 sm:px-0 lg:max-w-3xl rounded-lg shadow-lg ring-1 ring-black ring-opacity-5 divide-y">
                   <div className="bg-gray-50 p-4 flex flex-col justify-center items-center gap-4">
                     <span className="text-sm font-medium text-gray-900">
                       {props.user?.email}
